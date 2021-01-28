@@ -2808,6 +2808,15 @@ void glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const 
 	pfnVertexAttribP4uiv(index, type, normalized, value);
 }
 
+void glVertexAttribDivisor(GLuint index, GLuint divisor)
+{
+	typedef void (APIENTRY* PFNGLVERTEXATTRIBDIVISORPROC) (GLuint index, GLuint divisor);
+
+	static PFNGLVERTEXATTRIBDIVISORPROC pfnVertexAttribDivisor = 0;
+	LOAD_ENTRYPOINT("glVertexAttribDivisor", pfnVertexAttribDivisor, PFNGLVERTEXATTRIBDIVISORPROC);
+	pfnVertexAttribDivisor(index, divisor);
+}
+
 //
 // OpenGL 4.0
 //

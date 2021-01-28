@@ -1009,6 +1009,8 @@ void glSampleMaski(GLuint index, GLbitfield mask);
 #define GL_UNSIGNED_INT_2_10_10_10_REV    0x8368
 #define GL_INT_2_10_10_10_REV             0x8D9F
 
+#define GL_VERTEX_ATTRIB_ARRAY_DIVISOR    0x88FE
+
 // GL_ARB_blend_func_extended
 void glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar* name);
 GLint glGetFragDataIndex(GLuint program, const GLchar* name);
@@ -1073,6 +1075,8 @@ void glVertexAttribP3ui(GLuint index, GLenum type, GLboolean normalized, GLuint 
 void glVertexAttribP3uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint* value);
 void glVertexAttribP4ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
 void glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint* value);
+
+void glVertexAttribDivisor(GLuint index, GLuint divisor);
 
 //
 // OpenGL 4.0

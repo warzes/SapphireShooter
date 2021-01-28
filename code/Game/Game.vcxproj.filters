@@ -52,6 +52,10 @@
     <ClCompile Include="Camera.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -148,14 +152,18 @@
     <ClInclude Include="Vertex.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

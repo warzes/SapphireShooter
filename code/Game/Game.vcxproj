@@ -177,12 +177,14 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Framebuffer.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="OpenGLStateCache.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="OGLFunc.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -209,9 +211,11 @@
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Macros.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="OpenGLStateCache.h" />
     <ClInclude Include="OGLFunc.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="RenderDescription.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="ShaderManager.h" />
@@ -220,7 +224,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Transformation.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WGLFunc.h" />
     <ClInclude Include="Window.h" />
