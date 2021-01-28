@@ -1,0 +1,12 @@
+#Ignore thumbnails created by windows
+Thumbs.db
+
+#Ignore project folders
+/_lib/
+/_obj/
+/*/.vs/
+/*/ipch/
+
+#Ignore bin file
+/bin/*/Game_*.*
+/bin/*/log.txt

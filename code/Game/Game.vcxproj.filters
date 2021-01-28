@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Window.cpp">
+      <Filter>engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="OGLFunc.cpp">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClCompile>
+    <ClCompile Include="WGLFunc.cpp">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLStateCache.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Engine.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{77e75b5b-317d-40da-8137-65352137e3d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Platform">
+      <UniqueIdentifier>{fee40604-c525-4501-a60b-1af806f9ce3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\input">
+      <UniqueIdentifier>{a24bb5ba-efa7-4f9e-bbc0-4a93ff47bfea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core">
+      <UniqueIdentifier>{0b3dd572-3020-4cab-ab16-102379f9f4de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\base">
+      <UniqueIdentifier>{45eb78d9-4a1d-408a-8fb2-6b5aa6661b27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render">
+      <UniqueIdentifier>{6123480a-23c1-4aaa-baeb-6337d538a224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\OpenGL API">
+      <UniqueIdentifier>{bd34f97b-af06-47a9-af44-189a3e4906e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Resource">
+      <UniqueIdentifier>{b19dd28a-8ea4-4e27-ab4e-44c508ce5de3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Config.h">
+      <Filter>engine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Macros.h">
+      <Filter>engine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="InlineFunc.h">
+      <Filter>engine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLFunc.h">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClInclude>
+    <ClInclude Include="WGLFunc.h">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLStateCache.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="EngineDescription.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowDescription.h">
+      <Filter>engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderDescription.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1 @@
+﻿- возможно вместо FreeType юзать stb_truetype
