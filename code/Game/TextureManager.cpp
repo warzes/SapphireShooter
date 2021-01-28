@@ -31,6 +31,7 @@ std::shared_ptr<Texture2D> TextureManager::GetTexture(const std::string& name)
 //-----------------------------------------------------------------------------
 void TextureManager::Clear()
 {
+	// TODO:
 	//for (auto iter : m_textures)
 	//	iter.second->Delete();
 	//m_textures.clear();

@@ -9,7 +9,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 {
 	try
 	{
-		Engine& engine = GetEngine();
+		Engine& engine = Engine::Get();
 
 		Game game;
 		if (engine.Init(game.InitConfig()))

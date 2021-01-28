@@ -7,13 +7,18 @@
 class Engine final
 {
 public:
-	Engine() = default;
 	bool Init(const EngineDescription& desc);
 	void BeginUpdate();
 	void EndUpdate();
 	void BeginFrame();
 	void EndFrame();
 	void Close() noexcept;
+
+	static Engine& Get() noexcept
+	{
+		static Engine engineImpl;
+		return engineImpl;
+	}
 
 	EngineDescription& GetDescription() noexcept
 	{
@@ -25,6 +30,7 @@ public:
 	bool IsRun() const noexcept	{ return m_isRun; }
 
 private:
+	Engine() = default;
 	Engine(const Engine&) = delete;
 	Engine(Engine&&) = delete;
 	Engine& operator=(const Engine&) = delete;
@@ -37,13 +43,7 @@ private:
 	bool m_isEnd = false;
 };
 
-inline Engine& GetEngine() noexcept
-{
-	static Engine engineImpl;
-	return engineImpl;
-}
-
 inline EngineDescription& GetEngineDescription() noexcept
 {
-	return GetEngine().GetDescription();
+	return Engine::Get().GetDescription();
 }

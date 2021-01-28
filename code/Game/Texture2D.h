@@ -4,7 +4,7 @@ class Texture2D
 {
 public:
 	void Generate(unsigned int width, unsigned int height, unsigned char* data, bool alpha = true, GLboolean mipmaps = GL_TRUE);
-	void Bind(GLbyte unit = -1) const;
+	void Bind(unsigned unit) const;
 	void Delete();
 
 	unsigned int ID = 0;

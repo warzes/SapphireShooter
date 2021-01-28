@@ -1,6 +1,7 @@
 #pragma once
 
 #include "EngineDescription.h"
+#include "Camera.h"
 
 class Game
 {
@@ -20,4 +21,6 @@ public:
 
 private:
 	void loadResources();
+
+	Camera m_camera, m_cameraHUD;
 };

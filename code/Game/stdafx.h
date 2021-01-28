@@ -49,6 +49,8 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #	define NOMINMAX
 #	define _WIN32_WINNT 0x0600		// Windows Vista
 #	include <windows.h>
+#	undef near
+#	undef far
 #endif
 
 #include <GL/gl.h>
@@ -56,6 +58,7 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform.hpp>
 
 #include <stb_image.h>
 

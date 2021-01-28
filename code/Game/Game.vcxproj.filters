@@ -43,6 +43,15 @@
     <ClCompile Include="Engine.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="Framebuffer.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -68,6 +77,9 @@
     </Filter>
     <Filter Include="engine\Resource">
       <UniqueIdentifier>{b19dd28a-8ea4-4e27-ab4e-44c508ce5de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics">
+      <UniqueIdentifier>{3cd48a8d-3e52-4a79-b4be-0dbcad5ea9f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +141,21 @@
     </ClInclude>
     <ClInclude Include="RenderDescription.h">
       <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Framebuffer.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

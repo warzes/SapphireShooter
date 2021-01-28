@@ -7,7 +7,9 @@ public:
 	void Destroy();
 
 	void Bind() const;
+	void UnBind() const;
 	
+	void SetBool(const char* name, bool value);
 	void SetFloat(const char* name, float value);
 	void SetInteger(const char* name, int value);
 	void SetVector2f(const char* name, float x, float y);
@@ -18,7 +20,9 @@ public:
 	void SetVector4f(const char* name, const glm::vec4& value);
 	void SetMatrix4(const char* name, const glm::mat4& matrix);
 
-	unsigned int ID = 0;
+	unsigned int program = 0;
 private:
-	void checkCompileErrors(unsigned int object, std::string type);
+	GLuint createShader(GLenum shaderType, const char* source, const std::string& typeName);
+	void checkShaderErrors(unsigned int object, const std::string& type);
+	void checkProgramCompileErrors(unsigned int object);
 };

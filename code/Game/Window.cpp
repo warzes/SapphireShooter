@@ -10,7 +10,7 @@ static Window* thisWindow = nullptr;
 #if SE_PLATFORM_WINDOWS
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-	Engine& engine = GetEngine();
+	Engine& engine = Engine::Get();
 
 	if (thisWindow && engine.IsRun())
 	{
@@ -104,7 +104,7 @@ void Window::ToggleFullScreen()
 	static DWORD savedExStyle;
 	static DWORD savedStyle;
 	static RECT rcSaved;
-	static auto& windowConfig = GetEngine().GetDescription().window;
+	static auto& windowConfig = Engine::Get().GetDescription().window;
 
 	isFullScreen = !isFullScreen;
 
@@ -171,7 +171,7 @@ bool Window::registerClass()
 #if SE_PLATFORM_WINDOWS
 bool Window::createWindow(const WindowDescription& config)
 {
-	auto& windowConfig = GetEngine().GetDescription().window;
+	auto& windowConfig = Engine::Get().GetDescription().window;
 
 	DWORD wndExStyle = WS_EX_OVERLAPPEDWINDOW;
 	DWORD wndStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;

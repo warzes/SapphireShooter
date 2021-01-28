@@ -103,9 +103,10 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 	title << "OpenGL " << major << "." << minor;
 	SE_LOG(title.str().c_str());
 
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glActiveTexture(GL_TEXTURE0);
 
 	m_isInit = true;
 	return true;
