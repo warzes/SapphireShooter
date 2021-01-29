@@ -18,9 +18,9 @@ public:
 	void Fall(float dt);
 	void MouseUpdate(const glm::vec2& newMousePos, float dt);
 
-	void SetCameraPos(glm::vec3 pos) { m_cameraPos = pos; }
-	void SetCameraView(glm::vec3 view) { m_cameraForward = view; }
-	void SetCameraUpVector(glm::vec3 up) { m_cameraUpVector = up; }
+	void SetCameraPos(const glm::vec3 &pos) { m_cameraPos = pos; }
+	void SetCameraView(const glm::vec3 &view) { m_cameraForward = view; }
+	void SetCameraUpVector(const glm::vec3 &up) { m_cameraUpVector = up; }
 	void SetCameraSpeed(float cameraSpeed) { m_cameraSpeed = cameraSpeed; }
 	void SetCameraFOV(float fov) { m_fieldOfView = fov; }
 	void SetCameraSensitivity(float sen) { m_cameraSensitivity = sen; }
