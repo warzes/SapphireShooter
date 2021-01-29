@@ -102,7 +102,7 @@ void ShaderProgram::SetVector4f(const char* name, const glm::vec4& value)
 void ShaderProgram::SetMatrix4(const char* name, const glm::mat4& matrix)
 {
 	Bind();
-	glUniformMatrix4fv(glGetUniformLocation(program, name), 1, false, glm::value_ptr(matrix));
+	glUniformMatrix4fv(glGetUniformLocation(program, name), 1, GL_FALSE, glm::value_ptr(matrix));
 }
 //-----------------------------------------------------------------------------
 GLuint ShaderProgram::createShader(GLenum shaderType, const char* source, const std::string& typeName)

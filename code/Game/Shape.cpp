@@ -2,7 +2,7 @@
 #include "Shape.h"
 //-----------------------------------------------------------------------------
 // Description: Helper function that calculates the tangent of a given vertex of a triangle  
-std::vector<glm::vec3> CalculateVertexTangent(std::vector<glm::vec3> positions, std::vector<glm::vec2> textures)
+std::vector<glm::vec3> CalculateVertexTangent(const std::vector<glm::vec3> &positions, const std::vector<glm::vec2> &textures)
 {
 	std::vector<glm::vec3> tangents;
 	glm::vec3 tan1, tan2;
@@ -38,7 +38,7 @@ std::vector<glm::vec3> CalculateVertexTangent(std::vector<glm::vec3> positions, 
 	return tangents;
 }
 //-----------------------------------------------------------------------------
-class Triangle : public Shape
+class Triangle final : public Shape
 {
 public:
 	virtual void InitVertexData() override
@@ -48,22 +48,22 @@ public:
 		m_triVertices.push_back(Vertex(glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
 	}
 
-	virtual std::vector<Vertex> GetVertexData() override
+	std::vector<Vertex> GetVertexData() final
 	{
 		return m_triVertices;
 	}
 
-	virtual unsigned int GetVertexDataCount() override
+	unsigned int GetVertexDataCount() final
 	{
 		return m_triVertices.size();
 	}
 
-	virtual unsigned int* GetIndexData() override
+	unsigned int* GetIndexData() final
 	{
 		return m_triIndices;
 	}
 
-	virtual unsigned int GetIndexDataCount() override
+	unsigned int GetIndexDataCount() final
 	{
 		return (sizeof(m_triIndices) / sizeof(m_triIndices[0]));
 	}
@@ -76,10 +76,10 @@ private:
 	};
 };
 //-----------------------------------------------------------------------------
-class Quad : public Shape
+class Quad final : public Shape
 {
 public:
-	virtual void InitVertexData() override
+	void InitVertexData() final
 	{
 		m_quadVertices.push_back(Vertex(glm::vec3(-1.0f, -1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
 		m_quadVertices.push_back(Vertex(glm::vec3(1.0f, -1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
@@ -87,22 +87,22 @@ public:
 		m_quadVertices.push_back(Vertex(glm::vec3(-1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
 	}
 
-	virtual std::vector<Vertex> GetVertexData() override
+	std::vector<Vertex> GetVertexData() final
 	{
 		return m_quadVertices;
 	}
 
-	virtual unsigned int GetVertexDataCount() override
+	unsigned int GetVertexDataCount() final
 	{
 		return m_quadVertices.size();
 	}
 
-	virtual unsigned int* GetIndexData() override
+	unsigned int* GetIndexData() final
 	{
 		return m_quadIndices;
 	}
 
-	virtual unsigned int GetIndexDataCount() override
+	unsigned int GetIndexDataCount() final
 	{
 		return (sizeof(m_quadIndices) / sizeof(m_quadIndices[0]));
 	}
@@ -116,9 +116,9 @@ private:
 	};
 };
 //-----------------------------------------------------------------------------
-class Cube : public Shape
+class Cube final : public Shape
 {
-	virtual void InitVertexData() override
+	void InitVertexData() final
 	{
 		// Cube is drawn in a counter-clockwise winding format to allow for face culling
 		// Front face
@@ -217,22 +217,22 @@ class Cube : public Shape
 		m_cubeVertices.push_back(Vertex(bottomFacePos.at(3), glm::vec3(1.0f, 0.0f, 0.0f), textures.at(3), glm::vec3(0.0f, -1.0f, 0.0f), bottomFaceTan.at(1)));
 	}
 
-	virtual std::vector<Vertex> GetVertexData() override
+	std::vector<Vertex> GetVertexData() final
 	{
 		return m_cubeVertices;
 	}
 
-	virtual unsigned int GetVertexDataCount() override
+	unsigned int GetVertexDataCount() final
 	{
 		return m_cubeVertices.size();
 	}
 
-	virtual unsigned int* GetIndexData() override
+	unsigned int* GetIndexData() final
 	{
 		return m_cubeIndices;
 	}
 
-	virtual unsigned int GetIndexDataCount() override
+	unsigned int GetIndexDataCount() final
 	{
 		return (sizeof(m_cubeIndices) / sizeof(m_cubeIndices[0]));
 	}
@@ -261,9 +261,9 @@ private:
 	};
 };
 //-----------------------------------------------------------------------------
-class Sphere : public Shape
+class Sphere final : public Shape
 {
-	virtual void InitVertexData() override
+	void InitVertexData() final
 	{
 		float phyStep = m_PI / (float)m_stacks;
 		float thetaStep = 2.0f * m_PI / (float)m_slices;
@@ -296,22 +296,22 @@ class Sphere : public Shape
 		}
 	}
 
-	virtual unsigned int GetVertexDataCount() override
+	unsigned int GetVertexDataCount() final
 	{
 		return m_sphereVertices.size();
 	}
 
-	virtual std::vector<Vertex> GetVertexData() override
+	std::vector<Vertex> GetVertexData() final
 	{
 		return m_sphereVertices;
 	}
 
-	virtual unsigned int* GetIndexData() override
+	unsigned int* GetIndexData() final
 	{
 		return &m_sphereIndices[0];
 	}
 
-	virtual unsigned int GetIndexDataCount() override
+	unsigned int GetIndexDataCount() final
 	{
 		return m_sphereIndices.size();
 	}
@@ -332,20 +332,12 @@ Shape* Shape::CreateShape(ShapeType shapetype)
 	{
 	case ShapeType::Triangle:
 		return new Triangle;
-		break;
-
 	case ShapeType::Quad:
 		return new Quad;
-		break;
-
 	case ShapeType::Cube:
 		return new Cube;
-		break;
-
 	case ShapeType::Sphere:
 		return new Sphere;
-		break;
-
 	default:
 		break;
 	}

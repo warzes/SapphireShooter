@@ -13,6 +13,8 @@ enum class ShapeType
 class Shape
 {
 public:
+	virtual ~Shape() = default;
+
 	static Shape* CreateShape(ShapeType shapetype);
 
 	virtual std::vector<Vertex> GetVertexData() = 0;

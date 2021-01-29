@@ -48,8 +48,16 @@ void ShaderManager::loadShaderFromFile(std::shared_ptr<ShaderProgram> outShaders
 	try
 	{
 		// open files
-		vertexShaderFile.open(vShaderFile);
-		fragmentShaderFile.open(fShaderFile);
+		vertexShaderFile.open(vShaderFile, std::ios::in);
+		if (!vertexShaderFile.good())
+		{
+			std::cout << "SHADER ERROR: Unable to load shader: " << vShaderFile << "\n";
+		}
+		fragmentShaderFile.open(fShaderFile, std::ios::in);
+		if (!fragmentShaderFile.good())
+		{
+			std::cout << "SHADER ERROR: Unable to load shader: " << fShaderFile << "\n";
+		}
 		std::stringstream vShaderStream, fShaderStream;
 		// read file's buffer contents into streams
 		vShaderStream << vertexShaderFile.rdbuf();
@@ -63,7 +71,11 @@ void ShaderManager::loadShaderFromFile(std::shared_ptr<ShaderProgram> outShaders
 		// if geometry shader path is present, also load a geometry shader
 		if (gShaderFile != nullptr)
 		{
-			geometryShaderFile.open(gShaderFile);
+			geometryShaderFile.open(gShaderFile, std::ios::in);
+			if (!geometryShaderFile.good())
+			{
+				std::cout << "SHADER ERROR: Unable to load shader: " << gShaderFile << "\n";
+			}
 			std::stringstream gShaderStream;
 			gShaderStream << geometryShaderFile.rdbuf();
 			geometryShaderFile.close();
