@@ -31,6 +31,7 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <exception>
 #include <algorithm>
 #include <functional>
+#include <random>
 
 #include <string>
 #include <string_view>
@@ -51,6 +52,7 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #	include <windows.h>
 #	undef near
 #	undef far
+#	undef RGB
 #endif
 
 #include <GL/gl.h>

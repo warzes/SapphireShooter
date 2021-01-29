@@ -10,26 +10,27 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 	try
 	{
 		Engine& engine = Engine::Get();
-
-		Game game;
-		if (engine.Init(game.InitConfig()))
 		{
-			game.Init();
-
-			while (!engine.IsEnd())
+			Game game;
+			if (engine.Init(game.InitConfig()))
 			{
-				float dt = 0.002f; // TODO:
+				game.Init();
 
-				engine.BeginUpdate();
-				game.ProcessInput(dt);
-				game.Update(dt);
-				engine.EndUpdate();
-				engine.BeginFrame();
-				game.Render();
-				engine.EndFrame();
+				while (!engine.IsEnd())
+				{
+					float dt = 0.03f; // TODO:
+
+					engine.BeginUpdate();
+					game.ProcessInput(dt);
+					game.Update(dt);
+					engine.EndUpdate();
+					engine.BeginFrame();
+					game.Render();
+					engine.EndFrame();
+				}
 			}
-		}
-		game.Close();
+			game.Close();			
+		}	
 		engine.Close();
 	}
 	catch (const std::exception& e)

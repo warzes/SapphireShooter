@@ -106,7 +106,7 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	m_isInit = true;
 	return true;
@@ -134,8 +134,8 @@ void RenderSystem::BeginFrame(int width, int height)
 {
 	OpenGLStateCache::Get().Viewport(0, 0, width, height);
 	glClearColor(0.129f, 0.586f, 0.949f, 1.0f);
-	glClearDepth(1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	//glClearDepth(1.0f);
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 //-----------------------------------------------------------------------------
 void RenderSystem::EndFrame()

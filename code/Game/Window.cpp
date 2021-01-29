@@ -147,7 +147,7 @@ bool Window::registerClass()
 	WNDCLASSEX wc = { 0 };
 	wc.cbSize = sizeof(wc);
 	wc.cbClsExtra = 0;
-	wc.cbWndExtra = 0;
+	wc.cbWndExtra = WS_EX_NOPARENTNOTIFY;
 	wc.hbrBackground = 0;
 	wc.hCursor = LoadCursor(0, IDC_ARROW);
 	wc.hIcon = LoadIcon(0, IDI_APPLICATION);
@@ -173,28 +173,49 @@ bool Window::createWindow(const WindowDescription& config)
 {
 	auto& windowConfig = Engine::Get().GetDescription().window;
 
-	DWORD wndExStyle = WS_EX_OVERLAPPEDWINDOW;
+	DWORD wndExStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
 	DWORD wndStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
 
-	m_hwnd = ::CreateWindowEx(wndExStyle, WINDOWCLASS, L"Game", wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, config.width, config.height, 0, 0, m_instance, 0);
+	RECT windowRect;
+	windowRect.left = 0;
+	windowRect.top = 0;
+	windowRect.right = config.width;
+	windowRect.bottom = config.height;
+
+	AdjustWindowRectEx(&windowRect, wndStyle, FALSE, wndExStyle);
+
+
+	m_hwnd = ::CreateWindowEx(wndExStyle, WINDOWCLASS, L"Game", wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, 0, 0, m_instance, 0);
 	if (!m_hwnd)
 	{
 		SE_ERROR("CreateWindow() failed: Can not create window.");
 		return false;
 	}
+	//if (!mDesc.fullscreen)
+	{
+		// Center on screen
+		unsigned x = (GetSystemMetrics(SM_CXSCREEN) - windowRect.right) / 2;
+		unsigned y = (GetSystemMetrics(SM_CYSCREEN) - windowRect.bottom) / 2;
+		SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
+	}
 
-	RECT rect = { 0 };
-	GetClientRect(m_hwnd, &rect);
-	windowConfig.width = rect.right - rect.left;
-	windowConfig.height = rect.bottom - rect.top;
 
-	MONITORINFO mi = { sizeof(mi) };
-	GetMonitorInfo(MonitorFromWindow(m_hwnd, MONITOR_DEFAULTTONEAREST), &mi);
-	int x = (mi.rcMonitor.right - mi.rcMonitor.left - windowConfig.width) / 2;
-	int y = (mi.rcMonitor.bottom - mi.rcMonitor.top - windowConfig.height) / 2;
-	SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW);
+
+
+	//RECT rect = { 0 };
+	//GetClientRect(m_hwnd, &rect);
+	//windowConfig.width = rect.right - rect.left;
+	//windowConfig.height = rect.bottom - rect.top;
+
+	//MONITORINFO mi = { sizeof(mi) };
+	//GetMonitorInfo(MonitorFromWindow(m_hwnd, MONITOR_DEFAULTTONEAREST), &mi);
+	//int x = (mi.rcMonitor.right - mi.rcMonitor.left - windowConfig.width) / 2;
+	//int y = (mi.rcMonitor.bottom - mi.rcMonitor.top - windowConfig.height) / 2;
+	//SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW);
 
 	::ShowWindow(m_hwnd, SW_SHOW);
+	::SetForegroundWindow(m_hwnd);
+	::SetFocus(m_hwnd);
 	::UpdateWindow(m_hwnd);
 	return true;
 }

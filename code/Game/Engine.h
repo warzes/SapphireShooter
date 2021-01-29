@@ -22,7 +22,7 @@ public:
 
 	EngineDescription& GetDescription() noexcept
 	{
-		assert(!m_isRun);
+		assert(m_isRun);
 		return m_desc;
 	}
 

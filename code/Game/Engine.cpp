@@ -16,6 +16,8 @@ bool Engine::Init(const EngineDescription& desc)
 	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
 #endif
 
+	m_isRun = true;
+
 	if (!m_window.Init(m_desc.window))
 		return false;
 
@@ -25,7 +27,7 @@ bool Engine::Init(const EngineDescription& desc)
 #endif
 
 	m_isEnd = false;
-	m_isRun = true;
+	
 	return true;
 }
 //-----------------------------------------------------------------------------
