@@ -9,9 +9,6 @@
     <ClCompile Include="Texture2D.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>engine\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>engine\input</Filter>
     </ClCompile>
@@ -52,10 +49,46 @@
     <ClCompile Include="Camera.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Log.cpp">
+      <Filter>engine\Core\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Point2.cpp">
+      <Filter>engine\Core\math</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse2.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>engine\Graphics\LightType</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>engine\Graphics\LightType</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.cpp">
+      <Filter>engine\Graphics\LightType</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>engine\Graphics\Particle System</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEmitter.cpp">
+      <Filter>engine\Graphics\Particle System</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Terrain.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomUtils.cpp">
+      <Filter>engine\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -85,6 +118,24 @@
     <Filter Include="engine\Graphics">
       <UniqueIdentifier>{3cd48a8d-3e52-4a79-b4be-0dbcad5ea9f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_3rdparty">
+      <UniqueIdentifier>{ef55a5c2-dc2e-47b4-8ba9-cdfb30411834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core\debug">
+      <UniqueIdentifier>{c29e9caa-eef5-4cb4-b7e6-6cf73a11ac3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core\math">
+      <UniqueIdentifier>{43823407-8b18-4883-b48a-b214e5ee8c64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics\LightType">
+      <UniqueIdentifier>{73c0679c-e40e-4ffd-8afd-3e3ea1f678c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics\Particle System">
+      <UniqueIdentifier>{c12d84fb-5e15-437d-9a40-25d92650ef32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Utils">
+      <UniqueIdentifier>{e528d258-4a4e-436d-ae04-34118ab3711b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -102,9 +153,6 @@
     </ClInclude>
     <ClInclude Include="InlineFunc.h">
       <Filter>engine\base</Filter>
-    </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
       <Filter>engine\input</Filter>
@@ -158,12 +206,59 @@
     <ClInclude Include="Camera.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Transformation.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Log.h">
+      <Filter>engine\Core\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugNew.h">
+      <Filter>engine\Core\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2.h">
+      <Filter>engine\Core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse2.h">
+      <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
+      <Filter>engine\Graphics\LightType</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>engine\Graphics\LightType</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>engine\Graphics\LightType</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEmitter.h">
+      <Filter>engine\Graphics\Particle System</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>engine\Graphics\Particle System</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise.h">
+      <Filter>engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomUtils.h">
+      <Filter>engine\Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\3rdparty\freetype.lib">
+      <Filter>_3rdparty</Filter>
+    </Library>
+    <Library Include="..\3rdparty\assimp\lib\assimp-vc142-mt.lib">
+      <Filter>_3rdparty</Filter>
+    </Library>
   </ItemGroup>
 </Project>

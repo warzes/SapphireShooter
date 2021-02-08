@@ -15,6 +15,9 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(4820)
 SE_PRAGMA_WARNING_DISABLE_MSVC(5045)
 
 SE_PRAGMA_WARNING_LEVEL(3)
+SE_PRAGMA_WARNING_DISABLE_MSVC(4619)
+SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
+
 
 #define _STL_WARNING_LEVEL 3
 
@@ -50,10 +53,16 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #	define NOMINMAX
 #	define _WIN32_WINNT 0x0600		// Windows Vista
 #	include <windows.h>
+#	include <MMSystem.h>
+#	if SE_DEBUG
+#		include <crtdbg.h>
+#	endif
 #	undef near
 #	undef far
 #	undef RGB
 #endif
+
+
 
 #include <GL/gl.h>
 
@@ -63,6 +72,14 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <glm/gtx/transform.hpp>
 
 #include <stb_image.h>
+
+#include <ft2build.h>
+#include FT_FREETYPE_H
+
+#include <assimp\include\assimp\types.h>
+#include <assimp\include\assimp\Importer.hpp>
+#include <assimp\include\assimp\scene.h>
+#include <assimp\include\assimp\postprocess.h>
 
 SE_PRAGMA_WARNING_POP
 

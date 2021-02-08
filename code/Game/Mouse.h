@@ -3,14 +3,14 @@
 class Mouse
 {
 public:
+	static Mouse& Get() noexcept;
+
 	enum MouseButton
 	{
 		BUTTON_LEFT = 0,
 		BUTTON_RIGHT = 1,
 		BUTTON_MIDDLE = 2
 	};
-
-	static Mouse& Get() noexcept;
 
 	bool ButtonDown(MouseButton button) const noexcept
 	{

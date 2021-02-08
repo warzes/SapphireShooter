@@ -1,14 +1,16 @@
 #include "stdafx.h"
 #include "Mouse.h"
-//-----------------------------------------------------------------------------
-const float Mouse::WEIGHT_MODIFIER = 0.2f;
-BYTE Mouse::m_tempBuffer[TEMP_BUFFER_SIZE];
+#include "Window.h"
+#include "Engine.h"
 //-----------------------------------------------------------------------------
 Mouse& Mouse::Get() noexcept
 {
 	static Mouse theInstance;
 	return theInstance;
 }
+//-----------------------------------------------------------------------------
+const float Mouse::WEIGHT_MODIFIER = 0.2f;
+BYTE Mouse::m_tempBuffer[TEMP_BUFFER_SIZE];
 //-----------------------------------------------------------------------------
 Mouse::Mouse() noexcept
 {

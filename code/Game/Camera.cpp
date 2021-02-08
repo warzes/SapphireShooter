@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Camera.h"
+#include "Mouse2.h"
 //-----------------------------------------------------------------------------
 Camera::Camera() :
 	m_cameraPos(glm::vec3(0.0f, 0.0f, 1.0f)),
@@ -57,20 +58,24 @@ void Camera::Fall(float dt)
 //-----------------------------------------------------------------------------
 void Camera::MouseUpdate(const glm::vec2& newMousePos, float dt)
 {
-	glm::vec2 MouseDelta = newMousePos - m_oldMousePos;
+	//glm::vec2 MouseDelta = newMousePos - m_oldMousePos;
+	//if (glm::length(MouseDelta) > 50.0f)
+	//{
+	//	m_oldMousePos = newMousePos;
+	//	return;
+	//}
+	//if (MouseDelta.x != 0 || MouseDelta.y != 0)
+	//	std::cout << "mx=" << MouseDelta.x << " my=" << MouseDelta.y << std::endl;
 
-	if (glm::length(MouseDelta) > 50.0f)
-	{
-		m_oldMousePos = newMousePos;
-		return;
-	}
+	float MouseDeltaX = static_cast<float>(Mouse2::Get().MouseMove().x);
+	float MouseDeltaY = static_cast<float>(Mouse2::Get().MouseMove().y);
 
 	glm::vec3 RotateAround = glm::cross(m_cameraForward, m_cameraUpVector);
 
-	m_cameraForward = glm::mat3(glm::rotate(glm::radians(-MouseDelta.x) * m_cameraSensitivity * dt, m_cameraUpVector)) * m_cameraForward;
-	m_cameraForward = glm::mat3(glm::rotate(glm::radians(-MouseDelta.y) * m_cameraSensitivity * dt, RotateAround)) * m_cameraForward;
+	m_cameraForward = glm::mat3(glm::rotate(glm::radians(-MouseDeltaX) * m_cameraSensitivity * dt, m_cameraUpVector)) * m_cameraForward;
+	m_cameraForward = glm::mat3(glm::rotate(glm::radians(-MouseDeltaY) * m_cameraSensitivity * dt, RotateAround)) * m_cameraForward;
 
-	m_oldMousePos = newMousePos;
+	//m_oldMousePos = newMousePos;
 }
 //-----------------------------------------------------------------------------
 void Camera::UpdateLookAt()

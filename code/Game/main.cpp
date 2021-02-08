@@ -1,11 +1,13 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
 #include "Game.h"
+#include "Timer.h"
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
+#   pragma comment(lib, "winmm.lib")
 #endif
 //-----------------------------------------------------------------------------
-int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
+int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
 	try
 	{
@@ -16,10 +18,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 			{
 				game.Init();
 
+				// TODO: dt перенести в Engine
+				HiresTimer frameTimer;
+				float dt = 0.0f;
 				while (!engine.IsEnd())
 				{
-					float dt = 0.03f; // TODO:
-
+					frameTimer.Reset();
 					engine.BeginUpdate();
 					game.ProcessInput(dt);
 					game.Update(dt);
@@ -27,10 +31,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 					engine.BeginFrame();
 					game.Render();
 					engine.EndFrame();
+					dt = frameTimer.ElapsedUSec() * 0.000001f;
 				}
 			}
-			game.Close();			
-		}	
+			game.Close();
+		}
 		engine.Close();
 	}
 	catch (const std::exception& e)

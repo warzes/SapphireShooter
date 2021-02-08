@@ -25,9 +25,9 @@ public:
 	void SetCameraFOV(float fov) { m_fieldOfView = fov; }
 	void SetCameraSensitivity(float sen) { m_cameraSensitivity = sen; }
 
-	glm::mat4& GetProjectionMatrix() { return m_projection; }
-	glm::mat4& GetViewMatrix() { return m_view; }
-	glm::vec3& GetCameraPos() { return m_cameraPos; }
+	const glm::mat4& GetProjectionMatrix() const { return m_projection; }
+	const glm::mat4& GetViewMatrix() const { return m_view; }
+	glm::vec3& GetCameraPos()  { return m_cameraPos; }
 	glm::vec3& GetCameraForward() { return m_cameraForward; }
 	glm::vec3& GetCameraUpVector() { return m_cameraUpVector; }
 	glm::vec3& GetCameraRightVector() { return m_cameraRight; }

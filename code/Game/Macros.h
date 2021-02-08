@@ -48,6 +48,3 @@
 #	define SE_PRAGMA_WARNING_POP
 #	define SE_PRAGMA_WARNING_DISABLE_MSVC(id)
 #endif // SE_COMPILER_*
-
-// TODO: remove or move
-#define WINDOWCLASS L"SapphireWindowClass"

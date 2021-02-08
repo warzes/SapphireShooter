@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "Mouse2.h"
 #include "RenderSystem.h"
 #include "TextureManager.h"
 #include "ShaderManager.h"
@@ -27,7 +28,7 @@ bool Engine::Init(const EngineDescription& desc)
 #endif
 
 	m_isEnd = false;
-	
+
 	return true;
 }
 //-----------------------------------------------------------------------------
@@ -35,6 +36,7 @@ void Engine::BeginUpdate()
 {
 	if (m_isEnd) return;
 
+	Mouse2::Get().Update();
 	m_isEnd = !m_window.Broadcast();
 	Mouse::Get().Update();
 	Keyboard::Get().Update();
@@ -67,6 +69,7 @@ void Engine::EndFrame()
 //-----------------------------------------------------------------------------
 void Engine::Close() noexcept
 {
+	Mouse2::Get().SetMouseVisible(true);
 	TextureManager::Get().Clear();
 	ShaderManager::Get().Clear();
 	m_renderSystem.Close();

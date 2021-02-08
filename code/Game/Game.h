@@ -18,9 +18,4 @@ public:
 	void Render();
 
 	void Close();
-
-private:
-	void loadResources();
-
-	Camera m_camera, m_cameraHUD;
 };

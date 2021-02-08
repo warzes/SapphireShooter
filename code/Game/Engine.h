@@ -27,7 +27,7 @@ public:
 	}
 
 	bool IsEnd() const noexcept { return m_isEnd; }
-	bool IsRun() const noexcept	{ return m_isRun; }
+	bool IsRun() const noexcept { return m_isRun; }
 
 private:
 	Engine() = default;

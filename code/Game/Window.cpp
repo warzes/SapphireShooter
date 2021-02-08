@@ -4,8 +4,17 @@
 #include "Log.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "Mouse2.h"
+//-----------------------------------------------------------------------------
+constexpr auto windowClassName = L"SapphireWindowClass";
 //-----------------------------------------------------------------------------
 static Window* thisWindow = nullptr;
+//-----------------------------------------------------------------------------
+Window& Window::Get()
+{
+	assert(thisWindow);
+	return *thisWindow;
+}
 //-----------------------------------------------------------------------------
 #if SE_PLATFORM_WINDOWS
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
@@ -15,6 +24,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 	if (thisWindow && engine.IsRun())
 	{
 		Mouse::Get().HandleMsg(hwnd, msg, wparam, lparam);
+		Mouse2::Get().HandleMsg(hwnd, msg, wparam, lparam);
 		Keyboard::Get().HandleMsg(hwnd, msg, wparam, lparam);
 
 		switch (msg)
@@ -32,7 +42,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 				break;
 
 			case WA_INACTIVE:
-				if (thisWindow->isFullScreen)
+				if (engine.GetDescription().window.fullscreen)
 					ShowWindow(hwnd, SW_MINIMIZE);
 				Mouse::Get().Detach();
 				thisWindow->hasWindowFocus = false;
@@ -70,6 +80,9 @@ bool Window::Init(const WindowDescription& config)
 #if SE_PLATFORM_WINDOWS
 	m_instance = GetModuleHandle(0);
 
+	if (!initDPI())
+		return false;
+
 	if (!registerClass())
 		return false;	
 
@@ -106,9 +119,8 @@ void Window::ToggleFullScreen()
 	static RECT rcSaved;
 	static auto& windowConfig = Engine::Get().GetDescription().window;
 
-	isFullScreen = !isFullScreen;
-
-	if (isFullScreen)
+	windowConfig.fullscreen = !windowConfig.fullscreen;
+	if (windowConfig.fullscreen)
 	{
 		// Moving to full screen mode.
 
@@ -142,6 +154,22 @@ void Window::ToggleFullScreen()
 }
 //-----------------------------------------------------------------------------
 #if SE_PLATFORM_WINDOWS
+bool Window::initDPI()
+{
+	HMODULE userDll = GetModuleHandle(L"user32.dll");
+
+	BOOL(WINAPI * setProcessDpiAware)() = nullptr;
+	setProcessDpiAware = (BOOL(WINAPI*)())(void*)GetProcAddress(userDll, "SetProcessDPIAware");
+
+	// отключение автоматического DPI скалирования
+	if (setProcessDpiAware)
+		setProcessDpiAware();
+
+	return true;
+}
+#endif
+//-----------------------------------------------------------------------------
+#if SE_PLATFORM_WINDOWS
 bool Window::registerClass()
 {
 	WNDCLASSEX wc = { 0 };
@@ -153,7 +181,7 @@ bool Window::registerClass()
 	wc.hIcon = LoadIcon(0, IDI_APPLICATION);
 	wc.hIconSm = LoadIcon(0, IDI_APPLICATION);
 	wc.hInstance = m_instance;
-	wc.lpszClassName = WINDOWCLASS;
+	wc.lpszClassName = windowClassName;
 	wc.lpszMenuName = 0;
 	wc.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
 	wc.lpfnWndProc = WndProc;
@@ -171,47 +199,27 @@ bool Window::registerClass()
 #if SE_PLATFORM_WINDOWS
 bool Window::createWindow(const WindowDescription& config)
 {
-	auto& windowConfig = Engine::Get().GetDescription().window;
-
 	DWORD wndExStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
 	DWORD wndStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
+	if (config.resizable)
+		wndStyle |= WS_THICKFRAME | WS_MAXIMIZEBOX;
 
-	RECT windowRect;
-	windowRect.left = 0;
-	windowRect.top = 0;
-	windowRect.right = config.width;
-	windowRect.bottom = config.height;
-
+	RECT windowRect = { 0, 0, config.width,config.height };
 	AdjustWindowRectEx(&windowRect, wndStyle, FALSE, wndExStyle);
 
-
-	m_hwnd = ::CreateWindowEx(wndExStyle, WINDOWCLASS, L"Game", wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, 0, 0, m_instance, 0);
+	m_hwnd = ::CreateWindowEx(wndExStyle, windowClassName, config.Title.c_str(), wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, 0, 0, m_instance, 0);
 	if (!m_hwnd)
 	{
 		SE_ERROR("CreateWindow() failed: Can not create window.");
 		return false;
 	}
-	//if (!mDesc.fullscreen)
+	if (!config.fullscreen)
 	{
 		// Center on screen
 		unsigned x = (GetSystemMetrics(SM_CXSCREEN) - windowRect.right) / 2;
 		unsigned y = (GetSystemMetrics(SM_CYSCREEN) - windowRect.bottom) / 2;
 		SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
 	}
-
-
-
-
-	//RECT rect = { 0 };
-	//GetClientRect(m_hwnd, &rect);
-	//windowConfig.width = rect.right - rect.left;
-	//windowConfig.height = rect.bottom - rect.top;
-
-	//MONITORINFO mi = { sizeof(mi) };
-	//GetMonitorInfo(MonitorFromWindow(m_hwnd, MONITOR_DEFAULTTONEAREST), &mi);
-	//int x = (mi.rcMonitor.right - mi.rcMonitor.left - windowConfig.width) / 2;
-	//int y = (mi.rcMonitor.bottom - mi.rcMonitor.top - windowConfig.height) / 2;
-	//SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW);
 
 	::ShowWindow(m_hwnd, SW_SHOW);
 	::SetForegroundWindow(m_hwnd);
@@ -225,7 +233,7 @@ void Window::Close()
 {
 #if SE_PLATFORM_WINDOWS
 	DestroyWindow(m_hwnd);
-	UnregisterClass(WINDOWCLASS, m_instance);
+	UnregisterClass(windowClassName, m_instance);
 #endif
 	m_isInit = false;
 }

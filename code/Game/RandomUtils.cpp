@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------------------
 RandomUtils::RandomUtils()
 {
-	m_random.seed(static_cast<unsigned int>(time(NULL)));
+	m_random.seed(static_cast<unsigned int>(time(nullptr)));
 }
 //-----------------------------------------------------------------------------
 int RandomUtils::RandomNumBetween1And100()

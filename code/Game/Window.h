@@ -18,8 +18,9 @@ public:
 	HWND GetHWND() const { return m_hwnd; }
 #endif
 
+	static Window& Get();
+
 	bool hasWindowFocus = true; // TODO:
-	bool isFullScreen = false;  // TODO:
 
 private:
 	Window(const Window&) = delete;
@@ -28,6 +29,7 @@ private:
 	Window& operator=(Window&&) = delete;
 	
 #if SE_PLATFORM_WINDOWS
+	bool initDPI();
 	bool registerClass();
 	bool createWindow(const WindowDescription& config);
 #endif
