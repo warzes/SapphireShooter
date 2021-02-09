@@ -65,7 +65,7 @@ void GameApp::Init()
 	m_texts.push_back(dataTransmissionText);
 
 	std::vector<const char*> muzzleFlashShader{ "../res/Shaders/Muzzle Flash Shader/VertexShaderMuzzleFlash.vs", "../res/Shaders/Muzzle Flash Shader/FragmentShaderMuzzleFlash.fs" };
-	m_test = Billboard::Create(ShapeType::Quad, "../res/Textures/muzzleFlash.png", muzzleFlashShader, glm::vec3(2.0f, -2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+	m_test = Billboard::Create(ShapeType::Quad, "../res/Textures/axe.png", muzzleFlashShader, glm::vec3(2.0f, -2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 
 	Mouse2::Get().SetMouseVisible(false);
 }
@@ -103,14 +103,13 @@ void GameApp::Render()
 		m_terrain.SetFog(true);
 		m_terrain.Draw(m_mainCamera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
 
-
-		//glm::mat4 model(1.0f);
-		//glm::mat4 translation = glm::translate(glm::vec3(0.9f, -1.4f, -6.5f));
-		//glm::mat4 rotation = glm::rotate(1.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-		//glm::mat4 scaleMat = glm::scale(glm::vec3(2.0f, 2.0f, 1.0f));
-		//glm::mat4 invViewMat = glm::inverse(m_mainCamera.GetViewMatrix());
-		//model = invViewMat * translation * rotation * scaleMat;
-		//m_test->Draw(model, m_mainCamera, glm::vec3(0.0f, 0.0f, 0.0f));
+		glm::mat4 model(1.0f);
+		glm::mat4 translation = glm::translate(glm::vec3(1.5f, 0.0f, -2.5f));
+		glm::mat4 rotation = glm::rotate(-0.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+		glm::mat4 scaleMat = glm::scale(glm::vec3(2.0f, 2.0f, 1.0f));
+		glm::mat4 invViewMat = glm::inverse(m_mainCamera.GetViewMatrix());
+		model = invViewMat * translation * rotation * scaleMat;
+		m_test->Draw(model, m_mainCamera, glm::vec3(0.0f, 0.0f, 0.0f));
 
 		m_texts[0].SetText(std::to_string(100));
 		m_texts[0].Render();
