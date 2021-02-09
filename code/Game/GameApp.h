@@ -3,6 +3,7 @@
 #include "EngineDescription.h"
 #include "Camera.h"
 #include "Framebuffer.h"
+#include "Terrain.h"
 
 class GameApp
 {
@@ -24,6 +25,9 @@ private:
 	void resizeApp();
 	Camera m_mainCamera;
 	Framebuffer m_framebuffer;
+	Terrain m_terrain;
+	DirectionalLight m_dirLight;
+	PointLight m_pointLight;
 
 	int m_width = 0;
 	int m_height = 0;

@@ -2,6 +2,7 @@
 #include "Terrain.h"
 #include "ShaderManager.h"
 #include "OGLFunc.h"
+#include "TextureManager.h"
 //-----------------------------------------------------------------------------
 Terrain::Terrain() :
 	m_fTerrainHeight(70.0f), m_cellSpacing(3.0f),
@@ -16,8 +17,14 @@ Terrain::Terrain() :
 void Terrain::InitTerrain()
 {
 	m_terrainShader = ShaderManager::Get().LoadShader("terrain", "../res/Shaders/TerrainVertexShader.vs", "../res/Shaders/TerrainFragmentShader.fs");
-	//std::vector<std::string> images{ "soil", "soil2", "grass", "soil4", "blendMap", "grassNormalMap" };
-	//m_terrainTexture.GenerateMultipleTextures(images);
+
+	m_textures.resize(6);
+	m_textures[0] = TextureManager::Get().LoadTexture("soil", "../res/Textures/texture_A_1024.jpg", false);
+	m_textures[1] = TextureManager::Get().LoadTexture("soil2", "../res/Textures/texture_B_1024.jpg", false);
+	m_textures[2] = TextureManager::Get().LoadTexture("grass", "../res/Textures/texture_C_1024.jpg", false);
+	m_textures[3] = TextureManager::Get().LoadTexture("soil4", "../res/Textures/texture_D_1024.jpg", false);
+	m_textures[4] = TextureManager::Get().LoadTexture("blendMap", "../res/Textures/blendMap.png", false);
+	m_textures[5] = TextureManager::Get().LoadTexture("grassNormalMap", "../res/Textures/soil03_NormalMap.jpg", false);
 }
 //-----------------------------------------------------------------------------
 // Function that creates a heightmap (procedurally) using the Perlin Noise algorithm
@@ -260,8 +267,8 @@ void Terrain::Draw(Camera& _cam, DirectionalLight* directionLight, PointLight* l
 	m_terrainShader->SetInteger("grassNormalMap", 5);
 
 	// Activate all the textures
-	//for (unsigned int i = 0; i < 6; ++i)
-	//	m_terrainTexture.ActivateTextures(i);
+	for (unsigned int i = 0; i < 6; ++i)
+		m_textures[i]->Bind(i);
 
 	// MVP transformation matrix
 	m_terrainShader->SetMatrix4("model", m_model);

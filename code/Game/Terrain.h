@@ -6,6 +6,7 @@
 #include "DirectionalLight.h"
 #include "PointLight.h"
 #include "SpotLight.h"
+#include "Texture2D.h"
 
 class Terrain
 {
@@ -24,8 +25,10 @@ public:
 private:
 	std::shared_ptr<ShaderProgram> m_terrainShader;
 	//Texture2DArray m_terrainTexture;
-	GLuint m_terrainTextures[5];
+	//GLuint m_terrainTextures[5];
 	glm::mat4 m_model;
+
+	std::vector<std::shared_ptr<Texture2D>> m_textures;
 
 	enum { VERTEX_BUFFER, TEXTURE_BUFFER, NORMAL_BUFFER, TANGENT_BUFFER, ELEMENT_BUFFER, TOTAL_BUFFERS };
 

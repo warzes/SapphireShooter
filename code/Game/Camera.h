@@ -27,13 +27,13 @@ public:
 
 	const glm::mat4& GetProjectionMatrix() const { return m_projection; }
 	const glm::mat4& GetViewMatrix() const { return m_view; }
-	glm::vec3& GetCameraPos()  { return m_cameraPos; }
-	glm::vec3& GetCameraForward() { return m_cameraForward; }
-	glm::vec3& GetCameraUpVector() { return m_cameraUpVector; }
-	glm::vec3& GetCameraRightVector() { return m_cameraRight; }
-	float& GetCameraSpeed() { return m_cameraSpeed; }
-	float& GetCameraFOV() { return m_fieldOfView; }
-	float& GetCameraSensitivity() { return m_cameraSensitivity; }
+	glm::vec3& GetCameraPos() { return m_cameraPos; }
+	const glm::vec3& GetCameraForward() const { return m_cameraForward; }
+	const glm::vec3& GetCameraUpVector() const { return m_cameraUpVector; }
+	const glm::vec3& GetCameraRightVector() const { return m_cameraRight; }
+	float GetCameraSpeed() const { return m_cameraSpeed; }
+	float GetCameraFOV() const { return m_fieldOfView; }
+	float GetCameraSensitivity() const { return m_cameraSensitivity; }
 
 private:
 	glm::mat4 m_projection;

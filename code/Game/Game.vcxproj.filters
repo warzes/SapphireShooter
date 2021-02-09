@@ -89,6 +89,9 @@
       <Filter>engine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>engine\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -135,6 +138,9 @@
     </Filter>
     <Filter Include="engine\Utils">
       <UniqueIdentifier>{e528d258-4a4e-436d-ae04-34118ab3711b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Physics">
+      <UniqueIdentifier>{dfa962c0-ec7a-4a35-8e3c-5cb72fcd5b21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +258,9 @@
       <Filter>engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="GameApp.h" />
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>engine\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\3rdparty\freetype.lib">
