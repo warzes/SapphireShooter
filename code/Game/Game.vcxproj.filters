@@ -92,6 +92,15 @@
     <ClCompile Include="PhysicsManager.cpp">
       <Filter>engine\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Billboard.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -141,6 +150,9 @@
     </Filter>
     <Filter Include="engine\Physics">
       <UniqueIdentifier>{dfa962c0-ec7a-4a35-8e3c-5cb72fcd5b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other">
+      <UniqueIdentifier>{faa8d77e-7278-4fe0-95f7-0865b01c5fc2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +272,15 @@
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="PhysicsManager.h">
       <Filter>engine\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Billboard.h">
+      <Filter>Other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

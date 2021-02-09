@@ -4,6 +4,9 @@
 #include "Camera.h"
 #include "Framebuffer.h"
 #include "Terrain.h"
+#include "Model.h"
+#include "Font.h"
+#include "Billboard.h"
 
 class GameApp
 {
@@ -28,6 +31,12 @@ private:
 	Terrain m_terrain;
 	DirectionalLight m_dirLight;
 	PointLight m_pointLight;
+
+	std::vector<Text> m_texts;
+
+	Billboard* m_test;
+
+	Model m_jeep;
 
 	int m_width = 0;
 	int m_height = 0;

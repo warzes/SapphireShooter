@@ -19,10 +19,10 @@ void Terrain::InitTerrain()
 	m_terrainShader = ShaderManager::Get().LoadShader("terrain", "../res/Shaders/TerrainVertexShader.vs", "../res/Shaders/TerrainFragmentShader.fs");
 
 	m_textures.resize(6);
-	m_textures[0] = TextureManager::Get().LoadTexture("soil", "../res/Textures/texture_A_1024.jpg", false);
-	m_textures[1] = TextureManager::Get().LoadTexture("soil2", "../res/Textures/texture_B_1024.jpg", false);
-	m_textures[2] = TextureManager::Get().LoadTexture("grass", "../res/Textures/texture_C_1024.jpg", false);
-	m_textures[3] = TextureManager::Get().LoadTexture("soil4", "../res/Textures/texture_D_1024.jpg", false);
+	m_textures[0] = TextureManager::Get().LoadTexture("soil", "../res/Textures/glass_lime.png", false);
+	m_textures[1] = TextureManager::Get().LoadTexture("soil2", "../res/Textures/glass_orange.png", false);
+	m_textures[2] = TextureManager::Get().LoadTexture("grass", "../res/Textures/grass.png", false);
+	m_textures[3] = TextureManager::Get().LoadTexture("soil4", "../res/Textures/glass_gray.png", false);
 	m_textures[4] = TextureManager::Get().LoadTexture("blendMap", "../res/Textures/blendMap.png", false);
 	m_textures[5] = TextureManager::Get().LoadTexture("grassNormalMap", "../res/Textures/soil03_NormalMap.jpg", false);
 }
@@ -75,7 +75,7 @@ void Terrain::CreateTerrainWithPerlinNoise()
 		{
 			// бордюр
 			// TODO: можно сделать в обратную сторону (вниз) чтобы получить лет остров
-			if (i < 12)
+			/*if (i < 12)
 			{
 				Vertices.push_back(glm::vec3(i * m_cellSpacing, m_vHeights[i][j] * m_fTerrainHeight + terrainHeightOffsetLeftSide, j * m_cellSpacing));
 			}
@@ -97,7 +97,7 @@ void Terrain::CreateTerrainWithPerlinNoise()
 
 				Vertices.push_back(glm::vec3(i * m_cellSpacing, m_vHeights[i][j] * m_fTerrainHeight + terrainHeightOffsetBack, j * m_cellSpacing));
 			}
-			else
+			else*/
 			{
 				terrainHeightOffsetFront = 50;
 				Vertices.push_back(glm::vec3(i * m_cellSpacing, m_vHeights[i][j] * m_fTerrainHeight, j * m_cellSpacing));
