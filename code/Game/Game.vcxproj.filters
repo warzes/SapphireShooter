@@ -36,7 +36,6 @@
     <ClCompile Include="OpenGLStateCache.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Engine.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -89,6 +88,7 @@
     <ClCompile Include="RandomUtils.cpp">
       <Filter>engine\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="GameApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -181,7 +181,6 @@
     <ClInclude Include="OpenGLStateCache.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h" />
     <ClInclude Include="EngineDescription.h">
       <Filter>engine</Filter>
     </ClInclude>
@@ -252,6 +251,7 @@
     <ClInclude Include="RandomUtils.h">
       <Filter>engine\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="GameApp.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\3rdparty\freetype.lib">

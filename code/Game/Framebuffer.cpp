@@ -1,19 +1,9 @@
 #include "stdafx.h"
 #include "Framebuffer.h"
-#include "Engine.h"
 #include "Log.h"
 //-----------------------------------------------------------------------------
-Framebuffer::~Framebuffer()
+void Framebuffer::CreateFramebuffer(int width, int height)
 {
-	glDeleteFramebuffers(1, &m_fbo);
-	glDeleteFramebuffers(1, &m_shadowFbo);
-}
-//-----------------------------------------------------------------------------
-void Framebuffer::CreateFramebuffer()
-{
-	auto width = GetEngineDescription().window.width;
-	auto height = GetEngineDescription().window.height;
-
 	// Create and bind the new custom framebuffer
 	glGenFramebuffers(1, &m_fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);
@@ -41,29 +31,41 @@ void Framebuffer::CreateFramebuffer()
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 //-----------------------------------------------------------------------------
-void Framebuffer::CreateShadowFramebuffer()
+//void Framebuffer::CreateShadowFramebuffer()
+//{
+//	// Create and bind the new custom framebuffer
+//	glGenFramebuffers(1, &m_shadowFbo);
+//	glBindFramebuffer(GL_FRAMEBUFFER, m_shadowFbo);
+//
+//	// Create new empty texture that will store depth data for shadow calculation
+//	glGenTextures(1, &m_depthTexture);
+//	glBindTexture(GL_TEXTURE_2D, m_depthTexture);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT16, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+//	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthTexture, 0);
+//	glDrawBuffer(GL_NONE);
+//	glReadBuffer(GL_NONE);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//	// Ensure that the frame buffer is complete and ready to be used
+//	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+//		SE_LOG("ERROR: Unable to create custom framebuffer.");
+//
+//	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//}
+//-----------------------------------------------------------------------------
+void Framebuffer::DestroyFramebuffer()
 {
-	// Create and bind the new custom framebuffer
-	glGenFramebuffers(1, &m_shadowFbo);
-	glBindFramebuffer(GL_FRAMEBUFFER, m_shadowFbo);
-
-	// Create new empty texture that will store depth data for shadow calculation
-	glGenTextures(1, &m_depthTexture);
-	glBindTexture(GL_TEXTURE_2D, m_depthTexture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT16, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthTexture, 0);
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	// Ensure that the frame buffer is complete and ready to be used
-	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-		SE_LOG("ERROR: Unable to create custom framebuffer.");
-
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glDeleteTextures(1, &m_texture);
+	glDeleteRenderbuffers(1, &m_rbo);
+	glDeleteFramebuffers(1, &m_fbo);
+
+	m_texture = 0;
+	m_rbo = 0;
+	m_fbo = 0;
 }
 //-----------------------------------------------------------------------------

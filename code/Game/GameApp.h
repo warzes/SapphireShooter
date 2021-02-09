@@ -2,12 +2,13 @@
 
 #include "EngineDescription.h"
 #include "Camera.h"
+#include "Framebuffer.h"
 
-class Game
+class GameApp
 {
 public:
-	Game();
-	~Game();
+	GameApp();
+	~GameApp();
 
 	EngineDescription InitConfig();
 
@@ -18,4 +19,12 @@ public:
 	void Render();
 
 	void Close();
+
+private:
+	void resizeApp();
+	Camera m_mainCamera;
+	Framebuffer m_framebuffer;
+
+	int m_width = 0;
+	int m_height = 0;
 };

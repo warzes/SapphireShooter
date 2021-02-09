@@ -178,7 +178,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Framebuffer.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Mouse2.cpp" />
     <ClCompile Include="OpenGLStateCache.cpp" />
     <ClCompile Include="Keyboard.cpp" />
@@ -219,7 +219,7 @@
     <ClInclude Include="EngineDescription.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Framebuffer.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameApp.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="InlineFunc.h" />
     <ClInclude Include="Keyboard.h" />

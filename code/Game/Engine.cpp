@@ -17,6 +17,8 @@ bool Engine::Init(const EngineDescription& desc)
 	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
 #endif
 
+	srand(static_cast<unsigned int>(time(nullptr)));
+
 	m_isRun = true;
 
 	if (!m_window.Init(m_desc.window))

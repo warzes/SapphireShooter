@@ -1,6 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
-#include "Game.h"
+#include "GameApp.h"
 #include "Timer.h"
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
@@ -13,7 +13,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	{
 		Engine& engine = Engine::Get();
 		{
-			Game game;
+			GameApp game;
 			if (engine.Init(game.InitConfig()))
 			{
 				game.Init();
