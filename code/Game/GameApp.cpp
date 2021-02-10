@@ -3,6 +3,7 @@
 #include "Engine.h"
 #include "Player.h"
 #include "Mouse2.h"
+#include "GLViewport.h"
 //-----------------------------------------------------------------------------
 EngineDescription GameApp::InitConfig()
 {
@@ -36,8 +37,12 @@ void GameApp::Init()
 	m_terrain.InitTerrain();
 	m_terrain.CreateTerrainWithPerlinNoise();
 
-	m_jeep.Init("../res/Models3D/jeep/jeep.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
-	m_jeep.SetSpotlight(true);
+	//m_jeep.Init("../res/Models3D/jeep/jeep.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
+	//m_jeep.SetSpotlight(true);
+
+	m_swords.Init("../res/Models3D/swords/sword-0.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
+	m_swords.SetSpotlight(false);
+
 
 	Text ammoText;
 	ammoText.Configure("../res/Fonts/Roboto-BoldItalic.ttf");
@@ -85,31 +90,35 @@ void GameApp::ProcessInput(float dt)
 void GameApp::Render()
 {
 	m_framebuffer.ActivateFramebuffer();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	GLViewport::Clear(true, true);
 	// TODO: render to texture
 	{
 
 	}
 	m_framebuffer.DeactivateFramebuffer();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	GLViewport::Clear(true, true);
 	{
 		glEnable(GL_CULL_FACE);
 		glCullFace(GL_BACK);
 
-		m_jeep.Draw(m_mainCamera, glm::vec3(256.0f, m_terrain.GetHeightOfTerrain(256.0f, 300.0f), 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(0.08f));
+		//m_jeep.Draw(m_mainCamera, glm::vec3(256.0f, m_terrain.GetHeightOfTerrain(256.0f, 300.0f), 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(0.08f));
+		m_swords.Draw(m_mainCamera, glm::vec3(300.0f, m_terrain.GetHeightOfTerrain(300.0f, 270.0f)+10, 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(6.0f));
 
 		glDisable(GL_CULL_FACE);
 
 		m_terrain.SetFog(true);
 		m_terrain.Draw(m_mainCamera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
 
-		glm::mat4 model(1.0f);
-		glm::mat4 translation = glm::translate(glm::vec3(1.5f, 0.0f, -2.5f));
-		glm::mat4 rotation = glm::rotate(-0.5f, glm::vec3(0.0f, 1.0f, 0.0f));
-		glm::mat4 scaleMat = glm::scale(glm::vec3(2.0f, 2.0f, 1.0f));
-		glm::mat4 invViewMat = glm::inverse(m_mainCamera.GetViewMatrix());
-		model = invViewMat * translation * rotation * scaleMat;
-		m_test->Draw(model, m_mainCamera, glm::vec3(0.0f, 0.0f, 0.0f));
+		//glm::mat4 model(1.0f);
+		//glm::mat4 translation = glm::translate(glm::vec3(1.5f, 0.0f, -2.5f));
+		//glm::mat4 rotation = glm::rotate(-0.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glm::mat4 scaleMat = glm::scale(glm::vec3(2.0f, 2.0f, 1.0f));
+		//glm::mat4 invViewMat = glm::inverse(m_mainCamera.GetViewMatrix());
+		//model = invViewMat * translation * rotation * scaleMat;
+		//m_test->Draw(model, m_mainCamera, glm::vec3(0.0f, 0.0f, 0.0f));
+
+		// TODO: передавать матрицы
+		m_swords.Draw(m_mainCamera, glm::vec3(1.5f, -2.5f, -2.5f), glm::vec3(0.3f, 1.0f, 0.0f), 30.0f, glm::vec3(1.0f), true);
 
 		m_texts[0].SetText(std::to_string(100));
 		m_texts[0].Render();

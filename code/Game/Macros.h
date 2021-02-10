@@ -48,3 +48,9 @@
 #	define SE_PRAGMA_WARNING_POP
 #	define SE_PRAGMA_WARNING_DISABLE_MSVC(id)
 #endif // SE_COMPILER_*
+
+#if SE_THREAD && SE_PLATFORM_WINDOWS && SE_COMPILER_MSVC
+#	define SE_THREADTYPE __declspec(thread)
+#else
+#	define SE_THREADTYPE
+#endif

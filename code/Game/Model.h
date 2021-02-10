@@ -9,7 +9,12 @@ class Model
 public:
 	void Init(const char* path, Camera& camera, const char* vs, const char* fs, bool instancing);
 	void Draw(Camera& cam, bool bDrawRelativeToCamera = false);
-	void Draw(Camera& cam, const glm::vec3& pos = glm::vec3(1.0f), const glm::vec3& rot = glm::vec3(1.0f), float amountOfRotation = 0.0f, const glm::vec3& scale = glm::vec3(1.0f), bool bDrawRelativeToCamera = false);
+	void Draw(Camera& cam, 
+		const glm::vec3& pos = glm::vec3(1.0f), 
+		const glm::vec3& rot = glm::vec3(1.0f), 
+		float amountOfRotation = 0.0f, 
+		const glm::vec3& scale = glm::vec3(1.0f), 
+		bool bDrawRelativeToCamera = false);
 	void DrawInstanced(Camera& cam);
 
 	void SetTransform(glm::vec3 pos, glm::vec3 rot, float rotAmountInDegrees, glm::vec3 scale);

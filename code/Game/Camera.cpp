@@ -8,7 +8,7 @@ Camera::Camera() :
 	m_cameraUpVector(glm::vec3(0.0f, 1.0f, 0.0f)),
 	m_cameraSpeed(20.0f),
 	m_fieldOfView(80.0f),
-	m_cameraSensitivity(7.0f)
+	m_cameraSensitivity(25.0f)
 {
 	m_cameraRight = glm::normalize(glm::cross(m_cameraUpVector, -m_cameraForward));
 }
@@ -56,7 +56,7 @@ void Camera::Fall(float dt)
 	m_cameraPos -= (m_cameraSpeed * dt) * m_cameraUpVector;
 }
 //-----------------------------------------------------------------------------
-void Camera::MouseUpdate(const glm::vec2& newMousePos, float dt)
+void Camera::MouseUpdate(float dt)
 {
 	float MouseDeltaX = static_cast<float>(Mouse2::Get().MouseMove().x);
 	float MouseDeltaY = static_cast<float>(Mouse2::Get().MouseMove().y);

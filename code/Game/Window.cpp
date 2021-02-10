@@ -50,8 +50,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 			}
 			break;
 		case WM_SIZE:
-			// TODO: переделать
-			glViewport(0, 0, LOWORD(lparam), HIWORD(lparam));
 			engine.GetDescription().window.width = static_cast<int>(LOWORD(lparam));
 			engine.GetDescription().window.height = static_cast<int>(HIWORD(lparam));
 			break;

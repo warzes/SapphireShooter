@@ -101,6 +101,9 @@
     <ClCompile Include="Billboard.cpp">
       <Filter>Other</Filter>
     </ClCompile>
+    <ClCompile Include="GLViewport.cpp">
+      <Filter>engine\Render\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -153,6 +156,9 @@
     </Filter>
     <Filter Include="Other">
       <UniqueIdentifier>{faa8d77e-7278-4fe0-95f7-0865b01c5fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\OpenGL">
+      <UniqueIdentifier>{f0cd942c-65a1-4d99-8c58-e0cea420271c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +287,9 @@
     </ClInclude>
     <ClInclude Include="Billboard.h">
       <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="GLViewport.h">
+      <Filter>engine\Render\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

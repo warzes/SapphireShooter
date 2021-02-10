@@ -34,16 +34,6 @@ void Player::Update(Camera& cam, Terrain& terrain, float dt)
 		cam.Rise(dt);
 	if (m_camMovements[CAM_FALL])
 		cam.Fall(dt);
-
-	// Ensure player stays within terrain boundaries
-	//if (cam.GetCameraPos().z < 41.0f)
-	//	cam.GetCameraPos().z = 41.0f;
-	//if (cam.GetCameraPos().z > 730.0f)
-	//	cam.GetCameraPos().z = 730.0f;
-	//if (cam.GetCameraPos().x < 41.0f)
-	//	cam.GetCameraPos().x = 41.0f;
-	//if (cam.GetCameraPos().x > 730.0f)
-	//	cam.GetCameraPos().x = 730.0f;
 #pragma endregion
 
 	// Check if player is jumping
@@ -205,7 +195,5 @@ void Player::processInput(Camera& cam, float dt)
 		//m_sniperAiming = false;
 	}
 
-	float mouseX = Mouse::Get().xPosAbsolute();
-	float mouseY = Mouse::Get().yPosAbsolute();
-	cam.MouseUpdate(glm::vec2(mouseX, mouseY), dt);
+	cam.MouseUpdate(dt);
 }

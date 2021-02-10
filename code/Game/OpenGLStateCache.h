@@ -13,9 +13,6 @@ public:
 
 	void UseProgram(GLuint program);
 
-	void Viewport(GLint x, GLint y, GLsizei width, GLsizei height);
-
 private:
 	GLuint m_shaderProgram = 0;
-	int m_viewportSize[4] = {0};
 };

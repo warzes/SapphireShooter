@@ -36,7 +36,8 @@ private:
 
 	Billboard* m_test;
 
-	Model m_jeep;
+	//Model m_jeep;
+	Model m_swords;
 
 	int m_width = 0;
 	int m_height = 0;

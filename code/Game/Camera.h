@@ -16,7 +16,7 @@ public:
 	void StrafeRight(float dt);
 	void Rise(float dt);
 	void Fall(float dt);
-	void MouseUpdate(const glm::vec2& newMousePos, float dt);
+	void MouseUpdate(float dt);
 
 	void SetCameraPos(const glm::vec3 &pos) { m_cameraPos = pos; }
 	void SetCameraView(const glm::vec3 &view) { m_cameraForward = view; }

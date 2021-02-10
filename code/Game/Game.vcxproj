@@ -180,6 +180,7 @@
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Framebuffer.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="GLViewport.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Mouse2.cpp" />
@@ -226,6 +227,7 @@
     <ClInclude Include="Framebuffer.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="GLViewport.h" />
     <ClInclude Include="InlineFunc.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Log.h" />
