@@ -104,6 +104,12 @@
     <ClCompile Include="GLViewport.cpp">
       <Filter>engine\Render\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>engine\Render\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>engine\Render\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -159,6 +165,12 @@
     </Filter>
     <Filter Include="engine\Render\OpenGL">
       <UniqueIdentifier>{f0cd942c-65a1-4d99-8c58-e0cea420271c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core\pattern">
+      <UniqueIdentifier>{f83e2e8e-a874-47ef-9c76-65745dd51384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Shader">
+      <UniqueIdentifier>{517ad24d-0b91-4e0b-9f43-c631c47b9fb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -290,6 +302,15 @@
     </ClInclude>
     <ClInclude Include="GLViewport.h">
       <Filter>engine\Render\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>engine\Core\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>engine\Render\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>engine\Render\Shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
