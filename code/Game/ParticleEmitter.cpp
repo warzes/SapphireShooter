@@ -53,9 +53,9 @@ void ParticleEmitter::Render(const Camera& cam, float dt, const glm::vec3 &origi
 		else
 		{
 			iter->SetOrigin(origin);
-			m_transform.GetPos() = iter->GetPos();
+			m_transform.SetPosition(iter->GetPos());
 
-			model = glm::translate(glm::vec3(m_transform.GetPos().x + 2.7f, m_transform.GetPos().y - 2.5f, m_transform.GetPos().z));
+			model = glm::translate(glm::vec3(m_transform.GetPosition().x + 2.7f, m_transform.GetPosition().y - 2.5f, m_transform.GetPosition().z));
 
 			m_shader->SetMatrix4("model", model);
 			m_shader->SetMatrix4("view", cam.GetViewMatrix());

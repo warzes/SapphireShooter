@@ -97,9 +97,9 @@ void Billboard::CreateShaderComponent(const char* vs, const char* fs)
 
 void Billboard::SetTransform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)
 {
-	m_transform.SetPos(pos);
+	m_transform.SetPosition(pos);
 	m_transform.SetScale(scale);
-	m_transform.SetRot(rot);
+	m_transform.SetRotation(rot);
 }
 
 void Billboard::Draw(glm::mat4 model, Camera& cam, glm::vec3 lightPos)
