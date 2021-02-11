@@ -7,9 +7,11 @@
 class Program
 {
 public:
-	Program() = default;
+	Program();
 	Program(const Shader& vertex, const Shader& fragment);
 	Program(const std::string& vertFileName, const std::string& fragFileName);
+	//Program(const Program& program);
+	//Program& operator=(const Program& program);
 	~Program();
 
 	void Create();
@@ -34,5 +36,9 @@ private:
 	std::string getLinkMessageErrorAndClear() const;
 	unsigned getUniformId(const char* name) const;
 
+	//void swap(const Program& program);
+	void clear();
+
 	unsigned m_programId = 0;
+	//unsigned* m_amount;
 };

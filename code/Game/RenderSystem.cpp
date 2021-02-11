@@ -143,6 +143,10 @@ void RenderSystem::EndFrame()
 #if SE_PLATFORM_WINDOWS
 	SwapBuffers(m_deviceContext);
 #endif
+
+	GLenum err;
+	while ((err = glGetError()) != GL_NO_ERROR)
+		std::cout << "GL error code: " << err << std::endl;
 }
 //-----------------------------------------------------------------------------
 void RenderSystem::SetVsync()

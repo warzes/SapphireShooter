@@ -105,10 +105,118 @@
       <Filter>engine\Render\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\new\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\new\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureLoader.cpp">
+      <Filter>engine\Render\new\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>engine\Render\new\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBuffer.cpp">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthBuffer.cpp">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameBuffer2.cpp">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeDepthBuffer.cpp">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="MultisampledRenderBuffer.cpp">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="MultisampledFrameBuffer.cpp">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterBuffers.cpp">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>engine\Render\new\renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape2.cpp">
+      <Filter>engine\Render\new\renderable\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>engine\Render\new\renderable\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>engine\Render\new\renderable\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh2.cpp">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshBone.cpp">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model2.cpp">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelAnim.cpp">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>engine\Render\new\renderable\light</Filter>
+    </ClCompile>
+    <ClCompile Include="FontRenderer.cpp">
+      <Filter>engine\Render\new\renderable\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Font2.cpp">
+      <Filter>engine\Render\new\renderable\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>engine\Render\new\renderable\skybox</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain2.cpp">
+      <Filter>engine\Render\new\renderable\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>engine\Render\new\renderable\water</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCamera.cpp">
+      <Filter>engine\Render\new\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>engine\Render\new\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Shadow.cpp">
+      <Filter>engine\Render\new\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureGenerator2D.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureGenerator3D.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator</Filter>
+    </ClCompile>
+    <ClCompile Include="ConverterToNormalMap.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoise2D.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoise3D.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClCompile>
+    <ClCompile Include="SmoothNoise2D.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClCompile>
+    <ClCompile Include="SmoothNoise3D.cpp">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessing.cpp">
+      <Filter>engine\Render\new\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Bloom.cpp">
+      <Filter>engine\Render\new\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,8 +277,59 @@
     <Filter Include="engine\Core\pattern">
       <UniqueIdentifier>{f83e2e8e-a874-47ef-9c76-65745dd51384}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\Shader">
+    <Filter Include="engine\Render\new">
+      <UniqueIdentifier>{d6ff3ad8-1357-4d39-8270-1710b1ef6daa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\Shader">
       <UniqueIdentifier>{517ad24d-0b91-4e0b-9f43-c631c47b9fb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\Texture">
+      <UniqueIdentifier>{b5e3e979-b19c-4b3f-8af3-59df9683b30a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\FrameBuffer">
+      <UniqueIdentifier>{6ba941a7-c513-4318-bf4a-c5bd23a04ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable">
+      <UniqueIdentifier>{176edf89-1167-4e94-8147-e0407bf40d11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\shape">
+      <UniqueIdentifier>{f74de64e-17b6-4a99-906c-003685e26b46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\model">
+      <UniqueIdentifier>{2bdfb626-5efe-40fb-ae4e-4e950e3840ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\light">
+      <UniqueIdentifier>{05de6c1b-fef8-4606-b3b7-7f8e67c63161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\decorator">
+      <UniqueIdentifier>{9d7f84fd-568b-43ad-a776-b2a1845546f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\Font">
+      <UniqueIdentifier>{5f9ee3af-02e9-42fb-9f7f-d5a07c5ed9f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\skybox">
+      <UniqueIdentifier>{c86ad07b-2573-45e9-881a-b2a33687a519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\terrain">
+      <UniqueIdentifier>{547b879d-ef2d-4faf-8426-c8dcd8378fdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\renderable\water">
+      <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\Camera">
+      <UniqueIdentifier>{c7ac447d-6d3b-4940-9cfc-1025709a4c9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\Scene">
+      <UniqueIdentifier>{52d4cc8b-9e2c-4e98-b1e6-beb9f8301e32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\Effect">
+      <UniqueIdentifier>{b1ed62ef-44ef-4c63-afff-46d6a771fe9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\Texture\texture-generator">
+      <UniqueIdentifier>{f40e65e6-4214-4dcb-a622-55c1c87b9c8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\new\Texture\texture-generator\method">
+      <UniqueIdentifier>{e630031b-fa80-4a23-bc1b-596b56e7cf1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -307,10 +466,148 @@
       <Filter>engine\Core\pattern</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\new\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Program.h">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\new\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureLoader.h">
+      <Filter>engine\Render\new\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>engine\Render\new\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadersManager.h">
+      <Filter>engine\Render\new\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBuffer.h">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthBuffer.h">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameBuffer2.h">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeDepthBuffer.h">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultisampledRenderBuffer.h">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultisampledFrameBuffer.h">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterBuffers.h">
+      <Filter>engine\Render\new\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>engine\Render\new\renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformationable.h">
+      <Filter>engine\Render\new\renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>engine\Render\new\renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape2.h">
+      <Filter>engine\Render\new\renderable\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>engine\Render\new\renderable\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>engine\Render\new\renderable\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh2.h">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshBone.h">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model2.h">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelAnim.h">
+      <Filter>engine\Render\new\renderable\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>engine\Render\new\renderable\light</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialDecorator.h">
+      <Filter>engine\Render\new\renderable\decorator</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformDecorator.h">
+      <Filter>engine\Render\new\renderable\decorator</Filter>
+    </ClInclude>
+    <ClInclude Include="FontRenderer.h">
+      <Filter>engine\Render\new\renderable\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Font2.h">
+      <Filter>engine\Render\new\renderable\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>engine\Render\new\renderable\skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain2.h">
+      <Filter>engine\Render\new\renderable\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>engine\Render\new\renderable\water</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceCamera.h">
+      <Filter>engine\Render\new\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseCamera.h">
+      <Filter>engine\Render\new\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PerspectiveCamera.h">
+      <Filter>engine\Render\new\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="OrthogonalCamera.h">
+      <Filter>engine\Render\new\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>engine\Render\new\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Shadow.h">
+      <Filter>engine\Render\new\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureGenerator.h">
+      <Filter>engine\Render\new\Texture\texture-generator</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureGenerator2D.h">
+      <Filter>engine\Render\new\Texture\texture-generator</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureGenerator3D.h">
+      <Filter>engine\Render\new\Texture\texture-generator</Filter>
+    </ClInclude>
+    <ClInclude Include="ConverterToNormalMap.h">
+      <Filter>engine\Render\new\Texture\texture-generator</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise2D.h">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise3D.h">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClInclude>
+    <ClInclude Include="SmoothNoise2D.h">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClInclude>
+    <ClInclude Include="SmoothNoise3D.h">
+      <Filter>engine\Render\new\Texture\texture-generator\method</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticlesGenerator.h">
+      <Filter>engine\Render\new\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessing.h">
+      <Filter>engine\Render\new\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Bloom.h">
+      <Filter>engine\Render\new\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

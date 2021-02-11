@@ -1,7 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
 #include "GameApp.h"
-#include "Timer.h"
+#include "Log.h"
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
 #   pragma comment(lib, "winmm.lib")
@@ -16,22 +16,17 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 			GameApp game;
 			if (engine.Init(game.InitConfig()))
 			{
-				game.Init();
-
-				// TODO: dt перенести в Engine
-				HiresTimer frameTimer;
-				float dt = 0.0f;
+				game.Init();						
+				
 				while (!engine.IsEnd())
 				{
-					frameTimer.Reset();
 					engine.BeginUpdate();
-					game.ProcessInput(dt);
-					game.Update(dt);
+					game.ProcessInput(engine.GetDeltaTime());
+					game.Update(engine.GetDeltaTime());
 					engine.EndUpdate();
 					engine.BeginFrame();
 					game.Render();
-					engine.EndFrame();
-					dt = frameTimer.ElapsedUSec() * 0.000001f;
+					engine.EndFrame();					
 				}
 			}
 			game.Close();
@@ -43,6 +38,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 		std::ostringstream msg;
 		msg << "Application initialization failed!" << std::endl << std::endl;
 		msg << e.what();
+		SE_LOG(msg.str().c_str());
 #if SE_PLATFORM_WINDOWS
 		MessageBoxA(0, msg.str().c_str(), "Error", MB_ICONERROR);
 #endif

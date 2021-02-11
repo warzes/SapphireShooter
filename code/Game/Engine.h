@@ -3,6 +3,7 @@
 #include "EngineDescription.h"
 #include "Window.h"
 #include "RenderSystem.h"
+#include "Timer.h"
 
 class Engine final
 {
@@ -29,6 +30,8 @@ public:
 	bool IsEnd() const noexcept { return m_isEnd; }
 	bool IsRun() const noexcept { return m_isRun; }
 
+	float GetDeltaTime() const { return m_deltaTime; }
+
 private:
 	Engine() = default;
 	Engine(const Engine&) = delete;
@@ -41,6 +44,8 @@ private:
 	RenderSystem m_renderSystem;
 	bool m_isRun = false;
 	bool m_isEnd = false;
+	HiresTimer m_frameTimer;
+	float m_deltaTime = 0.0f;
 };
 
 inline EngineDescription& GetEngineDescription() noexcept

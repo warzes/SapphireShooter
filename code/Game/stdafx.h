@@ -70,6 +70,7 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
+#include <glm/gtc/noise.hpp>
 
 #include <stb_image.h>
 
@@ -86,3 +87,21 @@ SE_PRAGMA_WARNING_POP
 //=============================================================================
 // Post Engine header
 //=============================================================================
+
+// TODO
+constexpr unsigned shadowSize = 2048;
+constexpr unsigned samples = 1;
+constexpr float cameraPitch = 0;
+constexpr float cameraYaw = -90;
+constexpr float cameraSpeed = 7;
+constexpr float cameraSensitivity = 0.1;
+constexpr float cameraFov = 45;
+constexpr float cameraFar = 1000;
+constexpr float cameraNear = 0.05;
+constexpr float shadowFar = 500;
+constexpr float anisotropy = 0;
+constexpr glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+constexpr glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, -1.0f);
+constexpr glm::vec3 gravity = glm::vec3(0.0f, -9.81f, 0.0f);
+#define GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE
+#define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT 0x84FF

@@ -40,10 +40,10 @@ public:
 		return Shader(fileName, ShaderType::TessalationEvaluation);
 	}
 
-	static Shader CreateComputeShader(const std::string& fileName)
-	{
-		return Shader(fileName, ShaderType::Compute);
-	}
+	//static Shader CreateComputeShader(const std::string& fileName)
+	//{
+	//	return Shader(fileName, ShaderType::Compute);
+	//}
 
 	void Clear() const { glDeleteShader(m_shaderId);  }
 

@@ -38,6 +38,8 @@ void Engine::BeginUpdate()
 {
 	if (m_isEnd) return;
 
+	m_frameTimer.Reset();
+
 	Mouse2::Get().Update();
 	m_isEnd = !m_window.Broadcast();
 	Mouse::Get().Update();
@@ -67,6 +69,8 @@ void Engine::EndFrame()
 	}
 	else
 		::WaitMessage();
+
+	m_deltaTime = m_frameTimer.ElapsedUSec() * 0.000001f;
 }
 //-----------------------------------------------------------------------------
 void Engine::Close() noexcept
