@@ -201,7 +201,6 @@
     <ClCompile Include="Mouse2.cpp" />
     <ClCompile Include="MultisampledFrameBuffer.cpp" />
     <ClCompile Include="MultisampledRenderBuffer.cpp" />
-    <ClCompile Include="OpenGLStateCache.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
@@ -293,7 +292,6 @@
     <ClInclude Include="Mouse2.h" />
     <ClInclude Include="MultisampledFrameBuffer.h" />
     <ClInclude Include="MultisampledRenderBuffer.h" />
-    <ClInclude Include="OpenGLStateCache.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="OrthogonalCamera.h" />
     <ClInclude Include="Particle.h" />

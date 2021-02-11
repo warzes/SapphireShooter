@@ -48,7 +48,6 @@ public:
 	void Clear() const { glDeleteShader(m_shaderId);  }
 
 	unsigned GetId() const { return m_shaderId; }
-	GLenum GetType() const { return m_type; }
 private:
 	Shader(const std::string& fileName, ShaderType type);
 	std::string getSource(const std::string& fileName) const;

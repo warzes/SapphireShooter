@@ -24,16 +24,10 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>engine\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProgram.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
       <Filter>engine\Resource</Filter>
     </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLStateCache.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
@@ -103,9 +97,6 @@
     </ClCompile>
     <ClCompile Include="GLViewport.cpp">
       <Filter>engine\Render\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>engine\Render\new\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
       <Filter>engine\Render\new\Shader</Filter>
@@ -217,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="Bloom.cpp">
       <Filter>engine\Render\new\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>engine\Render\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>engine\Render\Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +328,9 @@
     <Filter Include="engine\Render\new\Texture\texture-generator\method">
       <UniqueIdentifier>{e630031b-fa80-4a23-bc1b-596b56e7cf1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\Render\Shader">
+      <UniqueIdentifier>{d76d3bfe-e2e6-4ef2-86d6-327468f236bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -364,16 +364,10 @@
     <ClInclude Include="TextureManager.h">
       <Filter>engine\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProgram.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGLStateCache.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="EngineDescription.h">
@@ -464,9 +458,6 @@
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>engine\Core\pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>engine\Render\new\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Program.h">
       <Filter>engine\Render\new\Shader</Filter>
@@ -608,6 +599,12 @@
     </ClInclude>
     <ClInclude Include="Bloom.h">
       <Filter>engine\Render\new\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>engine\Render\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>engine\Render\Shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,13 @@
 #pragma once
 
+#include "Shader.h"
+
 class ShaderProgram
 {
 public:
+	ShaderProgram() = default;
+
+
 	void Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource = nullptr);
 	void Destroy();
 
@@ -20,9 +25,17 @@ public:
 	void SetVector4f(const char* name, const glm::vec4& value);
 	void SetMatrix4(const char* name, const glm::mat4& matrix);
 
-	unsigned int program = 0;
+	unsigned GetId() const { return m_programId; }
+		
 private:
+	ShaderProgram(const ShaderProgram&) = delete;
+	ShaderProgram(ShaderProgram&&) = delete;
+	void operator=(const ShaderProgram&) = delete;
+	void operator=(ShaderProgram&&) = delete;
+
 	GLuint createShader(GLenum shaderType, const char* source, const std::string& typeName);
 	void checkShaderErrors(unsigned int object, const std::string& type);
 	void checkProgramCompileErrors(unsigned int object);
+
+	unsigned m_programId = 0u;
 };
