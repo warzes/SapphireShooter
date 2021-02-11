@@ -7,8 +7,8 @@ void Scene::initPrograms(const glm::vec4& clipPlane)
 	initProgram(manager.getObjectProgram(), clipPlane);
 	initProgram(manager.getAnimProgram(), clipPlane);
 	initProgram(manager.getTerrainProgram(), clipPlane);
-	//initProgram(manager.getWaterProgram(), clipPlane);
-	//initProgram(manager.getTerrainDepthProgram(), clipPlane);
+	initProgram(manager.getWaterProgram(), clipPlane);
+	initProgram(manager.getTerrainDepthProgram(), clipPlane);
 }
 
 void Scene::initProgram(Program& program, const glm::vec4& clipPlane)
@@ -16,11 +16,11 @@ void Scene::initProgram(Program& program, const glm::vec4& clipPlane)
 	if (program.GetId() != 0)
 	{
 		program.Bind();
-		//program.SetMat4("viewProject", camera->getViewProjectionMatrix());
-		//program.SetVec3("viewPos", camera->getPosition());
-		//program.SetInt("lightsAmount", Light::amount);
-		//program.SetInt("allowShadows", allowShadows ? 1 : 0);
-		//program.SetVec4("clipPlane", clipPlane);
+		program.SetMat4("viewProject", camera->getViewProjectionMatrix());
+		program.SetVec3("viewPos", camera->getPosition());
+		program.SetInt("lightsAmount", Light::amount);
+		program.SetInt("allowShadows", allowShadows ? 1 : 0);
+		program.SetVec4("clipPlane", clipPlane);
 	}
 }
 
@@ -66,12 +66,12 @@ void Scene::render(const glm::vec4& clipPlane)
 	glClearColor(0, 0, 1, 1);
 
 	initPrograms(clipPlane);
-	//renderLights();
-	//renderTerrains(manager.getTerrainProgram());
-	//renderObjects(manager.getObjectProgram());
-	//renderAnimations(manager.getAnimProgram());
-	//renderWaters(manager.getWaterProgram());
-	//renderSkybox();
+	renderLights();
+	renderTerrains(manager.getTerrainProgram());
+	renderObjects(manager.getObjectProgram());
+	renderAnimations(manager.getAnimProgram());
+	renderWaters(manager.getWaterProgram());
+	renderSkybox();
 }
 
 void Scene::renderObjects(Program& prog)

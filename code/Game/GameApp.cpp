@@ -35,12 +35,12 @@ GameApp::~GameApp()
 void GameApp::Init()
 {
 #if TEST
-	//glEnable(GL_MULTISAMPLE);
+	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
-	//glEnable(GL_CLIP_DISTANCE0);
+	glEnable(GL_CLIP_DISTANCE0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	initShadersManager();
@@ -80,9 +80,9 @@ void GameApp::Init()
 	water->scale(glm::vec3(200.0f));
 
 	scene = new Scene(camera, manager);
-	//scene->addSkybox(skybox);
-	//scene->addTerrain(terrain);
-	//scene->addLight(pointLight);
+	scene->addSkybox(skybox);
+	scene->addTerrain(terrain);
+	scene->addLight(pointLight);
 
 	//generatePerlinPlain();
 	generateSmooth256();
@@ -272,35 +272,35 @@ void GameApp::ProcessInput(float dt)
 void GameApp::Render()
 {
 #if TEST
-	//scene->renderShadows();
+	scene->renderShadows();
 
-	//if (isWater)
-	//	water->renderReflectAndRefract(scene);
+	if (isWater)
+		water->renderReflectAndRefract(scene);
 
-	//if (!polygonMode)
-	//	postHDR->startProcessing();
+	if (!polygonMode)
+		postHDR->startProcessing();
 
-	/*if (isWater)
+	if (isWater)
 	{
 		scene->addWater(*water);
 		scene->render();
 		scene->removeWater(0);
-	}*/
-	/*else*/ scene->render();
+	}
+	else scene->render();
 
 	if (!polygonMode)
 	{
-		//postHDR->endProcessing();
-		//bloomEffect->blurTexture(manager.getBlurProgram(), postHDR->getResultTextures()[1]);
+		postHDR->endProcessing();
+		bloomEffect->blurTexture(manager.getBlurProgram(), postHDR->getResultTextures()[1]);
 
 		std::vector<Texture> result;
 		result.push_back(postHDR->getResultTextures()[0]);
 		result.push_back(bloomEffect->getResultTexture());
 
-		//post->startProcessing();
-		//PostProcessing::renderToQuad(manager.getHDRProgram(), result);
+		post->startProcessing();
+		PostProcessing::renderToQuad(manager.getHDRProgram(), result);
 
-		/*fontRenderer->setScale(0.5);
+		fontRenderer->setScale(0.5);
 		fontRenderer->setPosition(8, 600);
 		fontRenderer->setText("123");
 		fontRenderer->render(manager.getFontProgram());
@@ -308,10 +308,10 @@ void GameApp::Render()
 		fontRenderer->setScale(0.3);
 		fontRenderer->setPosition(100, 500);
 		fontRenderer->setText("Tessellation Level: " + std::to_string(terrain.getTessLevel()));
-		fontRenderer->render(manager.getFontProgram());*/
-		//post->endProcessing();
-		//Program& prog = manager.getPostProcessProgram();
-		//PostProcessing::renderToQuad(prog, post->getResultTextures());
+		fontRenderer->render(manager.getFontProgram());
+		post->endProcessing();
+		Program& prog = manager.getPostProcessProgram();
+		PostProcessing::renderToQuad(prog, post->getResultTextures());
 	}
 #else
 	m_framebuffer.ActivateFramebuffer();
@@ -395,29 +395,22 @@ void GameApp::initShadersManager()
 	Shader terrainVertex = Shader::CreateVertexShader("shaders/terrain/terrain.vs");
 	Shader terrainTessControl = Shader::CreateTessalationControlShader("shaders/terrain/terrain_control.glsl");
 
-	//Program depthTerrainProgram;
-	//depthTerrainProgram.Create();
-	//depthTerrainProgram.AttachShader(terrainVertex);
-	//depthTerrainProgram.AttachShader(terrainTessControl);
-	//depthTerrainProgram.AttachShader(Shader::CreateTessalationEvaluationShader("shaders/depth/terrain_eval_depth.glsl"));
-	//depthTerrainProgram.AttachShader(Shader::CreateGeometryShader("shaders/depth/depth.gs"));
-	//depthTerrainProgram.AttachShader(Shader::CreateFragmentShader("shaders/depth/depth.fs"));
-	//depthTerrainProgram.Bind();
-
-	GLenum err;
-	while ((err = glGetError()) != GL_NO_ERROR)
-		std::cout << "GL error code: " << err << std::endl;
+	Program depthTerrainProgram;
+	depthTerrainProgram.Create();
+	depthTerrainProgram.AttachShader(terrainVertex);
+	depthTerrainProgram.AttachShader(terrainTessControl);
+	depthTerrainProgram.AttachShader(Shader::CreateTessalationEvaluationShader("shaders/depth/terrain_eval_depth.glsl"));
+	depthTerrainProgram.AttachShader(Shader::CreateGeometryShader("shaders/depth/depth.gs"));
+	depthTerrainProgram.AttachShader(Shader::CreateFragmentShader("shaders/depth/depth.fs"));
+	depthTerrainProgram.Link();
 
 	Program terrainProgram;
 	terrainProgram.Create();
-	//terrainProgram.AttachShader(terrainVertex);
-	//terrainProgram.AttachShader(terrainTessControl);
-	//terrainProgram.AttachShader(Shader::CreateTessalationEvaluationShader("shaders/terrain/terrain_eval.glsl"));
-	//terrainProgram.AttachShader(Shader::CreateFragmentShader("shaders/terrain/terrain.fs"));
-	terrainProgram.Bind();
-	//GLenum err;
-    while ((err = glGetError()) != GL_NO_ERROR)
-      std::cout<<"GL error code: "<<err<<std::endl;
+	terrainProgram.AttachShader(terrainVertex);
+	terrainProgram.AttachShader(terrainTessControl);
+	terrainProgram.AttachShader(Shader::CreateTessalationEvaluationShader("shaders/terrain/terrain_eval.glsl"));
+	terrainProgram.AttachShader(Shader::CreateFragmentShader("shaders/terrain/terrain.fs"));
+	terrainProgram.Link();
 
 	manager.setSkyboxProgram(Program("shaders/skybox/skybox.vs", "shaders/skybox/skybox.fs"));
 	manager.setHDRProgram(Program("shaders/effect/hdr.vs", "shaders/effect/hdr.fs"));
@@ -426,7 +419,7 @@ void GameApp::initShadersManager()
 	manager.setPostProcessProgram(Program("shaders/effect/postprocessing.vs", "shaders/effect/postprocessing.fs"));
 	manager.setWaterProgram(Program("shaders/water/water.vs", "shaders/water/water.fs"));
 	manager.setTerrainProgram(terrainProgram);
-	//manager.setTerrainDepthProgram(depthTerrainProgram);
+	manager.setTerrainDepthProgram(depthTerrainProgram);
 }
 
 void GameApp::generatePerlinPlain()

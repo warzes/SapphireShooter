@@ -4,8 +4,8 @@
 //-----------------------------------------------------------------------------
 Program::Program()
 {
-	//m_amount = new unsigned;
-	//*m_amount = 1;
+	m_amount = new unsigned;
+	*m_amount = 1;
 }
 //-----------------------------------------------------------------------------
 Program::Program(const Shader& vertex, const Shader& fragment)
@@ -16,8 +16,8 @@ Program::Program(const Shader& vertex, const Shader& fragment)
 	Link();
 	vertex.Clear();
 	fragment.Clear();
-	//m_amount = new unsigned;
-	//*m_amount = 1;
+	m_amount = new unsigned;
+	*m_amount = 1;
 }
 //-----------------------------------------------------------------------------
 Program::Program(const std::string& vertFileName, const std::string& fragFileName)
@@ -30,21 +30,21 @@ Program::Program(const std::string& vertFileName, const std::string& fragFileNam
 	Link();
 	vertex.Clear();
 	fragment.Clear();
-	//m_amount = new unsigned;
-	//*m_amount = 1;
+	m_amount = new unsigned;
+	*m_amount = 1;
 }
 //-----------------------------------------------------------------------------
-//Program::Program(const Program& program)
-//{
-//	swap(program);
-//}
-////-----------------------------------------------------------------------------
-//Program& Program::operator=(const Program& program)
-//{
-//	clear();
-//	swap(program);
-//	return *this;
-//}
+Program::Program(const Program& program)
+{
+	swap(program);
+}
+//-----------------------------------------------------------------------------
+Program& Program::operator=(const Program& program)
+{
+	clear();
+	swap(program);
+	return *this;
+}
 //-----------------------------------------------------------------------------
 Program::~Program()
 {
@@ -136,19 +136,19 @@ void Program::SetMat4(const char* name, const glm::mat4& mat) const
 	glUniformMatrix4fv(getUniformId(name), 1, GL_FALSE, glm::value_ptr(mat));
 }
 //-----------------------------------------------------------------------------
-//void Program::swap(const Program& program)
-//{
-//	m_programId = program.m_programId;
-//	m_amount = program.m_amount;
-//	*m_amount = *m_amount + 1;
-//}
+void Program::swap(const Program& program)
+{
+	m_programId = program.m_programId;
+	m_amount = program.m_amount;
+	*m_amount = *m_amount + 1;
+}
 //-----------------------------------------------------------------------------
 void Program::clear()
 {
-	//*m_amount = *m_amount - 1;
-	//if (*m_amount == 0)
+	*m_amount = *m_amount - 1;
+	if (*m_amount == 0)
 	{
-		//delete m_amount;
+		delete m_amount;
 		if (m_programId != 0)
 			glDeleteProgram(m_programId);
 	}

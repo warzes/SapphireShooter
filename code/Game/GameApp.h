@@ -76,7 +76,7 @@ private:
 	bool polygonMode = false;
 	float lastPosX = 0;
 	float lastPosY = 0;
-	bool isWater = false;
+	bool isWater = true;
 
 
 
