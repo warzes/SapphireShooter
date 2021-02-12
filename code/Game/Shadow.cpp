@@ -13,13 +13,13 @@ void Shadow::updateBuffer()
 	depth.generate(shadowSize, shadowSize, 0);
 }
 
-void Shadow::initCastShadow(const Light& light, const std::vector<Program*>& programs)
+void Shadow::initCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
 {
 	for (unsigned i = 0; i < programs.size(); ++i)
 	{
 		programs[i]->Bind();
 		programs[i]->SetFloat("farPlane", shadowFar);
-		programs[i]->SetVec3("lightPos", light.getPosition());
+		programs[i]->SetVector3f("lightPos", light.getPosition());
 	}
 
 	const ShadowTransforms& shadowTransforms = light.getShadowTransforms();
@@ -29,12 +29,12 @@ void Shadow::initCastShadow(const Light& light, const std::vector<Program*>& pro
 		for (unsigned j = 0; j < programs.size(); ++j)
 		{
 			programs[j]->Bind();
-			programs[j]->SetMat4(name, shadowTransforms[i]);
+			programs[j]->SetMatrix4(name, shadowTransforms[i]);
 		}
 	}
 }
 
-void Shadow::startCastShadow(const Light& light, const std::vector<Program*>& programs)
+void Shadow::startCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
 {
 	initCastShadow(light, programs);
 	glViewport(0, 0, shadowSize, shadowSize);
@@ -42,7 +42,7 @@ void Shadow::startCastShadow(const Light& light, const std::vector<Program*>& pr
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
-void Shadow::endCastShadow(const Light& light, const std::vector<Program*>& programs)
+void Shadow::endCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -50,7 +50,7 @@ void Shadow::endCastShadow(const Light& light, const std::vector<Program*>& prog
 	for (unsigned i = 0; i < programs.size(); ++i)
 	{
 		programs[i]->Bind();
-		programs[i]->SetInt(name, 9 + light.getIndex());
+		programs[i]->SetInteger(name, 9 + light.getIndex());
 		programs[i]->SetFloat("farPlane", shadowFar);
 		Texture::active(9 + light.getIndex());
 		depthBuffer.bind(GL_TEXTURE_CUBE_MAP);

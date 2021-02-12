@@ -58,10 +58,10 @@ void Skybox::init()
 	glEnableVertexAttribArray(0);
 }
 
-void Skybox::render(Program& program)
+void Skybox::render(std::shared_ptr<ShaderProgram> program)
 {
 	glDepthFunc(GL_LEQUAL);
-	program.SetInt("skybox", 0);
+	program->SetInteger("skybox", 0);
 	Texture::active(0);
 	texture.bind(GL_TEXTURE_CUBE_MAP);
 

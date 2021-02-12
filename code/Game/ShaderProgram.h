@@ -9,6 +9,7 @@ public:
 	void Compile(Shader& vertex, Shader& fragment);
 	void Compile(Shader& vertex, Shader& fragment, Shader& geometry);
 	void Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource = nullptr);
+	void CompileFromFile(const char* vertexFile, const char* fragmentFile, const char* geometryFile = nullptr);
 	void Destroy();
 
 	void Create();
@@ -27,6 +28,8 @@ public:
 	void SetVector3f(const char* name, const glm::vec3& value);
 	void SetVector4f(const char* name, float x, float y, float z, float w);
 	void SetVector4f(const char* name, const glm::vec4& value);
+	void SetMatrix2(const char* name, const glm::mat2& matrix);
+	void SetMatrix3(const char* name, const glm::mat3& matrix);
 	void SetMatrix4(const char* name, const glm::mat4& matrix);
 
 	unsigned GetId() const { return m_programId; }

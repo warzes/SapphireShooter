@@ -9,9 +9,9 @@ class Transformationable : public Renderable
 	glm::mat4 mRotation = glm::mat4(1.0f);
 
 public:
-	virtual void render(Program& program)
+	virtual void render(std::shared_ptr<ShaderProgram> program)
 	{
-		program.SetMat4("model", getTransformMatrix());
+		program->SetMatrix4("model", getTransformMatrix());
 	}
 	virtual ~Transformationable() { ; }
 

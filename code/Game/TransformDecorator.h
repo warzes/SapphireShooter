@@ -11,7 +11,7 @@ public:
 
 	Renderable& getReference() { return renderer; }
 
-	virtual void render(Program& program)
+	virtual void render(std::shared_ptr<ShaderProgram> program)
 	{
 		Transformationable::render(program);
 		renderer.render(program);

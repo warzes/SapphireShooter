@@ -15,6 +15,6 @@ public:
 	virtual ~Bloom() { ; }
 
 	void updateBuffers();
-	void blurTexture(Program& blurProgram, const Texture& texture);
+	void blurTexture(std::shared_ptr<ShaderProgram> blurProgram, const Texture& texture);
 	const Texture& getResultTexture() const { return pingPongBuffer[!horizontal].getTextures()[0]; }
 };

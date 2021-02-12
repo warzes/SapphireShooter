@@ -14,12 +14,12 @@ FontRenderer::FontRenderer(const Font& f) : font(f)
 	glBindVertexArray(0);
 }
 
-void FontRenderer::render(Program& program)
+void FontRenderer::render(std::shared_ptr<ShaderProgram> program)
 {
-	program.Bind();
-	program.SetVec3("textColor", color);
-	program.SetInt("text", 0);
-	program.SetMat4("projection", getProjectionMatrix());
+	program->Bind();
+	program->SetVector3f("textColor", color);
+	program->SetInteger("text", 0);
+	program->SetMatrix4("projection", getProjectionMatrix());
 	Texture::active(0);
 
 	glBindVertexArray(VAO);

@@ -25,7 +25,7 @@ public:
 
 	void init();
 
-	virtual void render(Program& program);
+	virtual void render(std::shared_ptr<ShaderProgram> program);
 	virtual unsigned getVAO() const { return VAO; }
 
 	Texture& getHeightMap() { return textureHeight; }

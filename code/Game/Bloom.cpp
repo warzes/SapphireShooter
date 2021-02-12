@@ -21,16 +21,16 @@ void Bloom::updateBuffers()
 	pingPongBuffer[1].generate(width, height);
 }
 
-void Bloom::blurTexture(Program& blurProgram, const Texture& texture)
+void Bloom::blurTexture(std::shared_ptr<ShaderProgram> blurProgram, const Texture& texture)
 {
 	horizontal = true;
 	bool first_iteration = true;
-	blurProgram.Bind();
-	blurProgram.SetInt("image", 0);
+	blurProgram->Bind();
+	blurProgram->SetInteger("image", 0);
 	for (unsigned i = 0; i < BLUR_AMOUNT; ++i)
 	{
 		pingPongBuffer[horizontal].bind();
-		blurProgram.SetInt("isHorizontal", horizontal);
+		blurProgram->SetInteger("isHorizontal", horizontal);
 		Texture::active(0);
 		glBindTexture(GL_TEXTURE_2D, first_iteration ? texture.getId() : pingPongBuffer[!horizontal].getTextures()[0].getId());
 		quad.render(blurProgram);

@@ -52,7 +52,7 @@ void PostProcessing::updateBuffers()
 	multisampledBuffer.generate(width, height, attachments);
 }
 
-void PostProcessing::renderToQuad(Program& program, const std::vector<Texture>& textures, const glm::mat4& model)
+void PostProcessing::renderToQuad(std::shared_ptr<ShaderProgram> program, const std::vector<Texture>& textures, const glm::mat4& model)
 {
 	std::vector<unsigned> texturesIds;
 	for (unsigned i = 0; i < textures.size(); ++i)
@@ -60,18 +60,18 @@ void PostProcessing::renderToQuad(Program& program, const std::vector<Texture>& 
 	renderToQuad(program, texturesIds, model);
 }
 
-void PostProcessing::renderToQuad(Program& program, const std::vector<unsigned>& textures, const glm::mat4& model)
+void PostProcessing::renderToQuad(std::shared_ptr<ShaderProgram> program, const std::vector<unsigned>& textures, const glm::mat4& model)
 {
 	static Plane quad;
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
 
-	program.Bind();
-	program.SetMat4("model", model);
+	program->Bind();
+	program->SetMatrix4("model", model);
 	for (unsigned i = 0; i < textures.size(); ++i)
 	{
 		std::string name = std::string("screenTexture" + std::to_string(i)).c_str();
-		program.SetInt(name.c_str(), i);
+		program->SetInteger(name.c_str(), i);
 		Texture::active(i);
 		glBindTexture(GL_TEXTURE_2D, textures[i]);
 	}

@@ -23,7 +23,7 @@ void ModelAnim::load(const std::string& path)
 	globalInverseTransformation.Inverse();
 }
 
-void ModelAnim::initRender(Program& program)
+void ModelAnim::initRender(std::shared_ptr<ShaderProgram> program)
 {
 	if (boneLocations.size() == 0)
 	{
@@ -31,12 +31,12 @@ void ModelAnim::initRender(Program& program)
 		for (unsigned i = 0; i < boneLocations.size(); ++i)
 		{
 			std::string name = "bones[" + std::to_string(i) + "]";
-			boneLocations[i] = glGetUniformLocation(program.GetId(), name.c_str());
+			boneLocations[i] = glGetUniformLocation(program->GetId(), name.c_str());
 		}
 	}
 }
 
-void ModelAnim::render(Program& program)
+void ModelAnim::render(std::shared_ptr<ShaderProgram> program)
 {
 	initRender(program);
 	update();

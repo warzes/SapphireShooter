@@ -51,28 +51,28 @@ void Terrain2::clear()
 	}
 }
 
-void Terrain2::render(Program& program)
+void Terrain2::render(std::shared_ptr<ShaderProgram> program)
 {
 	//glDisable(GL_CULL_FACE);
 
 	//Transformationable::render(program);
 	//program.SetFloat("depth", depth);
-	//program.SetInt("maxTessLevel", maxTessLevel);
+	//program.SetInteger("maxTessLevel", maxTessLevel);
 
 	//Texture::active(0);
-	//program.SetInt("heightMap", 0);
+	//program.SetInteger("heightMap", 0);
 	//textureHeight.bind(GL_TEXTURE_2D);
 
 	//Texture::active(1);
-	//program.SetInt("normalMap", 1);
+	//program.SetInteger("normalMap", 1);
 	//textureNormal.bind(GL_TEXTURE_2D);
 
 	//Texture::active(2);
-	//program.SetInt("stoneTex", 2);
+	//program.SetInteger("stoneTex", 2);
 	//textureStone.bind(GL_TEXTURE_2D);
 
 	//Texture::active(3);
-	//program.SetInt("grassTex", 3);
+	//program.SetInteger("grassTex", 3);
 	//textureGrass.bind(GL_TEXTURE_2D);
 
 	//glBindVertexArray(VAO);

@@ -98,9 +98,6 @@
     <ClCompile Include="GLViewport.cpp">
       <Filter>engine\Render\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Program.cpp">
-      <Filter>engine\Render\new\Shader</Filter>
-    </ClCompile>
     <ClCompile Include="TextureLoader.cpp">
       <Filter>engine\Render\new\Texture</Filter>
     </ClCompile>
@@ -458,9 +455,6 @@
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>engine\Core\pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Program.h">
-      <Filter>engine\Render\new\Shader</Filter>
     </ClInclude>
     <ClInclude Include="TextureLoader.h">
       <Filter>engine\Render\new\Texture</Filter>

@@ -14,7 +14,7 @@ template <typename T, typename P>
 class ParticlesGenerator : public Transformationable
 {
 	InterfaceCamera* camera;
-	Program& particleProgram;
+	std::shared_ptr<ShaderProgram> particleProgram;
 	std::vector<T> particles;
 	std::vector<glm::vec3> positions;
 	std::vector<glm::vec4> colors;
@@ -32,18 +32,18 @@ protected:
 	virtual bool updateParticle(T& particle, const float& deltaTime) = 0;
 
 public:
-	ParticlesGenerator(InterfaceCamera* cam, Program& program, const unsigned& particlesAmount);
+	ParticlesGenerator(InterfaceCamera* cam, std::shared_ptr<ShaderProgram> program, const unsigned& particlesAmount);
 	virtual ~ParticlesGenerator() { ; }
 
 	void update();
 	void render();
-	virtual void render(Program& program);
+	virtual void render(std::shared_ptr<ShaderProgram> program);
 
 	virtual unsigned getVAO() const { return particleModel.getVAO(); }
 };
 
 template <typename T, typename P>
-ParticlesGenerator<T, P>::ParticlesGenerator(InterfaceCamera* cam, Program& program, const unsigned& particlesAmount) : camera(cam), particleProgram(program)
+ParticlesGenerator<T, P>::ParticlesGenerator(InterfaceCamera* cam, std::shared_ptr<ShaderProgram> program, const unsigned& particlesAmount) : camera(cam), particleProgram(program)
 {
 	colors.resize(particlesAmount);
 	positions.resize(particlesAmount);
@@ -68,7 +68,7 @@ void ParticlesGenerator<T, P>::render()
 }
 
 template <typename T, typename P>
-void ParticlesGenerator<T, P>::render(Program& program)
+void ParticlesGenerator<T, P>::render(std::shared_ptr<ShaderProgram> program)
 {
 	update();
 	render();

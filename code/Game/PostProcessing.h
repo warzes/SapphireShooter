@@ -3,7 +3,7 @@
 #include "Framebuffer2.h"
 #include "MultisampledFrameBuffer.h"
 #include "MultisampledRenderBuffer.h"
-#include "Program.h"
+#include "ShaderProgram.h"
 
 class PostProcessing
 {
@@ -22,6 +22,6 @@ public:
 	void updateBuffers();
 	const std::vector<Texture>& getResultTextures() const { return buffer.getTextures(); }
 
-	static void renderToQuad(Program& program, const std::vector<unsigned>& textures, const glm::mat4& model = glm::mat4(1.0f));
-	static void renderToQuad(Program& program, const std::vector<Texture>& textures, const glm::mat4& model = glm::mat4(1.0f));
+	static void renderToQuad(std::shared_ptr<ShaderProgram> program, const std::vector<unsigned>& textures, const glm::mat4& model = glm::mat4(1.0f));
+	static void renderToQuad(std::shared_ptr<ShaderProgram> program, const std::vector<Texture>& textures, const glm::mat4& model = glm::mat4(1.0f));
 };

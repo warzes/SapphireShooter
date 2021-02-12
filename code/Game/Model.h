@@ -19,7 +19,7 @@ public:
 
 	void SetTransform(glm::vec3 pos, glm::vec3 rot, float rotAmountInDegrees, glm::vec3 scale);
 	void SetSpotlight(bool useSpotlight) { m_useSpotlight = useSpotlight; }
-	std::shared_ptr<ShaderProgram>& GetShaderProgram() { return m_shaderProgram; }
+	std::shared_ptr<ShaderProgram> GetShaderProgram() { return m_shaderProgram; }
 
 	std::vector<Mesh> meshes;
 	GLuint program;

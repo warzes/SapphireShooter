@@ -67,7 +67,7 @@ void Mesh::initMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::render(Program& program)
+void Mesh::render(std::shared_ptr<ShaderProgram> program)
 {
 	unsigned diffuseNum = 0, specularNum = 0;
 	for (unsigned i = 0; i < textures.size(); ++i)
@@ -81,12 +81,12 @@ void Mesh::render(Program& program)
 		else if (type == "texture_specular")
 			number = std::to_string(specularNum++);
 
-		program.SetInt(std::string(type + "[" + number + "]").c_str(), i);
+		program->SetInteger(std::string(type + "[" + number + "]").c_str(), i);
 		textures[i].texture.bind(GL_TEXTURE_2D);
 	}
 
-	program.SetInt("diffuseTexturesAmount", diffuseNum);
-	program.SetInt("specularTexturesAmount", specularNum);
+	program->SetInteger("diffuseTexturesAmount", diffuseNum);
+	program->SetInteger("specularTexturesAmount", specularNum);
 	material.render(program);
 
 	glBindVertexArray(VAO);

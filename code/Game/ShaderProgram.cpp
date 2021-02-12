@@ -34,6 +34,21 @@ void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource
 	Link();
 }
 //-----------------------------------------------------------------------------
+void ShaderProgram::CompileFromFile(const char* vertexFile, const char* fragmentFile, const char* geometryFile)
+{
+	Create();
+	Shader vertex(ShaderType::Vertex, vertexFile, true);
+	Shader fragment(ShaderType::Fragment, fragmentFile, true);
+	Shader geometry;
+	if (geometryFile != nullptr)
+		geometry.CreateFromFile(ShaderType::Geometry, geometryFile);
+	AttachShader(vertex);
+	AttachShader(fragment);
+	if (geometryFile != nullptr)
+		AttachShader(geometry);
+	Link();
+}
+//-----------------------------------------------------------------------------
 void ShaderProgram::Create()
 {
 	if (m_programId != 0)
@@ -128,6 +143,18 @@ void ShaderProgram::SetVector4f(const char* name, const glm::vec4& value)
 {
 	Bind();
 	glUniform4f(getUniformId(name), value.x, value.y, value.z, value.w);
+}
+//-----------------------------------------------------------------------------
+void ShaderProgram::SetMatrix2(const char* name, const glm::mat2& matrix)
+{
+	Bind();
+	glUniformMatrix2fv(getUniformId(name), 1, GL_FALSE, glm::value_ptr(matrix));
+}
+//-----------------------------------------------------------------------------
+void ShaderProgram::SetMatrix3(const char* name, const glm::mat3& matrix)
+{
+	Bind();
+	glUniformMatrix3fv(getUniformId(name), 1, GL_FALSE, glm::value_ptr(matrix));
 }
 //-----------------------------------------------------------------------------
 void ShaderProgram::SetMatrix4(const char* name, const glm::mat4& matrix)

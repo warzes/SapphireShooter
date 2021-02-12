@@ -9,14 +9,14 @@ class Shadow
 	FrameBuffer depth;
 	CubeDepthBuffer depthBuffer;
 
-	void initCastShadow(const Light& light, const std::vector<Program*>& programs);
+	void initCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs);
 
 public:
 	Shadow();
 	virtual ~Shadow() { ; }
 
-	void startCastShadow(const Light& light, const std::vector<Program*>& programs);
-	void endCastShadow(const Light& light, const std::vector<Program*>& programs);
+	void startCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs);
+	void endCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs);
 	void updateBuffer();
 	ShadowTransforms generateShadowTransforms();
 };

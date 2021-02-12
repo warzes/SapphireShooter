@@ -18,7 +18,7 @@ public:
 	WaterBuffers buffers;
 	Water(InterfaceCamera* cam) : camera(cam) { rotateX(-90); }
 
-	virtual void render(Program& program);
+	virtual void render(std::shared_ptr<ShaderProgram> program);
 	void renderReflectAndRefract(Scene* scene);
 	virtual unsigned getVAO() const { return plane.getVAO(); }
 

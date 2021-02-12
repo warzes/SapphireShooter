@@ -67,14 +67,14 @@ Cube2::Cube2()
 	glBindVertexArray(0);
 }
 
-void Cube2::render(Program& program)
+void Cube2::render(std::shared_ptr<ShaderProgram> program)
 {
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
 }
 
-void Cube2::render(Program& program, const unsigned& amount)
+void Cube2::render(std::shared_ptr<ShaderProgram> program, const unsigned& amount)
 {
 	glBindVertexArray(VAO);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 36, amount);

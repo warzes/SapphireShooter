@@ -15,7 +15,7 @@ public:
 	const Material& getMaterial() { return material; }
 	Renderable& getReference() { return renderer; }
 
-	virtual void render(Program& program)
+	virtual void render(std::shared_ptr<ShaderProgram> program)
 	{
 		material.render(program);
 		renderer.render(program);

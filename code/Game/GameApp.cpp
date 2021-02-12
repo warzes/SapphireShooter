@@ -5,6 +5,7 @@
 #include "Mouse2.h"
 #include "Keyboard.h"
 #include "GLViewport.h"
+#include "ShaderManager.h"
 #if TEST
 #include "PerlinNoise2D.h"
 #include "SmoothNoise2D.h"
@@ -40,7 +41,6 @@ void GameApp::Init()
 	glDepthFunc(GL_LESS);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
-	glEnable(GL_CLIP_DISTANCE0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	initShadersManager();
@@ -65,12 +65,6 @@ void GameApp::Init()
 		"textures/cubemapTEST/pz.jpg", 
 		"textures/cubemapTEST/nz.jpg" });
 
-	terrain.init();
-
-	terrain.getGrassTexture().load("textures/grass.jpg", GL_TEXTURE_2D);
-	terrain.getStoneTexture().load("textures/stone.jpg", GL_TEXTURE_2D);
-	terrain.setPosition(glm::vec3(0.0f));
-	terrain.scale(glm::vec3(400.0f));
 
 	water = new Water(camera);
 
@@ -81,11 +75,7 @@ void GameApp::Init()
 
 	scene = new Scene(camera, manager);
 	scene->addSkybox(skybox);
-	scene->addTerrain(terrain);
 	scene->addLight(pointLight);
-
-	//generatePerlinPlain();
-	generateSmooth256();
 
 #else
 	Player::Get().Init(m_mainCamera, glm::vec3(256.0f, 0.0f, 300.0f));
@@ -152,19 +142,10 @@ void GameApp::Update(float dt)
 void GameApp::ProcessInput(float dt)
 {
 #if TEST
-	if (firstTime)
-	{
-		//lastPosX = posX;
-		//lastPosY = posY;
-		firstTime = false;
-	}
 	float MouseDeltaX = static_cast<float>(Mouse2::Get().MouseMove().x);
 	float MouseDeltaY = static_cast<float>(Mouse2::Get().MouseMove().y);
-
 	camera->rotate(MouseDeltaX, MouseDeltaY);
-	//camera->rotate(posX - lastPosX, lastPosY - posY);
-	//lastPosX = posX;
-	//lastPosY = posY;
+
 
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_W))
 		camera->moveTop();
@@ -195,27 +176,6 @@ void GameApp::ProcessInput(float dt)
 		isWater = true;
 	}
 
-	if (Keyboard::Get().KeyDown(Keyboard::KEY_NUMPAD_DECIMAL))
-	{
-		terrain.setDepth(terrain.getDepth() - 0.001);
-		water->setPosition(glm::vec3(0.0f, water->getPosition().y - terrain.getDepth(), 0.0f));
-	}
-	if (Keyboard::Get().KeyDown(Keyboard::KEY_NUMPAD_ADD))
-	{
-		terrain.setDepth(terrain.getDepth() + 0.001);
-		water->setPosition(glm::vec3(0.0f, water->getPosition().y + terrain.getDepth(), 0.0f));
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_T))
-	{
-		if (terrain.getTessLevel() > 1)
-			terrain.setTessLevel(terrain.getTessLevel() - 1);
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_Y))
-	{
-		if (terrain.getTessLevel() < 64)
-			terrain.setTessLevel(terrain.getTessLevel() + 1);
-	}
-
 	if (Keyboard::Get().KeyPressed(Keyboard::KEY_C))
 	{
 		scene->setShadows(true);
@@ -223,48 +183,7 @@ void GameApp::ProcessInput(float dt)
 	if (Keyboard::Get().KeyPressed(Keyboard::KEY_Z))
 	{
 		scene->setShadows(false);
-	}
-
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_1))
-	{
-		generatePerlinPlain();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_2))
-	{
-		generatePerlinLowLands();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_3))
-	{
-		generatePerlinHighLands();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_4))
-	{
-		generatePerlinLittleMountains();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_5))
-	{
-		generatePerlinMountains();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_6))
-	{
-		generateSmooth256();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_7))
-	{
-		generateSmooth128();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_8))
-	{
-		generateSmooth64();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_9))
-	{
-		generateSmooth32();
-	}
-	if (Keyboard::Get().KeyPressed(Keyboard::KEY_0))
-	{
-		generateSmooth16();
-	}
+	}	
 #else
 #endif
 }
@@ -305,12 +224,8 @@ void GameApp::Render()
 		fontRenderer->setText("123");
 		fontRenderer->render(manager.getFontProgram());
 
-		fontRenderer->setScale(0.3);
-		fontRenderer->setPosition(100, 500);
-		fontRenderer->setText("Tessellation Level: " + std::to_string(terrain.getTessLevel()));
-		fontRenderer->render(manager.getFontProgram());
 		post->endProcessing();
-		Program& prog = manager.getPostProcessProgram();
+		std::shared_ptr<ShaderProgram> prog = manager.getPostProcessProgram();
 		PostProcessing::renderToQuad(prog, post->getResultTextures());
 	}
 #else
@@ -392,129 +307,12 @@ void GameApp::resizeApp()
 #if TEST
 void GameApp::initShadersManager()
 {
-	Shader terrainVertex(ShaderType::Vertex, "shaders/terrain/terrain.vs");
-	Shader terrainTessControl(ShaderType::TessalationControl, "shaders/terrain/terrain_control.glsl");
-
-	Program depthTerrainProgram;
-	depthTerrainProgram.Create();
-	depthTerrainProgram.AttachShader(terrainVertex);
-	depthTerrainProgram.AttachShader(terrainTessControl);
-	depthTerrainProgram.AttachShader(Shader(ShaderType::TessalationEvaluation, "shaders/depth/terrain_eval_depth.glsl"));
-	depthTerrainProgram.AttachShader(Shader(ShaderType::Geometry, "shaders/depth/depth.gs"));
-	depthTerrainProgram.AttachShader(Shader(ShaderType::Fragment, "shaders/depth/depth.fs"));
-	depthTerrainProgram.Link();
-
-	Program terrainProgram;
-	terrainProgram.Create();
-	terrainProgram.AttachShader(terrainVertex);
-	terrainProgram.AttachShader(terrainTessControl);
-	terrainProgram.AttachShader(Shader(ShaderType::TessalationEvaluation, "shaders/terrain/terrain_eval.glsl"));
-	terrainProgram.AttachShader(Shader(ShaderType::Fragment, "shaders/terrain/terrain.fs"));
-	terrainProgram.Link();
-
-	manager.setSkyboxProgram(Program("shaders/skybox/skybox.vs", "shaders/skybox/skybox.fs"));
-	manager.setHDRProgram(Program("shaders/effect/hdr.vs", "shaders/effect/hdr.fs"));
-	manager.setBlurProgram(Program("shaders/effect/blur.vs", "shaders/effect/blur.fs"));
-	manager.setFontProgram(Program("shaders/font/font.vs", "shaders/font/font.fs"));
-	manager.setPostProcessProgram(Program("shaders/effect/postprocessing.vs", "shaders/effect/postprocessing.fs"));
-	manager.setWaterProgram(Program("shaders/water/water.vs", "shaders/water/water.fs"));
-	manager.setTerrainProgram(terrainProgram);
-	manager.setTerrainDepthProgram(depthTerrainProgram);
-}
-
-void GameApp::generatePerlinPlain()
-{
-	static const float FREQUENT = 2;
-	static const float AMPLITUDE = 2;
-	static const float PERSISTENCE = 1;
-	static const unsigned OCTAVES = 1;
-	static unsigned offset = 1;
-	++offset;
-
-	generator.generate(terrain.getHeightMap(), PerlinNoise2D(FREQUENT, AMPLITUDE, PERSISTENCE, OCTAVES, PERLIN_MULTI, offset, offset), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generatePerlinLowLands()
-{
-	static const float FREQUENT = 3;
-	static const float AMPLITUDE = 3;
-	static const float PERSISTENCE = 2;
-	static const unsigned OCTAVES = 2;
-	static unsigned offset = 1;
-	++offset;
-
-	generator.generate(terrain.getHeightMap(), PerlinNoise2D(FREQUENT, AMPLITUDE, PERSISTENCE, OCTAVES, PERLIN_MULTI, offset, offset), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generatePerlinHighLands()
-{
-	static const float FREQUENT = 4;
-	static const float AMPLITUDE = 4.5;
-	static const float PERSISTENCE = 2.5;
-	static const unsigned OCTAVES = 3;
-	static unsigned offset = 1;
-	++offset;
-
-	generator.generate(terrain.getHeightMap(), PerlinNoise2D(FREQUENT, AMPLITUDE, PERSISTENCE, OCTAVES, PERLIN_MULTI, offset, offset), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generatePerlinLittleMountains()
-{
-	static const float FREQUENT = 10;
-	static const float AMPLITUDE = 20;
-	static const float PERSISTENCE = 0.5;
-	static const unsigned OCTAVES = 5;
-	static unsigned offset = 1;
-	++offset;
-
-	generator.generate(terrain.getHeightMap(), PerlinNoise2D(FREQUENT, AMPLITUDE, PERSISTENCE, OCTAVES, PERLIN_MULTI, offset, offset), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generatePerlinMountains()
-{
-	static const float FREQUENT = 20;
-	static const float AMPLITUDE = 40;
-	static const float PERSISTENCE = 0.45;
-	static const unsigned OCTAVES = 6;
-	static unsigned offset = 1;
-	++offset;
-
-	generator.generate(terrain.getHeightMap(), PerlinNoise2D(FREQUENT, AMPLITUDE, PERSISTENCE, OCTAVES, PERLIN_MULTI, offset, offset), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generateSmooth256()
-{
-	generator.generate(terrain.getHeightMap(), SmoothNoise2D(256), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generateSmooth128()
-{
-	generator.generate(terrain.getHeightMap(), SmoothNoise2D(128), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generateSmooth64()
-{
-	generator.generate(terrain.getHeightMap(), SmoothNoise2D(64), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generateSmooth32()
-{
-	generator.generate(terrain.getHeightMap(), SmoothNoise2D(32), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
-}
-
-void GameApp::generateSmooth16()
-{
-	generator.generate(terrain.getHeightMap(), SmoothNoise2D(16), TERRAIN_SIZE, TERRAIN_SIZE);
-	conventer.convert(generator.getTextureData(), terrain.getNormalMap(), TERRAIN_SIZE, TERRAIN_SIZE);
+	manager.setSkyboxProgram(ShaderManager::Get().LoadShader("skybox", "shaders/skybox/skybox.vs", "shaders/skybox/skybox.fs"));
+	manager.setHDRProgram(ShaderManager::Get().LoadShader("hdr", "shaders/effect/hdr.vs", "shaders/effect/hdr.fs"));
+	manager.setBlurProgram(ShaderManager::Get().LoadShader("blur", "shaders/effect/blur.vs", "shaders/effect/blur.fs"));
+	manager.setFontProgram(ShaderManager::Get().LoadShader("font", "shaders/font/font.vs", "shaders/font/font.fs"));
+	manager.setPostProcessProgram(ShaderManager::Get().LoadShader("postprocessing", "shaders/effect/postprocessing.vs", "shaders/effect/postprocessing.fs"));
+	manager.setWaterProgram(ShaderManager::Get().LoadShader("water", "shaders/water/water.vs", "shaders/water/water.fs"));
 }
 
 #endif

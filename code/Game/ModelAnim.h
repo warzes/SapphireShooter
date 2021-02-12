@@ -43,7 +43,7 @@ class ModelAnim : public Model2
 	void boneTransform(const float& timeInSeconds, std::vector<aiMatrix4x4>& transforms);
 	const aiNodeAnim* findNodeAnim(const aiAnimation* aAnimation, const std::string& nodeName);
 
-	void initRender(Program& program);
+	void initRender(std::shared_ptr<ShaderProgram> program);
 	void setForward() { way = 1; }
 	void setBackward() { way = -1; }
 
@@ -51,7 +51,7 @@ public:
 	ModelAnim() { ; }
 	ModelAnim(const std::string& path);
 
-	virtual void render(Program& program);
+	virtual void render(std::shared_ptr<ShaderProgram> program);
 	virtual void load(const std::string& path);
 
 	void play(const float& st, const float& et);

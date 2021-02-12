@@ -11,16 +11,16 @@ void Scene::initPrograms(const glm::vec4& clipPlane)
 	initProgram(manager.getTerrainDepthProgram(), clipPlane);
 }
 
-void Scene::initProgram(Program& program, const glm::vec4& clipPlane)
+void Scene::initProgram(std::shared_ptr<ShaderProgram> program, const glm::vec4& clipPlane)
 {
-	if (program.GetId() != 0)
+	if (program && program->GetId() != 0)
 	{
-		program.Bind();
-		program.SetMat4("viewProject", camera->getViewProjectionMatrix());
-		program.SetVec3("viewPos", camera->getPosition());
-		program.SetInt("lightsAmount", Light::amount);
-		program.SetInt("allowShadows", allowShadows ? 1 : 0);
-		program.SetVec4("clipPlane", clipPlane);
+		program->Bind();
+		program->SetMatrix4("viewProject", camera->getViewProjectionMatrix());
+		program->SetVector3f("viewPos", camera->getPosition());
+		program->SetInteger("lightsAmount", Light::amount);
+		program->SetInteger("allowShadows", allowShadows ? 1 : 0);
+		program->SetVector4f("clipPlane", clipPlane);
 	}
 }
 
@@ -28,21 +28,21 @@ void Scene::renderShadows()
 {
 	if (allowShadows)
 	{
-		std::vector<Program*> programs;
-		if (manager.getObjectProgram().GetId() != 0)
-			programs.push_back(&manager.getObjectProgram());
-		if (manager.getAnimProgram().GetId() != 0)
-			programs.push_back(&manager.getAnimProgram());
-		if (manager.getTerrainProgram().GetId() != 0)
-			programs.push_back(&manager.getTerrainProgram());
+		std::vector<std::shared_ptr<ShaderProgram>> programs;
+		if (manager.getObjectProgram() != nullptr && manager.getObjectProgram()->GetId() != 0)
+			programs.push_back(manager.getObjectProgram());
+		if (manager.getAnimProgram() != nullptr && manager.getAnimProgram()->GetId() != 0)
+			programs.push_back(manager.getAnimProgram());
+		if (manager.getTerrainProgram() != nullptr && manager.getTerrainProgram()->GetId() != 0)
+			programs.push_back(manager.getTerrainProgram());
 
-		std::vector<Program*> depthPrograms;
-		if (manager.getDepthProgram().GetId() != 0)
-			depthPrograms.push_back(&manager.getDepthProgram());
-		if (manager.getAnimDepthProgram().GetId() != 0)
-			depthPrograms.push_back(&manager.getAnimDepthProgram());
-		if (manager.getTerrainDepthProgram().GetId() != 0)
-			depthPrograms.push_back(&manager.getTerrainDepthProgram());
+		std::vector<std::shared_ptr<ShaderProgram>> depthPrograms;
+		if (manager.getDepthProgram() != nullptr && manager.getDepthProgram()->GetId() != 0)
+			depthPrograms.push_back(manager.getDepthProgram());
+		if (manager.getAnimDepthProgram() != nullptr && manager.getAnimDepthProgram()->GetId() != 0)
+			depthPrograms.push_back(manager.getAnimDepthProgram());
+		if (manager.getTerrainDepthProgram() != nullptr && manager.getTerrainDepthProgram()->GetId() != 0)
+			depthPrograms.push_back(manager.getTerrainDepthProgram());
 
 		for (unsigned i = 0; i < lights.size(); ++i)
 		{
@@ -74,41 +74,41 @@ void Scene::render(const glm::vec4& clipPlane)
 	renderSkybox();
 }
 
-void Scene::renderObjects(Program& prog)
+void Scene::renderObjects(std::shared_ptr<ShaderProgram> prog)
 {
-	if (prog.GetId() != 0)
+	if (prog && prog->GetId() != 0)
 	{
-		prog.Bind();
+		prog->Bind();
 		for (unsigned i = 0; i < objects.size(); ++i)
 			objects[i]->render(prog);
 	}
 }
 
-void Scene::renderAnimations(Program& prog)
+void Scene::renderAnimations(std::shared_ptr<ShaderProgram> prog)
 {
-	if (prog.GetId() != 0)
+	if (prog && prog->GetId() != 0)
 	{
-		prog.Bind();
+		prog->Bind();
 		for (unsigned i = 0; i < animations.size(); ++i)
 			animations[i]->render(prog);
 	}
 }
 
-void Scene::renderWaters(Program& prog)
+void Scene::renderWaters(std::shared_ptr<ShaderProgram> prog)
 {
-	if (prog.GetId() != 0)
+	if (prog && prog->GetId() != 0)
 	{
-		prog.Bind();
+		prog->Bind();
 		for (unsigned i = 0; i < waters.size(); ++i)
 			waters[i]->render(prog);
 	}
 }
 
-void Scene::renderTerrains(Program& prog)
+void Scene::renderTerrains(std::shared_ptr<ShaderProgram> prog)
 {
-	if (prog.GetId() != 0)
+	if (prog && prog->GetId() != 0)
 	{
-		prog.Bind();
+		prog->Bind();
 		for (unsigned i = 0; i < terrains.size(); ++i)
 			terrains[i]->render(prog);
 	}
@@ -116,50 +116,50 @@ void Scene::renderTerrains(Program& prog)
 
 void Scene::renderSkybox()
 {
-	Program& skyboxProgram = manager.getSkyboxProgram();
-	if (skybox != nullptr && skyboxProgram.GetId() != 0)
+	std::shared_ptr<ShaderProgram> skyboxProgram = manager.getSkyboxProgram();
+	if (skybox != nullptr && skyboxProgram->GetId() != 0)
 	{
-		skyboxProgram.Bind();
+		skyboxProgram->Bind();
 		glm::mat4 vp = camera->getProjectionMatrix() * glm::mat4(glm::mat3(camera->getViewMatrix()));
-		skyboxProgram.SetMat4("viewProject", vp);
+		skyboxProgram->SetMatrix4("viewProject", vp);
 		skybox->render(skyboxProgram);
 	}
 }
 
 void Scene::renderLights()
 {
-	Program& objProgram = manager.getObjectProgram();
-	Program& animProgram = manager.getAnimProgram();
-	Program& worldProgram = manager.getTerrainProgram();
-	Program& waterProgram = manager.getWaterProgram();
-	bool isWorldProgram = worldProgram.GetId() != 0;
-	bool isObjectProgram = objProgram.GetId() != 0;
-	bool isAnimProgram = animProgram.GetId() != 0;
-	bool isWaterProgram = waterProgram.GetId() != 0;
+	std::shared_ptr<ShaderProgram> objProgram = manager.getObjectProgram();
+	std::shared_ptr<ShaderProgram> animProgram = manager.getAnimProgram();
+	std::shared_ptr<ShaderProgram> worldProgram = manager.getTerrainProgram();
+	std::shared_ptr<ShaderProgram> waterProgram = manager.getWaterProgram();
+	bool isWorldProgram = worldProgram && worldProgram->GetId() != 0;
+	bool isObjectProgram = objProgram && objProgram->GetId() != 0;
+	bool isAnimProgram = animProgram && animProgram->GetId() != 0;
+	bool isWaterProgram = waterProgram && waterProgram->GetId() != 0;
 
 	for (unsigned i = 0; i < lights.size(); ++i)
 	{
 		if (isObjectProgram)
 		{
-			objProgram.Bind();
+			objProgram->Bind();
 			lights[i]->render(objProgram);
 		}
 
 		if (isAnimProgram)
 		{
-			animProgram.Bind();
+			animProgram->Bind();
 			lights[i]->render(animProgram);
 		}
 
 		if (isWaterProgram)
 		{
-			waterProgram.Bind();
+			waterProgram->Bind();
 			lights[i]->render(waterProgram);
 		}
 
 		if (isWorldProgram)
 		{
-			worldProgram.Bind();
+			worldProgram->Bind();
 			lights[i]->render(worldProgram);
 		}
 	}

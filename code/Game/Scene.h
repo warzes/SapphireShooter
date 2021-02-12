@@ -20,13 +20,13 @@ class Scene
 	std::vector<Shadow> shadows;
 	bool allowShadows = true;
 
-	void initProgram(Program& program, const glm::vec4& clipPlane);
+	void initProgram(std::shared_ptr<ShaderProgram> program, const glm::vec4& clipPlane);
 	void initPrograms(const glm::vec4& clipPlane);
 
-	void renderTerrains(Program& prog);
-	void renderObjects(Program& prog);
-	void renderAnimations(Program& prog);
-	void renderWaters(Program& prog);
+	void renderTerrains(std::shared_ptr<ShaderProgram> prog);
+	void renderObjects(std::shared_ptr<ShaderProgram> prog);
+	void renderAnimations(std::shared_ptr<ShaderProgram> prog);
+	void renderWaters(std::shared_ptr<ShaderProgram> prog);
 	void renderLights();
 	void renderSkybox();
 

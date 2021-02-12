@@ -6,6 +6,6 @@ class Plane : public Shape2
 {
 public:
 	Plane();
-	virtual void render(Program& program);
-	virtual void render(Program& program, const unsigned& amount);
+	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void render(std::shared_ptr<ShaderProgram> program, const unsigned& amount);
 };

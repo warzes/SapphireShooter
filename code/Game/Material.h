@@ -40,5 +40,5 @@ public:
 	void setSupportTex() { isSupportTex = 1; }
 	void unsetSupportTex() { isSupportTex = 0; }
 
-	virtual void render(Program& program);
+	virtual void render(std::shared_ptr<ShaderProgram> program);
 };

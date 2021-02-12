@@ -15,6 +15,6 @@ public:
 		return instance;
 	};
 
-private:
+protected:
 	Singleton() = default;
 };
