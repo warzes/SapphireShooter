@@ -6,8 +6,7 @@
 
 #if TEST
 #include "ShadersManager.h"
-#include "InterfaceCamera.h"
-#include "PerspectiveCamera.h"
+#include "BaseCamera.h"
 #include "FontRenderer.h"
 #include "TextureGenerator2D.h"
 #include "ConverterToNormalMap.h"
@@ -49,7 +48,7 @@ private:
 	void initShadersManager();
 
 	ShadersManager manager;
-	PerspectiveCamera perspectiveCamera;
+	BaseCamera perspectiveCamera;
 	FontRenderer *fontRenderer;
 	TextureGenerator2D generator;
 	ConverterToNormalMap conventer;

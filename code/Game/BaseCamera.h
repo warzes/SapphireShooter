@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Engine.h"
+
 class BaseCamera
 {
 	glm::vec3 position;
@@ -40,7 +42,8 @@ public:
 	virtual void moveBottom();
 	virtual void rotate(const float& offsetX, const float& offsetY);
 	virtual glm::mat4 getViewMatrix() const { return glm::lookAt(position, position + direction, up); }
-	virtual glm::mat4 getProjectionMatrix() const = 0;
+	virtual glm::mat4 getProjectionMatrix() const { return glm::perspective(glm::radians(getFov()), (float)GetEngineDescription().window.width / (float)GetEngineDescription().window.height, getNear(), getFar()); }
+	virtual glm::mat4 getOrthogonalMatrix() const { return glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, getNear(), getFar()); }
 	virtual glm::mat4 getViewProjectionMatrix() const { return getProjectionMatrix() * getViewMatrix(); }
 
 	virtual void setPosition(const glm::vec3& vec) { position = vec; }

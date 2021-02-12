@@ -291,14 +291,12 @@
     <ClInclude Include="MultisampledFrameBuffer.h" />
     <ClInclude Include="MultisampledRenderBuffer.h" />
     <ClInclude Include="OGLFunc.h" />
-    <ClInclude Include="OrthogonalCamera.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEmitter.h" />
     <ClInclude Include="ParticlesGenerator.h" />
     <ClInclude Include="PerlinNoise.h" />
     <ClInclude Include="PerlinNoise2D.h" />
     <ClInclude Include="PerlinNoise3D.h" />
-    <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Player.h" />

@@ -543,12 +543,6 @@
     <ClInclude Include="BaseCamera.h">
       <Filter>engine\Render\new\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="PerspectiveCamera.h">
-      <Filter>engine\Render\new\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="OrthogonalCamera.h">
-      <Filter>engine\Render\new\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>engine\Render\new\Scene</Filter>
     </ClInclude>
