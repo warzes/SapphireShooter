@@ -2,7 +2,7 @@
 
 #include "Skybox.h"
 #include "Terrain2.h"
-#include "InterfaceCamera.h"
+#include "BaseCamera.h"
 #include "Light.h"
 #include "ShadersManager.h"
 #include "Shadow.h"
@@ -10,7 +10,7 @@
 class Scene
 {
 	ShadersManager& manager;
-	InterfaceCamera* camera = nullptr;
+	BaseCamera* camera = nullptr;
 	Skybox* skybox = nullptr;
 	std::vector<Renderable*> terrains;
 	std::vector<Renderable*> objects;
@@ -31,7 +31,7 @@ class Scene
 	void renderSkybox();
 
 public:
-	Scene(InterfaceCamera* cam, ShadersManager& shadersmanager) : camera(cam), manager(shadersmanager) { ; }
+	Scene(BaseCamera* cam, ShadersManager& shadersmanager) : camera(cam), manager(shadersmanager) { ; }
 
 	void renderShadows();
 	virtual void render(const glm::vec4& clipPlane = glm::vec4(0, 1, 0, 10000));

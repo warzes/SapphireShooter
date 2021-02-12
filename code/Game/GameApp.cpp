@@ -23,8 +23,7 @@ EngineDescription GameApp::InitConfig()
 //-----------------------------------------------------------------------------
 GameApp::GameApp()
 #if TEST
-	: camera(&perspectiveCamera)
-	, pointLight(glm::vec3(0.0f, 50.0f, 0.0f), glm::vec3(2.0f), glm::vec3(2.1f), glm::vec3(1.0f), 1.0f, 0.0f, 0.0f)
+	: pointLight(glm::vec3(0.0f, 50.0f, 0.0f), glm::vec3(2.0f), glm::vec3(2.1f), glm::vec3(1.0f), 1.0f, 0.0f, 0.0f)
 #endif
 {
 }
@@ -49,8 +48,8 @@ void GameApp::Init()
 	postHDR = new PostProcessing(2);
 	post = new PostProcessing();
 
-	camera->setPosition(glm::vec3(0.0f, 25.0f, 0.0f));
-	camera->rotate(50, -80);
+	perspectiveCamera.setPosition(glm::vec3(0.0f, 25.0f, 0.0f));
+	perspectiveCamera.rotate(50, -80);
 
 	fontRenderer = new FontRenderer(Font("fonts/arial.ttf"));
 	fontRenderer->setColor(glm::vec3(1.0));
@@ -66,14 +65,14 @@ void GameApp::Init()
 		"textures/cubemapTEST/nz.jpg" });
 
 
-	water = new Water(camera);
+	water = new Water(&perspectiveCamera);
 
 	water->getDudvMap().load("textures/water-dudv.jpg", GL_TEXTURE_2D);
 	water->getNormalMap().load("textures/water-normal.jpg", GL_TEXTURE_2D);
 	water->setPosition(glm::vec3(0.0f, 15.0f, 0.0f));
 	water->scale(glm::vec3(200.0f));
 
-	scene = new Scene(camera, manager);
+	scene = new Scene(&perspectiveCamera, manager);
 	scene->addSkybox(skybox);
 	scene->addLight(pointLight);
 
@@ -144,17 +143,17 @@ void GameApp::ProcessInput(float dt)
 #if TEST
 	float MouseDeltaX = static_cast<float>(Mouse2::Get().MouseMove().x);
 	float MouseDeltaY = static_cast<float>(Mouse2::Get().MouseMove().y);
-	camera->rotate(MouseDeltaX, MouseDeltaY);
+	perspectiveCamera.rotate(MouseDeltaX, MouseDeltaY);
 
 
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_W))
-		camera->moveTop();
+		perspectiveCamera.moveTop();
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_S))
-		camera->moveBottom();
+		perspectiveCamera.moveBottom();
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_A))
-		camera->moveLeft();
+		perspectiveCamera.moveLeft();
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_D))
-		camera->moveRight();
+		perspectiveCamera.moveRight();
 
 	if (Keyboard::Get().KeyPressed(Keyboard::KEY_P))
 	{

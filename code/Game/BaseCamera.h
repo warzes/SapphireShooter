@@ -1,8 +1,6 @@
 #pragma once
 
-#include "InterfaceCamera.h"
-
-class BaseCamera : public InterfaceCamera
+class BaseCamera
 {
 	glm::vec3 position;
 	glm::vec3 direction;
@@ -43,6 +41,7 @@ public:
 	virtual void rotate(const float& offsetX, const float& offsetY);
 	virtual glm::mat4 getViewMatrix() const { return glm::lookAt(position, position + direction, up); }
 	virtual glm::mat4 getProjectionMatrix() const = 0;
+	virtual glm::mat4 getViewProjectionMatrix() const { return getProjectionMatrix() * getViewMatrix(); }
 
 	virtual void setPosition(const glm::vec3& vec) { position = vec; }
 	virtual void setDirection(const glm::vec3& vec) { direction = vec; }

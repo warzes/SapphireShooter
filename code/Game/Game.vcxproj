@@ -274,7 +274,6 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="GLViewport.h" />
     <ClInclude Include="InlineFunc.h" />
-    <ClInclude Include="InterfaceCamera.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Log.h" />

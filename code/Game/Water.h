@@ -3,7 +3,7 @@
 #include "Plane.h"
 #include "WaterBuffers.h"
 #include "Transformationable.h"
-#include "InterfaceCamera.h"
+#include "BaseCamera.h"
 #include "Scene.h"
 
 class Water : public Transformationable
@@ -12,11 +12,11 @@ class Water : public Transformationable
 	Texture dudvMap;
 	Texture normalMap;
 	float offset = 0;
-	InterfaceCamera* camera = nullptr;
+	BaseCamera* camera = nullptr;
 
 public:
 	WaterBuffers buffers;
-	Water(InterfaceCamera* cam) : camera(cam) { rotateX(-90); }
+	Water(BaseCamera* cam) : camera(cam) { rotateX(-90); }
 
 	virtual void render(std::shared_ptr<ShaderProgram> program);
 	void renderReflectAndRefract(Scene* scene);

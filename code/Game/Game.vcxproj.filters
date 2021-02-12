@@ -540,9 +540,6 @@
     <ClInclude Include="Water.h">
       <Filter>engine\Render\new\renderable\water</Filter>
     </ClInclude>
-    <ClInclude Include="InterfaceCamera.h">
-      <Filter>engine\Render\new\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="BaseCamera.h">
       <Filter>engine\Render\new\Camera</Filter>
     </ClInclude>

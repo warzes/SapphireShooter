@@ -1,6 +1,6 @@
 #pragma once
 
-#define TEST 0
+#define TEST 1
 
 #include "EngineDescription.h"
 
@@ -47,19 +47,8 @@ private:
 	const unsigned PERLIN_MULTI = 1;
 
 	void initShadersManager();
-	//void generatePerlinPlain();
-	//void generatePerlinLowLands();
-	//void generatePerlinHighLands();
-	//void generatePerlinLittleMountains();
-	//void generatePerlinMountains();
-	//void generateSmooth256();
-	//void generateSmooth128();
-	//void generateSmooth64();
-	//void generateSmooth32();
-	//void generateSmooth16();
 
 	ShadersManager manager;
-	InterfaceCamera* camera;
 	PerspectiveCamera perspectiveCamera;
 	FontRenderer *fontRenderer;
 	TextureGenerator2D generator;
@@ -69,7 +58,6 @@ private:
 	PostProcessing *post;
 	Scene* scene;
 	Skybox skybox;
-	//Terrain2 terrain;
 	Water *water;
 	Light pointLight;
 	bool firstTime = true;
@@ -77,9 +65,6 @@ private:
 	float lastPosX = 0;
 	float lastPosY = 0;
 	bool isWater = true;
-
-
-
 
 #else
 	Camera m_mainCamera;
