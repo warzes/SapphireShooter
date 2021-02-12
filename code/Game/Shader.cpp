@@ -17,22 +17,31 @@ constexpr inline GLenum translateShaderType(ShaderType type)
 	return 0;
 }
 //-----------------------------------------------------------------------------
-Shader::Shader(const std::string& fileName, ShaderType type) 
-	: m_type(translateShaderType(type))
+Shader::Shader(ShaderType type, const std::string& source, bool fromFile)
 {
-	std::string source = getSource(fileName);
-	const char* data = source.c_str();
-	m_shaderId = glCreateShader(m_type);
-	glShaderSource(m_shaderId, 1, &data, nullptr);
-	glCompileShader(m_shaderId);
-
-	int success;
-	glGetShaderiv(m_shaderId, GL_COMPILE_STATUS, &success);
-	if (!success)
-		throw std::runtime_error(getCompileMessageErrorAndClear());
+	if (fromFile)
+		CreateFromFile(type, source);
+	else
+		CreateFromMemory(type, source);
 }
 //-----------------------------------------------------------------------------
-std::string Shader::getSource(const std::string& fileName) const
+Shader::~Shader()
+{
+	Destroy();
+}
+//-----------------------------------------------------------------------------
+bool Shader::CreateFromFile(ShaderType type, const std::string& fileName)
+{
+	std::string source = getSourceFromFile(fileName);
+	return loadShaderCode(type, source.c_str());
+}
+//-----------------------------------------------------------------------------
+bool Shader::CreateFromMemory(ShaderType type, const std::string& memory)
+{
+	return loadShaderCode(type, memory.c_str());
+}
+//-----------------------------------------------------------------------------
+std::string Shader::getSourceFromFile(const std::string& fileName) const
 {
 	std::ifstream file(fileName, std::ios::binary);
 	if (!file.is_open())
@@ -58,5 +67,21 @@ std::string Shader::getCompileMessageErrorAndClear() const
 	std::string finalMess = message;
 	delete[] message;
 	return finalMess;
+}
+//-----------------------------------------------------------------------------
+bool Shader::loadShaderCode(ShaderType type, const char* data)
+{
+	m_shaderId = glCreateShader(translateShaderType(type));
+	glShaderSource(m_shaderId, 1, &data, nullptr);
+	glCompileShader(m_shaderId);
+
+	int success;
+	glGetShaderiv(m_shaderId, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		throw std::runtime_error(getCompileMessageErrorAndClear());
+		// TODO;
+	}
+	return true;
 }
 //-----------------------------------------------------------------------------

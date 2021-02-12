@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "OGLFunc.h"
 
@@ -12,47 +12,25 @@ enum class ShaderType
 	Compute
 };
 
+// TODO: возможно шейдер должен грузится только с памяти, загрузка из файла в менеджере
+
 class Shader
 {
 public:
-	static Shader CreateVertexShader(const std::string& fileName)
-	{
-		return Shader(fileName, ShaderType::Vertex);
-	}
+	Shader() = default;
+	Shader(ShaderType type, const std::string& source, bool fromFile = true);
+	~Shader();
 
-	static Shader CreateFragmentShader(const std::string& fileName)
-	{
-		return Shader(fileName, ShaderType::Fragment);
-	}
-
-	static Shader CreateGeometryShader(const std::string& fileName)
-	{
-		return Shader(fileName, ShaderType::Geometry);
-	}
-
-	static Shader CreateTessalationControlShader(const std::string& fileName)
-	{
-		return Shader(fileName, ShaderType::TessalationControl);
-	}
-
-	static Shader CreateTessalationEvaluationShader(const std::string& fileName)
-	{
-		return Shader(fileName, ShaderType::TessalationEvaluation);
-	}
-
-	//static Shader CreateComputeShader(const std::string& fileName)
-	//{
-	//	return Shader(fileName, ShaderType::Compute);
-	//}
-
-	void Clear() const { glDeleteShader(m_shaderId);  }
+	bool CreateFromFile(ShaderType type, const std::string& fileName);
+	bool CreateFromMemory(ShaderType type, const std::string& memory);
+	
+	void Destroy() { if (m_shaderId) glDeleteShader(m_shaderId); m_shaderId = 0u; }
 
 	unsigned GetId() const { return m_shaderId; }
 private:
-	Shader(const std::string& fileName, ShaderType type);
-	std::string getSource(const std::string& fileName) const;
+	std::string getSourceFromFile(const std::string& fileName) const;
 	std::string getCompileMessageErrorAndClear() const;
+	bool loadShaderCode(ShaderType type, const char* data);
 
-	unsigned m_shaderId;
-	GLenum m_type;	
+	unsigned m_shaderId = 0;
 };

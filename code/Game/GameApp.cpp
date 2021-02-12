@@ -392,24 +392,24 @@ void GameApp::resizeApp()
 #if TEST
 void GameApp::initShadersManager()
 {
-	Shader terrainVertex = Shader::CreateVertexShader("shaders/terrain/terrain.vs");
-	Shader terrainTessControl = Shader::CreateTessalationControlShader("shaders/terrain/terrain_control.glsl");
+	Shader terrainVertex(ShaderType::Vertex, "shaders/terrain/terrain.vs");
+	Shader terrainTessControl(ShaderType::TessalationControl, "shaders/terrain/terrain_control.glsl");
 
 	Program depthTerrainProgram;
 	depthTerrainProgram.Create();
 	depthTerrainProgram.AttachShader(terrainVertex);
 	depthTerrainProgram.AttachShader(terrainTessControl);
-	depthTerrainProgram.AttachShader(Shader::CreateTessalationEvaluationShader("shaders/depth/terrain_eval_depth.glsl"));
-	depthTerrainProgram.AttachShader(Shader::CreateGeometryShader("shaders/depth/depth.gs"));
-	depthTerrainProgram.AttachShader(Shader::CreateFragmentShader("shaders/depth/depth.fs"));
+	depthTerrainProgram.AttachShader(Shader(ShaderType::TessalationEvaluation, "shaders/depth/terrain_eval_depth.glsl"));
+	depthTerrainProgram.AttachShader(Shader(ShaderType::Geometry, "shaders/depth/depth.gs"));
+	depthTerrainProgram.AttachShader(Shader(ShaderType::Fragment, "shaders/depth/depth.fs"));
 	depthTerrainProgram.Link();
 
 	Program terrainProgram;
 	terrainProgram.Create();
 	terrainProgram.AttachShader(terrainVertex);
 	terrainProgram.AttachShader(terrainTessControl);
-	terrainProgram.AttachShader(Shader::CreateTessalationEvaluationShader("shaders/terrain/terrain_eval.glsl"));
-	terrainProgram.AttachShader(Shader::CreateFragmentShader("shaders/terrain/terrain.fs"));
+	terrainProgram.AttachShader(Shader(ShaderType::TessalationEvaluation, "shaders/terrain/terrain_eval.glsl"));
+	terrainProgram.AttachShader(Shader(ShaderType::Fragment, "shaders/terrain/terrain.fs"));
 	terrainProgram.Link();
 
 	manager.setSkyboxProgram(Program("shaders/skybox/skybox.vs", "shaders/skybox/skybox.fs"));

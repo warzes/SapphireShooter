@@ -2,7 +2,6 @@
 #include "RenderSystem.h"
 #include "Window.h"
 #include "WGLFunc.h"
-#include "OpenGLStateCache.h"
 #include "GLViewport.h"
 #include "Log.h"
 //-----------------------------------------------------------------------------

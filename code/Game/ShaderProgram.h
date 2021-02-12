@@ -4,12 +4,16 @@
 
 class ShaderProgram
 {
+	friend class ShaderManager;
 public:
-	ShaderProgram() = default;
-
-
+	void Compile(Shader& vertex, Shader& fragment);
+	void Compile(Shader& vertex, Shader& fragment, Shader& geometry);
 	void Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource = nullptr);
 	void Destroy();
+
+	void Create();
+	void Link() const;
+	void AttachShader(Shader& shader) const;
 
 	void Bind() const;
 	void UnBind() const;
@@ -28,14 +32,14 @@ public:
 	unsigned GetId() const { return m_programId; }
 		
 private:
+	ShaderProgram() = default;
 	ShaderProgram(const ShaderProgram&) = delete;
 	ShaderProgram(ShaderProgram&&) = delete;
 	void operator=(const ShaderProgram&) = delete;
 	void operator=(ShaderProgram&&) = delete;
 
-	GLuint createShader(GLenum shaderType, const char* source, const std::string& typeName);
-	void checkShaderErrors(unsigned int object, const std::string& type);
-	void checkProgramCompileErrors(unsigned int object);
+	std::string getLinkMessageErrorAndClear() const;
+	unsigned getUniformId(const char* name) const;
 
 	unsigned m_programId = 0u;
 };

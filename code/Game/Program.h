@@ -8,7 +8,7 @@ class Program
 {
 public:
 	Program();
-	Program(const Shader& vertex, const Shader& fragment);
+	Program(Shader& vertex, Shader& fragment);
 	Program(const std::string& vertFileName, const std::string& fragFileName);
 	Program(const Program& program);
 	Program& operator=(const Program& program);
@@ -16,7 +16,7 @@ public:
 
 	void Create();
 	void Link() const;
-	void AttachShader(const Shader& shader) const;
+	void AttachShader(Shader& shader) const;
 
 	void Bind() const { glUseProgram(m_programId); }
 	//void UnBind() const { glUseProgram(0); }

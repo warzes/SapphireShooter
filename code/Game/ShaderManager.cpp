@@ -91,18 +91,6 @@ void ShaderManager::loadShaderFromFile(std::shared_ptr<ShaderProgram> outShaders
 		// TODO:
 	}
 
-#if SE_LOG_SHADER_CODE
-	SE_LOG("VERTEX SHADER CODE:");
-	SE_LOG(vertexCode);
-	SE_LOG("FRAGMENT SHADER CODE:");
-	SE_LOG(fragmentCode);
-	if (gShaderFile != nullptr)
-	{
-		SE_LOG("GEOMETRY SHADER CODE:");
-		SE_LOG(geometryCode);
-	}
-#endif
-
 	const char* vShaderCode = vertexCode.c_str();
 	const char* fShaderCode = fragmentCode.c_str();
 	const char* gShaderCode = geometryCode.c_str();

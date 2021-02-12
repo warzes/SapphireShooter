@@ -8,14 +8,14 @@ Program::Program()
 	*m_amount = 1;
 }
 //-----------------------------------------------------------------------------
-Program::Program(const Shader& vertex, const Shader& fragment)
+Program::Program(Shader& vertex, Shader& fragment)
 {
 	m_programId = glCreateProgram();
 	glAttachShader(m_programId, vertex.GetId());
 	glAttachShader(m_programId, fragment.GetId());
 	Link();
-	vertex.Clear();
-	fragment.Clear();
+	vertex.Destroy();
+	fragment.Destroy();
 	m_amount = new unsigned;
 	*m_amount = 1;
 }
@@ -23,13 +23,13 @@ Program::Program(const Shader& vertex, const Shader& fragment)
 Program::Program(const std::string& vertFileName, const std::string& fragFileName)
 {
 	m_programId = glCreateProgram();
-	Shader vertex = Shader::CreateVertexShader(vertFileName);
-	Shader fragment = Shader::CreateFragmentShader(fragFileName);
+	Shader vertex(ShaderType::Vertex, vertFileName);
+	Shader fragment(ShaderType::Fragment, fragFileName);
 	glAttachShader(m_programId, vertex.GetId());
 	glAttachShader(m_programId, fragment.GetId());
 	Link();
-	vertex.Clear();
-	fragment.Clear();
+	vertex.Destroy();
+	fragment.Destroy();
 	m_amount = new unsigned;
 	*m_amount = 1;
 }
@@ -72,12 +72,12 @@ void Program::Create()
 	m_programId = glCreateProgram();
 }
 //-----------------------------------------------------------------------------
-void Program::AttachShader(const Shader& shader) const
+void Program::AttachShader(Shader& shader) const
 {
 	if (m_programId == 0)
 		throw std::runtime_error("Can't attach shader to empty program");
 	glAttachShader(m_programId, shader.GetId());
-	shader.Clear();
+	shader.Destroy();
 }
 //-----------------------------------------------------------------------------
 void Program::Link() const
