@@ -150,7 +150,7 @@ Material Model2::getMaterial(const aiMesh* aMesh, const unsigned& texCount)
 	{
 		aiMaterial* mat = scene->mMaterials[aMesh->mMaterialIndex];
 		if (texCount > 0)
-			material.setSupportTex();
+			material.SetSupportTex();
 		else material = loadMaterial(mat);
 	}
 	return material;
@@ -162,23 +162,23 @@ Material Model2::loadMaterial(const aiMaterial* mat)
 	aiColor3D color(0.0f, 0.0f, 0.0f);
 
 	if (mat->Get(AI_MATKEY_COLOR_DIFFUSE, color) == AI_SUCCESS)
-		material.setDiffuse(glm::vec3(color.r, color.g, color.b));
+		material.SetDiffuse(glm::vec3(color.r, color.g, color.b));
 
 	if (mat->Get(AI_MATKEY_COLOR_AMBIENT, color) == AI_SUCCESS)
-		material.setAmbient(glm::vec3(color.r, color.g, color.b));
+		material.SetAmbient(glm::vec3(color.r, color.g, color.b));
 
 	if (mat->Get(AI_MATKEY_COLOR_SPECULAR, color) == AI_SUCCESS)
-		material.setSpecular(glm::vec3(color.r, color.g, color.b));
+		material.SetSpecular(glm::vec3(color.r, color.g, color.b));
 
 	float shininess;
 	mat->Get(AI_MATKEY_SHININESS, shininess);
-	material.setShininess(shininess);
+	material.SetShininess(shininess);
 
 	float transparency;
 	if (mat->Get(AI_MATKEY_OPACITY, transparency) == AI_SUCCESS)
-		material.setTransparency(transparency);
+		material.SetTransparency(transparency);
 
-	material.unsetSupportTex();
+	material.UnsetSupportTex();
 	return material;
 }
 

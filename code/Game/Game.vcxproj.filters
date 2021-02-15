@@ -125,9 +125,6 @@
     <ClCompile Include="WaterBuffers.cpp">
       <Filter>engine\Render\new\FrameBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>engine\Render\new\renderable</Filter>
-    </ClCompile>
     <ClCompile Include="Shape2.cpp">
       <Filter>engine\Render\new\renderable\shape</Filter>
     </ClCompile>
@@ -205,6 +202,9 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>engine\Render\Renderable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,9 +291,6 @@
     </Filter>
     <Filter Include="engine\Render\new\renderable\skybox">
       <UniqueIdentifier>{c86ad07b-2573-45e9-881a-b2a33687a519}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\new\renderable\terrain">
-      <UniqueIdentifier>{547b879d-ef2d-4faf-8426-c8dcd8378fdc}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Render\new\renderable\water">
       <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
@@ -471,9 +468,6 @@
     <ClInclude Include="WaterBuffers.h">
       <Filter>engine\Render\new\FrameBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>engine\Render\new\renderable</Filter>
-    </ClInclude>
     <ClInclude Include="Shape2.h">
       <Filter>engine\Render\new\renderable\shape</Filter>
     </ClInclude>
@@ -562,6 +556,9 @@
       <Filter>engine\Render\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="Renderable.h">
+      <Filter>engine\Render\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
       <Filter>engine\Render\Renderable</Filter>
     </ClInclude>
   </ItemGroup>
