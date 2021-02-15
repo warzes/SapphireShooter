@@ -310,7 +310,6 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="ShadersManager.h" />
     <ClInclude Include="Shadow.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Shape2.h" />
