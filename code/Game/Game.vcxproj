@@ -276,7 +276,6 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="Material.h" />
-    <ClInclude Include="MaterialDecorator.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Mesh2.h" />
     <ClInclude Include="MeshBone.h" />
@@ -330,7 +329,6 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transformation.h" />
     <ClInclude Include="Transformationable.h" />
-    <ClInclude Include="TransformDecorator.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Water.h" />
     <ClInclude Include="WaterBuffers.h" />

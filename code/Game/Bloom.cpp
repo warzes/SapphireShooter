@@ -33,7 +33,7 @@ void Bloom::blurTexture(std::shared_ptr<ShaderProgram> blurProgram, const Textur
 		blurProgram->SetInteger("isHorizontal", horizontal);
 		Texture::active(0);
 		glBindTexture(GL_TEXTURE_2D, first_iteration ? texture.getId() : pingPongBuffer[!horizontal].getTextures()[0].getId());
-		quad.render(blurProgram);
+		quad.Render(blurProgram);
 		horizontal = !horizontal;
 		if (first_iteration)
 			first_iteration = false;

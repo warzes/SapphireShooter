@@ -75,7 +75,7 @@ void PostProcessing::renderToQuad(std::shared_ptr<ShaderProgram> program, const 
 		Texture::active(i);
 		glBindTexture(GL_TEXTURE_2D, textures[i]);
 	}
-	quad.render(program);
+	quad.Render(program);
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);

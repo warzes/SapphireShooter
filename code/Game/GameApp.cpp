@@ -62,8 +62,8 @@ void GameApp::Init()
 
 	water->getDudvMap().load("textures/water-dudv.jpg", GL_TEXTURE_2D);
 	water->getNormalMap().load("textures/water-normal.jpg", GL_TEXTURE_2D);
-	water->setPosition(glm::vec3(0.0f, 15.0f, 0.0f));
-	water->scale(glm::vec3(2000.0f));
+	water->SetPosition(glm::vec3(0.0f, 15.0f, 0.0f));
+	water->SetScale(glm::vec3(2000.0f));
 
 	scene = new Scene(&m_mainCamera);
 	scene->initShadersManager();
@@ -212,7 +212,7 @@ void GameApp::Render()
 		fontRenderer->setScale(0.5);
 		fontRenderer->setPosition(8, 600);
 		fontRenderer->setText("123");
-		fontRenderer->render(scene->getFontProgram());
+		fontRenderer->Render(scene->getFontProgram());
 
 		post->endProcessing();
 		std::shared_ptr<ShaderProgram> prog = scene->getPostProcessProgram();

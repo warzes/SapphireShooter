@@ -18,7 +18,7 @@ class FontRenderer : public Shape2
 public:
 	FontRenderer(const Font& f);
 
-	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void Render(std::shared_ptr<ShaderProgram> program);
 
 	void setColor(const glm::vec3& c) { color = c; }
 	glm::vec3 getColor() const { return color; }

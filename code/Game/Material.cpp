@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Material.h"
 
-void Material::render(std::shared_ptr<ShaderProgram> program)
+void Material::Render(std::shared_ptr<ShaderProgram> program)
 {
 	program->SetVector3f("mat.diffuse", diffuse);
 	program->SetVector3f("mat.ambient", ambient);

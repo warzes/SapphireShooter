@@ -67,7 +67,7 @@ void Mesh::initMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::render(std::shared_ptr<ShaderProgram> program)
+void Mesh::Render(std::shared_ptr<ShaderProgram> program)
 {
 	unsigned diffuseNum = 0, specularNum = 0;
 	for (unsigned i = 0; i < textures.size(); ++i)
@@ -87,7 +87,7 @@ void Mesh::render(std::shared_ptr<ShaderProgram> program)
 
 	program->SetInteger("diffuseTexturesAmount", diffuseNum);
 	program->SetInteger("specularTexturesAmount", specularNum);
-	material.render(program);
+	material.Render(program);
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

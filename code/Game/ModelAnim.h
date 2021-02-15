@@ -51,7 +51,7 @@ public:
 	ModelAnim() { ; }
 	ModelAnim(const std::string& path);
 
-	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void Render(std::shared_ptr<ShaderProgram> program);
 	virtual void load(const std::string& path);
 
 	void play(const float& st, const float& et);

@@ -58,7 +58,7 @@ void Skybox::init()
 	glEnableVertexAttribArray(0);
 }
 
-void Skybox::render(std::shared_ptr<ShaderProgram> program)
+void Skybox::Render(std::shared_ptr<ShaderProgram> program)
 {
 	glDepthFunc(GL_LEQUAL);
 	program->SetInteger("skybox", 0);

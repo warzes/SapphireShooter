@@ -20,5 +20,5 @@ public:
 	Shape2& operator=(const Shape2& shape);
 	virtual ~Shape2();
 
-	virtual unsigned getVAO() const { return VAO; }
+	virtual unsigned GetVAO() const { return VAO; }
 };

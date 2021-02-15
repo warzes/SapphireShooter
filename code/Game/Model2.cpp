@@ -68,11 +68,11 @@ void Model2::load(const std::string& path)
 	processNode(scene->mRootNode);
 }
 
-void Model2::render(std::shared_ptr<ShaderProgram> program)
+void Model2::Render(std::shared_ptr<ShaderProgram> program)
 {
-	Transformationable::render(program);
+	Transformationable::Render(program);
 	for (unsigned i = 0; i < meshes.size(); ++i)
-		meshes[i]->render(program);
+		meshes[i]->Render(program);
 }
 
 void Model2::processNode(const aiNode* node)

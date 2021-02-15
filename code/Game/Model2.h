@@ -37,7 +37,7 @@ public:
 	//Model2& operator=(const Model2& model);
 	virtual ~Model2();
 
-	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void Render(std::shared_ptr<ShaderProgram> program);
 	virtual void load(const std::string& path);
 
 	void changeWholeMaterial(const Material& mat);

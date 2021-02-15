@@ -5,7 +5,8 @@
 class Renderable
 {
 public:
-	virtual void render(std::shared_ptr<ShaderProgram> program) = 0;
-	virtual unsigned getVAO() const { return 0; }
-	virtual ~Renderable() { ; }
+	virtual ~Renderable() = default;
+
+	virtual void Render(std::shared_ptr<ShaderProgram> program) = 0;
+	virtual unsigned GetVAO() const { return 0; }
 };

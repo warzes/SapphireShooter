@@ -38,7 +38,7 @@ public:
 	Mesh& operator=(const Mesh& mesh);
 	virtual ~Mesh();
 
-	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void Render(std::shared_ptr<ShaderProgram> program);
 
 	void setMaterial(const Material& mat) { material = mat; }
 	const Material& getMaterial() const { return material; }

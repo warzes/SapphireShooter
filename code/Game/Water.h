@@ -16,11 +16,11 @@ class Water : public Transformationable
 
 public:
 	WaterBuffers buffers;
-	Water(Camera* cam) : camera(cam) { rotateX(-90); }
+	Water(Camera* cam) : camera(cam) { RotateX(-90); }
 
-	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void Render(std::shared_ptr<ShaderProgram> program);
 	void renderReflectAndRefract(Scene* scene);
-	virtual unsigned getVAO() const { return plane.getVAO(); }
+	virtual unsigned GetVAO() const { return plane.GetVAO(); }
 
 	Texture& getDudvMap() { return dudvMap; }
 	Texture& getNormalMap() { return normalMap; }

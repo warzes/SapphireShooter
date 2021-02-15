@@ -15,7 +15,7 @@ void Light::generateShadowTransforms()
 	shadowTransforms.push_back(projection * glm::lookAt(position, position + glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
 }
 
-void Light::render(std::shared_ptr<ShaderProgram> program)
+void Light::Render(std::shared_ptr<ShaderProgram> program)
 {
 	using std::string;
 	string prefix = "lights[" + std::to_string(getIndex()) + "]";

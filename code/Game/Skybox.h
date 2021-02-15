@@ -14,7 +14,7 @@ public:
 
 	void init();
 
-	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void Render(std::shared_ptr<ShaderProgram> program);
 
 	Texture& getTexture() { return texture; }
 };

@@ -36,11 +36,11 @@ void ModelAnim::initRender(std::shared_ptr<ShaderProgram> program)
 	}
 }
 
-void ModelAnim::render(std::shared_ptr<ShaderProgram> program)
+void ModelAnim::Render(std::shared_ptr<ShaderProgram> program)
 {
 	initRender(program);
 	update();
-	Model2::render(program);
+	Model2::Render(program);
 }
 
 void ModelAnim::play(const float& st, const float& et)

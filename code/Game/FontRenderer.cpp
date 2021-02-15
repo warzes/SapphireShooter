@@ -14,7 +14,7 @@ FontRenderer::FontRenderer(const Font& f) : font(f)
 	glBindVertexArray(0);
 }
 
-void FontRenderer::render(std::shared_ptr<ShaderProgram> program)
+void FontRenderer::Render(std::shared_ptr<ShaderProgram> program)
 {
 	program->Bind();
 	program->SetVector3f("textColor", color);

@@ -23,14 +23,14 @@ Plane::Plane()
 	glBindVertexArray(0);
 }
 
-void Plane::render(std::shared_ptr<ShaderProgram> program)
+void Plane::Render(std::shared_ptr<ShaderProgram> program)
 {
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
 }
 
-void Plane::render(std::shared_ptr<ShaderProgram> program, const unsigned& amount)
+void Plane::Render(std::shared_ptr<ShaderProgram> program, const unsigned& amount)
 {
 	glBindVertexArray(VAO);
 	glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, amount);

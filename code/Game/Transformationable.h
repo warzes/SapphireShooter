@@ -2,37 +2,41 @@
 
 #include "Renderable.h"
 
+// TODO: надо не наследоваться а включать
+
 class Transformationable : public Renderable
 {
-	glm::vec3 vPosition = glm::vec3(0.0f);
-	glm::vec3 vScale = glm::vec3(1.0f);
-	glm::mat4 mRotation = glm::mat4(1.0f);
-
 public:
-	virtual void render(std::shared_ptr<ShaderProgram> program)
+	void Render(std::shared_ptr<ShaderProgram> program) override
 	{
-		program->SetMatrix4("model", getTransformMatrix());
+		program->SetMatrix4("model", GetTransformMatrix());
 	}
-	virtual ~Transformationable() { ; }
 
-	glm::mat4 getTransformMatrix() const
+	glm::mat4 GetTransformMatrix() const
 	{
 		glm::mat4 matrix = glm::mat4(1.0f);
-		matrix = glm::translate(matrix, vPosition);
-		matrix = glm::scale(matrix, vScale);
-		matrix = matrix * mRotation;
+		matrix = glm::translate(matrix, m_position);
+		matrix = glm::scale(matrix, m_scale);
+		matrix = matrix * m_rotation;
 		return matrix;
 	}
 
-	void rotate(const float& angle, const glm::vec3& vec) { mRotation = glm::rotate(mRotation, glm::radians(angle), vec); }
-	void rotateX(const float& angle) { rotate(angle, glm::vec3(1.0f, 0.0f, 0.0f)); }
-	void rotateY(const float& angle) { rotate(angle, glm::vec3(0.0f, 1.0f, 0.0f)); }
-	void rotateZ(const float& angle) { rotate(angle, glm::vec3(0.0f, 0.0f, 1.0f)); }
-	void translate(const glm::vec3& translate) { vPosition += translate; }
-	void scale(const glm::vec3& vec) { vScale = vec; }
+	void Rotate(const float& angle, const glm::vec3& vec) { m_rotation = glm::rotate(m_rotation, glm::radians(angle), vec); }
+	void RotateX(const float& angle) { Rotate(angle, glm::vec3(1.0f, 0.0f, 0.0f)); }
+	void RotateY(const float& angle) { Rotate(angle, glm::vec3(0.0f, 1.0f, 0.0f)); }
+	void RotateZ(const float& angle) { Rotate(angle, glm::vec3(0.0f, 0.0f, 1.0f)); }
+	
+	void Translate(const glm::vec3& translate) { m_position += translate; }
+	void SetScale(const glm::vec3& vec) { m_scale = vec; }
 
-	void setPosition(const glm::vec3& vec) { vPosition = vec; }
-	glm::vec3 getPosition() const { return vPosition; }
-	glm::vec3 getScale() const { return vScale; }
-	glm::mat4 getRotation() const { return mRotation; }
+	void SetPosition(const glm::vec3& vec) { m_position = vec; }
+
+	glm::vec3 GetPosition() const { return m_position; }
+	glm::vec3 GetScale() const { return m_scale; }
+	glm::mat4 GetRotation() const { return m_rotation; }
+
+private:
+	glm::vec3 m_position = glm::vec3(0.0f);
+	glm::vec3 m_scale = glm::vec3(1.0f);
+	glm::mat4 m_rotation = glm::mat4(1.0f);
 };

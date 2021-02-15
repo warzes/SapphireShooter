@@ -35,7 +35,7 @@ public:
 		index = amount++; generateShadowTransforms();
 	}
 
-	virtual void render(std::shared_ptr<ShaderProgram> program);
+	virtual void Render(std::shared_ptr<ShaderProgram> program);
 
 	void setPosition(const glm::vec3& pos) { position = pos; generateShadowTransforms(); }
 	void setAmbient(const glm::vec3& color) { ambient = color; }

@@ -96,7 +96,7 @@ void Scene::renderObjects(std::shared_ptr<ShaderProgram> prog)
 	{
 		prog->Bind();
 		for (unsigned i = 0; i < objects.size(); ++i)
-			objects[i]->render(prog);
+			objects[i]->Render(prog);
 	}
 }
 
@@ -106,7 +106,7 @@ void Scene::renderAnimations(std::shared_ptr<ShaderProgram> prog)
 	{
 		prog->Bind();
 		for (unsigned i = 0; i < animations.size(); ++i)
-			animations[i]->render(prog);
+			animations[i]->Render(prog);
 	}
 }
 
@@ -116,7 +116,7 @@ void Scene::renderWaters(std::shared_ptr<ShaderProgram> prog)
 	{
 		prog->Bind();
 		for (unsigned i = 0; i < waters.size(); ++i)
-			waters[i]->render(prog);
+			waters[i]->Render(prog);
 	}
 }
 
@@ -128,7 +128,7 @@ void Scene::renderSkybox()
 		skyboxProgram->Bind();
 		glm::mat4 vp = camera->GetProjectionMatrix() * glm::mat4(glm::mat3(camera->GetViewMatrix()));
 		skyboxProgram->SetMatrix4("viewProject", vp);
-		m_skybox->render(skyboxProgram);
+		m_skybox->Render(skyboxProgram);
 	}
 }
 
@@ -148,19 +148,19 @@ void Scene::renderLights()
 		if (isObjectProgram)
 		{
 			objProgram->Bind();
-			lights[i]->render(objProgram);
+			lights[i]->Render(objProgram);
 		}
 
 		if (isAnimProgram)
 		{
 			animProgram->Bind();
-			lights[i]->render(animProgram);
+			lights[i]->Render(animProgram);
 		}
 
 		if (isWaterProgram)
 		{
 			waterProgram->Bind();
-			lights[i]->render(waterProgram);
+			lights[i]->Render(waterProgram);
 		}
 
 		//if (isWorldProgram)

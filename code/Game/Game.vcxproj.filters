@@ -286,9 +286,6 @@
     <Filter Include="engine\Render\new\renderable\light">
       <UniqueIdentifier>{05de6c1b-fef8-4606-b3b7-7f8e67c63161}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\new\renderable\decorator">
-      <UniqueIdentifier>{9d7f84fd-568b-43ad-a776-b2a1845546f4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Render\new\renderable\Font">
       <UniqueIdentifier>{5f9ee3af-02e9-42fb-9f7f-d5a07c5ed9f7}</UniqueIdentifier>
     </Filter>
@@ -315,6 +312,9 @@
     </Filter>
     <Filter Include="engine\Scene">
       <UniqueIdentifier>{daa7c5ba-4337-4b01-87f8-d24519bde0cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Renderable">
+      <UniqueIdentifier>{9608b21b-7f8c-45d2-a234-a135ce0fa346}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -471,12 +471,6 @@
     <ClInclude Include="WaterBuffers.h">
       <Filter>engine\Render\new\FrameBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="Renderable.h">
-      <Filter>engine\Render\new\renderable</Filter>
-    </ClInclude>
-    <ClInclude Include="Transformationable.h">
-      <Filter>engine\Render\new\renderable</Filter>
-    </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>engine\Render\new\renderable</Filter>
     </ClInclude>
@@ -503,12 +497,6 @@
     </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>engine\Render\new\renderable\light</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialDecorator.h">
-      <Filter>engine\Render\new\renderable\decorator</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformDecorator.h">
-      <Filter>engine\Render\new\renderable\decorator</Filter>
     </ClInclude>
     <ClInclude Include="FontRenderer.h">
       <Filter>engine\Render\new\renderable\Font</Filter>
@@ -569,6 +557,12 @@
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformationable.h">
+      <Filter>engine\Render\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>engine\Render\Renderable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
