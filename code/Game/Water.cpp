@@ -38,20 +38,20 @@ void Water::render(std::shared_ptr<ShaderProgram> program)
 
 void Water::renderReflectAndRefract(Scene* scene)
 {
-	glm::vec3 defaultCamPos = camera->getPosition();
-	float defaultCamPitch = camera->getPitch();
+	glm::vec3 defaultCamPos = camera->GetCameraPos();
+	float defaultCamPitch = camera->GetPitch();
 
 	float distance = 2 * (defaultCamPos.y - getPosition().y);
-	camera->setPosition(glm::vec3(defaultCamPos.x, defaultCamPos.y - distance, defaultCamPos.z));
-	camera->setPitch(-defaultCamPitch);
+	camera->SetCameraPos(glm::vec3(defaultCamPos.x, defaultCamPos.y - distance, defaultCamPos.z));
+	camera->SetPitch(-defaultCamPitch);
 	camera->updateVectors();
 
 	buffers.bindReflectBuffer();
 	scene->render(glm::vec4(0, 1, 0, -getPosition().y + 0.1));
 	FrameBuffer::unbind();
 
-	camera->setPosition(defaultCamPos);
-	camera->setPitch(defaultCamPitch);
+	camera->SetCameraPos(defaultCamPos);
+	camera->SetPitch(defaultCamPitch);
 	camera->updateVectors();
 
 	buffers.bindRefractBuffer();

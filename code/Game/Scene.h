@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Skybox.h"
-#include "Terrain2.h"
-#include "BaseCamera.h"
+#include "Camera.h"
 #include "Light.h"
 #include "ShadersManager.h"
 #include "Shadow.h"
@@ -10,9 +9,8 @@
 class Scene
 {
 	ShadersManager& manager;
-	BaseCamera* camera = nullptr;
+	Camera* camera = nullptr;
 	Skybox* skybox = nullptr;
-	std::vector<Renderable*> terrains;
 	std::vector<Renderable*> objects;
 	std::vector<Renderable*> animations;
 	std::vector<Renderable*> waters;
@@ -23,7 +21,6 @@ class Scene
 	void initProgram(std::shared_ptr<ShaderProgram> program, const glm::vec4& clipPlane);
 	void initPrograms(const glm::vec4& clipPlane);
 
-	void renderTerrains(std::shared_ptr<ShaderProgram> prog);
 	void renderObjects(std::shared_ptr<ShaderProgram> prog);
 	void renderAnimations(std::shared_ptr<ShaderProgram> prog);
 	void renderWaters(std::shared_ptr<ShaderProgram> prog);
@@ -31,7 +28,7 @@ class Scene
 	void renderSkybox();
 
 public:
-	Scene(BaseCamera* cam, ShadersManager& shadersmanager) : camera(cam), manager(shadersmanager) { ; }
+	Scene(Camera* cam, ShadersManager& shadersmanager) : camera(cam), manager(shadersmanager) { ; }
 
 	void renderShadows();
 	virtual void render(const glm::vec4& clipPlane = glm::vec4(0, 1, 0, 10000));
@@ -40,18 +37,15 @@ public:
 	void addLight(Light& obj);
 	void removeLight(const unsigned& n);
 
-	void addTerrain(Renderable& obj) { terrains.push_back(&obj); }
 	void addObject(Renderable& obj) { objects.push_back(&obj); }
 	void addAnimation(Renderable& obj) { animations.push_back(&obj); }
 	void addWater(Renderable& obj) { waters.push_back(&obj); }
 
-	void removeTerrain(const unsigned& n) { terrains.erase(terrains.begin() + n); }
 	void removeObject(const unsigned& n) { objects.erase(objects.begin() + n); }
 	void removeAnimation(const unsigned& n) { animations.erase(animations.begin() + n); }
 	void removeWater(const unsigned& n) { waters.erase(waters.begin() + n); }
 
 	Skybox& getSkybox() { return *skybox; }
-	std::vector<Renderable*>& getTerrains() { return terrains; }
 	std::vector<Renderable*>& getObjects() { return objects; }
 	std::vector<Renderable*>& getAnimations() { return animations; }
 	std::vector<Renderable*>& getWaters() { return waters; }

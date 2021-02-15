@@ -100,8 +100,6 @@ constexpr float cameraFar = 1000;
 constexpr float cameraNear = 0.05;
 constexpr float shadowFar = 500;
 constexpr float anisotropy = 0;
-constexpr glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-constexpr glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, -1.0f);
 constexpr glm::vec3 gravity = glm::vec3(0.0f, -9.81f, 0.0f);
 #define GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE
 #define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT 0x84FF

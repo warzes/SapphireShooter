@@ -6,7 +6,6 @@ void Scene::initPrograms(const glm::vec4& clipPlane)
 {
 	initProgram(manager.getObjectProgram(), clipPlane);
 	initProgram(manager.getAnimProgram(), clipPlane);
-	initProgram(manager.getTerrainProgram(), clipPlane);
 	initProgram(manager.getWaterProgram(), clipPlane);
 	initProgram(manager.getTerrainDepthProgram(), clipPlane);
 }
@@ -16,8 +15,8 @@ void Scene::initProgram(std::shared_ptr<ShaderProgram> program, const glm::vec4&
 	if (program && program->GetId() != 0)
 	{
 		program->Bind();
-		program->SetMatrix4("viewProject", camera->getViewProjectionMatrix());
-		program->SetVector3f("viewPos", camera->getPosition());
+		program->SetMatrix4("viewProject", camera->GetViewProjectionMatrix());
+		program->SetVector3f("viewPos", camera->GetCameraPos());
 		program->SetInteger("lightsAmount", Light::amount);
 		program->SetInteger("allowShadows", allowShadows ? 1 : 0);
 		program->SetVector4f("clipPlane", clipPlane);
@@ -33,8 +32,6 @@ void Scene::renderShadows()
 			programs.push_back(manager.getObjectProgram());
 		if (manager.getAnimProgram() != nullptr && manager.getAnimProgram()->GetId() != 0)
 			programs.push_back(manager.getAnimProgram());
-		if (manager.getTerrainProgram() != nullptr && manager.getTerrainProgram()->GetId() != 0)
-			programs.push_back(manager.getTerrainProgram());
 
 		std::vector<std::shared_ptr<ShaderProgram>> depthPrograms;
 		if (manager.getDepthProgram() != nullptr && manager.getDepthProgram()->GetId() != 0)
@@ -49,7 +46,6 @@ void Scene::renderShadows()
 			shadows[i].startCastShadow(*lights[i], depthPrograms);
 			renderObjects(manager.getDepthProgram());
 			renderAnimations(manager.getAnimDepthProgram());
-			renderTerrains(manager.getTerrainDepthProgram());
 			shadows[i].endCastShadow(*lights[i], programs);
 		}
 	}
@@ -67,7 +63,6 @@ void Scene::render(const glm::vec4& clipPlane)
 
 	initPrograms(clipPlane);
 	renderLights();
-	renderTerrains(manager.getTerrainProgram());
 	renderObjects(manager.getObjectProgram());
 	renderAnimations(manager.getAnimProgram());
 	renderWaters(manager.getWaterProgram());
@@ -104,23 +99,13 @@ void Scene::renderWaters(std::shared_ptr<ShaderProgram> prog)
 	}
 }
 
-void Scene::renderTerrains(std::shared_ptr<ShaderProgram> prog)
-{
-	if (prog && prog->GetId() != 0)
-	{
-		prog->Bind();
-		for (unsigned i = 0; i < terrains.size(); ++i)
-			terrains[i]->render(prog);
-	}
-}
-
 void Scene::renderSkybox()
 {
 	std::shared_ptr<ShaderProgram> skyboxProgram = manager.getSkyboxProgram();
 	if (skybox != nullptr && skyboxProgram->GetId() != 0)
 	{
 		skyboxProgram->Bind();
-		glm::mat4 vp = camera->getProjectionMatrix() * glm::mat4(glm::mat3(camera->getViewMatrix()));
+		glm::mat4 vp = camera->GetProjectionMatrix() * glm::mat4(glm::mat3(camera->GetViewMatrix()));
 		skyboxProgram->SetMatrix4("viewProject", vp);
 		skybox->render(skyboxProgram);
 	}
@@ -130,9 +115,9 @@ void Scene::renderLights()
 {
 	std::shared_ptr<ShaderProgram> objProgram = manager.getObjectProgram();
 	std::shared_ptr<ShaderProgram> animProgram = manager.getAnimProgram();
-	std::shared_ptr<ShaderProgram> worldProgram = manager.getTerrainProgram();
+	//std::shared_ptr<ShaderProgram> worldProgram = manager.getTerrainProgram();
 	std::shared_ptr<ShaderProgram> waterProgram = manager.getWaterProgram();
-	bool isWorldProgram = worldProgram && worldProgram->GetId() != 0;
+	//bool isWorldProgram = worldProgram && worldProgram->GetId() != 0;
 	bool isObjectProgram = objProgram && objProgram->GetId() != 0;
 	bool isAnimProgram = animProgram && animProgram->GetId() != 0;
 	bool isWaterProgram = waterProgram && waterProgram->GetId() != 0;
@@ -157,11 +142,11 @@ void Scene::renderLights()
 			lights[i]->render(waterProgram);
 		}
 
-		if (isWorldProgram)
-		{
-			worldProgram->Bind();
-			lights[i]->render(worldProgram);
-		}
+		//if (isWorldProgram)
+		//{
+		//	worldProgram->Bind();
+		//	lights[i]->render(worldProgram);
+		//}
 	}
 }
 

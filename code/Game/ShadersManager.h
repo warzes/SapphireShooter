@@ -13,7 +13,6 @@ class ShadersManager
 	std::shared_ptr<ShaderProgram> blur = nullptr;
 	std::shared_ptr<ShaderProgram> particle = nullptr;
 	std::shared_ptr<ShaderProgram> skybox = nullptr;
-	std::shared_ptr<ShaderProgram> terrain = nullptr;
 	std::shared_ptr<ShaderProgram> font = nullptr;
 	std::shared_ptr<ShaderProgram> postprocess = nullptr;
 	std::shared_ptr<ShaderProgram> water = nullptr;
@@ -29,7 +28,6 @@ public:
 	void setBlurProgram(const std::shared_ptr<ShaderProgram> prog) { blur = prog; }
 	void setParticleProgram(const std::shared_ptr<ShaderProgram> prog) { particle = prog; }
 	void setSkyboxProgram(const std::shared_ptr<ShaderProgram> prog) { skybox = prog; }
-	void setTerrainProgram(const std::shared_ptr<ShaderProgram> prog) { terrain = prog; }
 	void setFontProgram(const std::shared_ptr<ShaderProgram> prog) { font = prog; }
 	void setWaterProgram(const std::shared_ptr<ShaderProgram> prog) { water = prog; }
 
@@ -43,7 +41,6 @@ public:
 	std::shared_ptr<ShaderProgram> getBlurProgram() { return blur; }
 	std::shared_ptr<ShaderProgram> getParticleProgram() { return particle; }
 	std::shared_ptr<ShaderProgram> getSkyboxProgram() { return skybox; }
-	std::shared_ptr<ShaderProgram> getTerrainProgram() { return terrain; }
 	std::shared_ptr<ShaderProgram> getFontProgram() { return font; }
 	std::shared_ptr<ShaderProgram> getWaterProgram() { return water; }
 };

@@ -10,7 +10,6 @@ Camera::Camera() :
 	m_fieldOfView(80.0f),
 	m_cameraSensitivity(25.0f)
 {
-	m_cameraRight = glm::normalize(glm::cross(m_cameraUpVector, -m_cameraForward));
 }
 //-----------------------------------------------------------------------------
 void Camera::InitCameraPerspective(float fov, float aspectRatio, float near, float far)
@@ -37,13 +36,13 @@ void Camera::MoveBackward(float dt)
 void Camera::StrafeLeft(float dt)
 {
 	glm::vec3 StrafteDirection = glm::cross(m_cameraForward, m_cameraUpVector);
-	m_cameraPos -= (m_cameraSpeed * dt) * StrafteDirection;
+	m_cameraPos -= (m_cameraSpeed * dt) * right;
 }
 //-----------------------------------------------------------------------------
 void Camera::StrafeRight(float dt)
 {
 	glm::vec3 StrafteDirection = glm::cross(m_cameraForward, m_cameraUpVector);
-	m_cameraPos += (m_cameraSpeed * dt) * StrafteDirection;
+	m_cameraPos += (m_cameraSpeed * dt) * right;
 }
 //-----------------------------------------------------------------------------
 void Camera::Rise(float dt)
@@ -61,14 +60,33 @@ void Camera::MouseUpdate(float dt)
 	float MouseDeltaX = static_cast<float>(Mouse2::Get().MouseMove().x);
 	float MouseDeltaY = static_cast<float>(Mouse2::Get().MouseMove().y);
 
-	glm::vec3 RotateAround = glm::cross(m_cameraForward, m_cameraUpVector);
+	Rotate(MouseDeltaX * dt, MouseDeltaY * dt);
+}
+//-----------------------------------------------------------------------------
+void Camera::Rotate(float offsetX, float offsetY)
+{
+	yaw += offsetX * m_cameraSensitivity;
+	pitch += -offsetY * m_cameraSensitivity;
 
-	m_cameraForward = glm::mat3(glm::rotate(glm::radians(-MouseDeltaX) * m_cameraSensitivity * dt, m_cameraUpVector)) * m_cameraForward;
-	m_cameraForward = glm::mat3(glm::rotate(glm::radians(-MouseDeltaY) * m_cameraSensitivity * dt, RotateAround)) * m_cameraForward;
+	if (pitch > 89) pitch = 89;
+	else if (pitch < -89) pitch = -89;
+	updateVectors();
+}
+//-----------------------------------------------------------------------------
+void Camera::updateVectors()
+{
+	glm::vec3 front;
+	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	m_cameraForward = glm::normalize(front);
+	right = glm::normalize(glm::cross(m_cameraForward, worldUp));
+	m_cameraUpVector = glm::normalize(glm::cross(right, m_cameraForward));
 }
 //-----------------------------------------------------------------------------
 void Camera::UpdateLookAt()
 {
-	m_view = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraForward, m_cameraUpVector);
+	updateVectors();
+	//m_view = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraForward, m_cameraUpVector);
 }
 //-----------------------------------------------------------------------------

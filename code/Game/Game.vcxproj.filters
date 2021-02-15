@@ -161,14 +161,8 @@
     <ClCompile Include="Skybox.cpp">
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClCompile>
-    <ClCompile Include="Terrain2.cpp">
-      <Filter>engine\Render\new\renderable\terrain</Filter>
-    </ClCompile>
     <ClCompile Include="Water.cpp">
       <Filter>engine\Render\new\renderable\water</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseCamera.cpp">
-      <Filter>engine\Render\new\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>engine\Render\new\Scene</Filter>
@@ -534,14 +528,8 @@
     <ClInclude Include="Skybox.h">
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClInclude>
-    <ClInclude Include="Terrain2.h">
-      <Filter>engine\Render\new\renderable\terrain</Filter>
-    </ClInclude>
     <ClInclude Include="Water.h">
       <Filter>engine\Render\new\renderable\water</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseCamera.h">
-      <Filter>engine\Render\new\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>engine\Render\new\Scene</Filter>

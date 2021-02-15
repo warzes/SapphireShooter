@@ -48,31 +48,32 @@ void GameApp::Init()
 	postHDR = new PostProcessing(2);
 	post = new PostProcessing();
 
-	perspectiveCamera.setPosition(glm::vec3(0.0f, 25.0f, 0.0f));
-	perspectiveCamera.rotate(50, -80);
+	m_mainCamera.SetCameraPos(glm::vec3(0.0f, 25.0f, 0.0f));
 
 	fontRenderer = new FontRenderer(Font("fonts/arial.ttf"));
 	fontRenderer->setColor(glm::vec3(1.0));
 
 	skybox.init();
 
-	skybox.getTexture().load({ 
+	skybox.getTexture().load(
+		{ 
 		"textures/cubemapTEST/px.jpg", 
 		"textures/cubemapTEST/nx.jpg", 
 		"textures/cubemapTEST/py.jpg", 
 		"textures/cubemapTEST/ny.jpg", 
 		"textures/cubemapTEST/pz.jpg", 
-		"textures/cubemapTEST/nz.jpg" });
+		"textures/cubemapTEST/nz.jpg" 
+		});
 
 
-	water = new Water(&perspectiveCamera);
+	water = new Water(&m_mainCamera);
 
 	water->getDudvMap().load("textures/water-dudv.jpg", GL_TEXTURE_2D);
 	water->getNormalMap().load("textures/water-normal.jpg", GL_TEXTURE_2D);
 	water->setPosition(glm::vec3(0.0f, 15.0f, 0.0f));
 	water->scale(glm::vec3(200.0f));
 
-	scene = new Scene(&perspectiveCamera, manager);
+	scene = new Scene(&m_mainCamera, manager);
 	scene->addSkybox(skybox);
 	scene->addLight(pointLight);
 
@@ -131,9 +132,9 @@ void GameApp::Init()
 void GameApp::Update(float dt)
 {
 	resizeApp();
+	m_mainCamera.UpdateLookAt();
 #if TEST
 #else
-	m_mainCamera.UpdateLookAt();
 	Player::Get().Update(m_mainCamera, m_terrain, dt);
 #endif
 }
@@ -141,19 +142,16 @@ void GameApp::Update(float dt)
 void GameApp::ProcessInput(float dt)
 {
 #if TEST
-	float MouseDeltaX = static_cast<float>(Mouse2::Get().MouseMove().x);
-	float MouseDeltaY = static_cast<float>(Mouse2::Get().MouseMove().y);
-	perspectiveCamera.rotate(MouseDeltaX, MouseDeltaY);
-
+	m_mainCamera.MouseUpdate(dt);
 
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_W))
-		perspectiveCamera.moveTop();
+		m_mainCamera.MoveForward(dt);
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_S))
-		perspectiveCamera.moveBottom();
+		m_mainCamera.MoveBackward(dt);
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_A))
-		perspectiveCamera.moveLeft();
+		m_mainCamera.StrafeLeft(dt);
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_D))
-		perspectiveCamera.moveRight();
+		m_mainCamera.StrafeRight(dt);
 
 	if (Keyboard::Get().KeyPressed(Keyboard::KEY_P))
 	{
@@ -288,15 +286,17 @@ void GameApp::resizeApp()
 	{
 		m_width = GetEngineDescription().window.width;
 		m_height = GetEngineDescription().window.height;		
+
+		const float aspectRatio = float(m_width) / float(m_height);
+		m_mainCamera.InitCameraPerspective(80.0f, aspectRatio, 0.1f, 5000.0f);	
+
 #if TEST
 		bloomEffect->updateBuffers();
 		postHDR->updateBuffers();
 		post->updateBuffers();
 		water->buffers.updateBuffers();
 #else		
-		const float aspectRatio = float(m_width) / float(m_height);
-		m_mainCamera.InitCameraPerspective(80.0f, aspectRatio, 0.1f, 5000.0f);
-		
+
 		m_framebuffer.DestroyFramebuffer();
 		m_framebuffer.CreateFramebuffer(m_width, m_height);
 #endif

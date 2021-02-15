@@ -1,11 +1,15 @@
 #pragma once
 
+#include "Engine.h"
+
 class Camera
 {
 public:
 	Camera();
 
 	void UpdateLookAt();
+
+	void Rotate(float offsetX, float offsetY);
 
 	void InitCameraPerspective(float fov, float aspectRatio, float near, float far);
 	void InitCameraOrthographic(float left, float right, float bottom, float up, float near, float far);
@@ -26,14 +30,24 @@ public:
 	void SetCameraSensitivity(float sen) { m_cameraSensitivity = sen; }
 
 	const glm::mat4& GetProjectionMatrix() const { return m_projection; }
-	const glm::mat4& GetViewMatrix() const { return m_view; }
+	//const glm::mat4& GetViewMatrix() const { return m_view; }
+	glm::mat4 GetViewMatrix() const { return glm::lookAt(m_cameraPos, m_cameraPos + m_cameraForward, m_cameraUpVector); }
+	glm::mat4 GetViewProjectionMatrix() const { return GetProjectionMatrix() * GetViewMatrix(); }
+
+
 	glm::vec3& GetCameraPos() { return m_cameraPos; }
 	const glm::vec3& GetCameraForward() const { return m_cameraForward; }
 	const glm::vec3& GetCameraUpVector() const { return m_cameraUpVector; }
-	const glm::vec3& GetCameraRightVector() const { return m_cameraRight; }
 	float GetCameraSpeed() const { return m_cameraSpeed; }
 	float GetCameraFOV() const { return m_fieldOfView; }
 	float GetCameraSensitivity() const { return m_cameraSensitivity; }
+
+	float GetPitch() const { return pitch; }
+	float GetYaw() const { return yaw; }
+	void SetPitch(const float& val) { pitch = val; }
+	void SetYaw(const float& val) { yaw = val; }
+
+	void updateVectors();
 
 private:
 	glm::mat4 m_projection;
@@ -41,9 +55,14 @@ private:
 	glm::vec3 m_cameraUpVector;
 	glm::vec3 m_cameraPos;
 	glm::vec3 m_cameraForward;
-	glm::vec3 m_cameraRight;
 	glm::vec2 m_oldMousePos;
 	float m_fieldOfView;
 	float m_cameraSpeed;
 	float m_cameraSensitivity;
+
+	float pitch = 0.0f;
+	float yaw = -90;
+
+	glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::vec3 right = glm::vec3(0.0f, 0.0f, 0.0f);
 };

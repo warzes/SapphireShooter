@@ -6,7 +6,7 @@
 
 #if TEST
 #include "ShadersManager.h"
-#include "BaseCamera.h"
+#include "Camera.h"
 #include "FontRenderer.h"
 #include "TextureGenerator2D.h"
 #include "ConverterToNormalMap.h"
@@ -48,7 +48,6 @@ private:
 	void initShadersManager();
 
 	ShadersManager manager;
-	BaseCamera perspectiveCamera;
 	FontRenderer *fontRenderer;
 	TextureGenerator2D generator;
 	ConverterToNormalMap conventer;
@@ -64,6 +63,8 @@ private:
 	float lastPosX = 0;
 	float lastPosY = 0;
 	bool isWater = true;
+
+	Camera m_mainCamera;
 
 #else
 	Camera m_mainCamera;
