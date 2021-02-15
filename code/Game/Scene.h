@@ -31,7 +31,10 @@ public:
 	Scene(Camera* cam, ShadersManager& shadersmanager) : camera(cam), manager(shadersmanager) { ; }
 
 	void renderShadows();
-	virtual void render(const glm::vec4& clipPlane = glm::vec4(0, 1, 0, 10000));
+	void render(const glm::vec4& clipPlane = glm::vec4(0, 1, 0, 10000));
+
+	void render1(const glm::vec4& clipPlane = glm::vec4(0, 1, 0, 10000));
+	void render2(const glm::vec4& clipPlane = glm::vec4(0, 1, 0, 10000));
 
 	void addSkybox(Skybox& obj) { skybox = &obj; }
 	void addLight(Light& obj);

@@ -53,11 +53,6 @@ void Scene::renderShadows()
 
 void Scene::render(const glm::vec4& clipPlane)
 {
-	auto width = GetEngineDescription().window.width;
-	auto height = GetEngineDescription().window.height;
-
-
-	glViewport(0, 0, width, height);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0, 0, 1, 1);
 
@@ -65,6 +60,23 @@ void Scene::render(const glm::vec4& clipPlane)
 	renderLights();
 	renderObjects(manager.getObjectProgram());
 	renderAnimations(manager.getAnimProgram());
+	renderWaters(manager.getWaterProgram());
+	renderSkybox();
+}
+
+void Scene::render1(const glm::vec4& clipPlane)
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClearColor(0, 0, 1, 1);
+
+	initPrograms(clipPlane);
+	renderLights();
+	renderObjects(manager.getObjectProgram());
+	renderAnimations(manager.getAnimProgram());
+}
+
+void Scene::render2(const glm::vec4& clipPlane)
+{
 	renderWaters(manager.getWaterProgram());
 	renderSkybox();
 }

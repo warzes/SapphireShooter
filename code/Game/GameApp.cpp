@@ -48,7 +48,7 @@ void GameApp::Init()
 	postHDR = new PostProcessing(2);
 	post = new PostProcessing();
 
-	m_mainCamera.SetCameraPos(glm::vec3(0.0f, 25.0f, 0.0f));
+	m_mainCamera.SetCameraPos(glm::vec3(30.0f, 25.0f, 30.0f));
 
 	fontRenderer = new FontRenderer(Font("fonts/arial.ttf"));
 	fontRenderer->setColor(glm::vec3(1.0));
@@ -65,20 +65,19 @@ void GameApp::Init()
 		"textures/cubemapTEST/nz.jpg" 
 		});
 
-
 	water = new Water(&m_mainCamera);
 
 	water->getDudvMap().load("textures/water-dudv.jpg", GL_TEXTURE_2D);
 	water->getNormalMap().load("textures/water-normal.jpg", GL_TEXTURE_2D);
 	water->setPosition(glm::vec3(0.0f, 15.0f, 0.0f));
-	water->scale(glm::vec3(200.0f));
+	water->scale(glm::vec3(2000.0f));
 
 	scene = new Scene(&m_mainCamera, manager);
 	scene->addSkybox(skybox);
 	scene->addLight(pointLight);
 
-#else
-	Player::Get().Init(m_mainCamera, glm::vec3(256.0f, 0.0f, 300.0f));
+//#else
+	Player::Get().Init(m_mainCamera, glm::vec3(30.0f, 25.0f, 30.0f));
 
 	m_dirLight.Configure(glm::vec3(-0.1f, -0.1f, -0.1f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.5f, 0.5f, 0.5f));
 	m_dirLight.SetDirection(glm::vec3(0.2f, 1.0f, 0.5f));
@@ -133,10 +132,10 @@ void GameApp::Update(float dt)
 {
 	resizeApp();
 	m_mainCamera.UpdateLookAt();
-#if TEST
-#else
+//#if TEST
+//#else
 	Player::Get().Update(m_mainCamera, m_terrain, dt);
-#endif
+//#endif
 }
 //-----------------------------------------------------------------------------
 void GameApp::ProcessInput(float dt)
@@ -195,14 +194,25 @@ void GameApp::Render()
 
 	if (!polygonMode)
 		postHDR->startProcessing();
+	GLViewport::Clear(true, true);
+
+	scene->render1();
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	m_swords.Draw(m_mainCamera, glm::vec3(300.0f, m_terrain.GetHeightOfTerrain(300.0f, 270.0f) + 10, 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(6.0f));
+	glDisable(GL_CULL_FACE);
+	m_terrain.SetFog(true);
+	m_terrain.Draw(m_mainCamera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
+	m_swords.Draw(m_mainCamera, glm::vec3(1.5f, -2.5f, -2.5f), glm::vec3(0.3f, 1.0f, 0.0f), 30.0f, glm::vec3(1.0f), true);
+	glEnable(GL_CULL_FACE);
 
 	if (isWater)
 	{
 		scene->addWater(*water);
-		scene->render();
+		scene->render2();
 		scene->removeWater(0);
 	}
-	else scene->render();
 
 	if (!polygonMode)
 	{
@@ -275,7 +285,7 @@ void GameApp::Close()
 	delete bloomEffect;
 	delete fontRenderer;
 	delete scene;
-#else
+//#else
 	m_framebuffer.DestroyFramebuffer();
 #endif
 }
@@ -295,7 +305,7 @@ void GameApp::resizeApp()
 		postHDR->updateBuffers();
 		post->updateBuffers();
 		water->buffers.updateBuffers();
-#else		
+//#else		
 
 		m_framebuffer.DestroyFramebuffer();
 		m_framebuffer.CreateFramebuffer(m_width, m_height);

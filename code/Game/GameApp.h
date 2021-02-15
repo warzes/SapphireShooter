@@ -14,7 +14,7 @@
 #include "PostProcessing.h"
 #include "Scene.h"
 #include "Water.h"
-#else
+//#else
 #include "Camera.h"
 #include "Framebuffer.h"
 #include "Terrain.h"
@@ -66,8 +66,8 @@ private:
 
 	Camera m_mainCamera;
 
-#else
-	Camera m_mainCamera;
+//#else
+	//Camera m_mainCamera;
 	Framebuffer m_framebuffer;
 	Terrain m_terrain;
 	DirectionalLight m_dirLight;
