@@ -190,7 +190,6 @@
     <ClCompile Include="Framebuffer.cpp" />
     <ClCompile Include="FrameBuffer2.cpp" />
     <ClCompile Include="GameApp.cpp" />
-    <ClCompile Include="GLVertexBuffer.cpp" />
     <ClCompile Include="GLViewport.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Material.cpp" />
@@ -207,6 +206,7 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="OGLFunc.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEmitter.cpp" />
@@ -249,7 +249,6 @@
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="Water.cpp" />
     <ClCompile Include="WaterBuffers.cpp" />
     <ClCompile Include="WGLFunc.cpp" />
@@ -276,7 +275,6 @@
     <ClInclude Include="FrameBuffer2.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="GLVertexBuffer.h" />
     <ClInclude Include="GLViewport.h" />
     <ClInclude Include="InlineFunc.h" />
     <ClInclude Include="Keyboard.h" />
@@ -295,6 +293,7 @@
     <ClInclude Include="Mouse2.h" />
     <ClInclude Include="MultisampledFrameBuffer.h" />
     <ClInclude Include="MultisampledRenderBuffer.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEmitter.h" />
@@ -340,8 +339,8 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transformation.h" />
     <ClInclude Include="Transformationable.h" />
+    <ClInclude Include="VersionNumber.h" />
     <ClInclude Include="Vertex.h" />
-    <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="Water.h" />
     <ClInclude Include="WaterBuffers.h" />
     <ClInclude Include="WGLFunc.h" />

@@ -213,11 +213,8 @@
     <ClCompile Include="CoreLogSystem.cpp">
       <Filter>engine\Core\debug\LogSystem\detail</Filter>
     </ClCompile>
-    <ClCompile Include="VertexBuffer.cpp">
-      <Filter>engine\Render\RenderType</Filter>
-    </ClCompile>
-    <ClCompile Include="GLVertexBuffer.cpp">
-      <Filter>engine\Render\RenderType\OpenGL</Filter>
+    <ClCompile Include="Node.cpp">
+      <Filter>_new\Core\BaseClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -338,8 +335,20 @@
     <Filter Include="engine\Render\RenderType">
       <UniqueIdentifier>{413bab4f-0fee-4f98-ba41-1ba33a581218}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\RenderType\OpenGL">
-      <UniqueIdentifier>{aa069867-b426-4d96-8c02-eb36106d9b5f}</UniqueIdentifier>
+    <Filter Include="_new">
+      <UniqueIdentifier>{af11c566-8560-4490-b0e1-764c156e74c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Scene">
+      <UniqueIdentifier>{bb037746-2832-4d93-b963-4ba8102a50e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Core">
+      <UniqueIdentifier>{4f29910b-5791-4ccb-af44-28f4cc955ee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Core\BaseClass">
+      <UniqueIdentifier>{06987d2f-39c4-4e53-ab8b-985622bc073a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Core\Other">
+      <UniqueIdentifier>{15f1cb8a-9809-4b5d-97a0-744c111af9e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -602,11 +611,11 @@
     <ClInclude Include="CoreLogSystem.h">
       <Filter>engine\Core\debug\LogSystem\detail</Filter>
     </ClInclude>
-    <ClInclude Include="VertexBuffer.h">
-      <Filter>engine\Render\RenderType</Filter>
+    <ClInclude Include="Node.h">
+      <Filter>_new\Core\BaseClass</Filter>
     </ClInclude>
-    <ClInclude Include="GLVertexBuffer.h">
-      <Filter>engine\Render\RenderType\OpenGL</Filter>
+    <ClInclude Include="VersionNumber.h">
+      <Filter>_new\Core\Other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
