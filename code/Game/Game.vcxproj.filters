@@ -209,18 +209,6 @@
     <ClCompile Include="TestAnims.cpp">
       <Filter>Other</Filter>
     </ClCompile>
-    <ClCompile Include="TestModel.cpp">
-      <Filter>Other</Filter>
-    </ClCompile>
-    <ClCompile Include="Test.cpp">
-      <Filter>Other</Filter>
-    </ClCompile>
-    <ClCompile Include="TestPlayer.cpp">
-      <Filter>Other</Filter>
-    </ClCompile>
-    <ClCompile Include="NewStickMan.cpp">
-      <Filter>Other</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -577,18 +565,6 @@
       <Filter>engine\Render\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="TestAnims.h">
-      <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="TestModel.h">
-      <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="Test.h">
-      <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="TestPlayer.h">
-      <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="NewStickMan.h">
       <Filter>Other</Filter>
     </ClInclude>
   </ItemGroup>

@@ -55,7 +55,8 @@ void ModelAnim::play(const float& st, const float& et)
 
 	if (endTick >= startTick)
 		setForward();
-	else setBackward();
+	else 
+		setBackward();
 
 	currentTime = tickToTimeInSec(startTick);
 	currentTick = startTick;
@@ -75,6 +76,7 @@ void ModelAnim::update()
 			glUniformMatrix4fv(boneLocations[i], 1, GL_TRUE, (const float*)&transforms[i]);
 
 		currentTime += Engine::Get().GetDeltaTime() * speed * way;
+		std::cout << "startTick=" << startTick << " endTick=" << endTick << " currentTime=" << currentTime << std::endl;
 	}
 }
 

@@ -19,7 +19,7 @@
 #include "Font.h"
 #include "Billboard.h"
 
-#include "NewStickMan.h"
+#include "TestAnims.h"
 
 class GameApp
 {
@@ -65,7 +65,7 @@ private:
 	Billboard* m_test;
 	Model m_swords;
 
-	NewStickMan* player1 = nullptr;
+	TestAnims* player1 = nullptr;
 
 	int m_width = 0;
 	int m_height = 0;

@@ -115,13 +115,8 @@ void GameApp::Init()
 	m_test = Billboard::Create(ShapeType::Quad, "../res/Textures/axe.png", muzzleFlashShader, glm::vec3(2.0f, -2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));	
 
 
-	player1 = new NewStickMan;
-
-	player1->init();
-	player1->Translate(glm::vec3(5.0f, 40.0f, 5.0f));
-	
-	player1->playStayAnim();
-	
+	player1 = new TestAnims();
+	player1->Translate(glm::vec3(5.0f, 40.0f, 5.0f));		
 	scene->addAnimation(*player1);
 
 
