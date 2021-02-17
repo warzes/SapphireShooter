@@ -24,6 +24,9 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 // TEMP
 #define _CRT_SECURE_NO_WARNINGS 
 
+// https://docs.microsoft.com/ru-ru/cpp/c-runtime-library/math-constants?view=msvc-160
+#define _USE_MATH_DEFINES   
+
 #include <cstdint>
 #include <cassert>
 
