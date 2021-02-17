@@ -206,6 +206,7 @@
     <ClCompile Include="Plane.cpp">
       <Filter>engine\Render\Renderable\Shape</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -561,6 +562,7 @@
     <ClInclude Include="Plane.h">
       <Filter>engine\Render\Renderable\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\3rdparty\freetype.lib">

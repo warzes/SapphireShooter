@@ -19,6 +19,7 @@
 #include "Font.h"
 #include "Billboard.h"
 #include "TestAnims.h"
+#include "Enemy.h"
 
 class GameApp
 {
@@ -57,14 +58,15 @@ private:
 
 	Camera m_mainCamera;
 	Framebuffer m_framebuffer;
-	//Terrain m_terrain;
-	//DirectionalLight m_dirLight;
-	//PointLight m_pointLight;
 	std::vector<Text> m_texts;
-	Billboard* m_test;
+	//Billboard* m_test;
 	Model m_swords;
 
 	TestAnims* player1 = nullptr;
+
+	std::vector<Enemy*> m_enemies;
+	int m_enemyCount = 30;
+	float m_enemySpawnTimer = 0.0f;
 
 	int m_width = 0;
 	int m_height = 0;
