@@ -213,6 +213,12 @@
     <ClCompile Include="CoreLogSystem.cpp">
       <Filter>engine\Core\debug\LogSystem\detail</Filter>
     </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>engine\Render\RenderType</Filter>
+    </ClCompile>
+    <ClCompile Include="GLVertexBuffer.cpp">
+      <Filter>engine\Render\RenderType\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -328,6 +334,12 @@
     </Filter>
     <Filter Include="engine\Core\debug\LogSystem\detail">
       <UniqueIdentifier>{cb979460-429c-40a3-a368-1a3d386a039d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\RenderType">
+      <UniqueIdentifier>{413bab4f-0fee-4f98-ba41-1ba33a581218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\RenderType\OpenGL">
+      <UniqueIdentifier>{aa069867-b426-4d96-8c02-eb36106d9b5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -589,6 +601,12 @@
     </ClInclude>
     <ClInclude Include="CoreLogSystem.h">
       <Filter>engine\Core\debug\LogSystem\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>engine\Render\RenderType</Filter>
+    </ClInclude>
+    <ClInclude Include="GLVertexBuffer.h">
+      <Filter>engine\Render\RenderType\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
