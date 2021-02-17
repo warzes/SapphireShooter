@@ -1,4 +1,8 @@
 #pragma once
 
-#define SE_LOG(n)   {std::cout << "INFO: " << n << std::endl; OutputDebugStringA(n); OutputDebugStringA("\n");}
-#define SE_ERROR(n) {std::cout << "ERROR:" << n << std::endl; OutputDebugStringA(n); OutputDebugStringA("\n");}
+#include "CoreLogSystem.h"
+
+#define SE_LOG(str)         {CoreLogSystem::Print(str, LogVerbosity::Info);}
+#define SE_LOG_ERROR(str)   {CoreLogSystem::Print(str, LogVerbosity::Error);}
+#define SE_LOG_WARNING(str) {CoreLogSystem::Print(str, LogVerbosity::Warning);}
+#define SE_LOG_INFO(str)    {CoreLogSystem::Print(str, LogVerbosity::Info);}

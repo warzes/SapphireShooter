@@ -40,11 +40,15 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #include <string_view>
 
 #include <list>
+#include <queue>
 #include <vector>
 #include <set>
 #include <map>
 
 #include <memory>
+
+#include <thread>
+#include <mutex>
 
 #if SE_PLATFORM_WINDOWS
 #	define WIN32_LEAN_AND_MEAN      // 

@@ -186,7 +186,7 @@ bool Window::registerClass()
 
 	if (!::RegisterClassEx(&wc))
 	{
-		SE_ERROR("RegisterClassExW() failed: Can not register window class.");
+		SE_LOG_ERROR("RegisterClassExW() failed: Can not register window class.");
 		return false;
 	}
 	
@@ -208,7 +208,7 @@ bool Window::createWindow(const WindowDescription& config)
 	m_hwnd = ::CreateWindowEx(wndExStyle, windowClassName, config.Title.c_str(), wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, 0, 0, m_instance, 0);
 	if (!m_hwnd)
 	{
-		SE_ERROR("CreateWindow() failed: Can not create window.");
+		SE_LOG_ERROR("CreateWindow() failed: Can not create window.");
 		return false;
 	}
 	if (!config.fullscreen)

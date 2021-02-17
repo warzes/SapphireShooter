@@ -43,9 +43,6 @@
       <Filter>engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Log.cpp">
-      <Filter>engine\Core\debug</Filter>
-    </ClCompile>
     <ClCompile Include="Point2.cpp">
       <Filter>engine\Core\math</Filter>
     </ClCompile>
@@ -207,6 +204,15 @@
       <Filter>engine\Render\Renderable\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Log.cpp">
+      <Filter>engine\Core\debug\LogSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreLogThread.cpp">
+      <Filter>engine\Core\debug\LogSystem\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreLogSystem.cpp">
+      <Filter>engine\Core\debug\LogSystem\detail</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -314,6 +320,15 @@
     <Filter Include="engine\Render\Renderable\water">
       <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\Core\Container">
+      <UniqueIdentifier>{6976d9ab-d205-4b6a-a10d-eda9a3eca7bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core\debug\LogSystem">
+      <UniqueIdentifier>{dae57b00-352d-4a7c-9453-99066e6aa527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core\debug\LogSystem\detail">
+      <UniqueIdentifier>{cb979460-429c-40a3-a368-1a3d386a039d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -381,9 +396,6 @@
       <Filter>engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Log.h">
-      <Filter>engine\Core\debug</Filter>
-    </ClInclude>
     <ClInclude Include="DebugNew.h">
       <Filter>engine\Core\debug</Filter>
     </ClInclude>
@@ -563,6 +575,21 @@
       <Filter>engine\Render\Renderable\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Log.h">
+      <Filter>engine\Core\debug\LogSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformLog.h">
+      <Filter>engine\Core\debug\LogSystem\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="LogVerbosity.h">
+      <Filter>engine\Core\debug\LogSystem\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreLogThread.h">
+      <Filter>engine\Core\debug\LogSystem\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreLogSystem.h">
+      <Filter>engine\Core\debug\LogSystem\detail</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\3rdparty\freetype.lib">
