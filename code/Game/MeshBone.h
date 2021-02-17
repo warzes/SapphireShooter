@@ -4,7 +4,7 @@
 
 #define NUM_BONES_PER_VEREX 4
 
-class MeshBone : public Mesh
+class MeshBone : public Mesh2
 {
 public:
 	struct BoneData

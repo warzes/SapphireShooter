@@ -1,17 +1,17 @@
 #include "stdafx.h"
 #include "Mesh2.h"
 
-Mesh::Mesh(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material& mat) : vertices(verts), indices(inds), textures(texs), material(mat)
+Mesh2::Mesh2(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material& mat) : vertices(verts), indices(inds), textures(texs), material(mat)
 {
 	initMesh();
 }
 
-Mesh::Mesh(const Mesh& mesh) : Shape2(mesh)
+Mesh2::Mesh2(const Mesh2& mesh) : Shape2(mesh)
 {
 	swap(mesh);
 }
 
-Mesh& Mesh::operator=(const Mesh& mesh)
+Mesh2& Mesh2::operator=(const Mesh2& mesh)
 {
 	Shape2::operator=((const Shape2&)mesh);
 	clear();
@@ -19,7 +19,7 @@ Mesh& Mesh::operator=(const Mesh& mesh)
 	return *this;
 }
 
-void Mesh::swap(const Mesh& mesh)
+void Mesh2::swap(const Mesh2& mesh)
 {
 	EBO = mesh.EBO;
 	vertices = mesh.vertices;
@@ -28,18 +28,18 @@ void Mesh::swap(const Mesh& mesh)
 	material = mesh.material;
 }
 
-void Mesh::clear()
+void Mesh2::clear()
 {
 	if (willBeClear())
 		glDeleteBuffers(1, &EBO);
 }
 
-Mesh::~Mesh()
+Mesh2::~Mesh2()
 {
 	clear();
 }
 
-void Mesh::initMesh()
+void Mesh2::initMesh()
 {
 	unsigned size = sizeof(MeshVertex);
 
@@ -67,7 +67,7 @@ void Mesh::initMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::Render(std::shared_ptr<ShaderProgram> program)
+void Mesh2::Render(std::shared_ptr<ShaderProgram> program)
 {
 	unsigned diffuseNum = 0, specularNum = 0;
 	for (unsigned i = 0; i < textures.size(); ++i)

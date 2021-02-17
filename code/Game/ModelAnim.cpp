@@ -16,7 +16,7 @@ void ModelAnim::load(const std::string& path)
 
 	if (scene->mAnimations[0]->mTicksPerSecond != 0.0)
 		ticksPerSecond = scene->mAnimations[0]->mTicksPerSecond;
-	else ticksPerSecond = 25.0f;
+	else ticksPerSecond = 30.0f;
 	duration = scene->mAnimations[0]->mDuration;
 
 	globalInverseTransformation = scene->mRootNode->mTransformation;
@@ -71,7 +71,7 @@ void ModelAnim::update()
 		std::vector<aiMatrix4x4> transforms;
 		boneTransform(currentTime, transforms);
 
-		for (unsigned i = 0; i < boneLocations.size(); i++)
+		for (unsigned i = 0; i < boneLocations.size() && i < transforms.size(); ++i)
 			glUniformMatrix4fv(boneLocations[i], 1, GL_TRUE, (const float*)&transforms[i]);
 
 		currentTime += Engine::Get().GetDeltaTime() * speed * way;
@@ -105,9 +105,9 @@ bool ModelAnim::isAnimationWork() const
 
 MeshBone* ModelAnim::processMesh(const aiMesh* aMesh)
 {
-	std::vector<Mesh::MeshVertex> vertices = getVertices(aMesh);
+	std::vector<Mesh2::MeshVertex> vertices = getVertices(aMesh);
 	std::vector<unsigned> indices = getIndices(aMesh);
-	std::vector<Mesh::MeshTexture> textures = getTextures(aMesh);
+	std::vector<Mesh2::MeshTexture> textures = getTextures(aMesh);
 	Material material = getMaterial(aMesh, textures.size());
 	std::vector<MeshBone::BoneData> bonesData = getBones(aMesh);
 	return new MeshBone(vertices, indices, textures, material, bonesData);

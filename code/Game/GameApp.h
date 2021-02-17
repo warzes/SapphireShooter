@@ -19,6 +19,8 @@
 #include "Font.h"
 #include "Billboard.h"
 
+#include "NewStickMan.h"
+
 class GameApp
 {
 public:
@@ -62,6 +64,8 @@ private:
 	std::vector<Text> m_texts;
 	Billboard* m_test;
 	Model m_swords;
+
+	NewStickMan* player1 = nullptr;
 
 	int m_width = 0;
 	int m_height = 0;

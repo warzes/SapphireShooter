@@ -6,8 +6,8 @@
 
 class Model2 : public Transformationable
 {
-	std::vector<Mesh*> meshes;
-	std::vector<Mesh::MeshTexture> texturesLoaded;
+	std::vector<Mesh2*> meshes;
+	std::vector<Mesh2::MeshTexture> texturesLoaded;
 	std::string directory;
 	unsigned* amount;
 
@@ -21,13 +21,13 @@ protected:
 private:
 	void processNode(const aiNode* node);
 	Material loadMaterial(const aiMaterial* mat);
-	std::vector<Mesh::MeshTexture> loadMaterialTextures(const aiMaterial* mat, const aiTextureType& type, const std::string& typeName);
+	std::vector<Mesh2::MeshTexture> loadMaterialTextures(const aiMaterial* mat, const aiTextureType& type, const std::string& typeName);
 
 protected:
-	virtual Mesh* processMesh(const aiMesh* aMesh);
-	std::vector<Mesh::MeshVertex> getVertices(const aiMesh* aMesh);
+	virtual Mesh2* processMesh(const aiMesh* aMesh);
+	std::vector<Mesh2::MeshVertex> getVertices(const aiMesh* aMesh);
 	std::vector<unsigned> getIndices(const aiMesh* aMesh);
-	std::vector<Mesh::MeshTexture> getTextures(const aiMesh* aMesh);
+	std::vector<Mesh2::MeshTexture> getTextures(const aiMesh* aMesh);
 	Material getMaterial(const aiMesh* aMesh, const unsigned& texCount);
 
 public:
@@ -42,5 +42,5 @@ public:
 
 	void changeWholeMaterial(const Material& mat);
 
-	const std::vector<Mesh*>& getMeshes() { return meshes; }
+	const std::vector<Mesh2*>& getMeshes() { return meshes; }
 };

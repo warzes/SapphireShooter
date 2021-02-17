@@ -14,19 +14,19 @@ void MeshBone::BoneData::addBoneData(const unsigned& boneId, const float& weight
 	}
 }
 
-MeshBone::MeshBone(const std::vector<Mesh::MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<Mesh::MeshTexture>& texs, const Material& mat, const std::vector<MeshBone::BoneData>& bones) : Mesh(verts, inds, texs, mat), bonesData(bones)
+MeshBone::MeshBone(const std::vector<Mesh2::MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<Mesh2::MeshTexture>& texs, const Material& mat, const std::vector<MeshBone::BoneData>& bones) : Mesh2(verts, inds, texs, mat), bonesData(bones)
 {
 	initBones();
 }
 
-MeshBone::MeshBone(const MeshBone& mesh) : Mesh(mesh)
+MeshBone::MeshBone(const MeshBone& mesh) : Mesh2(mesh)
 {
 	swap(mesh);
 }
 
 MeshBone& MeshBone::operator=(const MeshBone& mesh)
 {
-	Mesh::operator=((const Mesh&)mesh);
+	Mesh2::operator=((const Mesh2&)mesh);
 	clear();
 	swap(mesh);
 	return *this;

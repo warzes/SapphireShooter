@@ -4,7 +4,7 @@
 #include "Shape2.h"
 #include "Texture.h"
 
-class Mesh : public Shape2
+class Mesh2 : public Shape2
 {
 public:
 	struct MeshTexture
@@ -28,15 +28,15 @@ private:
 	std::vector<MeshTexture> textures;
 	Material material;
 
-	void swap(const Mesh& mesh);
+	void swap(const Mesh2& mesh);
 	void clear();
 	void initMesh();
 
 public:
-	Mesh(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material& mat);
-	Mesh(const Mesh& mesh);
-	Mesh& operator=(const Mesh& mesh);
-	virtual ~Mesh();
+	Mesh2(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material& mat);
+	Mesh2(const Mesh2& mesh);
+	Mesh2& operator=(const Mesh2& mesh);
+	virtual ~Mesh2();
 
 	virtual void Render(std::shared_ptr<ShaderProgram> program);
 

@@ -50,12 +50,12 @@ void GameApp::Init()
 
 	skybox.getTexture().load(
 		{ 
-		"textures/cubemapTEST/px.jpg", 
-		"textures/cubemapTEST/nx.jpg", 
-		"textures/cubemapTEST/py.jpg", 
-		"textures/cubemapTEST/ny.jpg", 
-		"textures/cubemapTEST/pz.jpg", 
-		"textures/cubemapTEST/nz.jpg" 
+		"textures/cubemap/px.jpg", 
+		"textures/cubemap/nx.jpg", 
+		"textures/cubemap/py.jpg", 
+		"textures/cubemap/ny.jpg", 
+		"textures/cubemap/pz.jpg", 
+		"textures/cubemap/nz.jpg" 
 		});
 
 	water = new Water(&m_mainCamera);
@@ -114,6 +114,17 @@ void GameApp::Init()
 	std::vector<const char*> muzzleFlashShader{ "../res/Shaders/Muzzle Flash Shader/VertexShaderMuzzleFlash.vs", "../res/Shaders/Muzzle Flash Shader/FragmentShaderMuzzleFlash.fs" };
 	m_test = Billboard::Create(ShapeType::Quad, "../res/Textures/axe.png", muzzleFlashShader, glm::vec3(2.0f, -2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));	
 
+
+	player1 = new NewStickMan;
+
+	player1->init();
+	player1->Translate(glm::vec3(5.0f, 40.0f, 5.0f));
+	
+	player1->playStayAnim();
+	
+	scene->addAnimation(*player1);
+
+
 	Mouse2::Get().SetMouseVisible(false);
 }
 //-----------------------------------------------------------------------------
@@ -121,7 +132,7 @@ void GameApp::Update(float dt)
 {
 	resizeApp();
 	m_mainCamera.UpdateLookAt();
-	Player::Get().Update(m_mainCamera, m_terrain, dt);
+	Player::Get().Update(m_mainCamera, m_terrain, dt);	
 }
 //-----------------------------------------------------------------------------
 void GameApp::ProcessInput(float dt)
@@ -192,6 +203,7 @@ void GameApp::Render()
 
 	if (isWater)
 	{
+		glEnable(GL_BLEND);
 		scene->addWater(*water);
 		scene->render2();
 		scene->removeWater(0);

@@ -185,10 +185,17 @@ void Scene::removeLight(const unsigned& n)
 
 void Scene::initShadersManager()
 {
+	setObjectProgram(ShaderManager::Get().LoadShader("Object", "shaders/object.vs", "shaders/object.fs"));
+	setAnimProgram(ShaderManager::Get().LoadShader("Anim", "shaders/anim.vs", "shaders/object.fs"));
 	setSkyboxProgram(ShaderManager::Get().LoadShader("skybox", "shaders/skybox/skybox.vs", "shaders/skybox/skybox.fs"));
 	setHDRProgram(ShaderManager::Get().LoadShader("hdr", "shaders/effect/hdr.vs", "shaders/effect/hdr.fs"));
 	setBlurProgram(ShaderManager::Get().LoadShader("blur", "shaders/effect/blur.vs", "shaders/effect/blur.fs"));
+	setParticleProgram(ShaderManager::Get().LoadShader("Rain", "shaders/rain.vs", "shaders/rain.fs"));	
 	setFontProgram(ShaderManager::Get().LoadShader("font", "shaders/font/font.vs", "shaders/font/font.fs"));
 	setPostProcessProgram(ShaderManager::Get().LoadShader("postprocessing", "shaders/effect/postprocessing.vs", "shaders/effect/postprocessing.fs"));
 	setWaterProgram(ShaderManager::Get().LoadShader("water", "shaders/water/water.vs", "shaders/water/water.fs"));
+
+
+	setDepthProgram(ShaderManager::Get().LoadShader("Depth", "shaders/depth/depth.vs", "shaders/depth/depth.fs", "shaders/depth/depth.gs"));
+	setAnimDepthProgram(ShaderManager::Get().LoadShader("AnimDepth", "shaders/depth/anim_depth.vs", "shaders/depth/depth.fs", "shaders/depth/depth.gs"));
 }

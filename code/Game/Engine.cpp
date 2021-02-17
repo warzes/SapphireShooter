@@ -71,6 +71,7 @@ void Engine::EndFrame()
 		::WaitMessage();
 
 	m_deltaTime = m_frameTimer.ElapsedUSec() * 0.000001f;
+	m_time = CurrentTime() /* 0.000001f*/;
 }
 //-----------------------------------------------------------------------------
 void Engine::Close() noexcept

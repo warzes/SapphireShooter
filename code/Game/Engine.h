@@ -31,6 +31,7 @@ public:
 	bool IsRun() const noexcept { return m_isRun; }
 
 	float GetDeltaTime() const { return m_deltaTime; }
+	double GetTime() const { return m_time; }
 
 private:
 	Engine() = default;
@@ -46,6 +47,7 @@ private:
 	bool m_isEnd = false;
 	HiresTimer m_frameTimer;
 	float m_deltaTime = 0.0f;
+	double m_time = 0.0;
 };
 
 inline EngineDescription& GetEngineDescription() noexcept

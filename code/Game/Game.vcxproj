@@ -237,7 +237,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="NewStickMan.cpp" />
     <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="TestAnims.cpp" />
+    <ClCompile Include="TestModel.cpp" />
+    <ClCompile Include="TestPlayer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TextureGenerator2D.cpp" />
@@ -286,6 +291,7 @@
     <ClInclude Include="Mouse2.h" />
     <ClInclude Include="MultisampledFrameBuffer.h" />
     <ClInclude Include="MultisampledRenderBuffer.h" />
+    <ClInclude Include="NewStickMan.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEmitter.h" />
@@ -319,6 +325,10 @@
     <ClInclude Include="SpotLight.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Terrain.h" />
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="TestAnims.h" />
+    <ClInclude Include="TestModel.h" />
+    <ClInclude Include="TestPlayer.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TextureGenerator.h" />

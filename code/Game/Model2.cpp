@@ -87,22 +87,22 @@ void Model2::processNode(const aiNode* node)
 		processNode(node->mChildren[i]);
 }
 
-Mesh* Model2::processMesh(const aiMesh* aMesh)
+Mesh2* Model2::processMesh(const aiMesh* aMesh)
 {
-	std::vector<Mesh::MeshVertex> vertices = getVertices(aMesh);
+	std::vector<Mesh2::MeshVertex> vertices = getVertices(aMesh);
 	std::vector<unsigned> indices = getIndices(aMesh);
-	std::vector<Mesh::MeshTexture> textures = getTextures(aMesh);
+	std::vector<Mesh2::MeshTexture> textures = getTextures(aMesh);
 	Material material = getMaterial(aMesh, textures.size());
-	return new Mesh(vertices, indices, textures, material);
+	return new Mesh2(vertices, indices, textures, material);
 }
 
-std::vector<Mesh::MeshVertex> Model2::getVertices(const aiMesh* aMesh)
+std::vector<Mesh2::MeshVertex> Model2::getVertices(const aiMesh* aMesh)
 {
-	std::vector<Mesh::MeshVertex> vertices;
+	std::vector<Mesh2::MeshVertex> vertices;
 	vertices.reserve(aMesh->mNumVertices);
 	for (unsigned i = 0; i < aMesh->mNumVertices; ++i)
 	{
-		Mesh::MeshVertex vertex;
+		Mesh2::MeshVertex vertex;
 		vertex.position = glm::vec3(aMesh->mVertices[i].x, aMesh->mVertices[i].y, aMesh->mVertices[i].z);
 		vertex.normal = glm::vec3(aMesh->mNormals[i].x, aMesh->mNormals[i].y, aMesh->mNormals[i].z);
 
@@ -127,17 +127,17 @@ std::vector<unsigned> Model2::getIndices(const aiMesh* aMesh)
 	return indices;
 }
 
-std::vector<Mesh::MeshTexture> Model2::getTextures(const aiMesh* aMesh)
+std::vector<Mesh2::MeshTexture> Model2::getTextures(const aiMesh* aMesh)
 {
-	std::vector<Mesh::MeshTexture> textures;
+	std::vector<Mesh2::MeshTexture> textures;
 	if (aMesh->mMaterialIndex >= 0)
 	{
 		aiMaterial* mat = scene->mMaterials[aMesh->mMaterialIndex];
 
-		std::vector<Mesh::MeshTexture> diffuseMaps = loadMaterialTextures(mat, aiTextureType_DIFFUSE, "texture_diffuse");
+		std::vector<Mesh2::MeshTexture> diffuseMaps = loadMaterialTextures(mat, aiTextureType_DIFFUSE, "texture_diffuse");
 		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
-		std::vector<Mesh::MeshTexture> specularMaps = loadMaterialTextures(mat, aiTextureType_SPECULAR, "texture_specular");
+		std::vector<Mesh2::MeshTexture> specularMaps = loadMaterialTextures(mat, aiTextureType_SPECULAR, "texture_specular");
 		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 	}
 	return textures;
@@ -182,9 +182,9 @@ Material Model2::loadMaterial(const aiMaterial* mat)
 	return material;
 }
 
-std::vector<Mesh::MeshTexture> Model2::loadMaterialTextures(const aiMaterial* mat, const aiTextureType& type, const std::string& typeName)
+std::vector<Mesh2::MeshTexture> Model2::loadMaterialTextures(const aiMaterial* mat, const aiTextureType& type, const std::string& typeName)
 {
-	std::vector<Mesh::MeshTexture> textures;
+	std::vector<Mesh2::MeshTexture> textures;
 	std::string fileName;
 	for (unsigned i = 0; i < mat->GetTextureCount(type); ++i)
 	{
@@ -207,7 +207,7 @@ std::vector<Mesh::MeshTexture> Model2::loadMaterialTextures(const aiMaterial* ma
 			fileName = std::string(str.C_Str());
 			fileName = directory + '/' + fileName;
 
-			Mesh::MeshTexture texture;
+			Mesh2::MeshTexture texture;
 			texture.texture.load(fileName, GL_TEXTURE_2D);
 			texture.type = typeName;
 			texture.path = str.C_Str();
