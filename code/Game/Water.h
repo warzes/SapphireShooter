@@ -4,24 +4,27 @@
 #include "WaterBuffers.h"
 #include "Transformationable.h"
 #include "Camera.h"
-#include "Scene.h"
+#include "ShaderProgram.h"
+
+class Scene;
 
 class Water : public Transformationable
 {
-	Plane plane;
-	Texture dudvMap;
-	Texture normalMap;
-	float offset = 0;
-	Camera* camera = nullptr;
-
 public:
+	Water(Camera* cam) : m_camera(cam) { RotateX(-90); }
+
+	void Create();
+
+	void Render(std::shared_ptr<ShaderProgram> program) override;
+	void RenderReflectAndRefract(Scene* scene);
+	unsigned GetVAO() const  override { return m_plane.GetVAO(); }
+
 	WaterBuffers buffers;
-	Water(Camera* cam) : camera(cam) { RotateX(-90); }
 
-	virtual void Render(std::shared_ptr<ShaderProgram> program);
-	void renderReflectAndRefract(Scene* scene);
-	virtual unsigned GetVAO() const { return plane.GetVAO(); }
-
-	Texture& getDudvMap() { return dudvMap; }
-	Texture& getNormalMap() { return normalMap; }
+private:
+	Plane m_plane;
+	Texture m_dudvMap;
+	Texture m_normalMap;
+	float m_offset = 0;
+	Camera* m_camera = nullptr;
 };

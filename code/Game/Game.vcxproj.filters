@@ -125,15 +125,6 @@
     <ClCompile Include="WaterBuffers.cpp">
       <Filter>engine\Render\new\FrameBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="Shape2.cpp">
-      <Filter>engine\Render\new\renderable\shape</Filter>
-    </ClCompile>
-    <ClCompile Include="Plane.cpp">
-      <Filter>engine\Render\new\renderable\shape</Filter>
-    </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>engine\Render\new\renderable\shape</Filter>
-    </ClCompile>
     <ClCompile Include="Mesh2.cpp">
       <Filter>engine\Render\new\renderable\model</Filter>
     </ClCompile>
@@ -159,7 +150,7 @@
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClCompile>
     <ClCompile Include="Water.cpp">
-      <Filter>engine\Render\new\renderable\water</Filter>
+      <Filter>engine\Render\Renderable\water</Filter>
     </ClCompile>
     <ClCompile Include="Shadow.cpp">
       <Filter>engine\Render\new\Effect</Filter>
@@ -208,6 +199,12 @@
     </ClCompile>
     <ClCompile Include="TestAnims.cpp">
       <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>engine\Render\Renderable\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>engine\Render\Renderable\Shape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -280,9 +277,6 @@
     <Filter Include="engine\Render\new\renderable">
       <UniqueIdentifier>{176edf89-1167-4e94-8147-e0407bf40d11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\new\renderable\shape">
-      <UniqueIdentifier>{f74de64e-17b6-4a99-906c-003685e26b46}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Render\new\renderable\model">
       <UniqueIdentifier>{2bdfb626-5efe-40fb-ae4e-4e950e3840ba}</UniqueIdentifier>
     </Filter>
@@ -294,9 +288,6 @@
     </Filter>
     <Filter Include="engine\Render\new\renderable\skybox">
       <UniqueIdentifier>{c86ad07b-2573-45e9-881a-b2a33687a519}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\new\renderable\water">
-      <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Render\new\Effect">
       <UniqueIdentifier>{b1ed62ef-44ef-4c63-afff-46d6a771fe9c}</UniqueIdentifier>
@@ -315,6 +306,12 @@
     </Filter>
     <Filter Include="engine\Render\Renderable">
       <UniqueIdentifier>{9608b21b-7f8c-45d2-a234-a135ce0fa346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Renderable\Shape">
+      <UniqueIdentifier>{e3606b84-56e1-441f-9282-cd4bb033fb25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Renderable\water">
+      <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -471,15 +468,6 @@
     <ClInclude Include="WaterBuffers.h">
       <Filter>engine\Render\new\FrameBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="Shape2.h">
-      <Filter>engine\Render\new\renderable\shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>engine\Render\new\renderable\shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>engine\Render\new\renderable\shape</Filter>
-    </ClInclude>
     <ClInclude Include="Mesh2.h">
       <Filter>engine\Render\new\renderable\model</Filter>
     </ClInclude>
@@ -505,7 +493,7 @@
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClInclude>
     <ClInclude Include="Water.h">
-      <Filter>engine\Render\new\renderable\water</Filter>
+      <Filter>engine\Render\Renderable\water</Filter>
     </ClInclude>
     <ClInclude Include="Shadow.h">
       <Filter>engine\Render\new\Effect</Filter>
@@ -566,6 +554,12 @@
     </ClInclude>
     <ClInclude Include="TestAnims.h">
       <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>engine\Render\Renderable\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>engine\Render\Renderable\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

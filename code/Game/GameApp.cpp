@@ -7,6 +7,7 @@
 #include "GLViewport.h"
 #include "ShaderManager.h"
 
+
 //-----------------------------------------------------------------------------
 EngineDescription GameApp::InitConfig()
 {
@@ -59,9 +60,7 @@ void GameApp::Init()
 		});
 
 	water = new Water(&m_mainCamera);
-
-	water->getDudvMap().load("textures/water-dudv.jpg", GL_TEXTURE_2D);
-	water->getNormalMap().load("textures/water-normal.jpg", GL_TEXTURE_2D);
+	water->Create();
 	water->SetPosition(glm::vec3(0.0f, 15.0f, 0.0f));
 	water->SetScale(glm::vec3(2000.0f));
 
@@ -72,7 +71,7 @@ void GameApp::Init()
 
 	Player::Get().Init(m_mainCamera, glm::vec3(30.0f, 25.0f, 30.0f));
 
-	m_dirLight.Configure(glm::vec3(-0.1f, -0.1f, -0.1f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.5f, 0.5f, 0.5f));
+	/*m_dirLight.Configure(glm::vec3(-0.1f, -0.1f, -0.1f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.5f, 0.5f, 0.5f));
 	m_dirLight.SetDirection(glm::vec3(0.2f, 1.0f, 0.5f));
 	m_dirLight.SetColour(glm::vec3(0.97f, 0.88f, 0.70f));
 
@@ -81,7 +80,7 @@ void GameApp::Init()
 	m_pointLight.SetLightColour(glm::vec3(0.0f, 0.0f, 1.0f));
 
 	m_terrain.InitTerrain();
-	m_terrain.CreateTerrainWithPerlinNoise();
+	m_terrain.CreateTerrainWithPerlinNoise();*/
 
 	m_swords.Init("../res/Models3D/swords/sword-0.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
 	m_swords.SetSpotlight(false);
@@ -127,7 +126,7 @@ void GameApp::Update(float dt)
 {
 	resizeApp();
 	m_mainCamera.UpdateLookAt();
-	Player::Get().Update(m_mainCamera, m_terrain, dt);	
+	Player::Get().Update(m_mainCamera, scene->GetTerrain(), dt);
 }
 //-----------------------------------------------------------------------------
 void GameApp::ProcessInput(float dt)
@@ -179,22 +178,23 @@ void GameApp::Render()
 	scene->renderShadows();
 
 	if (isWater)
-		water->renderReflectAndRefract(scene);
+		water->RenderReflectAndRefract(scene);
 
 	if (!polygonMode)
 		postHDR->startProcessing();
 	GLViewport::Clear(true, true);
 
 	scene->render1();
-
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	m_swords.Draw(m_mainCamera, glm::vec3(300.0f, m_terrain.GetHeightOfTerrain(300.0f, 270.0f) + 10, 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(6.0f));
-	glDisable(GL_CULL_FACE);
-	m_terrain.SetFog(true);
-	m_terrain.Draw(m_mainCamera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
-	m_swords.Draw(m_mainCamera, glm::vec3(1.5f, -2.5f, -2.5f), glm::vec3(0.3f, 1.0f, 0.0f), 30.0f, glm::vec3(1.0f), true);
-	glEnable(GL_CULL_FACE);
+	{
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		m_swords.Draw(m_mainCamera, glm::vec3(300.0f, scene->GetTerrain().GetHeightOfTerrain(300.0f, 270.0f) + 10, 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(6.0f));
+		glDisable(GL_CULL_FACE);
+		//m_terrain.SetFog(true);
+		//m_terrain.Draw(m_mainCamera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
+		m_swords.Draw(m_mainCamera, glm::vec3(1.5f, -2.5f, -2.5f), glm::vec3(0.3f, 1.0f, 0.0f), 30.0f, glm::vec3(1.0f), true);
+		glEnable(GL_CULL_FACE);
+	}
 
 	if (isWater)
 	{

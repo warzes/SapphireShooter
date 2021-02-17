@@ -9,24 +9,20 @@ class MeshBone : public Mesh2
 public:
 	struct BoneData
 	{
+		void addBoneData(const unsigned& boneId, const float& weight);
+
 		unsigned ids[NUM_BONES_PER_VEREX];
 		float weights[NUM_BONES_PER_VEREX];
-
-		void addBoneData(const unsigned& boneId, const float& weight);
 	};
 
 private:
 	unsigned VBObones;
 	std::vector<BoneData> bonesData;
 
-	void swap(const MeshBone& mesh);
-	void clear();
 	void initBones();
 
 public:
 	MeshBone(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material& mat, const std::vector<BoneData>& bones);
-	MeshBone(const MeshBone& mesh);
-	MeshBone& operator=(const MeshBone& mesh);
 	virtual ~MeshBone();
 
 	const std::vector<BoneData>& getVerticesBoneData() const { return bonesData; }

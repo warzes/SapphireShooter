@@ -1,11 +1,14 @@
 #pragma once
 
-#include "Shape2.h"
+#include "Geometry.h"
 
-class Plane : public Shape2
+// TODO: используется в постэффекте Blur и в Water - удалить
+
+class Plane : public Geometry
 {
 public:
 	Plane();
+
 	virtual void Render(std::shared_ptr<ShaderProgram> program);
 	virtual void Render(std::shared_ptr<ShaderProgram> program, const unsigned& amount);
 };

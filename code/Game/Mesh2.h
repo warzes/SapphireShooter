@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Material.h"
-#include "Shape2.h"
+#include "Geometry.h"
 #include "Texture.h"
 
-class Mesh2 : public Shape2
+class Mesh2 : public Geometry
 {
 public:
 	struct MeshTexture

@@ -19,34 +19,9 @@ MeshBone::MeshBone(const std::vector<Mesh2::MeshVertex>& verts, const std::vecto
 	initBones();
 }
 
-MeshBone::MeshBone(const MeshBone& mesh) : Mesh2(mesh)
-{
-	swap(mesh);
-}
-
-MeshBone& MeshBone::operator=(const MeshBone& mesh)
-{
-	Mesh2::operator=((const Mesh2&)mesh);
-	clear();
-	swap(mesh);
-	return *this;
-}
-
-void MeshBone::swap(const MeshBone& mesh)
-{
-	bonesData = mesh.bonesData;
-	VBObones = mesh.VBObones;
-}
-
-void MeshBone::clear()
-{
-	if (willBeClear())
-		glDeleteBuffers(1, &VBObones);
-}
-
 MeshBone::~MeshBone()
 {
-	clear();
+	glDeleteBuffers(1, &VBObones);
 }
 
 void MeshBone::initBones()
@@ -57,7 +32,7 @@ void MeshBone::initBones()
 	glBufferData(GL_ARRAY_BUFFER, bonesData.size() * sizeof(BoneData), &bonesData[0], GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBObones);
 	glEnableVertexAttribArray(3);

@@ -1,20 +1,21 @@
 #include "stdafx.h"
 #include "Plane.h"
-
+//-----------------------------------------------------------------------------
 Plane::Plane()
 {
-	static float planeVertices[] = {
-	-1.0,  1.0, 0.0, 0.0, 1.0,
-	-1.0, -1.0, 0.0, 0.0, 0.0,
-	1.0,  1.0, 0.0, 1.0, 1.0,
-	1.0, -1.0, 0.0, 1.0, 0.0
+	static const float planeVertices[] = 
+	{
+		-1.0,  1.0, 0.0, 0.0, 1.0,
+		-1.0, -1.0, 0.0, 0.0, 0.0,
+		1.0,  1.0, 0.0, 1.0, 1.0,
+		1.0, -1.0, 0.0, 1.0, 0.0
 	};
-	unsigned size = 5 * sizeof(float);
+	static const unsigned size = 5 * sizeof(float);
 
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glGenVertexArrays(1, &m_VAO);
+	glGenBuffers(1, &m_VBO);
+	glBindVertexArray(m_VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(planeVertices), planeVertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, nullptr);
@@ -22,17 +23,18 @@ Plane::Plane()
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, size, (void*)(3 * sizeof(float)));
 	glBindVertexArray(0);
 }
-
+//-----------------------------------------------------------------------------
 void Plane::Render(std::shared_ptr<ShaderProgram> program)
 {
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
 }
-
+//-----------------------------------------------------------------------------
 void Plane::Render(std::shared_ptr<ShaderProgram> program, const unsigned& amount)
 {
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 	glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, amount);
 	glBindVertexArray(0);
 }
+//-----------------------------------------------------------------------------

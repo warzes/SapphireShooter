@@ -6,14 +6,14 @@ Mesh2::Mesh2(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& 
 	initMesh();
 }
 
-Mesh2::Mesh2(const Mesh2& mesh) : Shape2(mesh)
+Mesh2::Mesh2(const Mesh2& mesh) : Geometry(mesh)
 {
 	swap(mesh);
 }
 
 Mesh2& Mesh2::operator=(const Mesh2& mesh)
 {
-	Shape2::operator=((const Shape2&)mesh);
+	Geometry::operator=((const Geometry&)mesh);
 	clear();
 	swap(mesh);
 	return *this;
@@ -30,7 +30,7 @@ void Mesh2::swap(const Mesh2& mesh)
 
 void Mesh2::clear()
 {
-	if (willBeClear())
+	//if (willBeClear())
 		glDeleteBuffers(1, &EBO);
 }
 
@@ -43,13 +43,13 @@ void Mesh2::initMesh()
 {
 	unsigned size = sizeof(MeshVertex);
 
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	glGenVertexArrays(1, &m_VAO);
+	glGenBuffers(1, &m_VBO);
 	glGenBuffers(1, &EBO);
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, vertices.size() * size, &vertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -89,7 +89,7 @@ void Mesh2::Render(std::shared_ptr<ShaderProgram> program)
 	program->SetInteger("specularTexturesAmount", specularNum);
 	material.Render(program);
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 	Texture::unbind(GL_TEXTURE_2D);

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Renderable.h"
+#include "ShaderProgram.h"
 
 typedef std::vector<glm::mat4> ShadowTransforms;
 
-class Light : public Renderable
+class Light
 {
 	unsigned index;
 	glm::vec3 position;

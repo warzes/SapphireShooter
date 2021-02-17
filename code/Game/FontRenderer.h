@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Font2.h"
-#include "Shape2.h"
+#include "Geometry.h"
 #include "Engine.h"
 
-class FontRenderer : public Shape2
+class FontRenderer : public Geometry
 {
 	Font font;
 	glm::vec3 color = glm::vec3(0.0f);

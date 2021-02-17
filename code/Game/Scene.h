@@ -5,6 +5,8 @@
 #include "Light.h"
 #include "Shadow.h"
 #include "ShaderProgram.h"
+#include "Water.h"
+#include "Terrain.h"
 
 class Scene
 {
@@ -12,7 +14,7 @@ class Scene
 	Skybox* m_skybox = nullptr;
 	std::vector<Renderable*> objects;
 	std::vector<Renderable*> animations;
-	std::vector<Renderable*> waters;
+	std::vector<Water*> waters;
 	std::vector<Light*> lights;
 	std::vector<Shadow> shadows;
 	bool allowShadows = true;
@@ -40,7 +42,7 @@ class Scene
 	std::shared_ptr<ShaderProgram> water = nullptr;
 
 public:
-	Scene(Camera* cam) : camera(cam){ ; }
+	Scene(Camera* cam);
 
 	void initShadersManager();
 
@@ -56,7 +58,7 @@ public:
 
 	void addObject(Renderable& obj) { objects.push_back(&obj); }
 	void addAnimation(Renderable& obj) { animations.push_back(&obj); }
-	void addWater(Renderable& obj) { waters.push_back(&obj); }
+	void addWater(Water& obj) { waters.push_back(&obj); }
 
 	void removeObject(const unsigned& n) { objects.erase(objects.begin() + n); }
 	void removeAnimation(const unsigned& n) { animations.erase(animations.begin() + n); }
@@ -65,7 +67,7 @@ public:
 	Skybox& getSkybox() { return *m_skybox; }
 	std::vector<Renderable*>& getObjects() { return objects; }
 	std::vector<Renderable*>& getAnimations() { return animations; }
-	std::vector<Renderable*>& getWaters() { return waters; }
+	std::vector<Water*>& getWaters() { return waters; }
 	std::vector<Light*>& getLights() { return lights; }
 
 	void setShadows(bool val) { allowShadows = val; }
@@ -96,4 +98,13 @@ public:
 	std::shared_ptr<ShaderProgram> getSkyboxProgram() { return skybox; }
 	std::shared_ptr<ShaderProgram> getFontProgram() { return font; }
 	std::shared_ptr<ShaderProgram> getWaterProgram() { return water; }
+
+	Terrain& GetTerrain() { return m_terrain; }
+
+
+private:
+
+	Terrain m_terrain;
+	DirectionalLight m_dirLight;
+	PointLight m_pointLight;
 };

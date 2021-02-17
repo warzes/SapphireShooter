@@ -18,7 +18,6 @@
 #include "Model.h"
 #include "Font.h"
 #include "Billboard.h"
-
 #include "TestAnims.h"
 
 class GameApp
@@ -58,9 +57,9 @@ private:
 
 	Camera m_mainCamera;
 	Framebuffer m_framebuffer;
-	Terrain m_terrain;
-	DirectionalLight m_dirLight;
-	PointLight m_pointLight;
+	//Terrain m_terrain;
+	//DirectionalLight m_dirLight;
+	//PointLight m_pointLight;
 	std::vector<Text> m_texts;
 	Billboard* m_test;
 	Model m_swords;

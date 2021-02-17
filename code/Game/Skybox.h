@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Texture.h"
-#include "Shape2.h"
+#include "Geometry.h"
 
-class Skybox : public Shape2
+class Skybox : public Geometry
 {
 	Texture texture;
 

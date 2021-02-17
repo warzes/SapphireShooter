@@ -1,13 +1,21 @@
 #include "stdafx.h"
 #include "Water.h"
 #include "Engine.h"
-
+#include "Scene.h"
+#include "ShaderManager.h"
+//-----------------------------------------------------------------------------
+void Water::Create()
+{
+	m_dudvMap.load("textures/water-dudv.jpg", GL_TEXTURE_2D);
+	m_normalMap.load("textures/water-normal.jpg", GL_TEXTURE_2D);
+}
+//-----------------------------------------------------------------------------
 void Water::Render(std::shared_ptr<ShaderProgram> program)
 {
-	offset += 0.03 * Engine::Get().GetDeltaTime();
-	if (offset >= 100)
-		offset = 0;
-	program->SetFloat("waterOffset", offset);
+	m_offset += 0.03 * Engine::Get().GetDeltaTime();
+	if (m_offset >= 100)
+		m_offset = 0;
+	program->SetFloat("waterOffset", m_offset);
 
 	Texture::active(0);
 	program->SetInteger("refractionTex", 0);
@@ -19,11 +27,11 @@ void Water::Render(std::shared_ptr<ShaderProgram> program)
 
 	Texture::active(2);
 	program->SetInteger("dudvMap", 2);
-	dudvMap.bind(GL_TEXTURE_2D);
+	m_dudvMap.bind(GL_TEXTURE_2D);
 
 	Texture::active(3);
 	program->SetInteger("normalMap", 3);
-	normalMap.bind(GL_TEXTURE_2D);
+	m_normalMap.bind(GL_TEXTURE_2D);
 
 	Texture::active(4);
 	program->SetInteger("depthMap", 4);
@@ -32,29 +40,30 @@ void Water::Render(std::shared_ptr<ShaderProgram> program)
 	program->SetFloat("nearPlane", cameraNear);
 	program->SetFloat("farPlane", cameraFar);
 	Transformationable::Render(program);
-	plane.Render(program);
+	m_plane.Render(program);
 	Texture::unbind(GL_TEXTURE_2D);
 }
-
-void Water::renderReflectAndRefract(Scene* scene)
+//-----------------------------------------------------------------------------
+void Water::RenderReflectAndRefract(Scene* scene)
 {
-	glm::vec3 defaultCamPos = camera->GetCameraPos();
-	float defaultCamPitch = camera->GetPitch();
+	glm::vec3 defaultCamPos = m_camera->GetCameraPos();
+	float defaultCamPitch = m_camera->GetPitch();
 
 	float distance = 2 * (defaultCamPos.y - GetPosition().y);
-	camera->SetCameraPos(glm::vec3(defaultCamPos.x, defaultCamPos.y - distance, defaultCamPos.z));
-	camera->SetPitch(-defaultCamPitch);
-	camera->updateVectors();
+	m_camera->SetCameraPos(glm::vec3(defaultCamPos.x, defaultCamPos.y - distance, defaultCamPos.z));
+	m_camera->SetPitch(-defaultCamPitch);
+	m_camera->updateVectors();
 
 	buffers.bindReflectBuffer();
 	scene->render(glm::vec4(0, 1, 0, -GetPosition().y + 0.1));
 	FrameBuffer::unbind();
 
-	camera->SetCameraPos(defaultCamPos);
-	camera->SetPitch(defaultCamPitch);
-	camera->updateVectors();
+	m_camera->SetCameraPos(defaultCamPos);
+	m_camera->SetPitch(defaultCamPitch);
+	m_camera->updateVectors();
 
 	buffers.bindRefractBuffer();
 	scene->render(glm::vec4(0, -1, 0, GetPosition().y));
 	FrameBuffer::unbind();
 }
+//-----------------------------------------------------------------------------

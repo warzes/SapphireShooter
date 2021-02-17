@@ -2,6 +2,23 @@
 #include "Scene.h"
 #include "Engine.h"
 #include "ShaderManager.h"
+#include "Player.h"
+
+Scene::Scene(Camera* cam) 
+	: camera(cam)
+{
+	m_dirLight.Configure(glm::vec3(-0.1f, -0.1f, -0.1f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.5f, 0.5f, 0.5f));
+	m_dirLight.SetDirection(glm::vec3(0.2f, 1.0f, 0.5f));
+	m_dirLight.SetColour(glm::vec3(0.97f, 0.88f, 0.70f));
+
+	m_pointLight.Configure(glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(10.0f, 10.0f, 10.0f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.045f, 0.0075f);
+	m_pointLight.SetPosition(glm::vec3(256.0f, 50.0f, 300.0f));
+	m_pointLight.SetLightColour(glm::vec3(0.0f, 0.0f, 1.0f));
+
+	m_terrain.InitTerrain();
+	m_terrain.CreateTerrainWithPerlinNoise();
+	m_terrain.SetFog(true);
+}
 
 void Scene::initPrograms(const glm::vec4& clipPlane)
 {
@@ -65,6 +82,13 @@ void Scene::render(const glm::vec4& clipPlane)
 	renderLights();
 	renderObjects(getObjectProgram());
 	renderAnimations(getAnimProgram());
+	{
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glDisable(GL_CULL_FACE);
+		m_terrain.Draw(*camera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
+		glEnable(GL_CULL_FACE);
+	}
 	renderWaters(getWaterProgram());
 	renderSkybox();
 }
@@ -82,6 +106,14 @@ void Scene::render1(const glm::vec4& clipPlane)
 	renderLights();
 	renderObjects(getObjectProgram());
 	renderAnimations(getAnimProgram());
+
+	{
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glDisable(GL_CULL_FACE);
+		m_terrain.Draw(*camera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
+		glEnable(GL_CULL_FACE);
+	}
 }
 
 void Scene::render2(const glm::vec4& clipPlane)
