@@ -216,6 +216,21 @@
     <ClCompile Include="Node.cpp">
       <Filter>_new\Core\BaseClass</Filter>
     </ClCompile>
+    <ClCompile Include="Dimension.cpp">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClCompile>
+    <ClCompile Include="SEMath.cpp">
+      <Filter>_new\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="MathCollisionLibrary.cpp">
+      <Filter>_new\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewFrustum.cpp">
+      <Filter>_new\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="SETimer.cpp">
+      <Filter>_new\Core\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -349,6 +364,18 @@
     </Filter>
     <Filter Include="_new\Core\Other">
       <UniqueIdentifier>{15f1cb8a-9809-4b5d-97a0-744c111af9e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Base">
+      <UniqueIdentifier>{fa4ac432-4202-4577-9a77-0a2ee438b9ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Core\Math">
+      <UniqueIdentifier>{c9d954bd-77a0-4b3c-8d09-c3e0711ce5b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Core\Math\Dimension">
+      <UniqueIdentifier>{72df4467-49fc-4f66-8cbe-99ae45be05cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_new\Core\Platform">
+      <UniqueIdentifier>{3a683747-2b1e-4d89-b012-0614f271d0bd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -616,6 +643,99 @@
     </ClInclude>
     <ClInclude Include="VersionNumber.h">
       <Filter>_new\Core\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseTypes.h">
+      <Filter>_new\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>_new\Core\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="SEString.h">
+      <Filter>_new\Core\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Dimension.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionSize2.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix2.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionRect2.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionLine3.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionTriangle3.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionQuadrangle3.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionPlane3.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="OBB.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionCone3.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixArithmetic.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorArithmetic.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionPolygon.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="MathCore.h">
+      <Filter>_new\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SEMath.h">
+      <Filter>_new\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathRadianDegree.h">
+      <Filter>_new\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialColor.h">
+      <Filter>_new\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathCollisionLibrary.h">
+      <Filter>_new\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexPolyhedron.h">
+      <Filter>_new\Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewFrustum.h">
+      <Filter>_new\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SETimer.h">
+      <Filter>_new\Core\Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

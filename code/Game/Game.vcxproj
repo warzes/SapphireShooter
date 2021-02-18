@@ -181,6 +181,7 @@
     <ClCompile Include="CoreLogThread.cpp" />
     <ClCompile Include="CubeDepthBuffer.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
+    <ClCompile Include="Dimension.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="GLViewport.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MathCollisionLibrary.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Mesh2.cpp" />
     <ClCompile Include="MeshBone.cpp" />
@@ -224,6 +226,8 @@
     <ClCompile Include="RenderBuffer.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SEMath.cpp" />
+    <ClCompile Include="SETimer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -249,21 +253,35 @@
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="ViewFrustum.cpp" />
     <ClCompile Include="Water.cpp" />
     <ClCompile Include="WaterBuffers.cpp" />
     <ClCompile Include="WGLFunc.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABB.h" />
+    <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BaseTypes.h" />
     <ClInclude Include="Billboard.h" />
     <ClInclude Include="Bloom.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ConverterToNormalMap.h" />
+    <ClInclude Include="ConvexPolyhedron.h" />
     <ClInclude Include="CoreLogSystem.h" />
     <ClInclude Include="CoreLogThread.h" />
     <ClInclude Include="CubeDepthBuffer.h" />
     <ClInclude Include="DebugNew.h" />
     <ClInclude Include="DepthBuffer.h" />
+    <ClInclude Include="Dimension.h" />
+    <ClInclude Include="DimensionCone3.h" />
+    <ClInclude Include="DimensionLine3.h" />
+    <ClInclude Include="DimensionPlane3.h" />
+    <ClInclude Include="DimensionPolygon.h" />
+    <ClInclude Include="DimensionQuadrangle3.h" />
+    <ClInclude Include="DimensionRect2.h" />
+    <ClInclude Include="DimensionSize2.h" />
+    <ClInclude Include="DimensionTriangle3.h" />
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine.h" />
@@ -283,6 +301,14 @@
     <ClInclude Include="LogVerbosity.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="Material.h" />
+    <ClInclude Include="MaterialColor.h" />
+    <ClInclude Include="MathCollisionLibrary.h" />
+    <ClInclude Include="MathCore.h" />
+    <ClInclude Include="MathRadianDegree.h" />
+    <ClInclude Include="Matrix2.h" />
+    <ClInclude Include="Matrix3.h" />
+    <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="MatrixArithmetic.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Mesh2.h" />
     <ClInclude Include="MeshBone.h" />
@@ -294,6 +320,7 @@
     <ClInclude Include="MultisampledFrameBuffer.h" />
     <ClInclude Include="MultisampledRenderBuffer.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="OBB.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEmitter.h" />
@@ -308,6 +335,7 @@
     <ClInclude Include="Point2.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="PostProcessing.h" />
+    <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="RandomUtils.h" />
     <ClInclude Include="Renderable.h" />
@@ -315,6 +343,9 @@
     <ClInclude Include="RenderDescription.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SEMath.h" />
+    <ClInclude Include="SETimer.h" />
+    <ClInclude Include="SEString.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProgram.h" />
@@ -339,8 +370,13 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transformation.h" />
     <ClInclude Include="Transformationable.h" />
+    <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Vector3.h" />
+    <ClInclude Include="Vector4.h" />
+    <ClInclude Include="VectorArithmetic.h" />
     <ClInclude Include="VersionNumber.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="ViewFrustum.h" />
     <ClInclude Include="Water.h" />
     <ClInclude Include="WaterBuffers.h" />
     <ClInclude Include="WGLFunc.h" />

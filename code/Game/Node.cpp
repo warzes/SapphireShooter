@@ -1,54 +1,69 @@
 #include "stdafx.h"
 #include "Node.h"
-//-----------------------------------------------------------------------------
-void Node::AddChild(Node* Child)
-{
-	m_children.push_back(Child);
-}
-//-----------------------------------------------------------------------------
-void Node::AddChild(const std::list<Node*>& Children)
-{
-	for (auto it = Children.begin(); it != Children.end(); ++it)
-		m_children.push_back(*it);
-}
-//-----------------------------------------------------------------------------
-bool Node::RemoveChild(Node* Child)
-{
-	auto it = std::find(m_children.begin(), m_children.end(), Child);
-	if (it != m_children.end())
-	{
-		m_children.erase(it);
-		return true;
-	}
 
-	return false;
-}
-//-----------------------------------------------------------------------------
-bool Node::RemoveChild()
+Node::Node() :
+    BaseObject(),
+    isVisible_(true),
+    Parent_(0)
 {
-	if (!m_children.empty())
-	{
-		m_children.erase(m_children.begin());
-		return true;
-	}
-	return false;
 }
-//-----------------------------------------------------------------------------
-uint32_t Node::RemoveChildren(const std::list<Node*>& Children)
+Node::~Node()
 {
-	uint32_t RemovedChildren = 0;
+}
 
-	for (auto it = Children.begin(); it != Children.end(); ++it)
-	{
-		if (RemoveChild(*it))
-			++RemovedChildren;
-	}
-
-	return RemovedChildren;
-}
-//-----------------------------------------------------------------------------
-void Node::RemoveChildren()
+void Node::setVisible(bool isVisible)
 {
-	m_children.clear();
+    isVisible_ = isVisible;
 }
-//-----------------------------------------------------------------------------
+
+void Node::addChild(Node* Child)
+{
+    Children_.push_back(Child);
+}
+
+void Node::addChildren(const std::list<Node*>& Children)
+{
+    for (std::list<Node*>::const_iterator it = Children.begin(); it != Children.end(); ++it)
+        Children_.push_back(*it);
+}
+
+bool Node::removeChild(Node* Child)
+{
+    std::list<Node*>::iterator it = std::find(Children_.begin(), Children_.end(), Child);
+
+    if (it != Children_.end())
+    {
+        Children_.erase(it);
+        return true;
+    }
+
+    return false;
+}
+
+bool Node::removeChild()
+{
+    if (!Children_.empty())
+    {
+        Children_.erase(Children_.begin());
+        return true;
+    }
+    return false;
+}
+
+u32 Node::removeChildren(const std::list<Node*>& Children)
+{
+    u32 RemovedChildren = 0;
+
+    for (std::list<Node*>::const_iterator it = Children.begin(); it != Children.end(); ++it)
+    {
+        if (removeChild(*it))
+            ++RemovedChildren;
+    }
+
+    return RemovedChildren;
+}
+
+void Node::removeChildren()
+{
+    Children_.clear();
+}

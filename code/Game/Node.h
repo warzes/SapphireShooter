@@ -1,48 +1,70 @@
 #pragma once
 
-class Node
+#include "BaseObject.h"
+
+class Node : public BaseObject
 {
+
 public:
-	virtual ~Node() = default;
 
-	void AddChild(Node* Child);
-	void AddChild(const std::list<Node*>& Children);
+    Node();
+    virtual ~Node();
 
-	bool RemoveChild(Node* Child);
-	bool RemoveChild();
+    /* === Functions === */
 
-	uint32_t RemoveChildren(const std::list<Node*>& Children);
-	void RemoveChildren();
+    //! Enables or disables the node.
+    virtual void setVisible(bool isVisible);
 
+    //! Adds the specified child.
+    virtual void addChild(Node* Child);
 
-	void SetParent(Node* Parent)
-	{
-		m_parent = Parent;
-	}
+    //! Adds the specified children.
+    virtual void addChildren(const std::list<Node*>& Children);
 
-	Node* GetParent() const
-	{
-		return m_parent;
-	}
+    //! Removes the specified child and returns true if the child could be removed.
+    virtual bool removeChild(Node* Child);
 
-	const std::list<Node*>& GetChildren() const
-	{
-		return m_children;
-	}
+    //! Removes the first child and returns true if a child could be removed.
+    virtual bool removeChild();
 
-	void SetVisible(bool isVisible)
-	{
-		m_isVisible = isVisible;
-	}
+    //! Removes the specified children and returns the count of removed children.
+    virtual u32 removeChildren(const std::list<Node*>& Children);
 
-	bool GetVisible() const
-	{
-		return m_isVisible;
-	}
+    //! Removes all children.
+    virtual void removeChildren();
+
+    /* === Inline functions === */
+
+    //! Returns the children list.
+    inline const std::list<Node*>& getChildren() const
+    {
+        return Children_;
+    }
+
+    //! Returns true if this node is visible (or rather enabled).
+    inline bool getVisible() const
+    {
+        return isVisible_;
+    }
+
+    //! Sets the parent node.
+    inline void setParent(Node* Parent)
+    {
+        Parent_ = Parent;
+    }
+    //! Returns the parent node.
+    inline Node* getParent() const
+    {
+        return Parent_;
+    }
 
 protected:
-	Node* m_parent = nullptr;
-	std::list<Node*> m_children;
 
-	bool m_isVisible = true;
+    /* === Members === */
+
+    bool isVisible_;
+
+    Node* Parent_;
+    std::list<Node*> Children_;
+
 };
