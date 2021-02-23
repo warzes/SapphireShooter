@@ -6,6 +6,12 @@
 #   pragma comment(lib, "OpenGL32.lib")
 #   pragma comment(lib, "winmm.lib")
 #endif
+
+
+сюжет подбить под такой же
+https://www.youtube.com/watch?v=BV60V142BLQ
+то бишь локация проклята, есть возможность менять мир (как раз же есть эффект чб)
+
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {

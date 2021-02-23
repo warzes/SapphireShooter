@@ -231,6 +231,9 @@
     <ClCompile Include="SETimer.cpp">
       <Filter>_new\Core\Platform</Filter>
     </ClCompile>
+    <ClCompile Include="RenderResourceManager.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -347,9 +350,6 @@
     <Filter Include="engine\Core\debug\LogSystem\detail">
       <UniqueIdentifier>{cb979460-429c-40a3-a368-1a3d386a039d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\RenderType">
-      <UniqueIdentifier>{413bab4f-0fee-4f98-ba41-1ba33a581218}</UniqueIdentifier>
-    </Filter>
     <Filter Include="_new">
       <UniqueIdentifier>{af11c566-8560-4490-b0e1-764c156e74c7}</UniqueIdentifier>
     </Filter>
@@ -376,6 +376,9 @@
     </Filter>
     <Filter Include="_new\Core\Platform">
       <UniqueIdentifier>{3a683747-2b1e-4d89-b012-0614f271d0bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\RenderResource">
+      <UniqueIdentifier>{413bab4f-0fee-4f98-ba41-1ba33a581218}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -736,6 +739,12 @@
     </ClInclude>
     <ClInclude Include="SETimer.h">
       <Filter>_new\Core\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderResourceManager.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderResource.h">
+      <Filter>engine\Render\RenderResource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
