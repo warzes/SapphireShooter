@@ -1,5 +1,11 @@
 
+
+
+
 Визуальный стиль
+
+RiME
+
 https://www.youtube.com/watch?v=YRq68jCH6U0
 https://www.reddit.com/r/Unity3D/comments/lm2ma9/getting_my_lizard_to_stay_on_moving_rigidbodies/
 
