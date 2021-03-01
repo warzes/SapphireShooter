@@ -191,7 +191,6 @@
     <ClCompile Include="Framebuffer.cpp" />
     <ClCompile Include="FrameBuffer2.cpp" />
     <ClCompile Include="GameApp.cpp" />
-    <ClCompile Include="GLViewport.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MathCollisionLibrary.cpp" />
@@ -223,7 +222,6 @@
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="RandomUtils.cpp" />
     <ClCompile Include="RenderBuffer.cpp" />
-    <ClCompile Include="RenderResourceManager.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SEMath.cpp" />
@@ -293,7 +291,6 @@
     <ClInclude Include="FrameBuffer2.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="GLViewport.h" />
     <ClInclude Include="InlineFunc.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Light.h" />
@@ -341,7 +338,6 @@
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderBuffer.h" />
     <ClInclude Include="RenderDescription.h" />
-    <ClInclude Include="RenderResourceManager.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SEMath.h" />

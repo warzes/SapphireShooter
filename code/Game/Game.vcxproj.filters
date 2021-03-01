@@ -86,9 +86,6 @@
     <ClCompile Include="Billboard.cpp">
       <Filter>Other</Filter>
     </ClCompile>
-    <ClCompile Include="GLViewport.cpp">
-      <Filter>engine\Render\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="TextureLoader.cpp">
       <Filter>engine\Render\new\Texture</Filter>
     </ClCompile>
@@ -225,9 +222,6 @@
     <ClCompile Include="SETimer.cpp">
       <Filter>_new\Core\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="RenderResourceManager.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>engine\input</Filter>
     </ClCompile>
@@ -283,9 +277,6 @@
     </Filter>
     <Filter Include="Other">
       <UniqueIdentifier>{faa8d77e-7278-4fe0-95f7-0865b01c5fc2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\OpenGL">
-      <UniqueIdentifier>{f0cd942c-65a1-4d99-8c58-e0cea420271c}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Core\pattern">
       <UniqueIdentifier>{f83e2e8e-a874-47ef-9c76-65745dd51384}</UniqueIdentifier>
@@ -486,9 +477,6 @@
     </ClInclude>
     <ClInclude Include="Billboard.h">
       <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="GLViewport.h">
-      <Filter>engine\Render\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>engine\Core\pattern</Filter>
@@ -727,9 +715,6 @@
     </ClInclude>
     <ClInclude Include="SETimer.h">
       <Filter>_new\Core\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderResourceManager.h">
-      <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="NonCopyable.h">
       <Filter>engine\Core\pattern</Filter>

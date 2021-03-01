@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Mouse.h"
 #include "Keyboard.h"
-#include "GLViewport.h"
 #include "ShaderManager.h"
 #include "PhysicsManager.h"
 #include "Log.h"
@@ -196,7 +195,7 @@ void GameApp::Render()
 
 	if (!polygonMode)
 		postHDR->startProcessing();
-	GLViewport::Clear(true, true);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	scene->render1();
 	{

@@ -2,7 +2,6 @@
 #include "RenderSystem.h"
 #include "Window.h"
 #include "WGLFunc.h"
-#include "GLViewport.h"
 #include "Log.h"
 //-----------------------------------------------------------------------------
 RenderSystem::~RenderSystem()
@@ -131,8 +130,8 @@ void RenderSystem::Close()
 //-----------------------------------------------------------------------------
 void RenderSystem::BeginFrame(int width, int height)
 {
-	GLViewport::SetViewport(0, 0, width, height);
-	GLViewport::SetClearColor(0.129f, 0.586f, 0.949f, 1.0f);
+	glViewport(0, 0, width, height);
+	glClearColor(0.129f, 0.586f, 0.949f, 1.0f);
 	//glClearDepth(1.0f);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
