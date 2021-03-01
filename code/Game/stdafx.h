@@ -29,6 +29,7 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 
 #include <cstdint>
 #include <cassert>
+#include <cmath>
 
 #include <sstream>
 #include <fstream>

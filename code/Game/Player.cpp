@@ -193,5 +193,5 @@ void Player::processInput(Camera3D& cam, float dt)
 	//	//m_sniperAiming = false;
 	//}
 
-	cam.MouseUpdate(dt);
+	cam.MouseMoveUpdate(dt);
 }

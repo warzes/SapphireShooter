@@ -52,7 +52,7 @@ void Water::RenderReflectAndRefract(Scene* scene)
 	float distance = 2 * (defaultCamPos.y - GetPosition().y);
 	m_camera->SetCameraPos(glm::vec3(defaultCamPos.x, defaultCamPos.y - distance, defaultCamPos.z));
 	m_camera->SetPitch(-defaultCamPitch);
-	m_camera->updateVectors();
+	m_camera->Update(); // TODO: подумать
 
 	buffers.bindReflectBuffer();
 	scene->render(glm::vec4(0, 1, 0, -GetPosition().y + 0.1));
@@ -60,7 +60,7 @@ void Water::RenderReflectAndRefract(Scene* scene)
 
 	m_camera->SetCameraPos(defaultCamPos);
 	m_camera->SetPitch(defaultCamPitch);
-	m_camera->updateVectors();
+	m_camera->Update(); // TODO: подумать
 
 	buffers.bindRefractBuffer();
 	scene->render(glm::vec4(0, -1, 0, GetPosition().y));

@@ -745,6 +745,9 @@
     <ClInclude Include="Camera2D.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="CoreMath.h">
+      <Filter>engine\Core\math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\3rdparty\freetype.lib">

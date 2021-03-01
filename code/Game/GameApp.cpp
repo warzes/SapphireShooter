@@ -41,8 +41,6 @@ void GameApp::Init()
 	post = new PostProcessing();
 
 	m_mainCamera.SetCameraPos(glm::vec3(30.0f, 25.0f, 30.0f));
-	m_mainCamera.SetYaw(90);
-	m_mainCamera.SetPitch(0);
 
 	fontRenderer = new FontRenderer(Font("fonts/arial.ttf"));
 	fontRenderer->setColor(glm::vec3(1.0));
@@ -100,7 +98,7 @@ void GameApp::Update(float deltaTime)
 {
 	resizeApp();
 
-	m_mainCamera.UpdateLookAt();
+	m_mainCamera.Update();
 	Player::Get().Update(m_mainCamera, scene->GetTerrain(), deltaTime);
 
 	// Increase total number of enemies over time
@@ -127,7 +125,7 @@ void GameApp::Update(float deltaTime)
 //-----------------------------------------------------------------------------
 void GameApp::ProcessInput(float dt)
 {
-	m_mainCamera.MouseUpdate(dt);
+	m_mainCamera.MouseMoveUpdate(dt);
 
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_W))
 		m_mainCamera.MoveForward(dt);

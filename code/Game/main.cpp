@@ -17,7 +17,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	{
 		Engine& engine = Engine::Get();
 		{
-#if 0
+#if 1
 			GameApp game;
 #else
 			TestApp game;

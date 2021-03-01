@@ -42,6 +42,10 @@ void TestApp::Init()
 	C#
 	UE
 	постапок?
+		https ://vkguide.dev/
+		турсо (камера?)
+		демо с юнити
+		dwSampleFramework
 
 	m_model.Init("../res/Models3D/swords/sword-0.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
 	m_model.SetSpotlight(false);
@@ -52,12 +56,12 @@ void TestApp::Init()
 void TestApp::Update(float deltaTime)
 {
 	resizeApp();
-	m_mainCamera.UpdateLookAt();
+	m_mainCamera.Update();
 }
 //-----------------------------------------------------------------------------
 void TestApp::ProcessInput(float dt)
 {
-	m_mainCamera.MouseUpdate(dt);
+	m_mainCamera.MouseMoveUpdate(dt);
 
 	if (Keyboard::Get().KeyDown(Keyboard::KEY_W))
 		m_mainCamera.MoveForward(dt);

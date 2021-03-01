@@ -271,6 +271,7 @@
     <ClInclude Include="ConvexPolyhedron.h" />
     <ClInclude Include="CoreLogSystem.h" />
     <ClInclude Include="CoreLogThread.h" />
+    <ClInclude Include="CoreMath.h" />
     <ClInclude Include="CubeDepthBuffer.h" />
     <ClInclude Include="DebugNew.h" />
     <ClInclude Include="DepthBuffer.h" />
