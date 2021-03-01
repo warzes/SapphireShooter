@@ -2,7 +2,7 @@
 #include "ParticleEmitter.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "OGLFunc.h"
 //-----------------------------------------------------------------------------
 void ParticleEmitter::Init(unsigned numOfParticles)
@@ -37,7 +37,7 @@ void ParticleEmitter::Init(unsigned numOfParticles)
 	glBindVertexArray(0);
 }
 //-----------------------------------------------------------------------------
-void ParticleEmitter::Render(const Camera& cam, float dt, const glm::vec3 &origin)
+void ParticleEmitter::Render(const Camera3D& cam, float dt, const glm::vec3 &origin)
 {
 	m_shader->Bind();
 	glm::mat4 model = glm::mat4(1.0f);

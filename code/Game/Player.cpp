@@ -3,14 +3,14 @@
 #include "Keyboard.h"
 #include "PhysicsManager.h"
 
-void Player::Init(Camera& cam, const glm::vec3& initialPosition)
+void Player::Init(Camera3D& cam, const glm::vec3& initialPosition)
 {
 	cam.SetCameraPos(initialPosition);
 
 	m_spotLight.Configure(glm::vec3(5.0f, 5.0f, 5.0f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.027f, 0.0028f, 22.5f, 25.0f);
 }
 
-void Player::Update(Camera& cam, Terrain& terrain, float dt)
+void Player::Update(Camera3D& cam, Terrain& terrain, float dt)
 {
 	if (!IsPlayerWalking())
 	{
@@ -61,7 +61,7 @@ bool Player::IsPlayerWalking()
 	return m_camMovements[CAM_FORWARD] || m_camMovements[CAM_BACKWARD] || m_camMovements[CAM_LEFT] || m_camMovements[CAM_RIGHT];
 }
 
-void Player::processInput(Camera& cam, float dt)
+void Player::processInput(Camera3D& cam, float dt)
 {
 	static Keyboard& keyboard = Keyboard::Get();
 

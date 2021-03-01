@@ -3,7 +3,7 @@
 #include "Plane.h"
 #include "WaterBuffers.h"
 #include "Transformationable.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "ShaderProgram.h"
 
 class Scene;
@@ -11,7 +11,7 @@ class Scene;
 class Water : public Transformationable
 {
 public:
-	Water(Camera* cam) : m_camera(cam) { RotateX(-90); }
+	Water(Camera3D* cam) : m_camera(cam) { RotateX(-90); }
 
 	void Create();
 
@@ -26,5 +26,5 @@ private:
 	Texture m_dudvMap;
 	Texture m_normalMap;
 	float m_offset = 0;
-	Camera* m_camera = nullptr;
+	Camera3D* m_camera = nullptr;
 };

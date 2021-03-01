@@ -3,7 +3,7 @@
 #include "RandomUtils.h"
 #include "PhysicsManager.h"
 
-Enemy::Enemy(Camera& cam, EnemyType type) :
+Enemy::Enemy(Camera3D& cam, EnemyType type) :
 	m_pos(RandomUtils::Get().RandomNumBetweenTwo(50.0f, 450.0f), 0.0f, RandomUtils::Get().RandomNumBetweenTwo(0.0f, 450.0f)),
 	m_maximumSpeed(15.0f),
 	m_maximumDroneSpeed(100.0f),
@@ -112,7 +112,7 @@ void Enemy::DrawShockwave()
 	}
 }
 
-void Enemy::Update(Terrain& terrain, Camera& cam, float dt)
+void Enemy::Update(Terrain& terrain, Camera3D& cam, float dt)
 {
 	if (!m_dead)
 	{
@@ -243,7 +243,7 @@ void Enemy::SetRespawnStatus(bool canRespawn)
 	m_canRespawn = canRespawn;
 }
 
-void Enemy::Seek(Camera& target, const float dt)
+void Enemy::Seek(Camera3D& target, const float dt)
 {
 	glm::vec3 desiredVelocity = target.GetCameraPos() - m_pos;
 	desiredVelocity = glm::normalize(desiredVelocity);
@@ -255,7 +255,7 @@ void Enemy::Seek(Camera& target, const float dt)
 	m_pos += steering * dt;
 }
 
-void Enemy::Flee(Camera& target, const float dt)
+void Enemy::Flee(Camera3D& target, const float dt)
 {
 	glm::vec3 desiredVelocity = target.GetCameraPos() - m_pos;
 	desiredVelocity = glm::normalize(desiredVelocity);
@@ -267,7 +267,7 @@ void Enemy::Flee(Camera& target, const float dt)
 	m_pos -= steering * dt;
 }
 
-void Enemy::Fire(Camera& target, Terrain& terrain, const float dt)
+void Enemy::Fire(Camera3D& target, Terrain& terrain, const float dt)
 {
 	// Check if the drone has just been fired
 	if (m_droneStatus && !m_droneSelfDestruct)

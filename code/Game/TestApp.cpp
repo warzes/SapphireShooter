@@ -36,7 +36,12 @@ void TestApp::Init()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	m_mainCamera.SetCameraPos(glm::vec3(0.0f, 5.0f, 0.0f));
+	m_mainCamera.Rotate(90, 0);
 #error "сделать чтобы камера могла смотреть в точку"
+	https://www.youtube.com/user/UncleBobGmail/videos
+	C#
+	UE
+	постапок?
 
 	m_model.Init("../res/Models3D/swords/sword-0.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
 	m_model.SetSpotlight(false);

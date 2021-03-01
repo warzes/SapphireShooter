@@ -3,7 +3,7 @@
 #include "Shape.h"
 #include "Texture2D.h"
 #include "Transformation.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "SpotLight.h"
 #include "ShaderProgram.h"
 
@@ -19,8 +19,8 @@ public:
 
 	void SetTransform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 
-	void Draw(Camera& cam, glm::vec3 lightPos = glm::vec3(0.0f, 0.0f, 0.0f), bool bNormalMapping = false, SpotLight* spotlight = nullptr, bool postProcessing = false, GLuint postProcessingTexId = 0);
-	void Draw(glm::mat4 model, Camera& cam, glm::vec3 lightPos);
+	void Draw(Camera3D& cam, glm::vec3 lightPos = glm::vec3(0.0f, 0.0f, 0.0f), bool bNormalMapping = false, SpotLight* spotlight = nullptr, bool postProcessing = false, GLuint postProcessingTexId = 0);
+	void Draw(glm::mat4 model, Camera3D& cam, glm::vec3 lightPos);
 
 private:
 	GLuint m_numOfVertices, m_numOfIndices;

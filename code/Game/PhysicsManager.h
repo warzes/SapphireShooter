@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Camera.h"
+#include "Camera3D.h"
 #include "Enemy.h"
 
 struct Ray
@@ -18,7 +18,7 @@ public:
 		return instance;
 	}
 
-	void Update(Camera& cam, float dt, std::vector<Enemy*>& enemies);
+	void Update(Camera3D& cam, float dt, std::vector<Enemy*>& enemies);
 
 	void CastRay() { m_castRay = true; }
 	Ray& GetRay() { return m_ray; }
@@ -26,17 +26,17 @@ public:
 	float GetGravity() { return m_gravity; }
 	void OnEnemyHit(Enemy* enemy);
 	void OnPlayerHit(float damage);
-	bool PointInSphere(Camera& cam, glm::vec3&, float radius);
+	bool PointInSphere(Camera3D& cam, glm::vec3&, float radius);
 
 private:
 	PhysicsManager() = default;
 	PhysicsManager(const PhysicsManager&) = delete;
 	void operator=(const PhysicsManager&) = delete;
 
-	Ray castRayFromMouse(Camera& cam);
-	Ray castRayFromWeapon(Camera& cam);
-	void checkRaySphereCollision(Camera& cam, std::vector<Enemy*> enemies);
-	bool raySphere(Camera& cam, glm::vec3 RayDirWorld, double SphereRadius, double x, double y, double z);
+	Ray castRayFromMouse(Camera3D& cam);
+	Ray castRayFromWeapon(Camera3D& cam);
+	void checkRaySphereCollision(Camera3D& cam, std::vector<Enemy*> enemies);
+	bool raySphere(Camera3D& cam, glm::vec3 RayDirWorld, double SphereRadius, double x, double y, double z);
 
 	Ray m_ray;
 	float m_mouseX = 0.0f;

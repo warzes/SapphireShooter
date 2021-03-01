@@ -4,7 +4,7 @@
 #include "ShaderManager.h"
 #include "Player.h"
 
-Scene::Scene(Camera* cam) 
+Scene::Scene(Camera3D* cam) 
 	: camera(cam)
 {
 	m_dirLight.Configure(glm::vec3(-0.1f, -0.1f, -0.1f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.5f, 0.5f, 0.5f));

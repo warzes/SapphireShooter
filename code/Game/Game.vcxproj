@@ -175,7 +175,8 @@
   <ItemGroup>
     <ClCompile Include="Billboard.cpp" />
     <ClCompile Include="Bloom.cpp" />
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Camera2D.cpp" />
+    <ClCompile Include="Camera3D.cpp" />
     <ClCompile Include="ConverterToNormalMap.cpp" />
     <ClCompile Include="CoreLogSystem.cpp" />
     <ClCompile Include="CoreLogThread.cpp" />
@@ -264,7 +265,8 @@
     <ClInclude Include="BaseTypes.h" />
     <ClInclude Include="Billboard.h" />
     <ClInclude Include="Bloom.h" />
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Camera2D.h" />
+    <ClInclude Include="Camera3D.h" />
     <ClInclude Include="ConverterToNormalMap.h" />
     <ClInclude Include="ConvexPolyhedron.h" />
     <ClInclude Include="CoreLogSystem.h" />

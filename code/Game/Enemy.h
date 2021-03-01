@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Model.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "Terrain.h"
 #include "ParticleEmitter.h"
 
@@ -14,11 +14,11 @@ enum class EnemyType
 class Enemy
 {
 public:
-	Enemy(Camera& cam, EnemyType type);
+	Enemy(Camera3D& cam, EnemyType type);
 
 	void Draw();
 	void DrawShockwave();
-	void Update(Terrain& terrain, Camera& cam, float dt);
+	void Update(Terrain& terrain, Camera3D& cam, float dt);
 	void ReduceHealth(int amount);
 
 	void SetPos(glm::vec3& pos) { m_pos = pos; }
@@ -37,7 +37,7 @@ public:
 	bool GetRespawnStatus() { return m_canRespawn; }
 
 private:
-	Camera m_camera;
+	Camera3D m_camera;
 	glm::vec3 m_pos, m_velocity, m_fireDir, m_dronePos, m_oldPlayerPos;
 
 	float m_maximumSpeed, m_maximumDroneSpeed;
@@ -50,9 +50,9 @@ private:
 	ParticleEmitter m_particleEffect;
 
 	// Private functions
-	void Seek(Camera& target, const float dt);
-	void Flee(Camera& target, const float dt);
-	void Fire(Camera& target, Terrain& terrain, const float dt);
+	void Seek(Camera3D& target, const float dt);
+	void Flee(Camera3D& target, const float dt);
+	void Fire(Camera3D& target, Terrain& terrain, const float dt);
 	void Respawn();
 
 	Model m_model;

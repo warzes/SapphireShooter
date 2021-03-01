@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Camera.h"
+#include "Camera3D.h"
 #include "Terrain.h"
 #include "SpotLight.h"
 
@@ -13,8 +13,8 @@ public:
 		return playerInst;
 	}
 
-	void Init(Camera& cam, const glm::vec3 &initialPosition = glm::vec3(0.0f, 0.0f, 1.0f));
-	void Update(Camera& cam, Terrain& terrain, float dt);
+	void Init(Camera3D& cam, const glm::vec3 &initialPosition = glm::vec3(0.0f, 0.0f, 1.0f));
+	void Update(Camera3D& cam, Terrain& terrain, float dt);
 
 	bool IsPlayerWalking();
 
@@ -27,7 +27,7 @@ private:
 	void operator=(const Player&) = delete;
 	void operator=(Player&&) = delete;
 
-	void processInput(Camera& cam, float dt);
+	void processInput(Camera3D& cam, float dt);
 
 	glm::vec3 m_pos;
 

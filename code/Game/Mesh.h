@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Transformation.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "Texture2D.h"
 #include "ShaderProgram.h"
 
@@ -35,7 +35,7 @@ public:
 	void SetTransform(Transform& transform) { m_transform = transform; }
 
 	void Draw(
-		Camera& camera,
+		Camera3D& camera,
 		std::shared_ptr<ShaderProgram> program,
 		bool instancing,
 		const glm::vec3& pos = glm::vec3(1.0f),

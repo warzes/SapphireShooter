@@ -1,8 +1,9 @@
 #include "stdafx.h"
-#include "Camera.h"
+#if SE_SUPPORT_3D
+#include "Camera3D.h"
 #include "Mouse.h"
 //-----------------------------------------------------------------------------
-Camera::Camera() :
+Camera3D::Camera3D() :
 	m_cameraPos(glm::vec3(0.0f, 0.0f, 0.0f)),
 	m_cameraForward(glm::vec3(0.0f, 0.0f, -1.0f)),
 	m_cameraUpVector(glm::vec3(0.0f, 1.0f, 0.0f)),
@@ -12,68 +13,70 @@ Camera::Camera() :
 {
 }
 //-----------------------------------------------------------------------------
-void Camera::InitCameraPerspective(float fov, float aspectRatio, float near, float far)
+void Camera3D::InitCameraPerspective(float fov, float aspectRatio, float near, float far)
 {
 	m_fieldOfView = fov;
 	m_projection = glm::perspective(glm::radians(m_fieldOfView), aspectRatio, near, far);
 }
 //-----------------------------------------------------------------------------
-void Camera::InitCameraOrthographic(float left, float right, float bottom, float up, float near, float far)
+void Camera3D::InitCameraOrthographic(float left, float right, float bottom, float up, float near, float far)
 {
 	m_projection = glm::ortho(left, right, bottom, up, near, far);
 }
 //-----------------------------------------------------------------------------
-void Camera::MoveForward(float dt)
+void Camera3D::MoveForward(float dt)
 {
 	m_cameraPos += (m_cameraSpeed * dt) * m_cameraForward;
 }
 //-----------------------------------------------------------------------------
-void Camera::MoveBackward(float dt)
+void Camera3D::MoveBackward(float dt)
 {
 	m_cameraPos -= (m_cameraSpeed * dt) * m_cameraForward;
 }
 //-----------------------------------------------------------------------------
-void Camera::StrafeLeft(float dt)
+void Camera3D::StrafeLeft(float dt)
 {
 	glm::vec3 StrafteDirection = glm::cross(m_cameraForward, m_cameraUpVector);
 	m_cameraPos -= (m_cameraSpeed * dt) * right;
 }
 //-----------------------------------------------------------------------------
-void Camera::StrafeRight(float dt)
+void Camera3D::StrafeRight(float dt)
 {
 	glm::vec3 StrafteDirection = glm::cross(m_cameraForward, m_cameraUpVector);
 	m_cameraPos += (m_cameraSpeed * dt) * right;
 }
 //-----------------------------------------------------------------------------
-void Camera::Rise(float dt)
+void Camera3D::Rise(float dt)
 {
 	m_cameraPos += (m_cameraSpeed * dt) * m_cameraUpVector;
 }
 //-----------------------------------------------------------------------------
-void Camera::Fall(float dt)
+void Camera3D::Fall(float dt)
 {
 	m_cameraPos -= (m_cameraSpeed * dt) * m_cameraUpVector;
 }
 //-----------------------------------------------------------------------------
-void Camera::MouseUpdate(float dt)
+void Camera3D::MouseUpdate(float dt)
 {
 	const float MouseDeltaX = static_cast<float>(Mouse::Get().GetMouseMove().x);
 	const float MouseDeltaY = static_cast<float>(Mouse::Get().GetMouseMove().y);
-	Rotate(MouseDeltaX * dt, MouseDeltaY * dt);
+	Rotate(MouseDeltaX * m_cameraSensitivity * dt, MouseDeltaY * m_cameraSensitivity * dt);
 }
 //-----------------------------------------------------------------------------
-void Camera::Rotate(float offsetX, float offsetY)
+void Camera3D::Rotate(float offsetX, float offsetY)
 {
-	pitch += -offsetY * m_cameraSensitivity;
-	yaw += offsetX * m_cameraSensitivity;
+	pitch += -offsetY;
+	yaw += offsetX;
 
 	if (pitch > 89) pitch = 89;
 	else if (pitch < -89) pitch = -89;
+	if (yaw > 360) yaw = 0;
+	else if (yaw < -360) yaw = 0;
 
 	updateVectors();
 }
 //-----------------------------------------------------------------------------
-void Camera::updateVectors()
+void Camera3D::updateVectors()
 {
 	glm::vec3 front;
 	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
@@ -86,8 +89,9 @@ void Camera::updateVectors()
 	std::cout << "pitch= " << pitch << " yaw=" << yaw << std::endl;
 }
 //-----------------------------------------------------------------------------
-void Camera::UpdateLookAt()
+void Camera3D::UpdateLookAt()
 {
 	updateVectors();
 }
 //-----------------------------------------------------------------------------
+#endif // SE_SUPPORT_3D

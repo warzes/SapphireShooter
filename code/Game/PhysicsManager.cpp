@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "Engine.h"
 
-void PhysicsManager::Update(Camera& cam, float dt, std::vector<Enemy*>& enemies)
+void PhysicsManager::Update(Camera3D& cam, float dt, std::vector<Enemy*>& enemies)
 {
 	// Check if ray casting is true
 	if (m_castRay)
@@ -16,7 +16,7 @@ void PhysicsManager::Update(Camera& cam, float dt, std::vector<Enemy*>& enemies)
 	}
 }
 
-Ray PhysicsManager::castRayFromMouse(Camera& cam)
+Ray PhysicsManager::castRayFromMouse(Camera3D& cam)
 {
 	// screen space (viewport coordinates)
 	float x = (2.0f * m_mouseX) / GetEngineDescription().window.width - 1.0f;
@@ -40,7 +40,7 @@ Ray PhysicsManager::castRayFromMouse(Camera& cam)
 	return ray;
 }
 
-Ray PhysicsManager::castRayFromWeapon(Camera& cam)
+Ray PhysicsManager::castRayFromWeapon(Camera3D& cam)
 {
 	Ray ray;
 	ray.pos = cam.GetCameraPos();
@@ -48,7 +48,7 @@ Ray PhysicsManager::castRayFromWeapon(Camera& cam)
 	return ray;
 }
 
-bool PhysicsManager::raySphere(Camera& cam, glm::vec3 RayDirWorld, double SphereRadius, double x, double y, double z)
+bool PhysicsManager::raySphere(Camera3D& cam, glm::vec3 RayDirWorld, double SphereRadius, double x, double y, double z)
 {
 	// work out components of quadratic
 	glm::vec3 v = glm::vec3(x, y, z) - cam.GetCameraPos();
@@ -78,7 +78,7 @@ bool PhysicsManager::raySphere(Camera& cam, glm::vec3 RayDirWorld, double Sphere
 	return false;
 }
 
-void PhysicsManager::checkRaySphereCollision(Camera& cam, std::vector<Enemy*> enemies)
+void PhysicsManager::checkRaySphereCollision(Camera3D& cam, std::vector<Enemy*> enemies)
 {
 	for (auto i = enemies.begin(); i != enemies.end(); ++i)
 	{
@@ -103,7 +103,7 @@ void PhysicsManager::OnPlayerHit(float damage)
 	//Player::Get().ReduceHealth(damage);  // TODO: damage
 }
 
-bool PhysicsManager::PointInSphere(Camera& cam, glm::vec3& other, float radius)
+bool PhysicsManager::PointInSphere(Camera3D& cam, glm::vec3& other, float radius)
 {
 	// Calculate distance between player and center of circle
 	float distanceSq = std::pow(cam.GetCameraPos().x - other.x, 2) + std::pow(cam.GetCameraPos().y - other.y, 2) + std::pow(cam.GetCameraPos().z - other.z, 2);

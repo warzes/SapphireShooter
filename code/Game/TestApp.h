@@ -3,7 +3,7 @@
 #define TEST 1
 
 #include "EngineDescription.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "Model.h"
 
 class TestApp
@@ -25,7 +25,7 @@ public:
 private:
 	void resizeApp();
 
-	Camera m_mainCamera;
+	Camera3D m_mainCamera;
 
 	Model m_model;
 

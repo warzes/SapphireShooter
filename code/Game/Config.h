@@ -4,3 +4,5 @@
 #define SE_ENABLE_THREADING 1
 
 #define SE_OPENGL           1
+
+#define SE_SUPPORT_3D       1

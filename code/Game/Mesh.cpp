@@ -10,7 +10,7 @@ Mesh::Mesh(const std::vector<MeshVertex>& vertices, const std::vector<GLuint>& i
 	m_textures = textures;
 	createMesh(instancing);
 }
-void Mesh::Draw(Camera& camera, std::shared_ptr<ShaderProgram> shaderProgram, bool instancing, const glm::vec3& pos, const glm::vec3& rot, float amountOfRotation, const glm::vec3& scale, bool bDrawRelativeToCamera, bool bUseSpotlight)
+void Mesh::Draw(Camera3D& camera, std::shared_ptr<ShaderProgram> shaderProgram, bool instancing, const glm::vec3& pos, const glm::vec3& rot, float amountOfRotation, const glm::vec3& scale, bool bDrawRelativeToCamera, bool bUseSpotlight)
 {
 	shaderProgram->Bind();
 

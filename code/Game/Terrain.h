@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Camera.h"
+#include "Camera3D.h"
 #include "PerlinNoise.h"
 #include "ShaderProgram.h"
 #include "DirectionalLight.h"
@@ -22,7 +22,7 @@ public:
 	glm::vec3 CalculateNormal(unsigned int x, unsigned int z);
 	void SetFog(bool fogState) { m_fog = fogState; }
 
-	void Draw(Camera& cam, DirectionalLight* directionLight, PointLight* lamp, SpotLight* spotlight);
+	void Draw(Camera3D& cam, DirectionalLight* directionLight, PointLight* lamp, SpotLight* spotlight);
 
 private:
 	std::shared_ptr<ShaderProgram> m_terrainShader;

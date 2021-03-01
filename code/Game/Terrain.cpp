@@ -259,7 +259,7 @@ float Terrain::BarryCentric(const glm::vec3 &p1, const glm::vec3 &p2, const glm:
 }
 //-----------------------------------------------------------------------------
 // Function that binds the terrain vertex array object (VAO) and draws its vertex data
-void Terrain::Draw(Camera& _cam, DirectionalLight* directionLight, PointLight* lamp, SpotLight* spotlight)
+void Terrain::Draw(Camera3D& _cam, DirectionalLight* directionLight, PointLight* lamp, SpotLight* spotlight)
 {
 	m_terrainShader->Bind();
 

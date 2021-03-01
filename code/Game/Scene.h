@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Skybox.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "Light.h"
 #include "Shadow.h"
 #include "ShaderProgram.h"
@@ -10,7 +10,7 @@
 
 class Scene
 {
-	Camera* camera = nullptr;
+	Camera3D* camera = nullptr;
 	Skybox* m_skybox = nullptr;
 	std::vector<Renderable*> objects;
 	std::vector<Renderable*> animations;
@@ -42,7 +42,7 @@ class Scene
 	std::shared_ptr<ShaderProgram> water = nullptr;
 
 public:
-	Scene(Camera* cam);
+	Scene(Camera3D* cam);
 
 	void initShadersManager();
 

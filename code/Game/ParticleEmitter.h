@@ -5,13 +5,13 @@
 #include "ShaderProgram.h"
 #include "Texture2D.h"
 
-class Camera;
+class Camera3D;
 
 class ParticleEmitter
 {
 public:
 	void Init(unsigned numberOfParticles);
-	void Render(const Camera& camera, float dt, const glm::vec3 &origin = glm::vec3(0.0f, 0.0f, 0.0f));
+	void Render(const Camera3D& camera, float dt, const glm::vec3 &origin = glm::vec3(0.0f, 0.0f, 0.0f));
 
 	std::vector<Particle>& GetParticle() { return m_particles; }
 	std::vector<glm::vec3>& GetPos() { return m_position; }

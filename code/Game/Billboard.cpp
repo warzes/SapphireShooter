@@ -102,7 +102,7 @@ void Billboard::SetTransform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)
 	m_transform.SetRotation(rot);
 }
 
-void Billboard::Draw(glm::mat4 model, Camera& cam, glm::vec3 lightPos)
+void Billboard::Draw(glm::mat4 model, Camera3D& cam, glm::vec3 lightPos)
 {
 	m_shaderComponent->Bind();
 	m_texture->Bind();
@@ -119,7 +119,7 @@ void Billboard::Draw(glm::mat4 model, Camera& cam, glm::vec3 lightPos)
 	m_shaderComponent->UnBind();
 }
 
-void Billboard::Draw(Camera& camera, glm::vec3 lightPos, bool normalMapping, SpotLight* spotlight, bool postProcessing, GLuint postProcessingTexId)
+void Billboard::Draw(Camera3D& camera, glm::vec3 lightPos, bool normalMapping, SpotLight* spotlight, bool postProcessing, GLuint postProcessingTexId)
 {
 	m_shaderComponent->Bind();
 

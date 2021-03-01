@@ -10,19 +10,16 @@
       <Filter>engine\input</Filter>
     </ClCompile>
     <ClCompile Include="OGLFunc.cpp">
-      <Filter>engine\Render\OpenGL API</Filter>
+      <Filter>engine\Render\old\OpenGL API</Filter>
     </ClCompile>
     <ClCompile Include="WGLFunc.cpp">
-      <Filter>engine\Render\OpenGL API</Filter>
+      <Filter>engine\Render\old\OpenGL API</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
       <Filter>engine\Resource</Filter>
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
       <Filter>engine\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
-      <Filter>engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>engine</Filter>
@@ -114,7 +111,7 @@
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClCompile>
     <ClCompile Include="Water.cpp">
-      <Filter>engine\Render\Resource\Renderable\water</Filter>
+      <Filter>engine\Render\old\Resource\Renderable\water</Filter>
     </ClCompile>
     <ClCompile Include="Shadow.cpp">
       <Filter>engine\Render\new\Effect</Filter>
@@ -150,25 +147,25 @@
       <Filter>engine\Render\new\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>engine\Render\Resource\Shader</Filter>
+      <Filter>engine\Render\old\Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
-      <Filter>engine\Render\Resource\Shader</Filter>
+      <Filter>engine\Render\old\Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
-      <Filter>engine\Render\Resource\Renderable</Filter>
+      <Filter>engine\Render\old\Resource\Renderable</Filter>
     </ClCompile>
     <ClCompile Include="TestAnims.cpp">
       <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="Geometry.cpp">
-      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
+      <Filter>engine\Render\old\Resource\Renderable\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
-      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
+      <Filter>engine\Render\old\Resource\Renderable\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Log.cpp">
@@ -203,10 +200,10 @@
     </ClCompile>
     <ClCompile Include="TestApp.cpp" />
     <ClCompile Include="Framebuffer.cpp">
-      <Filter>engine\Render\Resource</Filter>
+      <Filter>engine\Render\old\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
-      <Filter>engine\Render\Resource</Filter>
+      <Filter>engine\Render\old\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
       <Filter>engine\Graphics\_old</Filter>
@@ -223,7 +220,13 @@
     <ClCompile Include="Terrain.cpp">
       <Filter>engine\Graphics\_old</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>engine\Render\old</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera3D.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera2D.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -245,9 +248,6 @@
     </Filter>
     <Filter Include="engine\Render">
       <UniqueIdentifier>{6123480a-23c1-4aaa-baeb-6337d538a224}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\OpenGL API">
-      <UniqueIdentifier>{bd34f97b-af06-47a9-af44-189a3e4906e6}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Resource">
       <UniqueIdentifier>{b19dd28a-8ea4-4e27-ab4e-44c508ce5de3}</UniqueIdentifier>
@@ -354,21 +354,6 @@
     <Filter Include="NewGame">
       <UniqueIdentifier>{f60e2e16-efed-4d21-9802-2e498a656148}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\Resource">
-      <UniqueIdentifier>{fca9ff27-e59d-4733-a5d3-82484622e330}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\Resource\Renderable">
-      <UniqueIdentifier>{9608b21b-7f8c-45d2-a234-a135ce0fa346}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\Resource\Renderable\Shape">
-      <UniqueIdentifier>{e3606b84-56e1-441f-9282-cd4bb033fb25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\Resource\Renderable\water">
-      <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\Resource\Shader">
-      <UniqueIdentifier>{d76d3bfe-e2e6-4ef2-86d6-327468f236bb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Graphics\_old">
       <UniqueIdentifier>{2892dbfb-e57a-463c-9dca-589e0c005f41}</UniqueIdentifier>
     </Filter>
@@ -377,6 +362,27 @@
     </Filter>
     <Filter Include="engine\Graphics\_old\Particle System">
       <UniqueIdentifier>{c12d84fb-5e15-437d-9a40-25d92650ef32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\old">
+      <UniqueIdentifier>{ba3f24d2-1ed0-4d97-a593-a4c7dd79fb2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\old\OpenGL API">
+      <UniqueIdentifier>{bd34f97b-af06-47a9-af44-189a3e4906e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\old\Resource">
+      <UniqueIdentifier>{fca9ff27-e59d-4733-a5d3-82484622e330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\old\Resource\Renderable">
+      <UniqueIdentifier>{9608b21b-7f8c-45d2-a234-a135ce0fa346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\old\Resource\Renderable\Shape">
+      <UniqueIdentifier>{e3606b84-56e1-441f-9282-cd4bb033fb25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\old\Resource\Renderable\water">
+      <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\old\Resource\Shader">
+      <UniqueIdentifier>{d76d3bfe-e2e6-4ef2-86d6-327468f236bb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -397,19 +403,16 @@
       <Filter>engine\input</Filter>
     </ClInclude>
     <ClInclude Include="OGLFunc.h">
-      <Filter>engine\Render\OpenGL API</Filter>
+      <Filter>engine\Render\old\OpenGL API</Filter>
     </ClInclude>
     <ClInclude Include="WGLFunc.h">
-      <Filter>engine\Render\OpenGL API</Filter>
+      <Filter>engine\Render\old\OpenGL API</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>engine\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="EngineDescription.h">
       <Filter>engine</Filter>
@@ -516,7 +519,7 @@
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClInclude>
     <ClInclude Include="Water.h">
-      <Filter>engine\Render\Resource\Renderable\water</Filter>
+      <Filter>engine\Render\old\Resource\Renderable\water</Filter>
     </ClInclude>
     <ClInclude Include="Shadow.h">
       <Filter>engine\Render\new\Effect</Filter>
@@ -558,31 +561,31 @@
       <Filter>engine\Render\new\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>engine\Render\Resource\Shader</Filter>
+      <Filter>engine\Render\old\Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
-      <Filter>engine\Render\Resource\Shader</Filter>
+      <Filter>engine\Render\old\Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Transformationable.h">
-      <Filter>engine\Render\Resource\Renderable</Filter>
+      <Filter>engine\Render\old\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="Renderable.h">
-      <Filter>engine\Render\Resource\Renderable</Filter>
+      <Filter>engine\Render\old\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
-      <Filter>engine\Render\Resource\Renderable</Filter>
+      <Filter>engine\Render\old\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="TestAnims.h">
       <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="Geometry.h">
-      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
+      <Filter>engine\Render\old\Resource\Renderable\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
+      <Filter>engine\Render\old\Resource\Renderable\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Log.h">
@@ -707,10 +710,10 @@
     </ClInclude>
     <ClInclude Include="TestApp.h" />
     <ClInclude Include="Framebuffer.h">
-      <Filter>engine\Render\Resource</Filter>
+      <Filter>engine\Render\old\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
-      <Filter>engine\Render\Resource</Filter>
+      <Filter>engine\Render\old\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>engine\Graphics\_old</Filter>
@@ -733,7 +736,13 @@
     <ClInclude Include="Vertex.h">
       <Filter>engine\Graphics\_old</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="RenderSystem.h">
+      <Filter>engine\Render\old</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera3D.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera2D.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

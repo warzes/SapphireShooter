@@ -4,7 +4,7 @@
 #include "ShaderManager.h"
 #include "Log.h"
 
-void Model::Init(const char* path, Camera& camera, const char* vs, const char* fs, bool instancing)
+void Model::Init(const char* path, Camera3D& camera, const char* vs, const char* fs, bool instancing)
 {
 	m_shaderProgram = ShaderManager::Get().LoadShader("modelShader", vs, fs);
 	m_camera = camera;
@@ -12,7 +12,7 @@ void Model::Init(const char* path, Camera& camera, const char* vs, const char* f
 	loadModel(path);
 }
 
-void Model::Draw(Camera& cam, bool bDrawRelativeToCamera)
+void Model::Draw(Camera3D& cam, bool bDrawRelativeToCamera)
 {
 	for (GLuint i = 0; i < meshes.size(); ++i)
 	{
@@ -20,7 +20,7 @@ void Model::Draw(Camera& cam, bool bDrawRelativeToCamera)
 	}
 }
 
-void Model::Draw(Camera& cam, const glm::vec3& pos, const glm::vec3& rot, float amountOfRotation, const glm::vec3& scale, bool bDrawRelativeToCamera)
+void Model::Draw(Camera3D& cam, const glm::vec3& pos, const glm::vec3& rot, float amountOfRotation, const glm::vec3& scale, bool bDrawRelativeToCamera)
 {
 	for (GLuint i = 0; i < meshes.size(); ++i)
 	{
@@ -28,7 +28,7 @@ void Model::Draw(Camera& cam, const glm::vec3& pos, const glm::vec3& rot, float 
 	}
 }
 
-void Model::DrawInstanced(Camera& cam)
+void Model::DrawInstanced(Camera3D& cam)
 {
 	for (GLuint i = 0; i < meshes.size(); ++i)
 	{

@@ -4,7 +4,7 @@
 
 #include "EngineDescription.h"
 
-#include "Camera.h"
+#include "Camera3D.h"
 #include "FontRenderer.h"
 #include "TextureGenerator2D.h"
 #include "ConverterToNormalMap.h"
@@ -12,7 +12,7 @@
 #include "PostProcessing.h"
 #include "Scene.h"
 #include "Water.h"
-#include "Camera.h"
+#include "Camera3D.h"
 #include "Framebuffer.h"
 #include "Terrain.h"
 #include "Model.h"
@@ -56,7 +56,7 @@ private:
 	float lastPosY = 0;
 	bool isWater = true;
 
-	Camera m_mainCamera;
+	Camera3D m_mainCamera;
 	Framebuffer m_framebuffer;
 	Text m_texts;
 	Billboard* m_test;

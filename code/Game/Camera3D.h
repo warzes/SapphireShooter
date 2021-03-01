@@ -1,9 +1,11 @@
 #pragma once
 
-class Camera
+#if SE_SUPPORT_3D
+
+class Camera3D
 {
 public:
-	Camera();
+	Camera3D();
 
 	void UpdateLookAt();
 
@@ -57,8 +59,10 @@ private:
 	float m_cameraSensitivity;
 
 	float pitch = 0.0f;
-	float yaw = -90;
+	float yaw = 0.0f;
 
 	glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
 	glm::vec3 right = glm::vec3(0.0f, 0.0f, 0.0f);
 };
+
+#endif // SE_SUPPORT_3D
