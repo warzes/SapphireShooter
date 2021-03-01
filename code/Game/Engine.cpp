@@ -18,8 +18,6 @@ bool Engine::Init(const EngineDescription& desc)
 
 	srand(static_cast<unsigned int>(time(nullptr)));
 
-	m_isRun = true;
-
 	if (!m_window.Init(m_desc.window))
 		return false;
 
@@ -69,7 +67,7 @@ void Engine::EndFrame()
 		::WaitMessage();
 
 	m_deltaTime = m_frameTimer.ElapsedUSec() * 0.000001f;
-	m_time = CurrentTime() /* 0.000001f*/;
+	m_time = CurrentTime();
 }
 //-----------------------------------------------------------------------------
 void Engine::Close() noexcept
@@ -79,6 +77,5 @@ void Engine::Close() noexcept
 	ShaderManager::Get().Clear();
 	m_renderSystem.Close();
 	m_window.Close();
-	m_isRun = false;
 }
 //-----------------------------------------------------------------------------

@@ -244,6 +244,7 @@
     </ClCompile>
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TestAnims.cpp" />
+    <ClCompile Include="TestApp.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TextureGenerator2D.cpp" />
@@ -357,6 +358,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="TestAnims.h" />
+    <ClInclude Include="TestApp.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TextureGenerator.h" />

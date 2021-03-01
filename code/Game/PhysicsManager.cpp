@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PhysicsManager.h"
 #include "Player.h"
+#include "Engine.h"
 
 void PhysicsManager::Update(Camera& cam, float dt, std::vector<Enemy*>& enemies)
 {

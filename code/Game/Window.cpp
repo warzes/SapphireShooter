@@ -20,7 +20,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
 	Engine& engine = Engine::Get();
 
-	if (thisWindow && engine.IsRun())
+	if (thisWindow)
 	{
 		Mouse::Get().HandleMsg(hwnd, msg, wparam, lparam);
 		Keyboard::Get().HandleMsg(hwnd, msg, wparam, lparam);

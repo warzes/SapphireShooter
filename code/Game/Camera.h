@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Engine.h"
-
 class Camera
 {
 public:
@@ -30,10 +28,8 @@ public:
 	void SetCameraSensitivity(float sen) { m_cameraSensitivity = sen; }
 
 	const glm::mat4& GetProjectionMatrix() const { return m_projection; }
-	//const glm::mat4& GetViewMatrix() const { return m_view; }
 	glm::mat4 GetViewMatrix() const { return glm::lookAt(m_cameraPos, m_cameraPos + m_cameraForward, m_cameraUpVector); }
 	glm::mat4 GetViewProjectionMatrix() const { return GetProjectionMatrix() * GetViewMatrix(); }
-
 
 	glm::vec3& GetCameraPos() { return m_cameraPos; }
 	const glm::vec3& GetCameraForward() const { return m_cameraForward; }

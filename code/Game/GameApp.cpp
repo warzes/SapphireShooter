@@ -41,6 +41,8 @@ void GameApp::Init()
 	post = new PostProcessing();
 
 	m_mainCamera.SetCameraPos(glm::vec3(30.0f, 25.0f, 30.0f));
+	m_mainCamera.SetYaw(90);
+	m_mainCamera.SetPitch(0);
 
 	fontRenderer = new FontRenderer(Font("fonts/arial.ttf"));
 	fontRenderer->setColor(glm::vec3(1.0));

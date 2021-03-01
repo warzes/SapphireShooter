@@ -1,10 +1,10 @@
 #pragma once
 
+#include "NonCopyable.h"
 #include "OGLFunc.h"
 #include "RenderDescription.h"
 
-
-class RenderSystem
+class RenderSystem final : NonCopyable
 {
 public:
 	RenderSystem() = default;
@@ -18,13 +18,9 @@ public:
 	void BeginFrame(int width, int height);
 	void EndFrame();
 
-	void SetVsync();
+	void SetVsync(bool enable);
 
 private:
-	RenderSystem(const RenderSystem&) = delete;
-	RenderSystem(RenderSystem&&) = delete;
-	RenderSystem& operator=(const RenderSystem&) = delete;
-	RenderSystem& operator=(RenderSystem&&) = delete;
 
 #if SE_PLATFORM_WINDOWS
 	HDC m_deviceContext = nullptr;

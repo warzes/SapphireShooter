@@ -6,9 +6,6 @@
     <ClCompile Include="Window.cpp">
       <Filter>engine\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>engine\input</Filter>
     </ClCompile>
@@ -30,15 +27,6 @@
     <ClCompile Include="Engine.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="Framebuffer.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>engine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>engine\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Point2.cpp">
       <Filter>engine\Core\math</Filter>
@@ -47,25 +35,19 @@
       <Filter>engine\Platform</Filter>
     </ClCompile>
     <ClCompile Include="DirectionalLight.cpp">
-      <Filter>engine\Graphics\LightType</Filter>
+      <Filter>engine\Graphics\_old\LightType</Filter>
     </ClCompile>
     <ClCompile Include="PointLight.cpp">
-      <Filter>engine\Graphics\LightType</Filter>
+      <Filter>engine\Graphics\_old\LightType</Filter>
     </ClCompile>
     <ClCompile Include="SpotLight.cpp">
-      <Filter>engine\Graphics\LightType</Filter>
+      <Filter>engine\Graphics\_old\LightType</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>engine\Graphics\Particle System</Filter>
+      <Filter>engine\Graphics\_old\Particle System</Filter>
     </ClCompile>
     <ClCompile Include="ParticleEmitter.cpp">
-      <Filter>engine\Graphics\Particle System</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>engine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>engine\Graphics</Filter>
+      <Filter>engine\Graphics\_old\Particle System</Filter>
     </ClCompile>
     <ClCompile Include="PerlinNoise.cpp">
       <Filter>engine\Utils</Filter>
@@ -76,12 +58,6 @@
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="PhysicsManager.cpp">
       <Filter>engine\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>engine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Billboard.cpp">
       <Filter>Other</Filter>
@@ -138,7 +114,7 @@
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClCompile>
     <ClCompile Include="Water.cpp">
-      <Filter>engine\Render\Renderable\water</Filter>
+      <Filter>engine\Render\Resource\Renderable\water</Filter>
     </ClCompile>
     <ClCompile Include="Shadow.cpp">
       <Filter>engine\Render\new\Effect</Filter>
@@ -174,25 +150,25 @@
       <Filter>engine\Render\new\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
-      <Filter>engine\Render\Renderable</Filter>
+      <Filter>engine\Render\Resource\Renderable</Filter>
     </ClCompile>
     <ClCompile Include="TestAnims.cpp">
       <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="Geometry.cpp">
-      <Filter>engine\Render\Renderable\Shape</Filter>
+      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
-      <Filter>engine\Render\Renderable\Shape</Filter>
+      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Log.cpp">
@@ -224,6 +200,31 @@
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="TestApp.cpp" />
+    <ClCompile Include="Framebuffer.cpp">
+      <Filter>engine\Render\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>engine\Render\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>engine\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -262,12 +263,6 @@
     </Filter>
     <Filter Include="engine\Core\math">
       <UniqueIdentifier>{43823407-8b18-4883-b48a-b214e5ee8c64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Graphics\LightType">
-      <UniqueIdentifier>{73c0679c-e40e-4ffd-8afd-3e3ea1f678c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Graphics\Particle System">
-      <UniqueIdentifier>{c12d84fb-5e15-437d-9a40-25d92650ef32}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Utils">
       <UniqueIdentifier>{e528d258-4a4e-436d-ae04-34118ab3711b}</UniqueIdentifier>
@@ -314,20 +309,8 @@
     <Filter Include="engine\Render\new\Texture\texture-generator\method">
       <UniqueIdentifier>{e630031b-fa80-4a23-bc1b-596b56e7cf1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\Shader">
-      <UniqueIdentifier>{d76d3bfe-e2e6-4ef2-86d6-327468f236bb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Scene">
       <UniqueIdentifier>{daa7c5ba-4337-4b01-87f8-d24519bde0cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\Renderable">
-      <UniqueIdentifier>{9608b21b-7f8c-45d2-a234-a135ce0fa346}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\Renderable\Shape">
-      <UniqueIdentifier>{e3606b84-56e1-441f-9282-cd4bb033fb25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Render\Renderable\water">
-      <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Core\Container">
       <UniqueIdentifier>{6976d9ab-d205-4b6a-a10d-eda9a3eca7bd}</UniqueIdentifier>
@@ -368,6 +351,33 @@
     <Filter Include="_new\Graphics">
       <UniqueIdentifier>{57002c95-d8e4-437b-bb06-1d9ba94333d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="NewGame">
+      <UniqueIdentifier>{f60e2e16-efed-4d21-9802-2e498a656148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Resource">
+      <UniqueIdentifier>{fca9ff27-e59d-4733-a5d3-82484622e330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Resource\Renderable">
+      <UniqueIdentifier>{9608b21b-7f8c-45d2-a234-a135ce0fa346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Resource\Renderable\Shape">
+      <UniqueIdentifier>{e3606b84-56e1-441f-9282-cd4bb033fb25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Resource\Renderable\water">
+      <UniqueIdentifier>{2d4314da-943d-4214-a86f-9ea5d2bc8505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Render\Resource\Shader">
+      <UniqueIdentifier>{d76d3bfe-e2e6-4ef2-86d6-327468f236bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics\_old">
+      <UniqueIdentifier>{2892dbfb-e57a-463c-9dca-589e0c005f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics\_old\LightType">
+      <UniqueIdentifier>{73c0679c-e40e-4ffd-8afd-3e3ea1f678c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics\_old\Particle System">
+      <UniqueIdentifier>{c12d84fb-5e15-437d-9a40-25d92650ef32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -379,9 +389,6 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture2D.h">
-      <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="InlineFunc.h">
       <Filter>engine\base</Filter>
@@ -416,21 +423,6 @@
     <ClInclude Include="RenderDescription.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
-    <ClInclude Include="Framebuffer.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Transformation.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="DebugNew.h">
       <Filter>engine\Core\debug</Filter>
@@ -442,25 +434,19 @@
       <Filter>engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="SpotLight.h">
-      <Filter>engine\Graphics\LightType</Filter>
+      <Filter>engine\Graphics\_old\LightType</Filter>
     </ClInclude>
     <ClInclude Include="DirectionalLight.h">
-      <Filter>engine\Graphics\LightType</Filter>
+      <Filter>engine\Graphics\_old\LightType</Filter>
     </ClInclude>
     <ClInclude Include="PointLight.h">
-      <Filter>engine\Graphics\LightType</Filter>
+      <Filter>engine\Graphics\_old\LightType</Filter>
     </ClInclude>
     <ClInclude Include="ParticleEmitter.h">
-      <Filter>engine\Graphics\Particle System</Filter>
+      <Filter>engine\Graphics\_old\Particle System</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>engine\Graphics\Particle System</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>engine\Graphics\_old\Particle System</Filter>
     </ClInclude>
     <ClInclude Include="PerlinNoise.h">
       <Filter>engine\Utils</Filter>
@@ -471,12 +457,6 @@
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="PhysicsManager.h">
       <Filter>engine\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Billboard.h">
       <Filter>Other</Filter>
@@ -536,7 +516,7 @@
       <Filter>engine\Render\new\renderable\skybox</Filter>
     </ClInclude>
     <ClInclude Include="Water.h">
-      <Filter>engine\Render\Renderable\water</Filter>
+      <Filter>engine\Render\Resource\Renderable\water</Filter>
     </ClInclude>
     <ClInclude Include="Shadow.h">
       <Filter>engine\Render\new\Effect</Filter>
@@ -578,31 +558,31 @@
       <Filter>engine\Render\new\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
-      <Filter>engine\Render\Shader</Filter>
+      <Filter>engine\Render\Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Transformationable.h">
-      <Filter>engine\Render\Renderable</Filter>
+      <Filter>engine\Render\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="Renderable.h">
-      <Filter>engine\Render\Renderable</Filter>
+      <Filter>engine\Render\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
-      <Filter>engine\Render\Renderable</Filter>
+      <Filter>engine\Render\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="TestAnims.h">
       <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="Geometry.h">
-      <Filter>engine\Render\Renderable\Shape</Filter>
+      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>engine\Render\Renderable\Shape</Filter>
+      <Filter>engine\Render\Resource\Renderable\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Log.h">
@@ -724,6 +704,37 @@
     </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="TestApp.h" />
+    <ClInclude Include="Framebuffer.h">
+      <Filter>engine\Render\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>engine\Render\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>engine\Graphics\_old</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

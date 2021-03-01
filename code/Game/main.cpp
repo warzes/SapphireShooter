@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
 #include "GameApp.h"
+#include "TestApp.h"
 #include "Log.h"
 #if SE_COMPILER_MSVC
 #	pragma message("link to OpenGL32.lib")
@@ -16,13 +17,19 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	{
 		Engine& engine = Engine::Get();
 		{
+#if 0
 			GameApp game;
+#else
+			TestApp game;
+#endif
 			if (engine.Init(game.InitConfig()))
 			{
 				game.Init();						
 				
 				while (!engine.IsEnd())
 				{
+
+
 					engine.BeginUpdate();
 					game.ProcessInput(engine.GetDeltaTime());
 					game.Update(engine.GetDeltaTime());

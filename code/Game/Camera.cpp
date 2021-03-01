@@ -3,7 +3,7 @@
 #include "Mouse.h"
 //-----------------------------------------------------------------------------
 Camera::Camera() :
-	m_cameraPos(glm::vec3(0.0f, 0.0f, 1.0f)),
+	m_cameraPos(glm::vec3(0.0f, 0.0f, 0.0f)),
 	m_cameraForward(glm::vec3(0.0f, 0.0f, -1.0f)),
 	m_cameraUpVector(glm::vec3(0.0f, 1.0f, 0.0f)),
 	m_cameraSpeed(20.0f),
@@ -57,19 +57,19 @@ void Camera::Fall(float dt)
 //-----------------------------------------------------------------------------
 void Camera::MouseUpdate(float dt)
 {
-	float MouseDeltaX = static_cast<float>(Mouse::Get().GetMouseMove().x);
-	float MouseDeltaY = static_cast<float>(Mouse::Get().GetMouseMove().y);
-
+	const float MouseDeltaX = static_cast<float>(Mouse::Get().GetMouseMove().x);
+	const float MouseDeltaY = static_cast<float>(Mouse::Get().GetMouseMove().y);
 	Rotate(MouseDeltaX * dt, MouseDeltaY * dt);
 }
 //-----------------------------------------------------------------------------
 void Camera::Rotate(float offsetX, float offsetY)
 {
-	yaw += offsetX * m_cameraSensitivity;
 	pitch += -offsetY * m_cameraSensitivity;
+	yaw += offsetX * m_cameraSensitivity;
 
 	if (pitch > 89) pitch = 89;
 	else if (pitch < -89) pitch = -89;
+
 	updateVectors();
 }
 //-----------------------------------------------------------------------------
@@ -82,11 +82,12 @@ void Camera::updateVectors()
 	m_cameraForward = glm::normalize(front);
 	right = glm::normalize(glm::cross(m_cameraForward, worldUp));
 	m_cameraUpVector = glm::normalize(glm::cross(right, m_cameraForward));
+
+	std::cout << "pitch= " << pitch << " yaw=" << yaw << std::endl;
 }
 //-----------------------------------------------------------------------------
 void Camera::UpdateLookAt()
 {
 	updateVectors();
-	//m_view = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraForward, m_cameraUpVector);
 }
 //-----------------------------------------------------------------------------

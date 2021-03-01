@@ -1,8 +1,9 @@
 #pragma once
 
 #include "WindowDescription.h"
+#include "NonCopyable.h"
 
-class Window final
+class Window final : NonCopyable
 {
 public:
 	Window() = default;
@@ -22,12 +23,7 @@ public:
 
 	bool hasWindowFocus = true; // TODO:
 
-private:
-	Window(const Window&) = delete;
-	Window(Window&&) = delete;
-	Window& operator=(const Window&) = delete;
-	Window& operator=(Window&&) = delete;
-	
+private:	
 #if SE_PLATFORM_WINDOWS
 	bool initDPI();
 	bool registerClass();
