@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "Keyboard.h"
-#include "Mouse.h"
 #include "PhysicsManager.h"
 
 void Player::Init(Camera& cam, const glm::vec3& initialPosition)
@@ -65,7 +64,6 @@ bool Player::IsPlayerWalking()
 void Player::processInput(Camera& cam, float dt)
 {
 	static Keyboard& keyboard = Keyboard::Get();
-	static Mouse& mouse = Mouse::Get();
 
 	if (keyboard.KeyDown(Keyboard::KEY_W))
 	{
@@ -173,27 +171,27 @@ void Player::processInput(Camera& cam, float dt)
 		cam.SetCameraSpeed(20.0f);
 	}
 
-	if (mouse.ButtonDown(Mouse::BUTTON_LEFT))
-	{
-		//m_firing = true;
-	}
-	if (mouse.ButtonDown(Mouse::BUTTON_RIGHT))
-	{
-		//// Check if the player is not using assault rifle
-		//if (!m_usingAR)
-		//{
-		//	// Set sniper aiming to true
-		//	m_sniperAiming = true;
-		//}
-	}
-	if (mouse.ButtonUp(Mouse::BUTTON_LEFT))
-	{
-		//m_firing = false;
-	}
-	if (mouse.ButtonUp(Mouse::BUTTON_RIGHT))
-	{
-		//m_sniperAiming = false;
-	}
+	//if (mouse.ButtonDown(Mouse::BUTTON_LEFT))
+	//{
+	//	//m_firing = true;
+	//}
+	//if (mouse.ButtonDown(Mouse::BUTTON_RIGHT))
+	//{
+	//	//// Check if the player is not using assault rifle
+	//	//if (!m_usingAR)
+	//	//{
+	//	//	// Set sniper aiming to true
+	//	//	m_sniperAiming = true;
+	//	//}
+	//}
+	//if (mouse.ButtonUp(Mouse::BUTTON_LEFT))
+	//{
+	//	//m_firing = false;
+	//}
+	//if (mouse.ButtonUp(Mouse::BUTTON_RIGHT))
+	//{
+	//	//m_sniperAiming = false;
+	//}
 
 	cam.MouseUpdate(dt);
 }

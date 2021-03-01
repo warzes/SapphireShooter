@@ -103,8 +103,9 @@ public:
 
 
 private:
-
 	Terrain m_terrain;
+	Terrain m_terrain2;
+
 	DirectionalLight m_dirLight;
 	PointLight m_pointLight;
 };

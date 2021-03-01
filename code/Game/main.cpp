@@ -3,13 +3,16 @@
 #include "GameApp.h"
 #include "Log.h"
 #if SE_COMPILER_MSVC
+#	pragma message("link to OpenGL32.lib")
 #   pragma comment(lib, "OpenGL32.lib")
+#	pragma message("link to winmm.lib")
 #   pragma comment(lib, "winmm.lib")
 #endif
 
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
+
 	try
 	{
 		Engine& engine = Engine::Get();

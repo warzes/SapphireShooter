@@ -201,13 +201,12 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Model2.cpp" />
     <ClCompile Include="ModelAnim.cpp" />
-    <ClCompile Include="Mouse2.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="MultisampledFrameBuffer.cpp" />
     <ClCompile Include="MultisampledRenderBuffer.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="OGLFunc.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -296,7 +295,6 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="GLViewport.h" />
     <ClInclude Include="InlineFunc.h" />
-    <ClInclude Include="IRenderResource.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Log.h" />
@@ -318,10 +316,10 @@
     <ClInclude Include="Model2.h" />
     <ClInclude Include="ModelAnim.h" />
     <ClInclude Include="Mouse.h" />
-    <ClInclude Include="Mouse2.h" />
     <ClInclude Include="MultisampledFrameBuffer.h" />
     <ClInclude Include="MultisampledRenderBuffer.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="NonCopyable.h" />
     <ClInclude Include="OBB.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="Particle.h" />

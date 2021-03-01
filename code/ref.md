@@ -1,4 +1,6 @@
 
+https://www.youtube.com/watch?v=AKzWyxYPbTc - взаимодействие с предметами
+
 
 
 
@@ -12,6 +14,7 @@ https://www.reddit.com/r/Unity3D/comments/lm2ma9/getting_my_lizard_to_stay_on_mo
 
 https://www.models-resource.com/playstation/spyro3yearofthedragon/
 https://www.models-resource.com/custom_edited/sonicthehedgehogcustoms/model/40050/
+https://www.reddit.com/r/Unity3D/comments/lrjw6y/new_feature_ziplines/
 
 
 https://youtu.be/BKdb7pp08vA

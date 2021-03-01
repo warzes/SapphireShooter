@@ -14,6 +14,11 @@ Terrain::Terrain() :
 	m_model = glm::translate(glm::vec3(m_terrainXPos, 0.0f, m_terrainZPos));
 }
 //-----------------------------------------------------------------------------
+void Terrain::SetPos(float x, float y)
+{
+	m_model = glm::translate(glm::vec3(x, 0.0f, y));
+}
+//-----------------------------------------------------------------------------
 void Terrain::InitTerrain()
 {
 	m_terrainShader = ShaderManager::Get().LoadShader("terrain", "../res/Shaders/TerrainVertexShader.vs", "../res/Shaders/TerrainFragmentShader.fs");

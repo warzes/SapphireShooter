@@ -13,6 +13,8 @@ class Terrain
 public:
 	Terrain();
 
+	void SetPos(float x, float y);
+
 	float GetHeightOfTerrain(float x, float y);
 	float BarryCentric(const glm::vec3 &p1, const glm::vec3 &p2, const glm::vec3 &p3, const glm::vec2 &pos);
 	void InitTerrain();
@@ -24,8 +26,6 @@ public:
 
 private:
 	std::shared_ptr<ShaderProgram> m_terrainShader;
-	//Texture2DArray m_terrainTexture;
-	//GLuint m_terrainTextures[5];
 	glm::mat4 m_model;
 
 	std::vector<std::shared_ptr<Texture2D>> m_textures;

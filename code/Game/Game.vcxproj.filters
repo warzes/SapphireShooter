@@ -12,9 +12,6 @@
     <ClCompile Include="Keyboard.cpp">
       <Filter>engine\input</Filter>
     </ClCompile>
-    <ClCompile Include="Mouse.cpp">
-      <Filter>engine\input</Filter>
-    </ClCompile>
     <ClCompile Include="OGLFunc.cpp">
       <Filter>engine\Render\OpenGL API</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Point2.cpp">
       <Filter>engine\Core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Mouse2.cpp">
-      <Filter>engine\input</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>engine\Platform</Filter>
@@ -234,6 +228,9 @@
     <ClCompile Include="RenderResourceManager.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -377,9 +374,6 @@
     <Filter Include="_new\Core\Platform">
       <UniqueIdentifier>{3a683747-2b1e-4d89-b012-0614f271d0bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Render\RenderResource">
-      <UniqueIdentifier>{413bab4f-0fee-4f98-ba41-1ba33a581218}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -399,9 +393,6 @@
       <Filter>engine\base</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
-      <Filter>engine\input</Filter>
-    </ClInclude>
-    <ClInclude Include="Mouse.h">
       <Filter>engine\input</Filter>
     </ClInclude>
     <ClInclude Include="OGLFunc.h">
@@ -452,9 +443,6 @@
     </ClInclude>
     <ClInclude Include="Point2.h">
       <Filter>engine\Core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Mouse2.h">
-      <Filter>engine\input</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>engine\Platform</Filter>
@@ -743,8 +731,11 @@
     <ClInclude Include="RenderResourceManager.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
-    <ClInclude Include="IRenderResource.h">
-      <Filter>engine\Render\RenderResource</Filter>
+    <ClInclude Include="NonCopyable.h">
+      <Filter>engine\Core\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>engine\input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

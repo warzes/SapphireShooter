@@ -18,6 +18,11 @@ Scene::Scene(Camera* cam)
 	m_terrain.InitTerrain();
 	m_terrain.CreateTerrainWithPerlinNoise();
 	m_terrain.SetFog(true);
+
+	m_terrain2.SetPos(270, 0);
+	m_terrain2.InitTerrain();
+	m_terrain2.CreateTerrainWithPerlinNoise();
+	m_terrain2.SetFog(true);
 }
 
 void Scene::initPrograms(const glm::vec4& clipPlane)
@@ -87,6 +92,7 @@ void Scene::render(const glm::vec4& clipPlane)
 		glCullFace(GL_BACK);
 		glDisable(GL_CULL_FACE);
 		m_terrain.Draw(*camera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
+		//m_terrain2.Draw(*camera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
 		glEnable(GL_CULL_FACE);
 	}
 	renderWaters(getWaterProgram());
@@ -112,6 +118,7 @@ void Scene::render1(const glm::vec4& clipPlane)
 		glCullFace(GL_BACK);
 		glDisable(GL_CULL_FACE);
 		m_terrain.Draw(*camera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
+		//m_terrain2.Draw(*camera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
 		glEnable(GL_CULL_FACE);
 	}
 }
@@ -226,7 +233,6 @@ void Scene::initShadersManager()
 	setFontProgram(ShaderManager::Get().LoadShader("font", "shaders/font/font.vs", "shaders/font/font.fs"));
 	setPostProcessProgram(ShaderManager::Get().LoadShader("postprocessing", "shaders/effect/postprocessing.vs", "shaders/effect/postprocessing.fs"));
 	setWaterProgram(ShaderManager::Get().LoadShader("water", "shaders/water/water.vs", "shaders/water/water.fs"));
-
 
 	setDepthProgram(ShaderManager::Get().LoadShader("Depth", "shaders/depth/depth.vs", "shaders/depth/depth.fs", "shaders/depth/depth.gs"));
 	setAnimDepthProgram(ShaderManager::Get().LoadShader("AnimDepth", "shaders/depth/anim_depth.vs", "shaders/depth/depth.fs", "shaders/depth/depth.gs"));

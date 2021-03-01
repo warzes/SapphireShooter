@@ -2,11 +2,12 @@
 #include "GameApp.h"
 #include "Engine.h"
 #include "Player.h"
-#include "Mouse2.h"
+#include "Mouse.h"
 #include "Keyboard.h"
 #include "GLViewport.h"
 #include "ShaderManager.h"
 #include "PhysicsManager.h"
+#include "Log.h"
 
 //-----------------------------------------------------------------------------
 EngineDescription GameApp::InitConfig()
@@ -110,7 +111,7 @@ void GameApp::Init()
 		m_enemies.push_back(enemy);
 	}
 
-	Mouse2::Get().SetMouseVisible(false);
+	Mouse::Get().SetMouseVisible(false);
 }
 //-----------------------------------------------------------------------------
 void GameApp::Update(float deltaTime)

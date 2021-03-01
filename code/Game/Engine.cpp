@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-#include "Mouse2.h"
 #include "RenderSystem.h"
 #include "TextureManager.h"
 #include "ShaderManager.h"
@@ -40,9 +39,8 @@ void Engine::BeginUpdate()
 
 	m_frameTimer.Reset();
 
-	Mouse2::Get().Update();
-	m_isEnd = !m_window.Broadcast();
 	Mouse::Get().Update();
+	m_isEnd = !m_window.Broadcast();
 	Keyboard::Get().Update();
 }
 //-----------------------------------------------------------------------------
@@ -76,7 +74,7 @@ void Engine::EndFrame()
 //-----------------------------------------------------------------------------
 void Engine::Close() noexcept
 {
-	Mouse2::Get().SetMouseVisible(true);
+	Mouse::Get().SetMouseVisible(true);
 	TextureManager::Get().Clear();
 	ShaderManager::Get().Clear();
 	m_renderSystem.Close();

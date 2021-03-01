@@ -4,7 +4,6 @@
 #include "Log.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-#include "Mouse2.h"
 //-----------------------------------------------------------------------------
 constexpr auto windowClassName = L"SapphireWindowClass";
 //-----------------------------------------------------------------------------
@@ -24,7 +23,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 	if (thisWindow && engine.IsRun())
 	{
 		Mouse::Get().HandleMsg(hwnd, msg, wparam, lparam);
-		Mouse2::Get().HandleMsg(hwnd, msg, wparam, lparam);
 		Keyboard::Get().HandleMsg(hwnd, msg, wparam, lparam);
 
 		switch (msg)
@@ -37,14 +35,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 
 			case WA_ACTIVE:
 			case WA_CLICKACTIVE:
-				Mouse::Get().Attach(hwnd);
 				thisWindow->hasWindowFocus = true;
 				break;
 
 			case WA_INACTIVE:
 				if (engine.GetDescription().window.fullscreen)
 					ShowWindow(hwnd, SW_MINIMIZE);
-				Mouse::Get().Detach();
 				thisWindow->hasWindowFocus = false;
 				break;
 			}
@@ -86,8 +82,6 @@ bool Window::Init(const WindowDescription& config)
 
 	if (!createWindow(config))
 		return false;
-
-	Mouse::Get().Attach(m_hwnd);
 #endif
 	m_isInit = true;
 	thisWindow = this;

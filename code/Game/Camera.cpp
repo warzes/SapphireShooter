@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Camera.h"
-#include "Mouse2.h"
+#include "Mouse.h"
 //-----------------------------------------------------------------------------
 Camera::Camera() :
 	m_cameraPos(glm::vec3(0.0f, 0.0f, 1.0f)),
@@ -57,8 +57,8 @@ void Camera::Fall(float dt)
 //-----------------------------------------------------------------------------
 void Camera::MouseUpdate(float dt)
 {
-	float MouseDeltaX = static_cast<float>(Mouse2::Get().MouseMove().x);
-	float MouseDeltaY = static_cast<float>(Mouse2::Get().MouseMove().y);
+	float MouseDeltaX = static_cast<float>(Mouse::Get().GetMouseMove().x);
+	float MouseDeltaY = static_cast<float>(Mouse::Get().GetMouseMove().y);
 
 	Rotate(MouseDeltaX * dt, MouseDeltaY * dt);
 }
