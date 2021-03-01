@@ -58,9 +58,9 @@ private:
 
 	Camera m_mainCamera;
 	Framebuffer m_framebuffer;
-	std::vector<Text> m_texts;
-	//Billboard* m_test;
-	Model m_swords;
+	Text m_texts;
+	Billboard* m_test;
+	Model m_model;
 
 	TestAnims* player1 = nullptr;
 

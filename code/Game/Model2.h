@@ -11,7 +11,6 @@ class Model2 : public Transformationable
 	std::string directory;
 	unsigned* amount;
 
-	//void swap(const Model& model);
 	void clear();
 
 protected:
@@ -33,8 +32,6 @@ protected:
 public:
 	Model2();
 	Model2(const std::string& path);
-	//Model2(const Model2& model);
-	//Model2& operator=(const Model2& model);
 	virtual ~Model2();
 
 	virtual void Render(std::shared_ptr<ShaderProgram> program);

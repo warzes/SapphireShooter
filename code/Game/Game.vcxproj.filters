@@ -365,6 +365,9 @@
     <Filter Include="_new\Core\Platform">
       <UniqueIdentifier>{3a683747-2b1e-4d89-b012-0614f271d0bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_new\Graphics">
+      <UniqueIdentifier>{57002c95-d8e4-437b-bb06-1d9ba94333d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />

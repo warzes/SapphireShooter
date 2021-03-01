@@ -69,36 +69,17 @@ void GameApp::Init()
 
 	Player::Get().Init(m_mainCamera, glm::vec3(30.0f, 25.0f, 30.0f));
 
-	m_swords.Init("../res/Models3D/swords/sword-0.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
-	m_swords.SetSpotlight(false);
+	m_model.Init("../res/Models3D/swords/sword-0.obj", m_mainCamera, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
+	m_model.SetSpotlight(false);
 
-	Text ammoText;
-	ammoText.Configure("../res/Fonts/Roboto-BoldItalic.ttf");
-	ammoText.SetText("35");
-	ammoText.SetScale(0.79f);
-	ammoText.SetSpacing(0.79f);
-	ammoText.SetPosition(glm::vec2(240.0f, 33.0f));
-	m_texts.push_back(ammoText);
-
-	Text healthText;
-	healthText.Configure("../res/Fonts/Roboto-BoldItalic.ttf");
-	healthText.SetText("100");
-	healthText.SetScale(0.79f);
-	healthText.SetSpacing(0.79f);
-	healthText.SetPosition(glm::vec2(110.0f, 33.0f));
-	m_texts.push_back(healthText);
-
-	Text dataTransmissionText;
-	dataTransmissionText.Configure("../res/Fonts/Roboto-BoldItalic.ttf");
-	dataTransmissionText.SetText("100%");
-	dataTransmissionText.SetScale(0.5f);
-	dataTransmissionText.SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
-	dataTransmissionText.SetSpacing(0.7f);
-	dataTransmissionText.SetPosition(glm::vec2(600.0f, 40.0f));
-	m_texts.push_back(dataTransmissionText);
-
-	//std::vector<const char*> muzzleFlashShader{ "../res/Shaders/Muzzle Flash Shader/VertexShaderMuzzleFlash.vs", "../res/Shaders/Muzzle Flash Shader/FragmentShaderMuzzleFlash.fs" };
-	//m_test = Billboard::Create(ShapeType::Quad, "../res/Textures/axe.png", muzzleFlashShader, glm::vec3(2.0f, -2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));	
+	m_texts.Configure("../res/Fonts/Roboto-BoldItalic.ttf");
+	m_texts.SetText("35");
+	m_texts.SetScale(0.79f);
+	m_texts.SetSpacing(0.79f);
+	m_texts.SetPosition(glm::vec2(240.0f, 33.0f));
+	
+	std::vector<const char*> muzzleFlashShader{ "../res/Shaders/Muzzle Flash Shader/VertexShaderMuzzleFlash.vs", "../res/Shaders/Muzzle Flash Shader/FragmentShaderMuzzleFlash.fs" };
+	m_test = Billboard::Create(ShapeType::Quad, "../res/Textures/axe.png", muzzleFlashShader, glm::vec3(2.0f, -2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));	
 
 	player1 = new TestAnims();
 	player1->Translate(glm::vec3(5.0f, 40.0f, 5.0f));		
@@ -106,7 +87,7 @@ void GameApp::Init()
 
 	for (unsigned int i = 0; i < 100; ++i)
 	{
-		Enemy* enemy = new Enemy(m_mainCamera);
+		Enemy* enemy = new Enemy(m_mainCamera, EnemyType::Range);
 		m_enemies.push_back(enemy);
 	}
 
@@ -187,7 +168,6 @@ void GameApp::ProcessInput(float dt)
 //-----------------------------------------------------------------------------
 void GameApp::Render()
 {
-#if TEST
 	scene->renderShadows();
 
 	if (isWater)
@@ -201,15 +181,15 @@ void GameApp::Render()
 	{
 		glEnable(GL_CULL_FACE);
 		glCullFace(GL_BACK);
-		m_swords.Draw(m_mainCamera, glm::vec3(300.0f, scene->GetTerrain().GetHeightOfTerrain(300.0f, 270.0f) + 10, 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(6.0f));
+		m_model.Draw(m_mainCamera, glm::vec3(300.0f, scene->GetTerrain().GetHeightOfTerrain(300.0f, 270.0f) + 10, 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(6.0f));
 
 		// Draw enemy units
 		for (unsigned int i = 0; i < m_enemyCount; ++i)
 		{
 			// Check if this enemy unit can respawn (if the data transfer is at 100, then this enemy cannot respawn anymore)
 			m_enemies.at(i)->SetRespawnStatus(true);
-			m_enemies.at(i)->Draw(100, 9);
-			m_enemies.at(i)->DrawShockwave(10);
+			m_enemies.at(i)->Draw();
+			m_enemies.at(i)->DrawShockwave();
 		}
 
 		glDisable(GL_CULL_FACE);
@@ -242,41 +222,12 @@ void GameApp::Render()
 		fontRenderer->setText("123");
 		fontRenderer->Render(scene->getFontProgram());
 
+		m_texts.Render();
+
 		post->endProcessing();
 		std::shared_ptr<ShaderProgram> prog = scene->getPostProcessProgram();
 		PostProcessing::renderToQuad(prog, post->getResultTextures());
 	}
-#else
-	m_framebuffer.ActivateFramebuffer();
-	GLViewport::Clear(true, true);
-	// TODO: render to texture
-	{
-
-	}
-	m_framebuffer.DeactivateFramebuffer();
-	GLViewport::Clear(true, true);
-	{
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
-
-		m_swords.Draw(m_mainCamera, glm::vec3(300.0f, m_terrain.GetHeightOfTerrain(300.0f, 270.0f)+10, 270.0f), glm::vec3(1.0f), 0.0f, glm::vec3(6.0f));
-
-		glDisable(GL_CULL_FACE);
-
-		m_terrain.SetFog(true);
-		m_terrain.Draw(m_mainCamera, &m_dirLight, &m_pointLight, Player::Get().GetSpotLight());
-
-		// TODO: передавать матрицы
-		m_swords.Draw(m_mainCamera, glm::vec3(1.5f, -2.5f, -2.5f), glm::vec3(0.3f, 1.0f, 0.0f), 30.0f, glm::vec3(1.0f), true);
-
-		m_texts[0].SetText(std::to_string(100));
-		m_texts[0].Render();
-		m_texts[1].SetText(std::to_string(100));
-		m_texts[1].Render();
-		m_texts[2].SetText(std::to_string(100));
-		m_texts[2].Render();
-	}
-#endif
 }
 //-----------------------------------------------------------------------------
 void GameApp::Close()

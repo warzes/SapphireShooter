@@ -3,7 +3,7 @@
 #include "RandomUtils.h"
 #include "PhysicsManager.h"
 
-Enemy::Enemy(Camera& cam) :
+Enemy::Enemy(Camera& cam, EnemyType type) :
 	m_pos(RandomUtils::Get().RandomNumBetweenTwo(50.0f, 450.0f), 0.0f, RandomUtils::Get().RandomNumBetweenTwo(0.0f, 450.0f)),
 	m_maximumSpeed(15.0f),
 	m_maximumDroneSpeed(100.0f),
@@ -26,14 +26,15 @@ Enemy::Enemy(Camera& cam) :
 	m_damageToken(true),
 	m_canRespawn(true),
 	m_dronePos(m_pos)
+	, m_type(type)
 {
 	m_particleEffect.Init(20);
 
-	m_swords.Init("../res/Models3D/Bomb Flower/Bomb_Flower.obj", cam, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
-	m_swords.SetSpotlight(false);
+	m_model.Init("../res/Models3D/Bomb Flower/Bomb_Flower.obj", cam, "../res/Shaders/SingleModelLoader.vs", "../res/Shaders/SingleModelLoader.fs", false);
+	m_model.SetSpotlight(false);
 }
 
-void Enemy::Draw(short int enemyId, short int enemyDroneId)
+void Enemy::Draw()
 {
 	if (!m_dead)
 	{
@@ -48,7 +49,7 @@ void Enemy::Draw(short int enemyId, short int enemyDroneId)
 		//Renderer::Get().GetComponent(enemyId).SetTransform(m_pos, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 		//Renderer::Get().GetComponent(enemyId).Draw(m_camera, glm::vec3(0.0f, 0.0f, 0.0f), false, Player::Get().GetSpotLight());
 
-		m_swords.Draw(m_camera, m_pos, glm::vec3(1.0f), 0.0f, glm::vec3(20));
+		m_model.Draw(m_camera, m_pos, glm::vec3(1.0f), 0.0f, glm::vec3(20));
 
 		if (m_currLifeTimer >= 0.2f)
 			m_particleEffect.Render(m_camera, m_deltaTime, glm::vec3(m_pos.x - 1.7f, m_pos.y + 4.5f, m_pos.z - 0.4f));
@@ -75,7 +76,7 @@ void Enemy::Draw(short int enemyId, short int enemyDroneId)
 	}
 }
 
-void Enemy::DrawShockwave(short int enemyDroneBlastId)
+void Enemy::DrawShockwave()
 {
 	// Check if the smart drone has reached its desired destination where it is about to explode
 	if (m_droneSelfDestruct)
@@ -122,14 +123,10 @@ void Enemy::Update(Terrain& terrain, Camera& cam, float dt)
 		m_currLifeTimer += 0.1f * dt;
 
 		// Check if the player is getting too close, if so then run away, if not then move towards player
-		//if (m_distance < 75.0f)
-		//{
-		//	Flee(cam, dt);
-		//}
-		//else
-		{
+		if (m_distance < 75.0f && m_type == EnemyType::Range)
+			Flee(cam, dt);
+		else
 			Seek(cam, dt);
-		}
 
 		// Check if enemy is being hit
 		if (m_takingDamage)

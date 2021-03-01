@@ -54,13 +54,6 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 
 	while (1)
 	{
-		const int AttribList_OLD[] =
-		{
-			WGL_CONTEXT_MAJOR_VERSION_ARB, m_openGLMajorVersion,
-			WGL_CONTEXT_MINOR_VERSION_ARB, m_openGLMinorVersion,
-			WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-			0
-		};
 		const int AttribList[] =
 		{
 			WGL_CONTEXT_MAJOR_VERSION_ARB, m_openGLMajorVersion,
@@ -70,11 +63,7 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 			0
 		};
 
-		if (m_openGLMajorVersion == 3 && m_openGLMinorVersion < 2)
-			m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, AttribList_OLD);
-		else
-			m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, AttribList);
-
+		m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, AttribList);
 		if (m_renderContext)
 			break;
 		else
@@ -85,7 +74,7 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 				m_openGLMajorVersion = 3;
 				m_openGLMinorVersion = 3;
 			}
-			else if (m_openGLMinorVersion < 0 && m_openGLMajorVersion == 3)
+			else if (m_openGLMinorVersion < 3 && m_openGLMajorVersion == 3)
 				throw std::runtime_error("OpenGL not support");	
 		}
 	}
@@ -98,9 +87,13 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 	int major = 0;
 	int minor = 0;
 	gl::GetGLVersion(major, minor);
-	std::ostringstream title;
-	title << "OpenGL " << major << "." << minor;
-	SE_LOG(title.str().c_str());
+	const std::string strOGLVersion = "OpenGL version: " + std::to_string(major) + "." + std::to_string(minor);
+	SE_LOG(strOGLVersion.c_str());
+	const std::string strVendorVersion = "Vendor version: " + std::string((char*)glGetString(GL_RENDERER));
+	SE_LOG(strVendorVersion.c_str());
+	const std::string strGLSLVersion = "GLSL version: " + std::string((char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	SE_LOG(strGLSLVersion.c_str());
+
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);

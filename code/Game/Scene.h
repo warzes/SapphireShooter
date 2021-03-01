@@ -101,7 +101,6 @@ public:
 
 	Terrain& GetTerrain() { return m_terrain; }
 
-
 private:
 	Terrain m_terrain;
 	Terrain m_terrain2;

@@ -4,8 +4,6 @@
 
 namespace io
 {
-
-
     //! Types of time.
     enum ETimeTypes
     {

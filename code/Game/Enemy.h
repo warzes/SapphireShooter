@@ -5,13 +5,19 @@
 #include "Terrain.h"
 #include "ParticleEmitter.h"
 
+enum class EnemyType
+{
+	Melee,
+	Range
+};
+
 class Enemy
 {
 public:
-	Enemy(Camera& cam);
+	Enemy(Camera& cam, EnemyType type);
 
-	void Draw(short int id, short int enemyProjectileId);
-	void DrawShockwave(short int enemyDroneBlastId);
+	void Draw();
+	void DrawShockwave();
 	void Update(Terrain& terrain, Camera& cam, float dt);
 	void ReduceHealth(int amount);
 
@@ -49,5 +55,7 @@ private:
 	void Fire(Camera& target, Terrain& terrain, const float dt);
 	void Respawn();
 
-	Model m_swords;
+	Model m_model;
+
+	EnemyType m_type;
 };

@@ -12,7 +12,6 @@
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
-
 	try
 	{
 		Engine& engine = Engine::Get();

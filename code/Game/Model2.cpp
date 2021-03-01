@@ -14,29 +14,6 @@ Model2::Model2(const std::string& path)
 	*amount = 1;
 }
 
-//Model2::Model2(const Model2& model)
-//{
-//	swap(model);
-//}
-//
-//Model2& Model2::operator=(const Model2& model)
-//{
-//	clear();
-//	swap(model);
-//	return *this;
-//}
-
-//void Model2::swap(const Model2& model)
-//{
-//	meshes = model.meshes;
-//	texturesLoaded = model.texturesLoaded;
-//	directory = model.directory;
-//	importer = model.importer;
-//	scene = model.scene;
-//	amount = model.amount;
-//	*amount = *amount + 1;
-//}
-
 void Model2::clear()
 {
 	*amount = *amount - 1;
