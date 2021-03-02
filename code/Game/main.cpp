@@ -19,6 +19,9 @@
 #   pragma comment(lib, "winmm.lib")
 #endif
 
+а здесь есть камера
+https://github.com/microsoft/DirectX-Graphics-Samples/tree/master/MiniEngine/Core
+
 Gedonia
 
 идея такая - сделать большой ландшафт с открытым миром
