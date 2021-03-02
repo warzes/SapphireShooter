@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Allocator.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Hash.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Ptr.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHash.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="WString.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaAllocator.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingBox.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Frustum.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="IntRect.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="IntVector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3x4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Polyhedron.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="WString.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoPtr.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Hash.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="HashMap.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="HashSet.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterator.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Pair.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Ptr.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHash.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Swap.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaAllocator.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingBox.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Frustum.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="IntRect.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="IntVector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3x4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Polyhedron.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{43c17abb-cd92-45bf-81b6-a8fe5244e0a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{1b074cda-3c27-4175-8be1-1f7dec186dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{6dec1cbd-5aa9-4b0a-9a28-e10f0105405f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

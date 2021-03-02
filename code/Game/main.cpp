@@ -8,6 +8,8 @@
 #   pragma comment(lib, "Engine.lib")
 #	pragma message("link to Other.lib")
 #   pragma comment(lib, "Other.lib")
+#	pragma message("link to Other2.lib")
+#   pragma comment(lib, "Other2.lib")
 #	pragma message("link to 3rdparty.lib")
 #   pragma comment(lib, "3rdparty.lib")
 

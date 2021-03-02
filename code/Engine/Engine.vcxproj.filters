@@ -263,54 +263,6 @@
     <ClInclude Include="BaseHeader.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Rect.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="BoundingBox.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Random2.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Polyhedron.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix3.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Quaternion.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix4.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix3x4.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Plane2.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Frustum.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -518,52 +470,6 @@
     <ClCompile Include="TestAnims.cpp">
       <Filter>other</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector4.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Rect.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="BoundingBox.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Random2.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Polyhedron.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix3.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Color.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix4.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix3x4.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Ray.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Plane2.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Frustum.cpp">
-      <Filter>core\math</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="base">
