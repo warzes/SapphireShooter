@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Engine.h"
 #include "ShaderManager.h"
-#include "Player.h"
+#include "Game/Player.h" // TODO:
 
 Scene::Scene(Camera3D* cam) 
 	: camera(cam)

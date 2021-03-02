@@ -6,3 +6,6 @@
 #define SE_OPENGL           1
 
 #define SE_SUPPORT_3D       1
+
+// full Math?
+#define SE_FULL_MATH        1

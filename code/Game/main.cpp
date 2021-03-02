@@ -4,6 +4,13 @@
 #include "TestApp.h"
 #include "Log.h"
 #if SE_COMPILER_MSVC
+#	pragma message("link to Engine.lib")
+#   pragma comment(lib, "Engine.lib")
+#	pragma message("link to Other.lib")
+#   pragma comment(lib, "Other.lib")
+#	pragma message("link to 3rdparty.lib")
+#   pragma comment(lib, "3rdparty.lib")
+
 #	pragma message("link to OpenGL32.lib")
 #   pragma comment(lib, "OpenGL32.lib")
 #	pragma message("link to winmm.lib")
@@ -17,7 +24,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	{
 		Engine& engine = Engine::Get();
 		{
-#if 1
+#if 0
 			GameApp game;
 #else
 			TestApp game;
@@ -28,8 +35,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 				
 				while (!engine.IsEnd())
 				{
-
-
 					engine.BeginUpdate();
 					game.ProcessInput(engine.GetDeltaTime());
 					game.Update(engine.GetDeltaTime());
@@ -45,12 +50,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	}
 	catch (const std::exception& e)
 	{
-		std::ostringstream msg;
-		msg << "Application initialization failed!" << std::endl << std::endl;
-		msg << e.what();
-		SE_LOG(msg.str().c_str());
+		std::string str = "Application initialization failed!\n";
+		str += e.what();
+		SE_LOG(str);
 #if SE_PLATFORM_WINDOWS
-		MessageBoxA(0, msg.str().c_str(), "Error", MB_ICONERROR);
+		MessageBoxA(0, str.c_str(), "Error", MB_ICONERROR);
 #endif
 	}
 

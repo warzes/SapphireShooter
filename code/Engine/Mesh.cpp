@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Mesh.h"
 #include "OGLFunc.h"
-#include "Player.h"
+#include "Game/Player.h" // TODO:
 //-----------------------------------------------------------------------------
 Mesh::Mesh(const std::vector<MeshVertex>& vertices, const std::vector<GLuint>& indices, const std::vector<MeshTexture>& textures, bool instancing)
 {

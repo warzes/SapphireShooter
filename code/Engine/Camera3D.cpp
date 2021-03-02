@@ -12,12 +12,11 @@ void Camera3D::InitCameraPerspective(float fov, float aspectRatio, float near, f
 //-----------------------------------------------------------------------------
 void Camera3D::Update()
 {
-	if (!math::Equal(m_currentPitch, m_pitch) || !math::Equal(m_currentYaw, m_yaw))
+	if (!::Equals(m_currentPitch, m_pitch) || !::Equals(m_currentYaw, m_yaw))
 	{
 		if (m_pitch > 89) m_pitch = 89;
 		else if (m_pitch < -89) m_pitch = -89;
-		if (m_yaw > 360) m_yaw = 0;
-		else if (m_yaw < -360) m_yaw = 0;
+		if (m_yaw < -360 || m_yaw > 360) m_yaw = 0;
 
 		glm::vec3 front;
 		front.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
@@ -29,10 +28,9 @@ void Camera3D::Update()
 		std::cout << "pitch= " << m_pitch << " yaw=" << m_yaw << std::endl;
 		m_currentPitch = m_pitch;
 		m_currentYaw = m_yaw;
-
-		m_view = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraForward, m_cameraUpVector);
-		m_projView = GetProjectionMatrix() * GetViewMatrix();
 	}
+	m_view = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraForward, m_cameraUpVector);
+	m_projView = GetProjectionMatrix() * GetViewMatrix();
 }
 //-----------------------------------------------------------------------------
 void Camera3D::Rotate(float offsetX, float offsetY)

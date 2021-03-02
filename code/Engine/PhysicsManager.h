@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Camera3D.h"
-#include "Enemy.h"
+#include "Game/Enemy.h" // TODO:
 
 struct Ray
 {

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Node.cpp">
+      <Filter>Core\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Dimension.cpp">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClCompile>
+    <ClCompile Include="MathCollisionLibrary.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="SEMath.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewFrustum.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="SETimer.cpp">
+      <Filter>Core\Platform</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="BaseTypes.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SEString.h">
+      <Filter>Core\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Core\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Core\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorArithmetic.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexPolyhedron.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Dimension.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionCone3.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionLine3.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionPlane3.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionPolygon.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionQuadrangle3.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionRect2.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionSize2.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="DimensionTriangle3.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix2.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixArithmetic.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="OBB.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>Core\Math\Dimension</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewFrustum.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialColor.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathCollisionLibrary.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathCore.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathRadianDegree.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SEMath.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="VersionNumber.h">
+      <Filter>Core\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="SETimer.h">
+      <Filter>Core\Platform</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{f584d1ff-a213-4b4b-aac9-bb05e78af685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{e72dfa8e-efb4-47db-bd95-332d002d96c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\BaseClass">
+      <UniqueIdentifier>{e8c4acc6-4380-41b9-8c45-fe71142cf00b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Math">
+      <UniqueIdentifier>{693ddf6f-b4a1-4c9b-81bd-28e9637779a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Math\Dimension">
+      <UniqueIdentifier>{e0210769-ad9e-455d-b4a2-5370a84b6571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Other">
+      <UniqueIdentifier>{befde2ac-80a9-47a5-8908-43f79f5e4704}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Platform">
+      <UniqueIdentifier>{f0e8fe5a-3cde-40ba-ac83-b4dc3923698f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
