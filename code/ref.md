@@ -1,7 +1,7 @@
 
 https://www.youtube.com/watch?v=AKzWyxYPbTc - взаимодействие с предметами
 
-
+https://github.com/kosua20/Rendu
 
 
 Визуальный стиль

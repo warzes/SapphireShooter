@@ -19,16 +19,9 @@
 #   pragma comment(lib, "winmm.lib")
 #endif
 
-а здесь есть камера
-https://github.com/microsoft/DirectX-Graphics-Samples/tree/master/MiniEngine/Core
-
-Gedonia
-
-идея такая - сделать большой ландшафт с открытым миром
-сеттинг магически средневековый
-вокруг полно монстров
-
-игрок должен пройти путь по разрушенным аванпостам от старта до финиша - дерев
+слить Input и WIndow
+Постепенно убрать Object
+Остается  Graphics / Renderer / Scene
 
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
