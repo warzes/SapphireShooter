@@ -23,6 +23,8 @@
 Постепенно убрать Object
 Остается  Graphics / Renderer / Scene
 
+https://www.youtube.com/watch?v=F4fVR4guYGs
+
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
