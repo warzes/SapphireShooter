@@ -54,6 +54,12 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #include <thread>
 #include <mutex>
 
+#if SE_D3D11 && SE_PLATFORM_WINDOWS
+#	include <d3d11.h>
+#	include <d3dcompiler.h>
+#	include <dxgi.h>
+#endif
+
 #if SE_PLATFORM_WINDOWS
 #	define WIN32_LEAN_AND_MEAN      // 
 #	define WIN32_EXTRA_LEAN         // 
@@ -71,11 +77,7 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #	undef TRANSPARENT
 #endif
 
-#if SE_D3D11
-#include <d3d11.h>
-#include <d3dcompiler.h>
-#include <dxgi.h>
-#endif
+
 
 #if SE_OPENGL
 #include <GL/gl.h>

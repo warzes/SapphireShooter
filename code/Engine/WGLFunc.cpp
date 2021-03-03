@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "WGLFunc.h"
 
 #if SE_PLATFORM_WINDOWS
@@ -474,3 +475,5 @@ int wglGetSwapIntervalEXT()
 }
 //-----------------------------------------------------------------------------
 #endif
+
+#endif // SE_OPENGL

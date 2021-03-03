@@ -169,7 +169,9 @@
     <ClInclude Include="AreaAllocator.h" />
     <ClInclude Include="Attribute.h" />
     <ClInclude Include="AutoPtr.h" />
+    <ClInclude Include="Batch.h" />
     <ClInclude Include="BoundingBox.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="ConstantBuffer.h" />
@@ -184,6 +186,7 @@
     <ClInclude Include="File.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="Frustum.h" />
+    <ClInclude Include="GeometryNode.h" />
     <ClInclude Include="GLConstantBuffer.h" />
     <ClInclude Include="GLGraphics.h" />
     <ClInclude Include="GLIndexBuffer.h" />
@@ -204,17 +207,22 @@
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="JSONFile.h" />
     <ClInclude Include="JSONValue.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix3x4.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="MemoryBuffer.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Mutex.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectRef.h" />
     <ClInclude Include="ObjectResolver.h" />
+    <ClInclude Include="Octree.h" />
+    <ClInclude Include="OctreeNode.h" />
     <ClInclude Include="Pair.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Polyhedron.h" />
@@ -224,6 +232,7 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceCache.h" />
     <ClInclude Include="ResourceRef.h" />
@@ -234,6 +243,7 @@
     <ClInclude Include="Sort.h" />
     <ClInclude Include="SpatialNode.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="StaticModel.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="String.h" />
@@ -254,7 +264,9 @@
     <ClCompile Include="Allocator.cpp" />
     <ClCompile Include="AreaAllocator.cpp" />
     <ClCompile Include="Attribute.cpp" />
+    <ClCompile Include="Batch.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Condition.cpp" />
     <ClCompile Include="ConstantBuffer.cpp" />
@@ -269,6 +281,7 @@
     <ClCompile Include="File.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="Frustum.cpp" />
+    <ClCompile Include="GeometryNode.cpp" />
     <ClCompile Include="GLConstantBuffer.cpp" />
     <ClCompile Include="GLGraphics.cpp" />
     <ClCompile Include="GLIndexBuffer.cpp" />
@@ -285,15 +298,20 @@
     <ClCompile Include="IntVector2.cpp" />
     <ClCompile Include="JSONFile.cpp" />
     <ClCompile Include="JSONValue.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Matrix3x4.cpp" />
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="MemoryBuffer.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Mutex.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectResolver.cpp" />
+    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="OctreeNode.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Polyhedron.cpp" />
     <ClCompile Include="Profiler.cpp" />
@@ -302,6 +320,7 @@
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceCache.cpp" />
     <ClCompile Include="ResourceRef.cpp" />
@@ -310,6 +329,7 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SpatialNode.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="StaticModel.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

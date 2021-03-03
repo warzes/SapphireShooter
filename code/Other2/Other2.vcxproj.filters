@@ -218,6 +218,36 @@
     <ClCompile Include="D3D11VertexBuffer.cpp">
       <Filter>Graphics\D3D11</Filter>
     </ClCompile>
+    <ClCompile Include="Batch.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryNode.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Octree.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="OctreeNode.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticModel.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -470,6 +500,36 @@
     <ClInclude Include="D3D11VertexBuffer.h">
       <Filter>Graphics\D3D11</Filter>
     </ClInclude>
+    <ClInclude Include="Batch.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryNode.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="OctreeNode.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticModel.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -507,6 +567,9 @@
     </Filter>
     <Filter Include="Graphics\D3D11">
       <UniqueIdentifier>{deb42de1-b172-49ac-828b-a882f72bb8e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{9c1847d3-2db6-4957-b144-7b9cb808c126}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

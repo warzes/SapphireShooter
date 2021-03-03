@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 namespace gl
 {
 	// Determines whether an OpenGL extension is supported.
@@ -1535,3 +1537,5 @@ void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsize
 
 /* GL_ARB_instanced_arrays */
 void glVertexAttribDivisorARB(GLuint index, GLuint divisor);
+
+#endif // SE_OPENGL

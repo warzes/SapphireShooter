@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "OGLFunc.h"
 
 // TODO: переделать чтобы все функции создавались при старте, а не при вызове
@@ -4076,3 +4077,5 @@ void glVertexAttribDivisorARB(GLuint index, GLuint divisor)
 	LOAD_ENTRYPOINT("glVertexAttribDivisorARB", glpfVertexAttribDivisorARB, PFNGLVERTEXATTRIBDIVISORARB_PROC);
 	glpfVertexAttribDivisorARB(index, divisor);
 }
+
+#endif // SE_OPENGL

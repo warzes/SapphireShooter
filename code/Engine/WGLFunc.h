@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #if SE_PLATFORM_WINDOWS
 
 // GL_ARB_multisample
@@ -125,3 +127,5 @@ namespace gl
 }
 
 #endif
+
+#endif // SE_OPENGL

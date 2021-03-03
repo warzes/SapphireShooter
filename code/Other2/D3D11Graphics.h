@@ -14,7 +14,7 @@ class GPUObject;
 class IndexBuffer;
 class RasterizerState;
 class ShaderVariation;
-class Texture;
+class Texture2;
 class VertexBuffer;
 class Window;
 class WindowResizeEvent;
