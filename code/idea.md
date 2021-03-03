@@ -48,3 +48,6 @@
 
 По моделированию	- https://www.youtube.com/watch?v=14GiocwhI3A
 					- https://www.youtube.com/watch?v=wHsAPSe6Yf8
+
+ресурсы				- https://www.unrealengine.com/marketplace/en-US/product/medieval-castle-modular-vol#
+					- https://www.unrealengine.com/marketplace/en-US/product/hack-and-slash-fx#

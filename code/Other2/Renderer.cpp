@@ -791,7 +791,6 @@ void Renderer::CollectShadowBatches(const Vector<GeometryNode*>& nodes, BatchQue
 void Renderer::RenderBatches(const Vector<Batch>& batches, Camera* camera_, bool setPerFrameConstants, bool overrideDepthBias,
     int depthBias, float slopeScaledDepthBias)
 {
-    тут
     if (faceSelectionTexture1->IsDataLost() || faceSelectionTexture2->IsDataLost())
         DefineFaceSelectionTextures();
 
