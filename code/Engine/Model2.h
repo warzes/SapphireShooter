@@ -19,7 +19,7 @@ protected:
 
 private:
 	void processNode(const aiNode* node);
-	Material loadMaterial(const aiMaterial* mat);
+	Material2 loadMaterial(const aiMaterial* mat);
 	std::vector<Mesh2::MeshTexture> loadMaterialTextures(const aiMaterial* mat, const aiTextureType& type, const std::string& typeName);
 
 protected:
@@ -27,7 +27,7 @@ protected:
 	std::vector<Mesh2::MeshVertex> getVertices(const aiMesh* aMesh);
 	std::vector<unsigned> getIndices(const aiMesh* aMesh);
 	std::vector<Mesh2::MeshTexture> getTextures(const aiMesh* aMesh);
-	Material getMaterial(const aiMesh* aMesh, const unsigned& texCount);
+	Material2 getMaterial(const aiMesh* aMesh, const unsigned& texCount);
 
 public:
 	Model2();
@@ -37,7 +37,7 @@ public:
 	virtual void Render(std::shared_ptr<ShaderProgram> program);
 	virtual void load(const std::string& path);
 
-	void changeWholeMaterial(const Material& mat);
+	void changeWholeMaterial(const Material2& mat);
 
 	const std::vector<Mesh2*>& getMeshes() { return meshes; }
 };

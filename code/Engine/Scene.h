@@ -8,14 +8,14 @@
 #include "Water.h"
 #include "Terrain.h"
 
-class Scene
+class Scene2
 {
 	Camera3D* camera = nullptr;
 	Skybox* m_skybox = nullptr;
 	std::vector<Renderable*> objects;
 	std::vector<Renderable*> animations;
 	std::vector<Water*> waters;
-	std::vector<Light*> lights;
+	std::vector<Light2*> lights;
 	std::vector<Shadow> shadows;
 	bool allowShadows = true;
 
@@ -42,7 +42,7 @@ class Scene
 	std::shared_ptr<ShaderProgram> water = nullptr;
 
 public:
-	Scene(Camera3D* cam);
+	Scene2(Camera3D* cam);
 
 	void initShadersManager();
 
@@ -53,7 +53,7 @@ public:
 	void render2(const glm::vec4& clipPlane = glm::vec4(0, 1, 0, 10000));
 
 	void addSkybox(Skybox& obj) { m_skybox = &obj; }
-	void addLight(Light& obj);
+	void addLight(Light2& obj);
 	void removeLight(const unsigned& n);
 
 	void addObject(Renderable& obj) { objects.push_back(&obj); }
@@ -68,7 +68,7 @@ public:
 	std::vector<Renderable*>& getObjects() { return objects; }
 	std::vector<Renderable*>& getAnimations() { return animations; }
 	std::vector<Water*>& getWaters() { return waters; }
-	std::vector<Light*>& getLights() { return lights; }
+	std::vector<Light2*>& getLights() { return lights; }
 
 	void setShadows(bool val) { allowShadows = val; }
 	bool isAllowShadows() const { return allowShadows; }

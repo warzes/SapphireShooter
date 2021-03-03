@@ -22,7 +22,7 @@ private:
 	void initBones();
 
 public:
-	MeshBone(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material& mat, const std::vector<BoneData>& bones);
+	MeshBone(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material2& mat, const std::vector<BoneData>& bones);
 	virtual ~MeshBone();
 
 	const std::vector<BoneData>& getVerticesBoneData() const { return bonesData; }

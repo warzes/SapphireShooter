@@ -44,10 +44,10 @@ private:
 	Bloom *bloomEffect;
 	PostProcessing *postHDR;
 	PostProcessing *post;
-	Scene* scene;
+	Scene2* scene;
 	Skybox skybox;
 	Water *water;
-	Light pointLight;
+	Light2 pointLight;
 	bool firstTime = true;
 	bool polygonMode = false;
 	float lastPosX = 0;
@@ -58,7 +58,7 @@ private:
 	Framebuffer m_framebuffer;
 	Text m_texts;
 	Billboard* m_test;
-	Model m_model;
+	Model3 m_model;
 
 	TestAnims* player1 = nullptr;
 

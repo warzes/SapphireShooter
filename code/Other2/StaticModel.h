@@ -2,6 +2,8 @@
 
 #include "GeometryNode.h"
 
+class Model;
+
 /// %Scene node that renders an unanimated model.
 class StaticModel : public GeometryNode
 {

@@ -3,7 +3,7 @@
 #include "Texture.h"
 #include "Geometry.h"
 
-class Skybox : public Geometry
+class Skybox : public Geometry2
 {
 	Texture texture;
 

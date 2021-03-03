@@ -10,6 +10,9 @@
     <ClCompile Include="GraphicsSystemTest.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="RendererSystemTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -18,6 +21,9 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="TestApp.h" />
     <ClInclude Include="GraphicsSystemTest.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererSystemTest.h">
       <Filter>test</Filter>
     </ClInclude>
   </ItemGroup>

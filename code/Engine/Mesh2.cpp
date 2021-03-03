@@ -1,19 +1,19 @@
 #include "stdafx.h"
 #include "Mesh2.h"
 
-Mesh2::Mesh2(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material& mat) : vertices(verts), indices(inds), textures(texs), material(mat)
+Mesh2::Mesh2(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material2& mat) : vertices(verts), indices(inds), textures(texs), material(mat)
 {
 	initMesh();
 }
 
-Mesh2::Mesh2(const Mesh2& mesh) : Geometry(mesh)
+Mesh2::Mesh2(const Mesh2& mesh) : Geometry2(mesh)
 {
 	swap(mesh);
 }
 
 Mesh2& Mesh2::operator=(const Mesh2& mesh)
 {
-	Geometry::operator=((const Geometry&)mesh);
+	Geometry2::operator=((const Geometry2&)mesh);
 	clear();
 	swap(mesh);
 	return *this;

@@ -7,7 +7,7 @@ class Bloom
 {
 	const unsigned BLUR_AMOUNT = 8;
 	FrameBuffer pingPongBuffer[2];
-	Plane quad;
+	Plane2 quad;
 	bool horizontal;
 
 public:

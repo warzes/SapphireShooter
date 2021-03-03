@@ -110,7 +110,7 @@ MeshBone* ModelAnim::processMesh(const aiMesh* aMesh)
 	std::vector<Mesh2::MeshVertex> vertices = getVertices(aMesh);
 	std::vector<unsigned> indices = getIndices(aMesh);
 	std::vector<Mesh2::MeshTexture> textures = getTextures(aMesh);
-	Material material = getMaterial(aMesh, textures.size());
+	Material2 material = getMaterial(aMesh, textures.size());
 	std::vector<MeshBone::BoneData> bonesData = getBones(aMesh);
 	return new MeshBone(vertices, indices, textures, material, bonesData);
 }

@@ -4,7 +4,7 @@
 #include "ShaderManager.h"
 #include "Log.h"
 
-void Model::Init(const char* path, Camera3D& camera, const char* vs, const char* fs, bool instancing)
+void Model3::Init(const char* path, Camera3D& camera, const char* vs, const char* fs, bool instancing)
 {
 	m_shaderProgram = ShaderManager::Get().LoadShader("modelShader", vs, fs);
 	m_camera = camera;
@@ -12,7 +12,7 @@ void Model::Init(const char* path, Camera3D& camera, const char* vs, const char*
 	loadModel(path);
 }
 
-void Model::Draw(Camera3D& cam, bool bDrawRelativeToCamera)
+void Model3::Draw(Camera3D& cam, bool bDrawRelativeToCamera)
 {
 	for (GLuint i = 0; i < meshes.size(); ++i)
 	{
@@ -20,7 +20,7 @@ void Model::Draw(Camera3D& cam, bool bDrawRelativeToCamera)
 	}
 }
 
-void Model::Draw(Camera3D& cam, const glm::vec3& pos, const glm::vec3& rot, float amountOfRotation, const glm::vec3& scale, bool bDrawRelativeToCamera)
+void Model3::Draw(Camera3D& cam, const glm::vec3& pos, const glm::vec3& rot, float amountOfRotation, const glm::vec3& scale, bool bDrawRelativeToCamera)
 {
 	for (GLuint i = 0; i < meshes.size(); ++i)
 	{
@@ -28,7 +28,7 @@ void Model::Draw(Camera3D& cam, const glm::vec3& pos, const glm::vec3& rot, floa
 	}
 }
 
-void Model::DrawInstanced(Camera3D& cam)
+void Model3::DrawInstanced(Camera3D& cam)
 {
 	for (GLuint i = 0; i < meshes.size(); ++i)
 	{
@@ -36,7 +36,7 @@ void Model::DrawInstanced(Camera3D& cam)
 	}
 }
 
-void Model::SetTransform(glm::vec3 pos, glm::vec3 rot, float rotAmountInDegrees, glm::vec3 scale)
+void Model3::SetTransform(glm::vec3 pos, glm::vec3 rot, float rotAmountInDegrees, glm::vec3 scale)
 {
 	m_position = pos;
 	m_rotation = rot;
@@ -44,7 +44,7 @@ void Model::SetTransform(glm::vec3 pos, glm::vec3 rot, float rotAmountInDegrees,
 	m_scale = scale;
 }
 
-void Model::loadModel(std::string path)
+void Model3::loadModel(std::string path)
 {
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -60,7 +60,7 @@ void Model::loadModel(std::string path)
 	processNode(scene->mRootNode, scene);
 }
 
-void Model::processNode(aiNode* node, const aiScene* scene)
+void Model3::processNode(aiNode* node, const aiScene* scene)
 {
 	for (GLuint i = 0; i < node->mNumMeshes; i++)
 	{
@@ -74,7 +74,7 @@ void Model::processNode(aiNode* node, const aiScene* scene)
 	}
 }
 
-Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
+Mesh Model3::processMesh(aiMesh* mesh, const aiScene* scene)
 {
 	std::vector<MeshVertex> vertices;
 	std::vector<GLuint> indices;
@@ -128,7 +128,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 	return Mesh(vertices, indices, textures, m_instancing);
 }
 
-std::vector<MeshTexture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
+std::vector<MeshTexture> Model3::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
 {
 	std::vector<MeshTexture> textures;
 	for (GLuint i = 0; i < mat->GetTextureCount(type); i++)

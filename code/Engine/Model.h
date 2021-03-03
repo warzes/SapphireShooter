@@ -4,7 +4,7 @@
 #include "Transformation.h"
 #include "ShaderProgram.h"
 
-class Model
+class Model3
 {
 public:
 	void Init(const char* path, Camera3D& camera, const char* vs, const char* fs, bool instancing);

@@ -3,7 +3,7 @@
 #include "Camera3D.h"
 #include "Game/Enemy.h" // TODO:
 
-struct Ray
+struct Ray2
 {
 	glm::vec3 pos;
 	glm::vec3 dir;
@@ -21,7 +21,7 @@ public:
 	void Update(Camera3D& cam, float dt, std::vector<Enemy*>& enemies);
 
 	void CastRay() { m_castRay = true; }
-	Ray& GetRay() { return m_ray; }
+	Ray2& GetRay() { return m_ray; }
 	bool GetDebugRayCastDraw() { return m_debugRayCastDraw; }
 	float GetGravity() { return m_gravity; }
 	void OnEnemyHit(Enemy* enemy);
@@ -33,12 +33,12 @@ private:
 	PhysicsManager(const PhysicsManager&) = delete;
 	void operator=(const PhysicsManager&) = delete;
 
-	Ray castRayFromMouse(Camera3D& cam);
-	Ray castRayFromWeapon(Camera3D& cam);
+	Ray2 castRayFromMouse(Camera3D& cam);
+	Ray2 castRayFromWeapon(Camera3D& cam);
 	void checkRaySphereCollision(Camera3D& cam, std::vector<Enemy*> enemies);
 	bool raySphere(Camera3D& cam, glm::vec3 RayDirWorld, double SphereRadius, double x, double y, double z);
 
-	Ray m_ray;
+	Ray2 m_ray;
 	float m_mouseX = 0.0f;
 	float m_mouseY = 0.0f;
 	bool m_debugRayCastDraw = false;

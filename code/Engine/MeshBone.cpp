@@ -14,7 +14,7 @@ void MeshBone::BoneData::addBoneData(const unsigned& boneId, const float& weight
 	}
 }
 
-MeshBone::MeshBone(const std::vector<Mesh2::MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<Mesh2::MeshTexture>& texs, const Material& mat, const std::vector<MeshBone::BoneData>& bones) : Mesh2(verts, inds, texs, mat), bonesData(bones)
+MeshBone::MeshBone(const std::vector<Mesh2::MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<Mesh2::MeshTexture>& texs, const Material2& mat, const std::vector<MeshBone::BoneData>& bones) : Mesh2(verts, inds, texs, mat), bonesData(bones)
 {
 	initBones();
 }

@@ -55,7 +55,7 @@ private:
 	void Fire(Camera3D& target, Terrain& terrain, const float dt);
 	void Respawn();
 
-	Model m_model;
+	Model3 m_model;
 
 	EnemyType m_type;
 };

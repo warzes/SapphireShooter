@@ -25,7 +25,7 @@ private:
 
 	Camera3D m_mainCamera;
 
-	Model m_model;
+	Model3 m_model;
 
 	int m_width = 0;
 	int m_height = 0;

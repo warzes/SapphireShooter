@@ -13,7 +13,7 @@ void Shadow::updateBuffer()
 	depth.generate(shadowSize, shadowSize, 0);
 }
 
-void Shadow::initCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
+void Shadow::initCastShadow(const Light2& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
 {
 	for (unsigned i = 0; i < programs.size(); ++i)
 	{
@@ -34,7 +34,7 @@ void Shadow::initCastShadow(const Light& light, const std::vector<std::shared_pt
 	}
 }
 
-void Shadow::startCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
+void Shadow::startCastShadow(const Light2& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
 {
 	initCastShadow(light, programs);
 	glViewport(0, 0, shadowSize, shadowSize);
@@ -42,7 +42,7 @@ void Shadow::startCastShadow(const Light& light, const std::vector<std::shared_p
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
-void Shadow::endCastShadow(const Light& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
+void Shadow::endCastShadow(const Light2& light, const std::vector<std::shared_ptr<ShaderProgram>>& programs)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 

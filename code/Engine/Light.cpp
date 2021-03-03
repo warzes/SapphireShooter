@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Light.h"
 
-unsigned Light::amount = 0;
+unsigned Light2::amount = 0;
 
-void Light::generateShadowTransforms()
+void Light2::generateShadowTransforms()
 {
 	glm::mat4 projection = glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, shadowFar);
 	shadowTransforms.clear();
@@ -15,7 +15,7 @@ void Light::generateShadowTransforms()
 	shadowTransforms.push_back(projection * glm::lookAt(position, position + glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
 }
 
-void Light::Render(std::shared_ptr<ShaderProgram> program)
+void Light2::Render(std::shared_ptr<ShaderProgram> program)
 {
 	using std::string;
 	string prefix = "lights[" + std::to_string(getIndex()) + "]";

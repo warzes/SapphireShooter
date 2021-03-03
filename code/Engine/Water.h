@@ -6,7 +6,7 @@
 #include "Camera3D.h"
 #include "ShaderProgram.h"
 
-class Scene;
+class Scene2;
 
 class Water : public Transformationable
 {
@@ -16,13 +16,13 @@ public:
 	void Create();
 
 	void Render(std::shared_ptr<ShaderProgram> program) override;
-	void RenderReflectAndRefract(Scene* scene);
+	void RenderReflectAndRefract(Scene2* scene);
 	unsigned GetVAO() const  override { return m_plane.GetVAO(); }
 
 	WaterBuffers buffers;
 
 private:
-	Plane m_plane;
+	Plane2 m_plane;
 	Texture m_dudvMap;
 	Texture m_normalMap;
 	float m_offset = 0;

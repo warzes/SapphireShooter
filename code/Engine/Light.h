@@ -4,7 +4,7 @@
 
 typedef std::vector<glm::mat4> ShadowTransforms;
 
-class Light
+class Light2
 {
 	unsigned index;
 	glm::vec3 position;
@@ -20,7 +20,7 @@ class Light
 
 public:
 	static unsigned amount;
-	Light(
+	Light2(
 		const glm::vec3& pPosition = glm::vec3(0.0f),
 		const glm::vec3& pAmbient = glm::vec3(0.0f),
 		const glm::vec3& pDiffuse = glm::vec3(0.0f),

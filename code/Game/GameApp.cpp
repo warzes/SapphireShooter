@@ -62,7 +62,7 @@ void GameApp::Init()
 	water->SetPosition(glm::vec3(0.0f, 15.0f, 0.0f));
 	water->SetScale(glm::vec3(2000.0f));
 
-	scene = new Scene(&m_mainCamera);
+	scene = new Scene2(&m_mainCamera);
 	scene->initShadersManager();
 	scene->addSkybox(skybox);
 	scene->addLight(pointLight);

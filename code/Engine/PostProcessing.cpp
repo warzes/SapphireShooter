@@ -62,7 +62,7 @@ void PostProcessing::renderToQuad(std::shared_ptr<ShaderProgram> program, const 
 
 void PostProcessing::renderToQuad(std::shared_ptr<ShaderProgram> program, const std::vector<unsigned>& textures, const glm::mat4& model)
 {
-	static Plane quad;
+	static Plane2 quad;
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
 

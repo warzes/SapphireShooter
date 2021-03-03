@@ -4,7 +4,7 @@
 #include "ShaderManager.h"
 #include "Game/Player.h" // TODO:
 
-Scene::Scene(Camera3D* cam) 
+Scene2::Scene2(Camera3D* cam) 
 	: camera(cam)
 {
 	m_dirLight.Configure(glm::vec3(-0.1f, -0.1f, -0.1f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.5f, 0.5f, 0.5f));
@@ -25,7 +25,7 @@ Scene::Scene(Camera3D* cam)
 	m_terrain2.SetFog(true);
 }
 
-void Scene::initPrograms(const glm::vec4& clipPlane)
+void Scene2::initPrograms(const glm::vec4& clipPlane)
 {
 	initProgram(getObjectProgram(), clipPlane);
 	initProgram(getAnimProgram(), clipPlane);
@@ -33,20 +33,20 @@ void Scene::initPrograms(const glm::vec4& clipPlane)
 	initProgram(getTerrainDepthProgram(), clipPlane);
 }
 
-void Scene::initProgram(std::shared_ptr<ShaderProgram> program, const glm::vec4& clipPlane)
+void Scene2::initProgram(std::shared_ptr<ShaderProgram> program, const glm::vec4& clipPlane)
 {
 	if (program && program->GetId() != 0)
 	{
 		program->Bind();
 		program->SetMatrix4("viewProject", camera->GetViewProjectionMatrix());
 		program->SetVector3f("viewPos", camera->GetCameraPos());
-		program->SetInteger("lightsAmount", Light::amount);
+		program->SetInteger("lightsAmount", Light2::amount);
 		program->SetInteger("allowShadows", allowShadows ? 1 : 0);
 		program->SetVector4f("clipPlane", clipPlane);
 	}
 }
 
-void Scene::renderShadows()
+void Scene2::renderShadows()
 {
 	if (allowShadows)
 	{
@@ -74,7 +74,7 @@ void Scene::renderShadows()
 	}
 }
 
-void Scene::render(const glm::vec4& clipPlane)
+void Scene2::render(const glm::vec4& clipPlane)
 {
 	auto width = GetEngineDescription().window.width;
 	auto height = GetEngineDescription().window.height;
@@ -99,7 +99,7 @@ void Scene::render(const glm::vec4& clipPlane)
 	renderSkybox();
 }
 
-void Scene::render1(const glm::vec4& clipPlane)
+void Scene2::render1(const glm::vec4& clipPlane)
 {
 	auto width = GetEngineDescription().window.width;
 	auto height = GetEngineDescription().window.height;
@@ -123,13 +123,13 @@ void Scene::render1(const glm::vec4& clipPlane)
 	}
 }
 
-void Scene::render2(const glm::vec4& clipPlane)
+void Scene2::render2(const glm::vec4& clipPlane)
 {
 	renderWaters(getWaterProgram());
 	renderSkybox();
 }
 
-void Scene::renderObjects(std::shared_ptr<ShaderProgram> prog)
+void Scene2::renderObjects(std::shared_ptr<ShaderProgram> prog)
 {
 	if (prog && prog->GetId() != 0)
 	{
@@ -139,7 +139,7 @@ void Scene::renderObjects(std::shared_ptr<ShaderProgram> prog)
 	}
 }
 
-void Scene::renderAnimations(std::shared_ptr<ShaderProgram> prog)
+void Scene2::renderAnimations(std::shared_ptr<ShaderProgram> prog)
 {
 	if (prog && prog->GetId() != 0)
 	{
@@ -149,7 +149,7 @@ void Scene::renderAnimations(std::shared_ptr<ShaderProgram> prog)
 	}
 }
 
-void Scene::renderWaters(std::shared_ptr<ShaderProgram> prog)
+void Scene2::renderWaters(std::shared_ptr<ShaderProgram> prog)
 {
 	if (prog && prog->GetId() != 0)
 	{
@@ -159,7 +159,7 @@ void Scene::renderWaters(std::shared_ptr<ShaderProgram> prog)
 	}
 }
 
-void Scene::renderSkybox()
+void Scene2::renderSkybox()
 {
 	std::shared_ptr<ShaderProgram> skyboxProgram = getSkyboxProgram();
 	if (skybox != nullptr && skyboxProgram->GetId() != 0)
@@ -171,7 +171,7 @@ void Scene::renderSkybox()
 	}
 }
 
-void Scene::renderLights()
+void Scene2::renderLights()
 {
 	std::shared_ptr<ShaderProgram> objProgram = getObjectProgram();
 	std::shared_ptr<ShaderProgram> animProgram = getAnimProgram();
@@ -210,19 +210,19 @@ void Scene::renderLights()
 	}
 }
 
-void Scene::addLight(Light& obj)
+void Scene2::addLight(Light2& obj)
 {
 	shadows.push_back(Shadow());
 	lights.push_back(&obj);
 }
 
-void Scene::removeLight(const unsigned& n)
+void Scene2::removeLight(const unsigned& n)
 {
 	shadows.erase(shadows.begin() + n);
 	lights.erase(lights.begin() + n);
 }
 
-void Scene::initShadersManager()
+void Scene2::initShadersManager()
 {
 	setObjectProgram(ShaderManager::Get().LoadShader("Object", "shaders/object.vs", "shaders/object.fs"));
 	setAnimProgram(ShaderManager::Get().LoadShader("Anim", "shaders/anim.vs", "shaders/object.fs"));

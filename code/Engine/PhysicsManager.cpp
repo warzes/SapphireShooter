@@ -16,7 +16,7 @@ void PhysicsManager::Update(Camera3D& cam, float dt, std::vector<Enemy*>& enemie
 	}
 }
 
-Ray PhysicsManager::castRayFromMouse(Camera3D& cam)
+Ray2 PhysicsManager::castRayFromMouse(Camera3D& cam)
 {
 	// screen space (viewport coordinates)
 	float x = (2.0f * m_mouseX) / GetEngineDescription().window.width - 1.0f;
@@ -33,16 +33,16 @@ Ray PhysicsManager::castRayFromMouse(Camera3D& cam)
 	glm::vec4 rayWorld = invViewMat * eyeCoords;
 	glm::vec3 rayDirection = glm::normalize(glm::vec3(rayWorld));
 
-	Ray ray;
+	Ray2 ray;
 	ray.pos = cam.GetCameraPos();
 	ray.dir = rayDirection;
 
 	return ray;
 }
 
-Ray PhysicsManager::castRayFromWeapon(Camera3D& cam)
+Ray2 PhysicsManager::castRayFromWeapon(Camera3D& cam)
 {
-	Ray ray;
+	Ray2 ray;
 	ray.pos = cam.GetCameraPos();
 	ray.dir = cam.GetCameraForward();
 	return ray;

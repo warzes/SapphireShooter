@@ -4,7 +4,7 @@
 #include "Geometry.h"
 #include "Engine.h"
 
-class FontRenderer : public Geometry
+class FontRenderer : public Geometry2
 {
 	Font font;
 	glm::vec3 color = glm::vec3(0.0f);

@@ -44,7 +44,7 @@ void Water::Render(std::shared_ptr<ShaderProgram> program)
 	Texture::unbind(GL_TEXTURE_2D);
 }
 //-----------------------------------------------------------------------------
-void Water::RenderReflectAndRefract(Scene* scene)
+void Water::RenderReflectAndRefract(Scene2* scene)
 {
 	glm::vec3 defaultCamPos = m_camera->GetCameraPos();
 	float defaultCamPitch = m_camera->GetPitch();

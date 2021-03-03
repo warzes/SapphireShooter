@@ -73,6 +73,7 @@ bool Shader2::ProcessIncludes(String& code, Stream& source)
 		if (line.StartsWith("#include"))
 		{
 			String includeFileName = Path(source.Name()) + line.Substring(9).Replaced("\"", "").Trimmed();
+			//SE_LOG(("Shader include: " + includeFileName).CString());
 			AutoPtr<Stream> includeStream = cache->OpenResource(includeFileName);
 			if (!includeStream)
 				return false;

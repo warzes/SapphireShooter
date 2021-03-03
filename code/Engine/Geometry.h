@@ -2,10 +2,10 @@
 
 #include "Renderable.h"
 
-class Geometry : public Renderable
+class Geometry2 : public Renderable
 {
 public:
-	~Geometry() override;
+	~Geometry2() override;
 	unsigned GetVAO() const override { return m_VAO; }
 
 protected:

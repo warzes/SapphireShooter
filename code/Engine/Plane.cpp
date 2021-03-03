@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Plane.h"
 //-----------------------------------------------------------------------------
-Plane::Plane()
+Plane2::Plane2()
 {
 	static const float planeVertices[] = 
 	{
@@ -24,14 +24,14 @@ Plane::Plane()
 	glBindVertexArray(0);
 }
 //-----------------------------------------------------------------------------
-void Plane::Render(std::shared_ptr<ShaderProgram> program)
+void Plane2::Render(std::shared_ptr<ShaderProgram> program)
 {
 	glBindVertexArray(m_VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
 }
 //-----------------------------------------------------------------------------
-void Plane::Render(std::shared_ptr<ShaderProgram> program, const unsigned& amount)
+void Plane2::Render(std::shared_ptr<ShaderProgram> program, const unsigned& amount)
 {
 	glBindVertexArray(m_VAO);
 	glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, amount);

@@ -2,10 +2,10 @@
 
 #include "Renderable.h"
 
-class Material : public Renderable
+class Material2 : public Renderable
 {
 public:
-	Material(
+	Material2(
 		const glm::vec3& ambient = glm::vec3(0.0f),
 		const glm::vec3& diffuse = glm::vec3(0.0f),
 		const glm::vec3& specular = glm::vec3(0.0f),

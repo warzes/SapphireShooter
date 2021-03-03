@@ -69,7 +69,7 @@ Mesh2* Model2::processMesh(const aiMesh* aMesh)
 	std::vector<Mesh2::MeshVertex> vertices = getVertices(aMesh);
 	std::vector<unsigned> indices = getIndices(aMesh);
 	std::vector<Mesh2::MeshTexture> textures = getTextures(aMesh);
-	Material material = getMaterial(aMesh, textures.size());
+	Material2 material = getMaterial(aMesh, textures.size());
 	return new Mesh2(vertices, indices, textures, material);
 }
 
@@ -120,9 +120,9 @@ std::vector<Mesh2::MeshTexture> Model2::getTextures(const aiMesh* aMesh)
 	return textures;
 }
 
-Material Model2::getMaterial(const aiMesh* aMesh, const unsigned& texCount)
+Material2 Model2::getMaterial(const aiMesh* aMesh, const unsigned& texCount)
 {
-	Material material;
+	Material2 material;
 	if (aMesh->mMaterialIndex >= 0)
 	{
 		aiMaterial* mat = scene->mMaterials[aMesh->mMaterialIndex];
@@ -133,9 +133,9 @@ Material Model2::getMaterial(const aiMesh* aMesh, const unsigned& texCount)
 	return material;
 }
 
-Material Model2::loadMaterial(const aiMaterial* mat)
+Material2 Model2::loadMaterial(const aiMaterial* mat)
 {
-	Material material;
+	Material2 material;
 	aiColor3D color(0.0f, 0.0f, 0.0f);
 
 	if (mat->Get(AI_MATKEY_COLOR_DIFFUSE, color) == AI_SUCCESS)
@@ -195,7 +195,7 @@ std::vector<Mesh2::MeshTexture> Model2::loadMaterialTextures(const aiMaterial* m
 	return textures;
 }
 
-void Model2::changeWholeMaterial(const Material& mat)
+void Model2::changeWholeMaterial(const Material2& mat)
 {
 	for (unsigned i = 0; i < meshes.size(); ++i)
 		meshes[i]->setMaterial(mat);
