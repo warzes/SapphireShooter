@@ -21,6 +21,8 @@
 #   pragma comment(lib, "winmm.lib")
 #endif
 
+подумать о клоне барони (и годоте, может на нем?)
+
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
