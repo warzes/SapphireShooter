@@ -21,6 +21,8 @@
 #   pragma comment(lib, "winmm.lib")
 #endif
 
+https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md
+
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
