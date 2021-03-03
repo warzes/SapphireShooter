@@ -6,6 +6,7 @@ inline void PlatformLogPrint(std::string_view str, const LogVerbosity verbosity)
 #if SE_DEBUG
 	OutputDebugStringA(str.data());
 	OutputDebugStringA("\n");
+#endif
 
 	HANDLE handle;
 	switch (verbosity)
@@ -25,6 +26,5 @@ inline void PlatformLogPrint(std::string_view str, const LogVerbosity verbosity)
 	DWORD bytesWritten;
 	WriteConsoleA(handle, str.data(), (DWORD)str.size(), &bytesWritten, nullptr);
 	WriteConsoleA(handle, "\n", 1, &bytesWritten, nullptr);
-#endif
 }
 #endif

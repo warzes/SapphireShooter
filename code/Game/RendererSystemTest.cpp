@@ -38,7 +38,7 @@ void RendererSystemTest::Init()
 	RegisterRendererLibrary();
 
 	cache = new ResourceCache();
-	cache->AddResourceDir(ExecutableDir() + "../Data");
+	cache->AddResourceDir(ExecutableDir() + "Data");
 
 	profiler = new Profiler();
 
@@ -52,7 +52,7 @@ void RendererSystemTest::Init()
 	scene->CreateChild<Octree>();
 	camera = scene->CreateChild<Camera>();
 	camera->SetPosition(Vector3(0.0f, 20.0f, -75.0f));
-	camera->SetAmbientColor(Color(0.1f, 0.1f, 0.1f));
+	camera->SetAmbientColor(Color(0.1f, 0.9f, 0.1f));
 
 	for (int y = -5; y <= 5; ++y)
 	{
@@ -111,8 +111,8 @@ void RendererSystemTest::Update(float deltaTime)
 	const float MouseDeltaX = static_cast<float>(Mouse::Get().GetMouseMove().x);
 	const float MouseDeltaY = static_cast<float>(Mouse::Get().GetMouseMove().y);
 
-	pitch += MouseDeltaY * 0.25f;
-	yaw += MouseDeltaX * 0.25f;
+	//pitch += MouseDeltaY * 0.25f;
+	//yaw += MouseDeltaX * 0.25f;
 	pitch = Clamp(pitch, -90.0f, 90.0f);
 
 	camera->SetRotation(Quaternion(pitch, yaw, 0.0f));
@@ -147,7 +147,7 @@ void RendererSystemTest::Render()
 		graphics->ResetRenderTargets();
 		graphics->ResetViewport();
 		graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color::RED);
-		renderer->RenderBatches(passes);
+		//renderer->RenderBatches(passes);
 	}
 
 	profiler->EndFrame();
