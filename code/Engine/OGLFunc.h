@@ -1519,3 +1519,19 @@ void glMemoryBarrier(GLbitfield barriers);
 void glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
 void glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
 void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+
+/* GL_EXT_texture_compression_s3tc */
+
+#define GL_COMPRESSED_RGB_S3TC_DXT1_EXT 0x83F0
+#define GL_COMPRESSED_RGBA_S3TC_DXT1_EXT 0x83F1
+#define GL_COMPRESSED_RGBA_S3TC_DXT3_EXT 0x83F2
+#define GL_COMPRESSED_RGBA_S3TC_DXT5_EXT 0x83F3
+
+/* GL_EXT_texture_mirror_clamp */
+
+#define GL_MIRROR_CLAMP_EXT 0x8742
+#define GL_MIRROR_CLAMP_TO_EDGE_EXT 0x8743
+#define GL_MIRROR_CLAMP_TO_BORDER_EXT 0x8912
+
+/* GL_ARB_instanced_arrays */
+void glVertexAttribDivisorARB(GLuint index, GLuint divisor);

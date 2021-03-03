@@ -71,7 +71,15 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #	undef TRANSPARENT
 #endif
 
+#if SE_D3D11
+#include <d3d11.h>
+#include <d3dcompiler.h>
+#include <dxgi.h>
+#endif
+
+#if SE_OPENGL
 #include <GL/gl.h>
+#endif
 
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>

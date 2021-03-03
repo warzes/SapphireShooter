@@ -1,7 +1,8 @@
 #pragma once
 
 /// Pointer which takes ownership of an object and deletes it when the pointer goes out of scope. Ownership can be transferred to another pointer, in which case the source pointer becomes null.
-template <class T> class AutoPtr
+template <class T> 
+class AutoPtr
 {
 public:
 	/// Construct a null pointer.

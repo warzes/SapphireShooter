@@ -465,7 +465,7 @@ BOOL wglSwapIntervalEXT(int interval)
 	return pfnSwapIntervalEXT(interval);
 }
 //-----------------------------------------------------------------------------
-int wglGetSwapIntervalEXT(void)
+int wglGetSwapIntervalEXT()
 {
 	typedef int (WINAPI* PFNWGLGETSWAPINTERVALEXTPROC)(void);
 	static PFNWGLGETSWAPINTERVALEXTPROC pfnGetSwapIntervalEXT = 0;

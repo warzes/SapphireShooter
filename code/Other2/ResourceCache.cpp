@@ -310,7 +310,7 @@ String ResourceCache::SanitateResourceName(const String& nameIn) const
 {
 	// Sanitate unsupported constructs from the resource name
 	String name = NormalizePath(nameIn);
-	name.Replace("../", "");
+	name.Replace("", "");
 	name.Replace("./", "");
 
 	// If the path refers to one of the resource directories, normalize the resource name

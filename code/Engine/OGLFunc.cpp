@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "OGLFunc.h"
 
+// TODO: переделать чтобы все функции создавались при старте, а не при вызове
+
 namespace
 {
 	WNDCLASSEX g_wcl;
@@ -255,22 +257,12 @@ namespace gl
 }
 
 
-
 #define LOAD_ENTRYPOINT(name, var, type) \
     if (!var) \
     { \
         var = function_cast<type>(wglGetProcAddress(name)); \
         assert(var != 0); \
     }
-
-//#define LOAD_ENTRYPOINT(name, var, type) \
-//    if (!var) \
-//    { \
-//        var = reinterpret_cast<type>(wglGetProcAddress(name)); \
-//        assert(var != 0); \
-//    }
-
-
 
 //
 // OpenGL 1.2
@@ -4075,4 +4067,12 @@ void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsize
 	static PFNGLTEXSTORAGE3DPROC pfnTexStorage3D = 0;
 	LOAD_ENTRYPOINT("glTexStorage3D", pfnTexStorage3D, PFNGLTEXSTORAGE3DPROC);
 	pfnTexStorage3D(target, levels, internalformat, width, height, depth);
+}
+
+void glVertexAttribDivisorARB(GLuint index, GLuint divisor)
+{
+	typedef void (APIENTRY* PFNGLVERTEXATTRIBDIVISORARB_PROC)(GLuint index, GLuint divisor);
+	static PFNGLVERTEXATTRIBDIVISORARB_PROC glpfVertexAttribDivisorARB = 0;
+	LOAD_ENTRYPOINT("glVertexAttribDivisorARB", glpfVertexAttribDivisorARB, PFNGLVERTEXATTRIBDIVISORARB_PROC);
+	glpfVertexAttribDivisorARB(index, divisor);
 }

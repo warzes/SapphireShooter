@@ -25,25 +25,29 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 	// Create and set a pixel format for the window.
 
 	PIXELFORMATDESCRIPTOR pfd = { 0 };
-	pfd.nSize = sizeof(pfd);
-	pfd.nVersion = 1;
-	pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
-	pfd.iPixelType = PFD_TYPE_RGBA;
-	pfd.cColorBits = 24;
-	pfd.cDepthBits = 16;
-	pfd.iLayerType = PFD_MAIN_PLANE;
+	pfd.nSize        = sizeof(pfd);
+	pfd.nVersion     = 1;
+	pfd.dwFlags      = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+	pfd.iPixelType   = PFD_TYPE_RGBA;
+	pfd.cColorBits   = 32;
+	pfd.cAlphaBits   = 0;
+	pfd.cDepthBits   = 24;
+	pfd.cStencilBits = 8;
+	pfd.iLayerType   = PFD_MAIN_PLANE;
 
-	int pf = 0;
+	int pixelFormat = 0;
 	if (m_antiAliasingSamples == 0)
-		pf = ChoosePixelFormat(m_deviceContext, &pfd);
+		pixelFormat = ChoosePixelFormat(m_deviceContext, &pfd);
 	else if (m_antiAliasingSamples == BEST_ANTI_ALIASING_SAMPLES)
-		gl::ChooseBestAntiAliasingPixelFormat(pf);
+		gl::ChooseBestAntiAliasingPixelFormat(pixelFormat);
 	else
-		gl::ChooseAntiAliasingPixelFormat(pf, m_antiAliasingSamples);
-	if (!pf)
-		pf = ChoosePixelFormat(m_deviceContext, &pfd);
+		gl::ChooseAntiAliasingPixelFormat(pixelFormat, m_antiAliasingSamples);
+	if (!pixelFormat)
+		pixelFormat = ChoosePixelFormat(m_deviceContext, &pfd);
+	if (!pixelFormat)
+		throw std::runtime_error("Failed to choose pixel format for dummy window");
 
-	if (!SetPixelFormat(m_deviceContext, pf, &pfd))
+	if (!SetPixelFormat(m_deviceContext, pixelFormat, &pfd))
 		throw std::runtime_error("SetPixelFormat() failed.");
 
 	pfd.dwFlags |= PFD_SUPPORT_COMPOSITION;
@@ -109,7 +113,7 @@ void RenderSystem::Close()
 	{
 		if (m_renderContext)
 		{
-			wglMakeCurrent(m_deviceContext, 0);
+			wglMakeCurrent(nullptr, nullptr);
 			wglDeleteContext(m_renderContext);
 			m_renderContext = 0;
 		}

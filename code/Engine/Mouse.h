@@ -39,20 +39,11 @@ public:
 		return !m_pCurrButtonStates[static_cast<uint8_t>(button)];
 	}
 
-
-
-
-
-
 	// Set mouse cursor visible. Default is true. When hidden, the mouse cursor is confined to the window and kept centered; relative mouse motion can be read "endlessly" but absolute mouse position should not be used.
 	void SetMouseVisible(bool enable);
 	// Move the mouse cursor to a window top-left relative position.
 	void SetMousePosition(const Point2& position);
-
-
 	
-
-
 private:
 	Mouse() = default;
 

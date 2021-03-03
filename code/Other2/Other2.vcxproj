@@ -172,15 +172,33 @@
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="ConstantBuffer.h" />
+    <ClInclude Include="D3D11ConstantBuffer.h" />
+    <ClInclude Include="D3D11Graphics.h" />
+    <ClInclude Include="D3D11IndexBuffer.h" />
+    <ClInclude Include="D3D11ShaderVariation.h" />
+    <ClInclude Include="D3D11Texture.h" />
+    <ClInclude Include="D3D11VertexBuffer.h" />
     <ClInclude Include="Decompress.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="Frustum.h" />
+    <ClInclude Include="GLConstantBuffer.h" />
+    <ClInclude Include="GLGraphics.h" />
+    <ClInclude Include="GLIndexBuffer.h" />
+    <ClInclude Include="GLShaderProgram.h" />
+    <ClInclude Include="GLShaderVariation.h" />
+    <ClInclude Include="GLTexture.h" />
+    <ClInclude Include="GLVertexBuffer.h" />
+    <ClInclude Include="GPUObject.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="GraphicsDefs.h" />
     <ClInclude Include="Hash.h" />
     <ClInclude Include="HashMap.h" />
     <ClInclude Include="HashSet.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="IntRect.h" />
     <ClInclude Include="IntVector2.h" />
     <ClInclude Include="Iterator.h" />
@@ -193,6 +211,7 @@
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="MemoryBuffer.h" />
     <ClInclude Include="Mutex.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectRef.h" />
     <ClInclude Include="ObjectResolver.h" />
@@ -208,14 +227,19 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceCache.h" />
     <ClInclude Include="ResourceRef.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Serializable.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderVariation.h" />
     <ClInclude Include="Sort.h" />
+    <ClInclude Include="SpatialNode.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="StringHash.h" />
     <ClInclude Include="Swap.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="ThreadLocalValue.h" />
     <ClInclude Include="Vector.h" />
@@ -223,6 +247,7 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="VectorBuffer.h" />
+    <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="WString.h" />
   </ItemGroup>
   <ItemGroup>
@@ -232,13 +257,30 @@
     <ClCompile Include="BoundingBox.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="ConstantBuffer.cpp" />
+    <ClCompile Include="D3D11ConstantBuffer.cpp" />
+    <ClCompile Include="D3D11Graphics.cpp" />
+    <ClCompile Include="D3D11IndexBuffer.cpp" />
+    <ClCompile Include="D3D11ShaderVariation.cpp" />
+    <ClCompile Include="D3D11Texture.cpp" />
+    <ClCompile Include="D3D11VertexBuffer.cpp" />
     <ClCompile Include="Decompress.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="Frustum.cpp" />
+    <ClCompile Include="GLConstantBuffer.cpp" />
+    <ClCompile Include="GLGraphics.cpp" />
+    <ClCompile Include="GLIndexBuffer.cpp" />
+    <ClCompile Include="GLShaderProgram.cpp" />
+    <ClCompile Include="GLShaderVariation.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
+    <ClCompile Include="GLVertexBuffer.cpp" />
+    <ClCompile Include="GPUObject.cpp" />
+    <ClCompile Include="GraphicsDefs.cpp" />
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="IntRect.cpp" />
     <ClCompile Include="IntVector2.cpp" />
     <ClCompile Include="JSONFile.cpp" />
@@ -249,6 +291,7 @@
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="MemoryBuffer.cpp" />
     <ClCompile Include="Mutex.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectResolver.cpp" />
     <ClCompile Include="Plane.cpp" />
@@ -262,7 +305,10 @@
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceCache.cpp" />
     <ClCompile Include="ResourceRef.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Serializable.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="SpatialNode.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -273,6 +319,7 @@
     <ClCompile Include="Stream.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="StringHash.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="ThreadLocalValue.cpp" />
     <ClCompile Include="Vector.cpp" />
@@ -280,6 +327,7 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="VectorBuffer.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="WString.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

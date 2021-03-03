@@ -25,7 +25,7 @@ void Camera3D::Update()
 		m_cameraForward = glm::normalize(front);
 		right = glm::normalize(glm::cross(m_cameraForward, m_worldUp));
 		m_cameraUpVector = glm::normalize(glm::cross(right, m_cameraForward));
-		std::cout << "pitch= " << m_pitch << " yaw=" << m_yaw << std::endl;
+		//std::cout << "pitch= " << m_pitch << " yaw=" << m_yaw << std::endl;
 		m_currentPitch = m_pitch;
 		m_currentYaw = m_yaw;
 	}
