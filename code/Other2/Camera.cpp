@@ -237,9 +237,9 @@ Matrix4 Camera::ProjectionMatrix(bool apiSpecific) const
     bool openGLFormat = apiSpecific;
 
     // Whether to construct matrix using OpenGL or Direct3D clip space convention
-    #ifndef TURSO3D_OPENGL
+#if !SE_OPENGL
     openGLFormat = false;
-    #endif
+#endif
 
     if (!orthographic)
     {

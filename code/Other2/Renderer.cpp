@@ -816,12 +816,12 @@ void Renderer::RenderBatches(const Vector<Batch>& batches, Camera* camera_, bool
         depthParameters.y = camera_->FarClip();
         if (camera_->IsOrthographic())
         {
-            #ifdef USE_OPENGL
-            depthParameters.z = 0.5f;
-            depthParameters.w = 0.5f;
-            #else
+            //#if SE_OPENGL // TODO:
+            //depthParameters.z = 0.5f;
+            //depthParameters.w = 0.5f;
+            //#else
             depthParameters.z = 1.0f;
-            #endif
+            //#endif
         }
         else
             depthParameters.w = 1.0f / camera->FarClip();

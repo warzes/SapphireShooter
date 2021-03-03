@@ -30,8 +30,8 @@ RendererSystemTest::~RendererSystemTest()
 //-----------------------------------------------------------------------------
 void RendererSystemTest::Init()
 {
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	RegisterGraphicsLibrary();
 	RegisterResourceLibrary();
@@ -108,11 +108,11 @@ void RendererSystemTest::Update(float deltaTime)
 
 	profiler->BeginFrame();
 
-	//const float MouseDeltaX = static_cast<float>(Mouse::Get().GetMouseMove().x);
-	//const float MouseDeltaY = static_cast<float>(Mouse::Get().GetMouseMove().y);
+	const float MouseDeltaX = static_cast<float>(Mouse::Get().GetMouseMove().x);
+	const float MouseDeltaY = static_cast<float>(Mouse::Get().GetMouseMove().y);
 
-	//pitch += MouseDeltaY * 0.25f;
-	//yaw += MouseDeltaX * 0.25f;
+	pitch += MouseDeltaY * 0.25f;
+	yaw += MouseDeltaX * 0.25f;
 	pitch = Clamp(pitch, -90.0f, 90.0f);
 
 	camera->SetRotation(Quaternion(pitch, yaw, 0.0f));
@@ -146,7 +146,7 @@ void RendererSystemTest::Render()
 		renderer->RenderShadowMaps();
 		graphics->ResetRenderTargets();
 		graphics->ResetViewport();
-		graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color::BLACK);
+		graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color::RED);
 		renderer->RenderBatches(passes);
 	}
 
