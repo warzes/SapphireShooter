@@ -1,7 +1,5 @@
 #pragma once
 
-#define TEST 1
-
 #include "EngineDescription.h"
 
 #include "Camera3D.h"

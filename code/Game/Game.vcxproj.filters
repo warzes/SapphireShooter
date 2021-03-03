@@ -7,6 +7,9 @@
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="TestApp.cpp" />
+    <ClCompile Include="GraphicsSystemTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -14,5 +17,13 @@
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="TestApp.h" />
+    <ClInclude Include="GraphicsSystemTest.h">
+      <Filter>test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="test">
+      <UniqueIdentifier>{68740138-a019-4c70-a0b9-9f0ad979f3b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

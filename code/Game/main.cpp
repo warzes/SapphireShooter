@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "GameApp.h"
 #include "TestApp.h"
+#include "GraphicsSystemTest.h"
 #include "Log.h"
 #if SE_COMPILER_MSVC
 #	pragma message("link to Engine.lib")
@@ -29,7 +30,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 #if 0
 			GameApp game;
 #else
-			TestApp game;
+			GraphicsSystemTest game;
 #endif
 			if (engine.Init(game.InitConfig()))
 			{
