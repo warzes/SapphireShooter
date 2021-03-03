@@ -24,7 +24,7 @@ void Event::Send(RefCounted* sender)
 {
 	if (!Thread::IsMainThread())
 	{
-		LOGERROR("Attempted to send an event from outside the main thread");
+		SE_LOG_ERROR("Attempted to send an event from outside the main thread");
 		return;
 	}
 

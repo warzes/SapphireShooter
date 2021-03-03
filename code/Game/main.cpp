@@ -19,13 +19,6 @@
 #   pragma comment(lib, "winmm.lib")
 #endif
 
-слить Input и WIndow
-Постепенно убрать Object
-Остается  Graphics / Renderer / Scene
-
-https://www.youtube.com/watch?v=F4fVR4guYGs
-https://www.youtube.com/watch?v=82hUo0SUijk
-
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {

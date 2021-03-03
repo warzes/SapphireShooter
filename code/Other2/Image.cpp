@@ -253,7 +253,7 @@ bool Image::BeginLoad(Stream& source)
 			break;
 
 		default:
-			LOGERROR("Unsupported DDS format");
+			SE_LOG_ERROR("Unsupported DDS format");
 			return false;
 		}
 
@@ -283,25 +283,25 @@ bool Image::BeginLoad(Stream& source)
 
 		if (endianness != 0x04030201)
 		{
-			LOGERROR("Big-endian KTX files not supported");
+			SE_LOG_ERROR("Big-endian KTX files not supported");
 			return false;
 		}
 
 		if (type != 0 || imageFormat != 0)
 		{
-			LOGERROR("Uncompressed KTX files not supported");
+			SE_LOG_ERROR("Uncompressed KTX files not supported");
 			return false;
 		}
 
 		if (faces > 1 || depth > 1)
 		{
-			LOGERROR("3D or cube KTX files not supported");
+			SE_LOG_ERROR("3D or cube KTX files not supported");
 			return false;
 		}
 
 		if (mipmaps == 0)
 		{
-			LOGERROR("KTX files without explicitly specified mipmap count not supported");
+			SE_LOG_ERROR("KTX files without explicitly specified mipmap count not supported");
 			return false;
 		}
 
@@ -343,7 +343,7 @@ bool Image::BeginLoad(Stream& source)
 
 		if (format == FMT_NONE)
 		{
-			LOGERROR("Unsupported texture format in KTX file");
+			SE_LOG_ERROR("Unsupported texture format in KTX file");
 			return false;
 		}
 
@@ -360,7 +360,7 @@ bool Image::BeginLoad(Stream& source)
 			size_t levelSize = source.Read<unsigned>();
 			if (levelSize + dataOffset > dataSize)
 			{
-				LOGERROR("KTX mipmap level data size exceeds file size");
+				SE_LOG_ERROR("KTX mipmap level data size exceeds file size");
 				return false;
 			}
 
@@ -387,13 +387,13 @@ bool Image::BeginLoad(Stream& source)
 
 		if (depth > 1 || numFaces > 1)
 		{
-			LOGERROR("3D or cube PVR files not supported");
+			SE_LOG_ERROR("3D or cube PVR files not supported");
 			return false;
 		}
 
 		if (mipmapCount == 0)
 		{
-			LOGERROR("PVR files without explicitly specified mipmap count not supported");
+			SE_LOG_ERROR("PVR files without explicitly specified mipmap count not supported");
 			return false;
 		}
 
@@ -435,7 +435,7 @@ bool Image::BeginLoad(Stream& source)
 
 		if (format == FMT_NONE)
 		{
-			LOGERROR("Unsupported texture format in PVR file");
+			SE_LOG_ERROR("Unsupported texture format in PVR file");
 			return false;
 		}
 
@@ -457,7 +457,7 @@ bool Image::BeginLoad(Stream& source)
 		unsigned char* pixelData = DecodePixelData(source, imageWidth, imageHeight, imageComponents);
 		if (!pixelData)
 		{
-			LOGERROR("Could not load image " + source.Name() + ": " + String(stbi_failure_reason()));
+			SE_LOG_ERROR(("Could not load image " + source.Name() + ": " + String(stbi_failure_reason())).CString());
 			return false;
 		}
 
@@ -494,20 +494,20 @@ bool Image::Save(Stream& dest)
 
 	if (IsCompressed())
 	{
-		LOGERROR("Can not save compressed image " + Name());
+		SE_LOG_ERROR(("Can not save compressed image " + Name()).CString());
 		return false;
 	}
 
 	if (!data)
 	{
-		LOGERROR("Can not save zero-sized image " + Name());
+		SE_LOG_ERROR(("Can not save zero-sized image " + Name()).CString());
 		return false;
 	}
 
 	int components = (int)PixelByteSize();
 	if (components < 1 || components > 4)
 	{
-		LOGERROR("Unsupported pixel format for PNG save on image " + Name());
+		SE_LOG_ERROR(("Unsupported pixel format for PNG save on image " + Name()).CString());
 		return false;
 	}
 
@@ -525,12 +525,12 @@ void Image::SetSize(const IntVector2& newSize, ImageFormat newFormat)
 
 	if (newSize.x <= 0 || newSize.y <= 0)
 	{
-		LOGERROR("Can not set zero or negative image size");
+		SE_LOG_ERROR("Can not set zero or negative image size");
 		return;
 	}
 	if (pixelByteSizes[newFormat] == 0)
 	{
-		LOGERROR("Can not set image size with unspecified pixel byte size (including compressed formats)");
+		SE_LOG_ERROR("Can not set image size with unspecified pixel byte size (including compressed formats)");
 		return;
 	}
 
@@ -545,7 +545,7 @@ void Image::SetData(const unsigned char* pixelData)
 	if (!IsCompressed())
 		memcpy(data.Get(), pixelData, size.x * size.y * PixelByteSize());
 	else
-		LOGERROR("Can not set pixel data of a compressed image");
+		SE_LOG_ERROR("Can not set pixel data of a compressed image");
 }
 
 unsigned char* Image::DecodePixelData(Stream& source, int& width, int& height, unsigned& components)
@@ -572,7 +572,7 @@ bool Image::GenerateMipImage(Image& dest) const
 	int components = Components();
 	if (components < 1 || components > 4)
 	{
-		LOGERROR("Unsupported format for calculating the next mip level");
+		SE_LOG_ERROR("Unsupported format for calculating the next mip level");
 		return false;
 	}
 
@@ -662,13 +662,13 @@ bool Image::DecompressLevel(unsigned char* dest, size_t index) const
 
 	if (!dest)
 	{
-		LOGERROR("Null destination data for DecompressLevel");
+		SE_LOG_ERROR("Null destination data for DecompressLevel");
 		return false;
 	}
 
 	if (index >= numLevels)
 	{
-		LOGERROR("Mip level index out of bounds for DecompressLevel");
+		SE_LOG_ERROR("Mip level index out of bounds for DecompressLevel");
 		return false;
 	}
 
@@ -694,7 +694,7 @@ bool Image::DecompressLevel(unsigned char* dest, size_t index) const
 		break;
 
 	default:
-		LOGERROR("Unsupported format for DecompressLevel");
+		SE_LOG_ERROR("Unsupported format for DecompressLevel");
 		return false;
 	}
 

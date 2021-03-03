@@ -15,7 +15,7 @@ bool Resource::EndLoad()
 
 bool Resource::Save(Stream&)
 {
-	LOGERROR("Save not supported for " + TypeName());
+	SE_LOG_ERROR(("Save not supported for " + TypeName()).CString());
 	return false;
 }
 

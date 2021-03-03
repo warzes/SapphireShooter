@@ -29,3 +29,22 @@
 Игровая локация
 =====================================================================================================
 Представлена большой единой картой. Путь игрока линеен. По пути он пройдет мимо разрушенных аванпостов, где сможет подлечится и пополнить свои запасы.
+
+=====================================================================================================
+Разное по визуальному стилю
+=====================================================================================================
+Возможно вот такой стиль кубизма - https://www.youtube.com/watch?v=5v2uGmPGWUM
+вот так персонажи - https://www.youtube.com/watch?v=oLaZ7VzT9YM
+или лучше так персонажей - https://www.youtube.com/watch?v=QftXO1-D7a0
+уроки по блендеру	- https://www.youtube.com/watch?v=F4fVR4guYGs
+					- https://www.youtube.com/watch?v=82hUo0SUijk
+магикавоксель		- https://www.youtube.com/watch?v=mbvWvwg5Gmw&t=1950s
+
+
+возможное окружение - https://www.youtube.com/watch?v=xDTDVb3-yS8
+					- https://www.youtube.com/watch?v=MSKBRHVEqJE
+					- https://www.youtube.com/watch?v=bivvOXU979A
+					- https://www.youtube.com/watch?v=Ngz5umxa48M
+
+По моделированию	- https://www.youtube.com/watch?v=14GiocwhI3A
+					- https://www.youtube.com/watch?v=wHsAPSe6Yf8

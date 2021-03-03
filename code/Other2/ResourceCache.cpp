@@ -24,7 +24,7 @@ bool ResourceCache::AddResourceDir(const String& pathName, bool addFirst)
 
 	if (!DirExists(pathName))
 	{
-		LOGERROR("Could not open directory " + pathName);
+		SE_LOG_ERROR(("Could not open directory " + pathName).CString());
 		return false;
 	}
 
@@ -42,7 +42,7 @@ bool ResourceCache::AddResourceDir(const String& pathName, bool addFirst)
 	else
 		resourceDirs.Push(fixedPath);
 
-	LOGINFO("Added resource path " + fixedPath);
+	SE_LOG(("Added resource path " + fixedPath).CString());
 	return true;
 }
 
@@ -50,13 +50,13 @@ bool ResourceCache::AddManualResource(Resource* resource)
 {
 	if (!resource)
 	{
-		LOGERROR("Null manual resource");
+		SE_LOG_ERROR("Null manual resource");
 		return false;
 	}
 
 	if (resource->Name().IsEmpty())
 	{
-		LOGERROR("Manual resource with empty name, can not add");
+		SE_LOG_ERROR("Manual resource with empty name, can not add");
 		return false;
 	}
 
@@ -74,7 +74,7 @@ void ResourceCache::RemoveResourceDir(const String& pathName)
 		if (!resourceDirs[i].Compare(fixedPath, false))
 		{
 			resourceDirs.Erase(i);
-			LOGINFO("Removed resource path " + fixedPath);
+			SE_LOG_ERROR(("Removed resource path " + fixedPath).CString());
 			return;
 		}
 	}
@@ -221,7 +221,7 @@ AutoPtr<Stream> ResourceCache::OpenResource(const String& nameIn)
 
 	if (!ret->IsReadable())
 	{
-		LOGERROR("Could not open resource file " + name);
+		SE_LOG_ERROR(("Could not open resource file " + name).CString());
 		ret.Reset();
 	}
 
@@ -245,13 +245,13 @@ Resource* ResourceCache::LoadResource(StringHash type, const String& nameIn)
 	SharedPtr<Object> newObject = Create(type);
 	if (!newObject)
 	{
-		LOGERROR("Could not load unknown resource type " + String(type));
+		SE_LOG_ERROR(("Could not load unknown resource type " + String(type)).CString());
 		return nullptr;
 	}
 	Resource* newResource = dynamic_cast<Resource*>(newObject.Get());
 	if (!newResource)
 	{
-		LOGERROR("Type " + String(type) + " is not a resource");
+		SE_LOG_ERROR(("Type " + String(type) + " is not a resource").CString());
 		return nullptr;
 	}
 
@@ -260,7 +260,7 @@ Resource* ResourceCache::LoadResource(StringHash type, const String& nameIn)
 	if (!stream)
 		return nullptr;
 
-	LOGDEBUG("Loading resource " + name);
+	SE_LOG(("Loading resource " + name).CString());
 	newResource->SetName(name);
 	if (!newResource->Load(*stream))
 		return nullptr;

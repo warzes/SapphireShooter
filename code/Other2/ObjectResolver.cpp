@@ -28,6 +28,6 @@ void ObjectResolver::Resolve()
 			typedAttr->SetValue(it->object, ObjectRef(refIt->second->Id()));
 		}
 		else
-			LOGWARNING("Could not resolve object reference " + String(it->oldId));
+			SE_LOG_ERROR(("Could not resolve object reference " + String(it->oldId)).CString());
 	}
 }

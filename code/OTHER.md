@@ -1,5 +1,8 @@
 ﻿Разные ссылки
 
+
+
+
 оружие в воксельмагика - https://www.youtube.com/watch?v=mbvWvwg5Gmw
 курс Aseprite  - https://www.youtube.com/watch?v=59Y6OTzNrhk
 
@@ -21,6 +24,7 @@ https://www.youtube.com/c/ПроИЗО/videos
 
 
 идеи для других проектов
+https://www.youtube.com/watch?v=NgkdFz9zhbY   - жанр поднятия на башню
 https://www.youtube.com/watch?v=T7IhK_Cx-mM
 https://www.youtube.com/c/GamesBySaul/videos
 https://www.youtube.com/c/DakotaVaughan/videos
