@@ -33,11 +33,15 @@
 =====================================================================================================
 Разное по визуальному стилю
 =====================================================================================================
+летающие острова	- https://www.youtube.com/watch?v=9zDV25fEoSc
+	(можно таких же монстров делать)
 Возможно вот такой стиль кубизма - https://www.youtube.com/watch?v=5v2uGmPGWUM
 вот так персонажи - https://www.youtube.com/watch?v=oLaZ7VzT9YM
 или лучше так персонажей - https://www.youtube.com/watch?v=QftXO1-D7a0
 уроки по блендеру	- https://www.youtube.com/watch?v=F4fVR4guYGs
 					- https://www.youtube.com/watch?v=82hUo0SUijk
+						- https://www.youtube.com/watch?v=uRni6ArtTJs&t=3s		Создаем лоу-поли человека в Blender 2.8+
+						- https://www.youtube.com/watch?v=T6ZCySIVe90			Риггинг лоу-поли человека в Blender
 магикавоксель		- https://www.youtube.com/watch?v=mbvWvwg5Gmw&t=1950s
 
 

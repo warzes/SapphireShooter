@@ -4078,4 +4078,20 @@ void glVertexAttribDivisorARB(GLuint index, GLuint divisor)
 	glpfVertexAttribDivisorARB(index, divisor);
 }
 
+void glDebugMessageCallback(GLDEBUGPROC callback, const void* userParam)
+{
+	typedef void (APIENTRY* PFNGLDEBUGMESSAGECALLBACKPROC)(GLDEBUGPROC callback, const void* userParam);
+	static PFNGLDEBUGMESSAGECALLBACKPROC glpfDebugMessageCallback = 0;
+	LOAD_ENTRYPOINT("glDebugMessageCallback", glpfDebugMessageCallback, PFNGLDEBUGMESSAGECALLBACKPROC);
+	glpfDebugMessageCallback(callback, userParam);
+}
+
+void glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled)
+{
+	typedef void (APIENTRY* PFNGLDEBUGMESSAGECONTROLPROC)(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled);
+	static PFNGLDEBUGMESSAGECONTROLPROC glpfDebugMessageControl = 0;
+	LOAD_ENTRYPOINT("glDebugMessageControl", glpfDebugMessageControl, PFNGLDEBUGMESSAGECONTROLPROC);
+	glDebugMessageControl(source, type, severity, count, ids, enabled);
+}
+
 #endif // SE_OPENGL

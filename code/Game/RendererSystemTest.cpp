@@ -51,8 +51,10 @@ void RendererSystemTest::Init()
 	scene = new Scene();
 	scene->CreateChild<Octree>();
 	camera = scene->CreateChild<Camera>();
-	camera->SetPosition(Vector3(0.0f, 20.0f, -75.0f));
-	camera->SetAmbientColor(Color(0.1f, 0.9f, 0.1f));
+	camera->SetPosition(Vector3(0.0f, 20.0f, -45.0f));
+	camera->SetAmbientColor(Color(0.1f, 0.1f, 0.1f));
+
+#if 0
 
 	for (int y = -5; y <= 5; ++y)
 	{
@@ -90,6 +92,32 @@ void RendererSystemTest::Init()
 		light->SetDirection(Vector3(0.0f, -1.0f, 0.0f));
 		light->SetShadowMapSize(256);
 	}
+#else
+	StaticModel* object = scene->CreateChild<StaticModel>();
+	object->SetPosition(Vector3(0.0f, -0.0f, 0.0f));
+	object->SetScale(Vector3(10.0f, 0.1f, 10.0f));
+	object->SetModel(cache->LoadResource<Model>("Box.mdl"));
+	object->SetMaterial(cache->LoadResource<Material>("Stone.json"));
+
+	StaticModel* object2 = scene->CreateChild<StaticModel>();
+	object2->SetPosition(Vector3(0, 1.0f, 0));
+	object2->SetScale(1.5f);
+	object2->SetModel(cache->LoadResource<Model>("Mushroom.mdl"));
+	object2->SetMaterial(cache->LoadResource<Material>("Mushroom.json"));
+	object2->SetCastShadows(true);
+	object2->SetLodBias(2.0f);
+
+	Light* light = scene->CreateChild<Light>();
+	light->SetLightType(LIGHT_POINT);
+	light->SetCastShadows(true);
+	Vector3 colorVec = 2.0f * Vector3(Random(), Random(), Random()).Normalized();
+	light->SetColor(Color(colorVec.x, colorVec.y, colorVec.z));
+	light->SetFov(90.0f);
+	light->SetRange(20.0f);
+	light->SetPosition(Vector3(0, 7.0f, 0));
+	light->SetDirection(Vector3(0.0f, -1.0f, 0.0f));
+	light->SetShadowMapSize(256);
+#endif
 
 	Mouse::Get().SetMouseVisible(false);
 }
@@ -147,7 +175,7 @@ void RendererSystemTest::Render()
 		graphics->ResetRenderTargets();
 		graphics->ResetViewport();
 		graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color::RED);
-		//renderer->RenderBatches(passes);
+		renderer->RenderBatches(passes);
 	}
 
 	profiler->EndFrame();
@@ -155,7 +183,7 @@ void RendererSystemTest::Render()
 //-----------------------------------------------------------------------------
 void RendererSystemTest::Close()
 {
-	//LOGRAW(profilerOutput);
+	SE_LOG(profilerOutput.CString());
 	graphics->Close();
 }
 //-----------------------------------------------------------------------------

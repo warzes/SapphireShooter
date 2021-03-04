@@ -3,6 +3,7 @@
 #include "NonCopyable.h"
 #include "OGLFunc.h"
 #include "RenderDescription.h"
+#include "Log.h"
 
 class RenderSystem final : NonCopyable
 {

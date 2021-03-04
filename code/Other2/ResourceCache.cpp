@@ -260,6 +260,9 @@ Resource* ResourceCache::LoadResource(StringHash type, const String& nameIn)
 	if (!stream)
 		return nullptr;
 
+	if (name == "DiffuseNormal.vert")
+		SE_LOG(("Loading resource " + name).CString());
+
 	SE_LOG(("Loading resource " + name).CString());
 	newResource->SetName(name);
 	if (!newResource->Load(*stream))
@@ -310,7 +313,7 @@ String ResourceCache::SanitateResourceName(const String& nameIn) const
 {
 	// Sanitate unsupported constructs from the resource name
 	String name = NormalizePath(nameIn);
-	name.Replace("", "");
+	name.Replace("../", "");
 	name.Replace("./", "");
 
 	// If the path refers to one of the resource directories, normalize the resource name
