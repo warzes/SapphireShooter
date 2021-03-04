@@ -13,6 +13,8 @@
 #include "Engine/Engine.h"
 #include "Engine/DebugNew.h"
 
+пересмотреть
+
 static const unsigned elementGLTypes[] =
 {
 GL_INT,
