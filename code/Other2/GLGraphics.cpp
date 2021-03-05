@@ -110,11 +110,11 @@ static const unsigned glFillModes[] =
 static unsigned MAX_FRAMEBUFFER_AGE = 16;
 
 /// OpenGL framebuffer.
-class Framebuffer
+class Framebuffer2
 {
 public:
     /// Construct.
-    Framebuffer() :
+    Framebuffer2() :
         depthStencil(nullptr),
         drawBuffers(0),
         firstUse(true)
@@ -125,7 +125,7 @@ public:
     }
 
     /// Destruct.
-    ~Framebuffer()
+    ~Framebuffer2()
     {
         glDeleteFramebuffers(1, &buffer);
     }
@@ -133,9 +133,9 @@ public:
     /// OpenGL FBO handle.
     unsigned buffer;
     /// Color rendertargets bound to this FBO.
-    Texture* renderTargets[MAX_RENDERTARGETS];
+    Texture2* renderTargets[MAX_RENDERTARGETS];
     /// Depth-stencil texture bound to this FBO.
-    Texture* depthStencil;
+    Texture2* depthStencil;
     /// Enabled draw buffers.
     unsigned drawBuffers;
     /// First use flag; used for setting up readbuffers.
@@ -150,8 +150,8 @@ Graphics::Graphics() :
     vsync(false)
 {
     RegisterSubsystem(this);
-    window = new Window();
-    SubscribeToEvent(window->resizeEvent, &Graphics::HandleResize);
+    //window = new Window();
+    //SubscribeToEvent(window->resizeEvent, &Graphics::HandleResize);
     ResetState();
 }
 
@@ -166,7 +166,7 @@ bool Graphics::SetMode(const IntVector2& size, bool fullscreen, bool resizable, 
     multisample_ = Clamp(multisample_, 1, 16);
 
     // Changing multisample requires destroying the window, as OpenGL pixel format can only be set once
-    if (!context || multisample_ != multisample)
+    //if (!context || multisample_ != multisample)
     {
         bool recreate = false;
 
@@ -177,8 +177,8 @@ bool Graphics::SetMode(const IntVector2& size, bool fullscreen, bool resizable, 
             SendEvent(contextLossEvent);
         }
 
-        if (!window->SetSize(size, fullscreen, resizable))
-            return false;
+        //if (!window->SetSize(size, fullscreen, resizable))
+        //    return false;
         if (!CreateContext(multisample_))
             return false;
 
@@ -193,14 +193,18 @@ bool Graphics::SetMode(const IntVector2& size, bool fullscreen, bool resizable, 
             SendEvent(contextRestoreEvent);
         }
     }
-    else
-    {
-        // If no context creation, just need to resize the window
-        if (!window->SetSize(size, fullscreen, resizable))
-            return false;
-    }
+    //else
+    //{
+    //    // If no context creation, just need to resize the window
+    //    if (!window->SetSize(size, fullscreen, resizable))
+    //        return false;
+    //}
 
-    backbufferSize = window->Size();
+    //backbufferSize = window->Size();
+    backbufferSize.x = GetEngineDescription().window.width;
+    backbufferSize.y = GetEngineDescription().window.height;
+
+
     ResetRenderTargets();
     ResetViewport();
     // Cleanup framebuffers defined during the old resolution now
@@ -212,33 +216,37 @@ bool Graphics::SetMode(const IntVector2& size, bool fullscreen, bool resizable, 
     screenModeEvent.multisample = multisample;
     SendEvent(screenModeEvent);
 
-    LOGDEBUGF("Set screen mode %dx%d fullscreen %d resizable %d multisample %d", backbufferSize.x, backbufferSize.y,
-        IsFullscreen(), IsResizable(), multisample);
+    //LOGDEBUGF("Set screen mode %dx%d fullscreen %d resizable %d multisample %d", backbufferSize.x, backbufferSize.y, IsFullscreen(), IsResizable(), multisample);
 
     return true;
 }
 
 bool Graphics::SetFullscreen(bool enable)
 {
-    if (!IsInitialized())
-        return false;
-    else
-        return SetMode(backbufferSize, enable, window->IsResizable(), multisample);
+    SE_LOG_ERROR("!!!!!!!!!!!!!!!SetFullscreen");
+    return true;
+    //if (!IsInitialized())
+    //    return false;
+    //else
+    //    return SetMode(backbufferSize, enable, window->IsResizable(), multisample);
 }
 
 bool Graphics::SetMultisample(int multisample_)
 {
-    if (!IsInitialized())
-        return false;
-    else
-        return SetMode(backbufferSize, window->IsFullscreen(), window->IsResizable(), multisample_);
+    SE_LOG_ERROR("!!!!!!!!!!!!!!!SetMultisample");
+    return true;
+    //if (!IsInitialized())
+    //    return false;
+    //else
+    //    return SetMode(backbufferSize, window->IsFullscreen(), window->IsResizable(), multisample_);
 }
 
 void Graphics::SetVSync(bool enable)
 {
+    SE_LOG_ERROR("!!!!!!!!!!!!!!!SetVSync");
     vsync = enable;
-    if (context)
-        context->SetVSync(enable);
+    //if (context)
+    //    context->SetVSync(enable);
 }
 
 void Graphics::Close()
@@ -253,9 +261,9 @@ void Graphics::Close()
         object->Release();
     }
 
-    context.Reset();
+    //context.Reset();
 
-    window->Close();
+   //window->Close();
     ResetState();
 }
 
@@ -263,21 +271,21 @@ void Graphics::Present()
 {
     PROFILE(Present);
 
-    context->Present();
+    //context->Present();
 
     // In case of third party hooks which modify the GL state and don't restore it properly, re-enable depth test now
     /// \todo Need to restore other state?
     glEnable(GL_DEPTH_TEST);
 }
 
-void Graphics::SetRenderTarget(Texture* renderTarget_, Texture* depthStencil_)
+void Graphics::SetRenderTarget(Texture2* renderTarget_, Texture2* depthStencil_)
 {
     renderTargetVector.Resize(1);
     renderTargetVector[0] = renderTarget_;
     SetRenderTargets(renderTargetVector, depthStencil_);
 }
 
-void Graphics::SetRenderTargets(const Vector<Texture*>& renderTargets_, Texture* depthStencil_)
+void Graphics::SetRenderTargets(const Vector<Texture2*>& renderTargets_, Texture2* depthStencil_)
 {
     for (size_t i = 0; i < MAX_RENDERTARGETS && i < renderTargets_.Size(); ++i)
         renderTargets[i] = (renderTargets_[i] && renderTargets_[i]->IsRenderTarget()) ? renderTargets_[i] : nullptr;
@@ -363,7 +371,7 @@ void Graphics::SetConstantBuffer(ShaderStage stage, size_t index, ConstantBuffer
     }
 }
 
-void Graphics::SetTexture(size_t index, Texture* texture)
+void Graphics::SetTexture(size_t index, Texture2* texture)
 {
     if (index < MAX_TEXTURE_UNITS && texture != textures[index])
     {
@@ -652,25 +660,28 @@ void Graphics::DrawIndexedInstanced(PrimitiveType type, size_t indexStart, size_
 
 bool Graphics::IsInitialized() const
 {
-    return window->IsOpen() && context;
+    return true;
+    //return window->IsOpen() && context;
 }
 
 bool Graphics::IsFullscreen() const
 {
-    return window->IsFullscreen();
+    return false;
+    //return window->IsFullscreen();
 }
 
 bool Graphics::IsResizable() const
 {
-    return window->IsResizable();
+    return false;
+    //return window->IsResizable();
 }
 
-Window* Graphics::RenderWindow() const
-{
-    return window;
-}
+//Window* Graphics::RenderWindow() const
+//{
+//    return window;
+//}
 
-Texture* Graphics::RenderTarget(size_t index) const
+Texture2* Graphics::RenderTarget(size_t index) const
 {
     return index < MAX_RENDERTARGETS ? renderTargets[index] : nullptr;
 }
@@ -685,7 +696,7 @@ ConstantBuffer* Graphics::GetConstantBuffer(ShaderStage stage, size_t index) con
     return (stage < MAX_SHADER_STAGES&& index < MAX_CONSTANT_BUFFERS) ? constantBuffers[stage][index] : nullptr;
 }
 
-Texture* Graphics::GetTexture(size_t index) const
+Texture2* Graphics::GetTexture(size_t index) const
 {
     return (index < MAX_TEXTURE_UNITS) ? textures[index] : nullptr;
 }
@@ -737,14 +748,14 @@ void Graphics::CleanupShaderPrograms(ShaderVariation* shader)
     }
 }
 
-void Graphics::CleanupFramebuffers(Texture* texture)
+void Graphics::CleanupFramebuffers(Texture2* texture)
 {
     if (!texture)
         return;
 
     for (auto it = framebuffers.Begin(); it != framebuffers.End(); ++it)
     {
-        Framebuffer* framebuffer = it->second;
+        Framebuffer2* framebuffer = it->second;
 
         for (size_t i = 0; i < MAX_RENDERTARGETS; ++i)
         {
@@ -776,15 +787,15 @@ void Graphics::BindUBO(unsigned ubo)
 
 bool Graphics::CreateContext(int multisample_)
 {
-    context = new GLContext(window);
-    if (!context->Create(multisample_))
-    {
-        context.Reset();
-        return false;
-    }
+    //context = new GLContext(window);
+   // if (!context->Create(multisample_))
+    //{
+    //    context.Reset();
+    //    return false;
+    //}
 
     multisample = multisample_;
-    context->SetVSync(vsync);
+    //context->SetVSync(vsync);
 
     // Query OpenGL capabilities
     int numBlocks;
@@ -812,16 +823,16 @@ bool Graphics::CreateContext(int multisample_)
     return true;
 }
 
-void Graphics::HandleResize(WindowResizeEvent& event)
-{
-    // Reset viewport in case the application does not set it
-    if (context)
-    {
-        backbufferSize = event.size;
-        ResetRenderTargets();
-        ResetViewport();
-    }
-}
+//void Graphics::HandleResize(WindowResizeEvent& event)
+//{
+//    // Reset viewport in case the application does not set it
+//    if (context)
+//    {
+//        backbufferSize = event.size;
+//        ResetRenderTargets();
+//        ResetViewport();
+//    }
+//}
 
 void Graphics::CleanupFramebuffers()
 {
@@ -885,7 +896,7 @@ void Graphics::PrepareFramebuffer()
 
         auto it = framebuffers.Find(key);
         if (it == framebuffers.End())
-            it = framebuffers.Insert(MakePair(key, AutoPtr<Framebuffer>(new Framebuffer())));
+            it = framebuffers.Insert(MakePair(key, AutoPtr<Framebuffer2>(new Framebuffer2())));
 
         if (it->second != framebuffer)
         {
@@ -927,11 +938,16 @@ void Graphics::PrepareFramebuffer()
             {
                 if (renderTargets[i])
                 {
+                    std::cout << "============================= DATA 1\n";
                     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + (unsigned)i, renderTargets[i]->GLTarget(),
                         renderTargets[i]->GLTexture(), 0);
                 }
                 else
+                {
+                    std::cout << "============================= DATA 2\n";
                     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + (unsigned)i, GL_TEXTURE_2D, 0, 0);
+                }
+                    
 
                 framebuffer->renderTargets[i] = renderTargets[i];
             }
@@ -1350,8 +1366,8 @@ void RegisterGraphicsLibrary()
         return;
     registered = true;
 
-    Shader::RegisterObject();
-    Texture::RegisterObject();
+    Shader2::RegisterObject();
+    Texture2::RegisterObject();
 }
 
 #endif // SE_OPENGL

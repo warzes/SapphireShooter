@@ -54,7 +54,7 @@ void RendererSystemTest::Init()
 	camera->SetPosition(Vector3(0.0f, 20.0f, -45.0f));
 	camera->SetAmbientColor(Color(0.1f, 0.1f, 0.1f));
 
-#if 0
+#if 1
 
 	for (int y = -5; y <= 5; ++y)
 	{
@@ -99,13 +99,13 @@ void RendererSystemTest::Init()
 	object->SetModel(cache->LoadResource<Model>("Box.mdl"));
 	object->SetMaterial(cache->LoadResource<Material>("Stone.json"));
 
-	//StaticModel* object2 = scene->CreateChild<StaticModel>();
-	//object2->SetPosition(Vector3(0, 1.0f, 0));
-	//object2->SetScale(1.5f);
-	//object2->SetModel(cache->LoadResource<Model>("Mushroom.mdl"));
-	//object2->SetMaterial(cache->LoadResource<Material>("Mushroom.json"));
-	//object2->SetCastShadows(true);
-	//object2->SetLodBias(2.0f);
+	StaticModel* object2 = scene->CreateChild<StaticModel>();
+	object2->SetPosition(Vector3(0, 1.0f, 0));
+	object2->SetScale(1.5f);
+	object2->SetModel(cache->LoadResource<Model>("Mushroom.mdl"));
+	object2->SetMaterial(cache->LoadResource<Material>("Mushroom.json"));
+	object2->SetCastShadows(true);
+	object2->SetLodBias(2.0f);
 
 	Light* light = scene->CreateChild<Light>();
 	light->SetLightType(LIGHT_POINT);

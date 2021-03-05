@@ -11,17 +11,14 @@
 class BlendState;
 class ConstantBuffer;
 class DepthState;
-class Framebuffer;
-class GLContext;
+class Framebuffer2;
 class GPUObject;
 class IndexBuffer;
 class RasterizerState;
 class ShaderProgram;
 class ShaderVariation;
-class Texture;
+class Texture2;
 class VertexBuffer;
-class Window;
-class WindowResizeEvent;
 
 typedef HashMap<Pair<ShaderVariation*, ShaderVariation*>, AutoPtr<ShaderProgram> > ShaderProgramMap;
 
@@ -63,9 +60,9 @@ public:
 	/// Present the contents of the backbuffer.
 	void Present();
 	/// Set the color rendertarget and depth stencil buffer.
-	void SetRenderTarget(Texture* renderTarget, Texture* stencilBuffer);
+	void SetRenderTarget(Texture2* renderTarget, Texture2* stencilBuffer);
 	/// Set multiple color rendertargets and the depth stencil buffer.
-	void SetRenderTargets(const Vector<Texture*>& renderTargets, Texture* stencilBuffer);
+	void SetRenderTargets(const Vector<Texture2*>& renderTargets, Texture2* stencilBuffer);
 	/// Set the viewport rectangle. On window resize the viewport will automatically revert to full window.
 	void SetViewport(const IntRect& viewport);
 	/// Bind a vertex buffer.
@@ -75,7 +72,7 @@ public:
 	/// Bind a constant buffer.
 	void SetConstantBuffer(ShaderStage stage, size_t index, ConstantBuffer* buffer);
 	/// Bind a texture.
-	void SetTexture(size_t index, Texture* texture);
+	void SetTexture(size_t index, Texture2* texture);
 	/// Bind vertex and pixel shaders.
 	void SetShaders(ShaderVariation* vs, ShaderVariation* ps);
 	/// Set color write and blending related state using an arbitrary blend mode.
@@ -132,11 +129,11 @@ public:
 	/// Return whether is using vertical sync.
 	bool VSync() const { return vsync; }
 	/// Return the rendering window.
-	Window* RenderWindow() const;
+	//Window* RenderWindow() const;
 	/// Return the current color rendertarget by index, or null if rendering to the backbuffer.
-	Texture* RenderTarget(size_t index) const;
+	Texture2* RenderTarget(size_t index) const;
 	/// Return the current depth-stencil buffer, or null if rendering to the backbuffer.
-	Texture* DepthStencil() const { return depthStencil; }
+	Texture2* DepthStencil() const { return depthStencil; }
 	/// Return the current viewport rectangle.
 	const IntRect& Viewport() const { return viewport; }
 	/// Return currently bound vertex buffer by index.
@@ -146,7 +143,7 @@ public:
 	/// Return currently bound constant buffer by shader stage and index.
 	ConstantBuffer* GetConstantBuffer(ShaderStage stage, size_t index) const;
 	/// Return currently bound texture by texture unit.
-	Texture* GetTexture(size_t index) const;
+	Texture2* GetTexture(size_t index) const;
 	/// Return currently bound vertex shader.
 	ShaderVariation* GetVertexShader() const { return vertexShader; }
 	/// Return currently bound pixel shader.
@@ -167,7 +164,7 @@ public:
 	/// Remove all framebuffers except the currently bound one. Called automatically on backbuffer resize, but can also be called manually if you have used rendertarget resolutions or color formats that you will not need any more.
 	void CleanupFramebuffers();
 	/// Remove texture reference from framebuffers. Called by Texture when the texture GPU object is released.
-	void CleanupFramebuffers(Texture* texture);
+	void CleanupFramebuffers(Texture2* texture);
 	/// Bind a VBO for editing or applying as a vertex source. Avoids redundant assignment.
 	void BindVBO(unsigned vbo);
 	/// Bind a UBO for editing. Avoids redundant assignment.
@@ -188,7 +185,7 @@ private:
 	/// Create and initialize the OpenGL context. Return true on success.
 	bool CreateContext(int multisample);
 	/// Handle window resize event.
-	void HandleResize(WindowResizeEvent& event);
+	//void HandleResize(WindowResizeEvent& event);
 	/// Prepare framebuffer changes.
 	void PrepareFramebuffer();
 	/// Set state for the next draw call. Return false if the draw call should not be attempted.
@@ -196,10 +193,6 @@ private:
 	/// Reset internally tracked state.
 	void ResetState();
 
-	/// OpenGL context.
-	AutoPtr<GLContext> context;
-	/// OS-level rendering window.
-	AutoPtr<Window> window;
 	/// Current size of the backbuffer.
 	IntVector2 backbufferSize;
 	/// Current size of the active rendertarget.
@@ -219,15 +212,15 @@ private:
 	/// Bound constant buffers by shader stage.
 	ConstantBuffer* constantBuffers[MAX_SHADER_STAGES][MAX_CONSTANT_BUFFERS];
 	/// Bound textures by texture unit.
-	Texture* textures[MAX_TEXTURE_UNITS];
+	Texture2* textures[MAX_TEXTURE_UNITS];
 	/// OpenGL active texture targets by texture unit.
 	unsigned textureTargets[MAX_TEXTURE_UNITS];
 	/// Bound rendertarget textures.
-	Texture* renderTargets[MAX_RENDERTARGETS];
+	Texture2* renderTargets[MAX_RENDERTARGETS];
 	/// Bound depth-stencil texture.
-	Texture* depthStencil;
+	Texture2* depthStencil = nullptr;
 	/// Helper vector for defining just one color rendertarget.
-	Vector<Texture*> renderTargetVector;
+	Vector<Texture2*> renderTargetVector;
 	/// Bound vertex shader.
 	ShaderVariation* vertexShader;
 	/// Bound pixel shader.
@@ -255,7 +248,7 @@ private:
 	/// Bound shader program.
 	ShaderProgram* shaderProgram;
 	/// Bound framebuffer object.
-	Framebuffer* framebuffer;
+	Framebuffer2* framebuffer;
 	/// Last used OpenGL texture unit.
 	size_t activeTexture;
 	/// Last bound vertex buffer object.
@@ -271,7 +264,7 @@ private:
 	/// Shader programs.
 	ShaderProgramMap shaderPrograms;
 	/// Framebuffer objects keyed by resolution and color format.
-	HashMap<unsigned long long, AutoPtr<Framebuffer> > framebuffers;
+	HashMap<unsigned long long, AutoPtr<Framebuffer2> > framebuffers;
 	/// Multisample level.
 	int multisample;
 	/// Vertical sync flag.
