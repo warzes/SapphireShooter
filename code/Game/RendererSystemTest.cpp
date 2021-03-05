@@ -174,7 +174,7 @@ void RendererSystemTest::Render()
 		renderer->RenderShadowMaps();
 		graphics->ResetRenderTargets();
 		graphics->ResetViewport();
-		graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color::RED);
+		graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color::BLACK);
 		renderer->RenderBatches(passes);
 	}
 
