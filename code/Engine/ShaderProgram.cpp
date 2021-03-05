@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "ShaderProgram.h"
 #include "OGLFunc.h"
 //-----------------------------------------------------------------------------
@@ -182,3 +183,4 @@ unsigned ShaderProgram::getUniformId(const char* name) const
 	return glGetUniformLocation(m_programId, name);
 }
 //-----------------------------------------------------------------------------
+#endif

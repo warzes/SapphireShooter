@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Shader.h"
 
 class ShaderProgram
@@ -46,3 +48,5 @@ private:
 
 	unsigned m_programId = 0u;
 };
+
+#endif

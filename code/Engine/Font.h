@@ -1,5 +1,6 @@
 #pragma once
 
+#if SE_OPENGL
 #include "ShaderProgram.h"
 
 struct Character
@@ -31,3 +32,5 @@ private:
 	glm::vec3 m_color;
 	glm::vec2 m_position;
 };
+
+#endif

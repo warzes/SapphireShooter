@@ -1,5 +1,7 @@
 #pragma once
 
+// TODO: проблема многопотока - лог пишется хаотично
+
 #include "CoreLogSystem.h"
 
 #define SE_LOG(str)         {CoreLogSystem::Print(str, LogVerbosity::Info);}

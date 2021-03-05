@@ -39,6 +39,13 @@
 =====================================================================================================
 Разное по визуальному стилю
 =====================================================================================================
+Ассеты				- https://fertile-soil-productions.itch.io/modular-village-pack
+					- https://fertile-soil-productions.itch.io/mast
+					- https://o-lobster.itch.io/platformmetroidvania-pixel-art-asset-pack   - тайлы для платформера
+					- https://vurmux.itch.io/urizen-onebit-tilesets							- тайлы для рогалика!!!!!!!!!!!!!
+					- https://www.youtube.com/watch?v=5f-g87aGbBc							- рисование тайлов
+
+
 летающие острова	- https://www.youtube.com/watch?v=9zDV25fEoSc
 	(можно таких же монстров делать)
 Возможно вот такой стиль кубизма - https://www.youtube.com/watch?v=5v2uGmPGWUM

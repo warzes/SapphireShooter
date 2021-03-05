@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Mesh.h"
 #include "OGLFunc.h"
 #include "Game/Player.h" // TODO:

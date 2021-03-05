@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#if SE_OPENGL
+
 #include "OGLFunc.h"
 
 enum class ShaderType
@@ -34,3 +36,5 @@ private:
 
 	unsigned m_shaderId = 0;
 };
+
+#endif

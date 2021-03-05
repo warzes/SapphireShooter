@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Font.h"
 #include "ShaderManager.h"
 #include "Log.h"
@@ -145,3 +146,4 @@ void Text::Render()
 	m_shader->UnBind();
 }
 //-----------------------------------------------------------------------------
+#endif

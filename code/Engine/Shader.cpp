@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Shader.h"
 #include "DebugNew.h"
 //-----------------------------------------------------------------------------
@@ -85,3 +86,4 @@ bool Shader::loadShaderCode(ShaderType type, const char* data)
 	return true;
 }
 //-----------------------------------------------------------------------------
+#endif

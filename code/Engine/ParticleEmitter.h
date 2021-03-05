@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Particle.h"
 #include "Transformation.h"
 #include "ShaderProgram.h"
@@ -28,3 +30,5 @@ private:
 	std::vector<Particle> m_particles;
 	std::vector<glm::vec3> m_position;
 };
+
+#endif

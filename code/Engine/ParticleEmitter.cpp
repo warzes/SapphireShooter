@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "ParticleEmitter.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"
@@ -73,3 +74,4 @@ void ParticleEmitter::Render(const Camera3D& cam, float dt, const glm::vec3 &ori
 	m_shader->UnBind();
 }
 //-----------------------------------------------------------------------------
+#endif

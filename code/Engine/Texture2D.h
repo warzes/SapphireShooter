@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 class Texture2D
 {
 public:
@@ -22,3 +24,5 @@ public:
 	unsigned int FilterMin = GL_LINEAR_MIPMAP_NEAREST;// filtering mode if texture pixels < screen pixels
 	unsigned int FilterMax = GL_NEAREST;  // filtering mode if texture pixels > screen pixels
 };
+
+#endif
