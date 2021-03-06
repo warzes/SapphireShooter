@@ -625,11 +625,18 @@ bool Graphics::CreateD3DDevice(int multisample_)
     // Device needs only to be created once
     if (!impl->device)
     {
+        UINT creationFlags = 0/*D3D11_CREATE_DEVICE_BGRA_SUPPORT*/;
+#if defined(_DEBUG)
+        // If the project is in a debug build, enable the debug layer.
+        creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
+#endif
+
+
         D3D11CreateDevice(
             nullptr,
             D3D_DRIVER_TYPE_HARDWARE,
-            0,
-            0,
+            nullptr,
+            creationFlags,
             nullptr,
             0,
             D3D11_SDK_VERSION,

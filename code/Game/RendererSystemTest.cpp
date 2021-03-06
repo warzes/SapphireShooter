@@ -177,7 +177,7 @@ void RendererSystemTest::Render()
 		graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color::BLACK);
 		renderer->RenderBatches(passes);
 	}
-
+	graphics->Present();
 	profiler->EndFrame();
 }
 //-----------------------------------------------------------------------------

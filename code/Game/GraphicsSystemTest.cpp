@@ -38,7 +38,7 @@ void GraphicsSystemTest::Init()
 	RegisterResourceLibrary();
 
 	cache = new ResourceCache();
-	cache->AddResourceDir(ExecutableDir() + "../Data");
+	cache->AddResourceDir(ExecutableDir() + "Data");
 
 	graphics = new Graphics();
 	graphics->SetMode(IntVector2(1440, 900), false, true);
@@ -185,6 +185,8 @@ void GraphicsSystemTest::Render()
 	graphics->SetColorState(BLEND_MODE_REPLACE);
 	graphics->SetRasterizerState(CULL_BACK, FILL_SOLID);
 	graphics->DrawIndexedInstanced(TRIANGLE_LIST, 0, 3, 0, 0, NUM_OBJECTS);
+
+	graphics->Present();
 }
 //-----------------------------------------------------------------------------
 void GraphicsSystemTest::Close()
