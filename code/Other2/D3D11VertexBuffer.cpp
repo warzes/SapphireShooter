@@ -123,7 +123,7 @@ bool VertexBuffer::Create(const void* data)
             return false;
         }
         else
-            LOGDEBUGF("Created vertex buffer numVertices %u vertexSize %u", (unsigned)numVertices, (unsigned)vertexSize);
+            SE_LOG("Created vertex buffer numVertices " + std::to_string((unsigned)numVertices) + " vertexSize " + std::to_string((unsigned)vertexSize));
     }
 
     return true;

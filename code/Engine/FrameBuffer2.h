@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "RenderBuffer.h"
 #include "DepthBuffer.h"
 
@@ -37,3 +39,5 @@ public:
 	static void unbind(GLenum type) { glBindFramebuffer(type, 0); }
 	static void unbind() { glBindFramebuffer(GL_FRAMEBUFFER, 0); }
 };
+
+#endif

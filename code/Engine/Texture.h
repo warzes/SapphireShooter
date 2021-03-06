@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "TextureLoader.h"
 #include "OGLFunc.h"
 
@@ -37,3 +39,5 @@ private:
 	void swap(const Texture& tex);
 	void clear();
 };
+
+#endif

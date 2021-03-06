@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "MeshBone.h"
 #include "Model2.h"
 
@@ -74,3 +76,5 @@ public:
 	float timeInSecToTick(const float& timeInSec) const;
 	float tickToTimeInSec(const float& timeInTicks) const;
 };
+
+#endif

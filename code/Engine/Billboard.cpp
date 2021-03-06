@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Billboard.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"
@@ -164,3 +165,5 @@ void Billboard::Draw(Camera3D& camera, glm::vec3 lightPos, bool normalMapping, S
 
 	m_shaderComponent->UnBind();
 }
+
+#endif

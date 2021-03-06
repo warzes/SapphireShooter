@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "PostProcessing.h"
 #include "Engine.h"
 #include "Plane.h"
@@ -80,3 +81,4 @@ void PostProcessing::renderToQuad(std::shared_ptr<ShaderProgram> program, const 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 }
+#endif

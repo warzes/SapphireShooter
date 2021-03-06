@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "CubeDepthBuffer.h"
 
 void CubeDepthBuffer::create(const unsigned& width, const unsigned& height)
@@ -24,3 +25,4 @@ void CubeDepthBuffer::attach() const
 	glDrawBuffer(GL_NONE);
 	glReadBuffer(GL_NONE);
 }
+#endif

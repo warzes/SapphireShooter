@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "PhysicsManager.h"
 #include "Game/Player.h" // TODO:
 #include "Engine.h"
@@ -116,3 +117,5 @@ bool PhysicsManager::PointInSphere(Camera3D& cam, glm::vec3& other, float radius
 
 	return false;
 }
+
+#endif

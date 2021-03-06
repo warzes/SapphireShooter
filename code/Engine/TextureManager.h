@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Texture2D.h"
 
 class TextureManager
@@ -27,3 +29,4 @@ private:
 
 	std::map<std::string, std::shared_ptr<Texture2D>> m_textures;
 };
+#endif

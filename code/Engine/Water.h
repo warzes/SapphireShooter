@@ -1,5 +1,6 @@
 #pragma once
 
+#if SE_OPENGL
 #include "Plane.h"
 #include "WaterBuffers.h"
 #include "Transformationable.h"
@@ -28,3 +29,4 @@ private:
 	float m_offset = 0;
 	Camera3D* m_camera = nullptr;
 };
+#endif

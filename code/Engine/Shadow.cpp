@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Shadow.h"
 
 Shadow::Shadow()
@@ -56,3 +57,4 @@ void Shadow::endCastShadow(const Light2& light, const std::vector<std::shared_pt
 		depthBuffer.bind(GL_TEXTURE_CUBE_MAP);
 	}
 }
+#endif

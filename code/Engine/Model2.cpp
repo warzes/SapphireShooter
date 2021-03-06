@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Model2.h"
 
 Model2::Model2()
@@ -200,3 +201,5 @@ void Model2::changeWholeMaterial(const Material2& mat)
 	for (unsigned i = 0; i < meshes.size(); ++i)
 		meshes[i]->setMaterial(mat);
 }
+
+#endif

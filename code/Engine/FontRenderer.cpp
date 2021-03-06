@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "FontRenderer.h"
 
 FontRenderer::FontRenderer(const Font& f) : font(f)
@@ -55,3 +56,4 @@ void FontRenderer::Render(std::shared_ptr<ShaderProgram> program)
 	glBindVertexArray(0);
 	Texture::unbind(GL_TEXTURE_2D);
 }
+#endif

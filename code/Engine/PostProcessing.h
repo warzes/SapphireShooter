@@ -1,5 +1,5 @@
 #pragma once
-
+#if SE_OPENGL
 #include "Framebuffer2.h"
 #include "MultisampledFrameBuffer.h"
 #include "MultisampledRenderBuffer.h"
@@ -25,3 +25,4 @@ public:
 	static void renderToQuad(std::shared_ptr<ShaderProgram> program, const std::vector<unsigned>& textures, const glm::mat4& model = glm::mat4(1.0f));
 	static void renderToQuad(std::shared_ptr<ShaderProgram> program, const std::vector<Texture>& textures, const glm::mat4& model = glm::mat4(1.0f));
 };
+#endif

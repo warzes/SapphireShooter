@@ -16,8 +16,6 @@ class RasterizerState;
 class ShaderVariation;
 class Texture2;
 class VertexBuffer;
-class Window;
-class WindowResizeEvent;
 
 typedef Pair<unsigned long long, unsigned> InputLayoutDesc;
 typedef HashMap<InputLayoutDesc, void*> InputLayoutMap;
@@ -51,9 +49,9 @@ public:
     /// Set graphics mode. Create the window and rendering context if not created yet. Return true on success.
     bool SetMode(const IntVector2& size, bool fullscreen = false, bool resizable = false, int multisample = 1);
     /// Set fullscreen mode on/off while retaining previous resolution. The initial graphics mode must have been set first. Return true on success.
-    bool SetFullscreen(bool enable);
+    //bool SetFullscreen(bool enable);
     /// Set new multisample level while retaining previous resolution. The initial graphics mode must have been set first. Return true on success.
-    bool SetMultisample(int multisample);
+    //bool SetMultisample(int multisample);
     /// Set vertical sync on/off.
     void SetVSync(bool enable);
     /// Close the window and destroy the rendering context and GPU objects.
@@ -61,9 +59,9 @@ public:
     /// Present the contents of the backbuffer.
     void Present();
     /// Set the color rendertarget and depth stencil buffer.
-    void SetRenderTarget(Texture* renderTarget, Texture* stencilBuffer);
+    void SetRenderTarget(Texture2* renderTarget, Texture2* stencilBuffer);
     /// Set multiple color rendertargets and the depth stencil buffer.
-    void SetRenderTargets(const Vector<Texture*>& renderTargets, Texture* stencilBuffer);
+    void SetRenderTargets(const Vector<Texture2*>& renderTargets, Texture2* stencilBuffer);
     /// Set the viewport rectangle. On window resize the viewport will automatically revert to the entire backbuffer.
     void SetViewport(const IntRect& viewport);
     /// Bind a vertex buffer.
@@ -73,7 +71,7 @@ public:
     /// Bind a constant buffer.
     void SetConstantBuffer(ShaderStage stage, size_t index, ConstantBuffer* buffer);
     /// Bind a texture.
-    void SetTexture(size_t index, Texture* texture);
+    void SetTexture(size_t index, Texture2* texture);
     /// Bind vertex and pixel shaders.
     void SetShaders(ShaderVariation* vs, ShaderVariation* ps);
     /// Set color write and blending related state using an arbitrary blend mode.
@@ -124,17 +122,17 @@ public:
     /// Return current rendertarget height.
     int RenderTargetHeight() const { return renderTargetSize.y; }
     /// Return whether is using fullscreen mode.
-    bool IsFullscreen() const;
+    //bool IsFullscreen() const;
     /// Return whether the window is resizable.
-    bool IsResizable() const;
+    //bool IsResizable() const;
     /// Return whether is using vertical sync.
     bool VSync() const { return vsync; }
     /// Return the rendering window.
-    Window* RenderWindow() const;
+    //Window* RenderWindow() const;
     /// Return the current color rendertarget by index, or null if rendering to the backbuffer.
-    Texture* RenderTarget(size_t index) const;
+    Texture2* RenderTarget(size_t index) const;
     /// Return the current depth-stencil buffer, or null if rendering to the backbuffer.
-    Texture* DepthStencil() const { return depthStencil; }
+    Texture2* DepthStencil() const { return depthStencil; }
     /// Return the current viewport rectangle.
     const IntRect& Viewport() const { return viewport; }
     /// Return currently bound vertex buffer by index.
@@ -144,7 +142,7 @@ public:
     /// Return currently bound constant buffer by shader stage and index.
     ConstantBuffer* GetConstantBuffer(ShaderStage stage, size_t index) const;
     /// Return currently bound texture by texture unit.
-    Texture* GetTexture(size_t index) const;
+    Texture2* GetTexture(size_t index) const;
     /// Return currently bound vertex shader.
     ShaderVariation* GetVertexShader() const { return vertexShader; }
     /// Return currently bound pixel shader.
@@ -176,7 +174,7 @@ private:
     /// Update swap chain state for a new mode and create views for the backbuffer & default depth buffer.
     bool UpdateSwapChain(int width, int height);
     /// Handle window resize event.
-    void HandleResize(WindowResizeEvent& event);
+    //void HandleResize(WindowResizeEvent& event);
     /// Set texture state for the next draw call. PrepareDraw() calls this.
     void PrepareTextures();
     /// Set state for the next draw call. Return false if the draw call should not be attempted.
@@ -187,7 +185,7 @@ private:
     /// Implementation for holding OS-specific API objects.
     AutoPtr<GraphicsImpl> impl;
     /// OS-level rendering window.
-    AutoPtr<Window> window;
+   // AutoPtr<Window> window;
     /// Current size of the backbuffer.
     IntVector2 backbufferSize;
     /// Current size of the active rendertarget.
@@ -199,11 +197,11 @@ private:
     /// Bound constant buffers by shader stage.
     ConstantBuffer* constantBuffers[MAX_SHADER_STAGES][MAX_CONSTANT_BUFFERS];
     /// Bound textures by texture unit.
-    Texture* textures[MAX_TEXTURE_UNITS];
+    Texture2* textures[MAX_TEXTURE_UNITS];
     /// Bound rendertarget textures.
-    Texture* renderTargets[MAX_RENDERTARGETS];
+    Texture2* renderTargets[MAX_RENDERTARGETS];
     /// Bound depth-stencil texture.
-    Texture* depthStencil;
+    Texture2* depthStencil;
     /// Bound vertex shader.
     ShaderVariation* vertexShader;
     /// Bound pixel shader.

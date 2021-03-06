@@ -1,4 +1,5 @@
 #pragma once
+#if SE_OPENGL
 
 #include "Renderable.h"
 
@@ -47,3 +48,4 @@ private:
 	int m_isSupportTex;
 	float m_transparency;
 };
+#endif

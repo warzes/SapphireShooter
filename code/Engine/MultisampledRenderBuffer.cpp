@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "MultisampledRenderBuffer.h"
 
 void MultisampledRenderBuffer::create(const unsigned& width, const unsigned& height)
@@ -8,3 +9,4 @@ void MultisampledRenderBuffer::create(const unsigned& width, const unsigned& hei
 	glRenderbufferStorageMultisample(GL_RENDERBUFFER, samples, GL_DEPTH24_STENCIL8, width, height);
 	unbind();
 }
+#endif

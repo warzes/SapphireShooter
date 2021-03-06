@@ -1,5 +1,6 @@
 #pragma once
 
+#if SE_OPENGL
 #include "ShaderProgram.h"
 
 typedef std::vector<glm::mat4> ShadowTransforms;
@@ -56,3 +57,5 @@ public:
 
 	const ShadowTransforms& getShadowTransforms() const { return shadowTransforms; }
 };
+
+#endif

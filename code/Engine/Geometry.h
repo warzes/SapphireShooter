@@ -1,5 +1,6 @@
 #pragma once
 
+#if SE_OPENGL
 #include "Renderable.h"
 
 class Geometry2 : public Renderable
@@ -12,3 +13,4 @@ protected:
 	unsigned m_VAO = 0;
 	unsigned m_VBO = 0;
 };
+#endif

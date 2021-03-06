@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Skybox.h"
 #include "Camera3D.h"
 #include "Light.h"
@@ -108,3 +110,5 @@ private:
 	DirectionalLight m_dirLight;
 	PointLight m_pointLight;
 };
+
+#endif

@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Transformation.h"
 #include "Camera3D.h"
 #include "Texture2D.h"
@@ -56,3 +58,5 @@ private:
 	std::vector<GLuint> m_indices;
 	std::vector<MeshTexture> m_textures;
 };
+
+#endif

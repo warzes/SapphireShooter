@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Enemy.h"
 #include "RandomUtils.h"
 #include "PhysicsManager.h"
@@ -337,3 +338,5 @@ void Enemy::Respawn()
 		}
 	}
 }
+
+#endif

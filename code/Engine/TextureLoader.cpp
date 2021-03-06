@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "TextureLoader.h"
 #include "OGLFunc.h"
 
@@ -71,3 +72,5 @@ std::string TextureLoader::getError(const std::string& fileName)
 {
 	return "Failed to load texture from file: " + fileName + ".";
 }
+
+#endif

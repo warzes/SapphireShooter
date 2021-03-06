@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "ShaderManager.h"
 #include "OGLFunc.h"
 #include "Log.h"
@@ -31,3 +32,4 @@ void ShaderManager::Clear()
 	m_shaders.clear();
 }
 //-----------------------------------------------------------------------------
+#endif

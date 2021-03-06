@@ -40,7 +40,7 @@ unsigned InspectInputSignature(ID3DBlob* d3dBlob)
     return elementHash;
 }
 
-ShaderVariation::ShaderVariation(Shader* parent_, const String& defines_) :
+ShaderVariation::ShaderVariation(Shader2* parent_, const String& defines_) :
     parent(parent_),
     stage(parent->Stage()),
     defines(defines_),
@@ -144,7 +144,8 @@ bool ShaderVariation::Compile()
     {
         if (errorBlob)
         {
-            LOGERRORF("Could not compile shader %s: %s", FullName().CString(), errorBlob->GetBufferPointer());
+            //SE_LOG_ERROR(("Could not compile shader " + FullName() + ": " + errorBlob->GetBufferPointer()).CString());
+            SE_LOG_ERROR(("Could not compile shader " + FullName()).CString());
             errorBlob->Release();
         }
         return false;
@@ -180,16 +181,16 @@ bool ShaderVariation::Compile()
 
     if (!shader)
     {
-        SE_LOG_ERROR("Failed to create shader " + FullName());
+        SE_LOG_ERROR(("Failed to create shader " + FullName()).CString());
         return false;
     }
     else
-        LOGDEBUGF("Compiled shader %s bytecode size %u", FullName().CString(), (unsigned)d3dBlob->GetBufferSize());
+        SE_LOG("Compiled shader " + std::string(FullName().CString()) + " bytecode size " + std::to_string((unsigned)d3dBlob->GetBufferSize()));
     
     return true;
 }
 
-Shader* ShaderVariation::Parent() const
+Shader2* ShaderVariation::Parent() const
 {
     return parent;
 }

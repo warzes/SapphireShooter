@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Material.h"
 //-----------------------------------------------------------------------------
 void Material2::Render(std::shared_ptr<ShaderProgram> program)
@@ -11,3 +12,4 @@ void Material2::Render(std::shared_ptr<ShaderProgram> program)
 	program->SetFloat("mat.transparency", m_transparency);
 }
 //-----------------------------------------------------------------------------
+#endif

@@ -24,8 +24,10 @@ public:
 private:
 
 #if SE_PLATFORM_WINDOWS
+#if SE_OPENGL
 	HDC m_deviceContext = nullptr;
 	HGLRC m_renderContext = nullptr;
+#endif
 	HWND m_hwnd = nullptr;
 #endif
 

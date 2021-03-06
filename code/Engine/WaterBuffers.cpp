@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "WaterBuffers.h"
 #include "Engine.h"
 
@@ -40,3 +41,4 @@ void WaterBuffers::bindRefractBuffer() const
 {
 	refractionFrame.bind();
 }
+#endif

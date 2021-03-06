@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "TestApp.h"
 #include "Engine.h"
 #include "Player.h"
@@ -87,3 +88,4 @@ void TestApp::resizeApp()
 	}
 }
 //-----------------------------------------------------------------------------
+#endif

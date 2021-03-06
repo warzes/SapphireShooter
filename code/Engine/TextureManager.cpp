@@ -1,10 +1,12 @@
 #include "stdafx.h"
-#include "TextureManager.h"
-#include "OGLFunc.h"
-#include "Log.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 #undef STB_IMAGE_IMPLEMENTATION
+#if SE_OPENGL
+#include "TextureManager.h"
+#include "OGLFunc.h"
+#include "Log.h"
+
 //-----------------------------------------------------------------------------
 std::shared_ptr<Texture2D> TextureManager::LoadTexture(const std::string& name, const char* fileTexture, bool alpha)
 {
@@ -56,3 +58,4 @@ void TextureManager::loadTextureFromFile(std::shared_ptr<Texture2D> outTexture, 
 	SE_LOG(("Load texture: " + std::string(file)).c_str());
 }
 //-----------------------------------------------------------------------------
+#endif

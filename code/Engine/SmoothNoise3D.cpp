@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "SmoothNoise3D.h"
 
 double SmoothNoise3D::smooth(const NoiseData3D& pattern, const unsigned& width, const unsigned& height, const unsigned& depth, double x1, double y1, double z1) const
@@ -67,3 +68,5 @@ void SmoothNoise3D::fillData(std::vector<GLubyte>& data, const unsigned& width, 
 		}
 	}
 }
+
+#endif

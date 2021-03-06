@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Shape.h"
 //-----------------------------------------------------------------------------
 // Description: Helper function that calculates the tangent of a given vertex of a triangle  
@@ -345,3 +346,4 @@ Shape* Shape::CreateShape(ShapeType shapetype)
 	return nullptr;
 }
 //-----------------------------------------------------------------------------
+#endif

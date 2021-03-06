@@ -54,6 +54,15 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #include <thread>
 #include <mutex>
 
+#if SE_PLATFORM_WINDOWS
+#	define WIN32_LEAN_AND_MEAN      // 
+#	define WIN32_EXTRA_LEAN         // 
+#	define VC_EXTRALEAN
+#	define NOMINMAX
+#	define _WIN32_WINNT 0x0600		// Windows Vista
+#endif
+
+
 #if SE_D3D11 && SE_PLATFORM_WINDOWS
 #	include <d3d11.h>
 #	include <d3dcompiler.h>
@@ -61,11 +70,6 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #endif
 
 #if SE_PLATFORM_WINDOWS
-#	define WIN32_LEAN_AND_MEAN      // 
-#	define WIN32_EXTRA_LEAN         // 
-#	define VC_EXTRALEAN
-#	define NOMINMAX
-#	define _WIN32_WINNT 0x0600		// Windows Vista
 #	include <windows.h>
 #	include <MMSystem.h>
 #	if SE_DEBUG

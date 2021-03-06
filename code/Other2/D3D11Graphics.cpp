@@ -9,7 +9,10 @@
 #include "D3D11ShaderVariation.h"
 #include "D3D11Texture.h"
 #include "D3D11VertexBuffer.h"
+#include "Engine/Engine.h"
+#include "Engine/Window.h"
 #include "Engine/DebugNew.h"
+
 
 static const DXGI_FORMAT d3dElementFormats[] = {
     DXGI_FORMAT_R32_SINT,
@@ -91,8 +94,8 @@ Graphics::Graphics() :
 {
     RegisterSubsystem(this);
     impl = new GraphicsImpl();
-    window = new Window();
-    SubscribeToEvent(window->resizeEvent, &Graphics::HandleResize);
+    //window = new Window();
+    //SubscribeToEvent(window->resizeEvent, &Graphics::HandleResize);
     ResetState();
 }
 
@@ -106,45 +109,45 @@ bool Graphics::SetMode(const IntVector2& size, bool fullscreen, bool resizable, 
 {
     multisample_ = Clamp(multisample_, 1, 16);
 
-    if (!window->SetSize(size, fullscreen, resizable))
-        return false;
+    //if (!window->SetSize(size, fullscreen, resizable))
+    //    return false;
 
     // Create D3D11 device and swap chain when setting mode for the first time, or swap chain again when changing multisample
     if (!impl->device || multisample_ != multisample)
     {
         if (!CreateD3DDevice(multisample_))
             return false;
+
         // Swap chain needs to be updated manually for the first time, otherwise window resize event takes care of it
-        UpdateSwapChain(window->Width(), window->Height());
+        UpdateSwapChain(GetEngineDescription().window.width, GetEngineDescription().window.height);
     }
 
     screenModeEvent.size = backbufferSize;
-    screenModeEvent.fullscreen = IsFullscreen();
-    screenModeEvent.resizable = IsResizable();
+    screenModeEvent.fullscreen = false;// IsFullscreen();
+    screenModeEvent.resizable = false;//IsResizable();
     screenModeEvent.multisample = multisample;
     SendEvent(screenModeEvent);
 
-    LOGDEBUGF("Set screen mode %dx%d fullscreen %d resizable %d multisample %d", backbufferSize.x, backbufferSize.y,
-        IsFullscreen(), IsResizable(), multisample);
+    //LOGDEBUGF("Set screen mode %dx%d fullscreen %d resizable %d multisample %d", backbufferSize.x, backbufferSize.y, IsFullscreen(), IsResizable(), multisample);
 
     return true;
 }
 
-bool Graphics::SetFullscreen(bool enable)
-{
-    if (!IsInitialized())
-        return false;
-    else
-        return SetMode(backbufferSize, enable, window->IsResizable(), multisample);
-}
+//bool Graphics::SetFullscreen(bool enable)
+//{
+//    if (!IsInitialized())
+//        return false;
+//    else
+//        return SetMode(backbufferSize, enable, window->IsResizable(), multisample);
+//}
 
-bool Graphics::SetMultisample(int multisample_)
-{
-    if (!IsInitialized())
-        return false;
-    else
-        return SetMode(backbufferSize, window->IsFullscreen(), window->IsResizable(), multisample_);
-}
+//bool Graphics::SetMultisample(int multisample_)
+//{
+//    if (!IsInitialized())
+//        return false;
+//    else
+//        return SetMode(backbufferSize, window->IsFullscreen(), window->IsResizable(), multisample_);
+//}
 
 void Graphics::SetVSync(bool enable)
 {
@@ -224,7 +227,7 @@ void Graphics::Close()
         impl->device = nullptr;
     }
     
-    window->Close();
+   // window->Close();
     ResetState();
 }
 
@@ -235,14 +238,14 @@ void Graphics::Present()
     impl->swapChain->Present(vsync ? 1 : 0, 0);
 }
 
-void Graphics::SetRenderTarget(Texture* renderTarget_, Texture* depthStencil_)
+void Graphics::SetRenderTarget(Texture2* renderTarget_, Texture2* depthStencil_)
 {
-    static Vector<Texture*> renderTargetVector(1);
+    static Vector<Texture2*> renderTargetVector(1);
     renderTargetVector[0] = renderTarget_;
     SetRenderTargets(renderTargetVector, depthStencil_);
 }
 
-void Graphics::SetRenderTargets(const Vector<Texture*>& renderTargets_, Texture* depthStencil_)
+void Graphics::SetRenderTargets(const Vector<Texture2*>& renderTargets_, Texture2* depthStencil_)
 {
     PrepareTextures();
 
@@ -331,7 +334,7 @@ void Graphics::SetConstantBuffer(ShaderStage stage, size_t index, ConstantBuffer
     }
 }
 
-void Graphics::SetTexture(size_t index, Texture* texture)
+void Graphics::SetTexture(size_t index, Texture2* texture)
 {
     if (index < MAX_TEXTURE_UNITS)
     {
@@ -557,25 +560,25 @@ void Graphics::DrawIndexedInstanced(PrimitiveType type, size_t indexStart, size_
 
 bool Graphics::IsInitialized() const
 {
-    return window->IsOpen() && impl->device != nullptr;
+    return /*window->IsOpen() && */impl->device != nullptr;
 }
 
-bool Graphics::IsFullscreen() const
-{
-    return window->IsFullscreen();
-}
+//bool Graphics::IsFullscreen() const
+//{
+//    return window->IsFullscreen();
+//}
+//
+//bool Graphics::IsResizable() const
+//{
+//    return window->IsResizable();
+//}
 
-bool Graphics::IsResizable() const
-{
-    return window->IsResizable();
-}
+//Window* Graphics::RenderWindow() const
+//{
+//    return window;
+//}
 
-Window* Graphics::RenderWindow() const
-{
-    return window;
-}
-
-Texture* Graphics::RenderTarget(size_t index) const
+Texture2* Graphics::RenderTarget(size_t index) const
 {
     return index < MAX_RENDERTARGETS ? renderTargets[index] : nullptr;
 }
@@ -590,7 +593,7 @@ ConstantBuffer* Graphics::GetConstantBuffer(ShaderStage stage, size_t index) con
     return (stage < MAX_SHADER_STAGES && index < MAX_CONSTANT_BUFFERS) ? constantBuffers[stage][index] : nullptr;
 }
 
-Texture* Graphics::GetTexture(size_t index) const
+Texture2* Graphics::GetTexture(size_t index) const
 {
     return (index < MAX_TEXTURE_UNITS) ? textures[index] : nullptr;
 }
@@ -652,11 +655,11 @@ bool Graphics::CreateD3DDevice(int multisample_)
     DXGI_SWAP_CHAIN_DESC swapChainDesc;
     memset(&swapChainDesc, 0, sizeof swapChainDesc);
     swapChainDesc.BufferCount = 1;
-    swapChainDesc.BufferDesc.Width = window->Width();
-    swapChainDesc.BufferDesc.Height = window->Height();
+    swapChainDesc.BufferDesc.Width = GetEngineDescription().window.width;
+    swapChainDesc.BufferDesc.Height = GetEngineDescription().window.height;
     swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
     swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    swapChainDesc.OutputWindow = (HWND)window->Handle();
+    swapChainDesc.OutputWindow = Window::Get().GetHWND();
     swapChainDesc.SampleDesc.Count = multisample_;
     swapChainDesc.SampleDesc.Quality = multisample_ > 1 ? 0xffffffff : 0;
     swapChainDesc.Windowed = TRUE;
@@ -671,7 +674,7 @@ bool Graphics::CreateD3DDevice(int multisample_)
     dxgiFactory->CreateSwapChain(impl->device, &swapChainDesc, &impl->swapChain);
     // After creating the swap chain, disable automatic Alt-Enter fullscreen/windowed switching
     // (the application will switch manually if it wants to)
-    dxgiFactory->MakeWindowAssociation((HWND)window->Handle(), DXGI_MWA_NO_ALT_ENTER);
+    dxgiFactory->MakeWindowAssociation(Window::Get().GetHWND(), DXGI_MWA_NO_ALT_ENTER);
 
     dxgiFactory->Release();
     dxgiAdapter->Release();
@@ -759,12 +762,12 @@ bool Graphics::UpdateSwapChain(int width, int height)
     return success;
 }
 
-void Graphics::HandleResize(WindowResizeEvent& /*event*/)
-{
-    // Handle window resize
-    if (impl->swapChain && (window->Width() != backbufferSize.x || window->Height() != backbufferSize.y))
-        UpdateSwapChain(window->Width(), window->Height());
-}
+//void Graphics::HandleResize(WindowResizeEvent& /*event*/)
+//{
+//    // Handle window resize
+//    if (impl->swapChain && (window->Width() != backbufferSize.x || window->Height() != backbufferSize.y))
+//        UpdateSwapChain(window->Width(), window->Height());
+//}
 
 void Graphics::PrepareTextures()
 {
@@ -909,7 +912,7 @@ bool Graphics::PrepareDraw(PrimitiveType type)
                     impl->blendStateHash = blendStateHash;
                     blendStates[blendStateHash] = newBlendState;
                     
-                    LOGDEBUGF("Created new blend state with hash %x", blendStateHash & 0xffffffff);
+                    //SE_LOG("Created new blend state with hash %x", blendStateHash & 0xffffffff);
                 }
             }
         }
@@ -977,7 +980,7 @@ bool Graphics::PrepareDraw(PrimitiveType type)
                     impl->stencilRef = renderState.stencilRef;
                     depthStates[depthStateHash] = newDepthState;
                 
-                    LOGDEBUGF("Created new depth state with hash %x", depthStateHash & 0xffffffff);
+                   //OGDEBUGF("Created new depth state with hash %x", depthStateHash & 0xffffffff);
                 }
             }
         }
@@ -1032,7 +1035,7 @@ bool Graphics::PrepareDraw(PrimitiveType type)
                     impl->rasterizerStateHash = rasterizerStateHash;
                     rasterizerStates[rasterizerStateHash] = newRasterizerState;
                     
-                    LOGDEBUGF("Created new rasterizer state with hash %x", rasterizerStateHash & 0xffffffff);
+                    //LOGDEBUGF("Created new rasterizer state with hash %x", rasterizerStateHash & 0xffffffff);
                 }
             }
         }
@@ -1095,8 +1098,8 @@ void RegisterGraphicsLibrary()
         return;
     registered = true;
 
-    Shader::RegisterObject();
-    Texture::RegisterObject();
+    Shader2::RegisterObject();
+    Texture2::RegisterObject();
 }
 
 #endif // SE_D3D11

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "TextureGenerator2D.h"
 
 void TextureGenerator2D::generate(Texture& texture, const TextureGenerateMethod& method, const unsigned& width, const unsigned& height, const unsigned& depth)
@@ -27,3 +28,5 @@ void TextureGenerator2D::generate(Texture& texture, const TextureGenerateMethod&
 	Texture::unbind(GL_TEXTURE_2D);
 	delete[] inputData;
 }
+
+#endif

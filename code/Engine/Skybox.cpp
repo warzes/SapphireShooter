@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Skybox.h"
 
 void Skybox::init()
@@ -71,3 +72,4 @@ void Skybox::Render(std::shared_ptr<ShaderProgram> program)
 	glBindVertexArray(0);
 	Texture::unbind(GL_TEXTURE_CUBE_MAP);
 }
+#endif

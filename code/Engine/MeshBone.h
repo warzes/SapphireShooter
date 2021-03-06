@@ -1,4 +1,6 @@
 #pragma once
+#if SE_OPENGL
+
 
 #include "Mesh2.h"
 
@@ -27,3 +29,5 @@ public:
 
 	const std::vector<BoneData>& getVerticesBoneData() const { return bonesData; }
 };
+
+#endif

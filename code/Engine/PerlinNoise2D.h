@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "TextureGenerator.h"
 
 class PerlinNoise2D : public TextureGenerateMethod
@@ -18,3 +20,5 @@ public:
 	PerlinNoise2D(const double& pFrequency = 1, const double& pAmplitude = 1, const double& pPersistance = 1, const unsigned& pOctaves = 4, const double& pMulitplier = 1, const unsigned& pOffsetX = 0, const unsigned& pOffsetY = 0);
 	virtual void fillData(std::vector<GLubyte>& data, const unsigned& width, const unsigned& height, const unsigned& depth) const;
 };
+
+#endif

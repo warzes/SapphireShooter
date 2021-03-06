@@ -10,15 +10,15 @@
 class Image;
 
 /// %Texture on the GPU.
-class Texture : public Resource, public GPUObject
+class Texture2 : public Resource, public GPUObject
 {
-    OBJECT(Texture);
+    OBJECT(Texture2);
 
 public:
     /// Construct.
-    Texture();
+    Texture2();
     /// Destruct.
-    ~Texture();
+    ~Texture2();
 
     /// Register object factory.
     static void RegisterObject();

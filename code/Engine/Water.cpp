@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Water.h"
 #include "Engine.h"
 #include "Scene.h"
@@ -67,3 +68,4 @@ void Water::RenderReflectAndRefract(Scene2* scene)
 	FrameBuffer::unbind();
 }
 //-----------------------------------------------------------------------------
+#endif

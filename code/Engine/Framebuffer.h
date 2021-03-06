@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "OGLFunc.h"
 
 class Framebuffer
@@ -17,3 +19,4 @@ private:
 	GLuint m_rbo = 0u;
 	GLuint m_texture = 0u;
 };
+#endif

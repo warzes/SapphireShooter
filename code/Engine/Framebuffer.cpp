@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Framebuffer.h"
 #include "Log.h"
 //-----------------------------------------------------------------------------
@@ -43,3 +44,4 @@ void Framebuffer::DestroyFramebuffer()
 	m_fbo = 0;
 }
 //-----------------------------------------------------------------------------
+#endif

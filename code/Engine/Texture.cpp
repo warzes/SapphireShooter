@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Texture.h"
 
 Texture::Texture()
@@ -91,3 +92,4 @@ void Texture::bind(GLenum type) const
 
 	glBindTexture(type, id);
 }
+#endif

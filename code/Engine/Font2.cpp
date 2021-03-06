@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Font2.h"
 
 Font::Font(const std::string& fontPath)
@@ -52,3 +53,4 @@ void Font::load(const std::string& fontPath)
 	FT_Done_FreeType(freeType);
 	Texture::unbind(GL_TEXTURE_2D);
 }
+#endif

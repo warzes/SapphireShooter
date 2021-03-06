@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "GameApp.h"
 #include "Engine.h"
 #include "Player.h"
@@ -266,3 +267,4 @@ void GameApp::resizeApp()
 	}
 }
 //-----------------------------------------------------------------------------
+#endif

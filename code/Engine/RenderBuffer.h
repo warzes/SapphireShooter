@@ -1,4 +1,5 @@
 #pragma once
+#if SE_OPENGL
 
 #include "OGLFunc.h"
 
@@ -27,3 +28,4 @@ public:
 	void bind() const { glBindRenderbuffer(GL_RENDERBUFFER, RBO); }
 	static void unbind() { glBindFramebuffer(GL_RENDERBUFFER, 0); }
 };
+#endif

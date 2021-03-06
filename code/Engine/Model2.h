@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Mesh2.h"
 #include "TextureLoader.h"
 #include "Transformationable.h"
@@ -41,3 +43,5 @@ public:
 
 	const std::vector<Mesh2*>& getMeshes() { return meshes; }
 };
+
+#endif

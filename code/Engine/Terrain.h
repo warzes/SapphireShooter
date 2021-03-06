@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Camera3D.h"
 #include "PerlinNoise.h"
 #include "ShaderProgram.h"
@@ -48,3 +50,5 @@ private:
 	std::uint32_t seed;
 	PerlinNoise noise;
 };
+
+#endif

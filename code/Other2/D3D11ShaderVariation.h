@@ -6,14 +6,14 @@
 #include "GPUObject.h"
 #include "GraphicsDefs.h"
 
-class Shader;
+class Shader2;
 
 /// Compiled shader with specific defines.
 class ShaderVariation : public RefCounted, public GPUObject
 {
 public:
     /// Construct. Set parent shader and defines but do not compile yet.
-    ShaderVariation(Shader* parent, const String& defines);
+    ShaderVariation(Shader2* parent, const String& defines);
     /// Destruct.
     ~ShaderVariation();
 
@@ -24,7 +24,7 @@ public:
     bool Compile();
     
     /// Return the parent shader resource.
-    Shader* Parent() const;
+    Shader2* Parent() const;
     /// Return full name combined from parent resource name and compilation defines.
     String FullName() const;
     /// Return shader stage.
@@ -41,7 +41,7 @@ public:
 
 private:
     /// Parent shader resource.
-    WeakPtr<Shader> parent;
+    WeakPtr<Shader2> parent;
     /// Shader stage.
     ShaderStage stage;
     /// Compilation defines.

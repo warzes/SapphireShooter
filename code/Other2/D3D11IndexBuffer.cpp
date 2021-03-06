@@ -116,7 +116,7 @@ bool IndexBuffer::Create(const void* data)
             return false;
         }
         else
-            LOGDEBUGF("Created index buffer numIndices %u indexSize %u", (unsigned)numIndices, (unsigned)indexSize);
+            SE_LOG("Created index buffer numIndices " + std::to_string((unsigned)numIndices) + " indexSize " + std::to_string((unsigned)indexSize));
     }
 
     return true;

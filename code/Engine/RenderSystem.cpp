@@ -13,6 +13,7 @@ extern "C" {
 #endif
 //-----------------------------------------------------------------------------
 // TODO:
+#if SE_OPENGL
 inline GLenum glCheckError()
 {
 	GLenum errorCode;
@@ -33,7 +34,9 @@ inline GLenum glCheckError()
 	}
 	return errorCode;
 }
+#endif
 //-----------------------------------------------------------------------------
+#if SE_OPENGL
 void APIENTRY MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
 {
 	//fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
@@ -78,6 +81,7 @@ void APIENTRY MessageCallback(GLenum source, GLenum type, GLuint id, GLenum seve
 	} std::cout << std::endl;
 	std::cout << std::endl;
 }
+#endif
 //-----------------------------------------------------------------------------
 RenderSystem::~RenderSystem()
 {
@@ -91,6 +95,7 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 {
 #if SE_PLATFORM_WINDOWS
 	m_hwnd = hwnd;
+#if SE_OPENGL
 	m_openGLMajorVersion = config.OpenGLMajorVersion;
 	m_openGLMinorVersion = config.OpenGLMinorVersion;
 
@@ -160,9 +165,10 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 
 	if (!wglMakeCurrent(m_deviceContext, m_renderContext))
 		throw std::runtime_error("wglMakeCurrent() failed.");
-
+#endif
 #endif
 
+#if SE_OPENGL
 	int major = 0;
 	int minor = 0;
 	gl::GetGLVersion(major, minor);
@@ -186,12 +192,15 @@ bool RenderSystem::Init(HWND hwnd, const RenderDescription& config)
 	//glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 #endif
 
+#endif
+
 	m_isInit = true;
 	return true;
 }
 //-----------------------------------------------------------------------------
 void RenderSystem::Close()
 {
+#if SE_OPENGL
 	if (m_deviceContext)
 	{
 		if (m_renderContext)
@@ -204,20 +213,24 @@ void RenderSystem::Close()
 		ReleaseDC(m_hwnd, m_deviceContext);
 		m_deviceContext = 0;
 	}
+#endif
 
 	m_isInit = false;
 }
 //-----------------------------------------------------------------------------
 void RenderSystem::BeginFrame(int width, int height)
 {
+#if SE_OPENGL
 	glViewport(0, 0, width, height);
 	glClearColor(0.129f, 0.586f, 0.949f, 1.0f);
 	//glClearDepth(1.0f);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+#endif
 }
 //-----------------------------------------------------------------------------
 void RenderSystem::EndFrame()
 {
+#if SE_OPENGL
 #if SE_PLATFORM_WINDOWS
 	SwapBuffers(m_deviceContext);
 #endif
@@ -225,11 +238,14 @@ void RenderSystem::EndFrame()
 	//GLenum err;
 	//while ((err = glGetError()) != GL_NO_ERROR)
 	//	SE_LOG("GL error code: " + std::to_string(err));	
+#endif
 }
 //-----------------------------------------------------------------------------
 void RenderSystem::SetVsync(bool enable)
 {
+#if SE_OPENGL
 	if (wglSwapIntervalEXT)
 		wglSwapIntervalEXT(enable ? 1 : 0);
+#endif
 }
 //-----------------------------------------------------------------------------
