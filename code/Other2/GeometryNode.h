@@ -31,13 +31,13 @@ struct Geometry : public RefCounted
     // Draw an instance range. A separate instance data vertex buffer must be bound.
     void DrawInstanced(Graphics* graphics, size_t start, size_t count);
 
-    // %Geometry vertex buffer.
+    // Geometry vertex buffer.
     SharedPtr<VertexBuffer> vertexBuffer;
-    // %Geometry index buffer.
+    // Geometry index buffer.
     SharedPtr<IndexBuffer> indexBuffer;
     // Constant buffers.
     SharedPtr<ConstantBuffer> constantBuffers[MAX_SHADER_STAGES];
-    // %Geometry's primitive type.
+    // Geometry's primitive type.
     PrimitiveType primitiveType;
     // Draw range start. Specifies index start if index buffer defined, vertex start otherwise.
     size_t drawStart;
@@ -117,7 +117,7 @@ protected:
     // Return materials list. Used in serialization.
     ResourceRefList MaterialsAttr() const;
 
-    // %Light list for rendering.
+    // Light list for rendering.
     LightList* lightList;
     // Geometry type.
     GeometryType geometryType;

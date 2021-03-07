@@ -2,7 +2,7 @@
 
 #include "Node.h"
 
-// %Scene root node, which also represents the whole scene.
+// Scene root node, which also represents the whole scene.
 class Scene : public Node
 {
 	OBJECT(Scene);

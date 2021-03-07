@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_UNUSED_ENABLE
+
 #include "Vector.h"
 #include "Stream.h"
 
@@ -7,13 +9,9 @@
 class VectorBuffer : public Stream
 {
 public:
-	// Construct an empty buffer.
 	VectorBuffer();
-	// Construct from another buffer.
 	VectorBuffer(const Vector<unsigned char>& data);
-	// Construct from a memory area.
 	VectorBuffer(const void* data, size_t numBytes);
-	// Construct from a stream.
 	VectorBuffer(Stream& source, size_t numBytes);
 
 	// Read bytes from the buffer. Return number of bytes actually read.
@@ -39,16 +37,18 @@ public:
 	void Resize(size_t newSize);
 
 	// Return data.
-	const unsigned char* Data() const { return buffer.Begin().ptr; }
+	const unsigned char* Data() const { return m_buffer.Begin().ptr; }
 	// Return non-const data.
-	unsigned char* ModifiableData() { return buffer.Begin().ptr; }
+	unsigned char* ModifiableData() { return m_buffer.Begin().ptr; }
 	// Return the buffer.
-	const Vector<unsigned char>& Buffer() const { return buffer; }
+	const Vector<unsigned char>& Buffer() const { return m_buffer; }
 
 	using Stream::Read;
 	using Stream::Write;
 
 private:
 	// Dynamic data buffer.
-	Vector<unsigned char> buffer;
+	Vector<unsigned char> m_buffer;
 };
+
+#endif

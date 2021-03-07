@@ -10,7 +10,7 @@
 class Texture2;
 struct ShadowView;
 
-// %Light types.
+// Light types.
 enum LightType
 {
     LIGHT_DIRECTIONAL = 0,

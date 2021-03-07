@@ -58,7 +58,7 @@ struct PassDesc
     {
     }
 
-    // %Pass name.
+    // Pass name.
     String name;
     // Sorting mode.
     BatchSortMode sort;
@@ -147,9 +147,9 @@ private:
     Vector<Matrix3x4> instanceTransforms;
     // Lit geometries query result.
     Vector<GeometryNode*> litGeometries;
-    // %Light lists.
+    // Light lists.
     HashMap<unsigned long long, LightList> lightLists;
-    // %Light passes.
+    // Light passes.
     HashMap<unsigned long long, LightPass> lightPasses;
     // Ambient only light pass.
     LightPass ambientLightPass;

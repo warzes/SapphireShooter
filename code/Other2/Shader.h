@@ -5,7 +5,7 @@
 
 class ShaderVariation;
 
-// %Shader resource. Defines either vertex or pixel shader source code, from which variations can be compiled by specifying defines.
+// Shader resource. Defines either vertex or pixel shader source code, from which variations can be compiled by specifying defines.
 class Shader2 : public Resource
 {
 	OBJECT(Shader2);
@@ -40,10 +40,10 @@ private:
 	// Process include statements in the shader source code recursively. Return true if successful.
 	bool ProcessIncludes(String& code, Stream& source);
 
-	// %Shader variations.
+	// Shader variations.
 	HashMap<StringHash, SharedPtr<ShaderVariation> > variations;
-	// %Shader stage.
+	// Shader stage.
 	ShaderStage stage;
-	// %Shader source code.
+	// Shader source code.
 	String sourceCode;
 };

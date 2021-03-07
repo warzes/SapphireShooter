@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_UNUSED_ENABLE
+
 #include "Stream.h"
 
 // Memory area that can be read and written to as a stream.
@@ -27,14 +29,16 @@ public:
 	bool IsWritable() const override;
 
 	// Return memory area.
-	unsigned char* Data() { return buffer; }
+	unsigned char* Data() { return m_buffer; }
 
 	using Stream::Read;
 	using Stream::Write;
 
 private:
 	// Pointer to the memory area.
-	unsigned char* buffer;
+	unsigned char* m_buffer;
 	// Read-only flag.
-	bool readOnly;
+	bool m_readOnly;
 };
+
+#endif

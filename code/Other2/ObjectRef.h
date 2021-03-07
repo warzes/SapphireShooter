@@ -3,7 +3,7 @@
 // Reference to an object with id for serialization.
 struct ObjectRef
 {
-	// %Object id.
+	// Object id.
 	unsigned id;
 
 	// Construct with no reference.

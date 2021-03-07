@@ -10,7 +10,7 @@
 
 class Image;
 
-// %Texture on the GPU.
+// Texture on the GPU.
 class Texture2 : public Resource, public GPUObject
 {
 	OBJECT(Texture2);

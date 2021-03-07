@@ -3,7 +3,7 @@
 #include "Iterator.h"
 #include "Swap.h"
 
-// %Vector base class.
+// Vector base class.
 class VectorBase
 {
 public:
@@ -33,7 +33,7 @@ protected:
 	unsigned char* buffer;
 };
 
-// %Vector template class. Implements a dynamic-sized array where the elements are in continuous memory. The elements need to be safe to move with block copy.
+// Vector template class. Implements a dynamic-sized array where the elements are in continuous memory. The elements need to be safe to move with block copy.
 template <class T> class Vector : public VectorBase
 {
 public:

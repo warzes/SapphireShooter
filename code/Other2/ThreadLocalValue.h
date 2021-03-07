@@ -8,7 +8,7 @@ typedef unsigned TLSKeyID;
 typedef pthread_key_t TLSKeyID;
 #endif
 
-// %Thread local storage value.
+// Thread local storage value.
 class ThreadLocalValue
 {
 public:

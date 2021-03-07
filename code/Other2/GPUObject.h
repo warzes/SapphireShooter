@@ -24,7 +24,7 @@ public:
 	void SetDataLost(bool enable) { dataLost = enable; }
 
 protected:
-	// %Graphics subsystem pointer.
+	// Graphics subsystem pointer.
 	WeakPtr<Graphics> graphics;
 
 private:

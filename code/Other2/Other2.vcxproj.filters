@@ -86,25 +86,13 @@
     <ClCompile Include="Profiler.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
-    <ClCompile Include="File.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="FileSystem.cpp">
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="JSONValue.cpp">
       <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryBuffer.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceRef.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="Stream.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="VectorBuffer.cpp">
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="Decompress.cpp">
@@ -248,6 +236,18 @@
     <ClCompile Include="StaticModel.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Stream.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorBuffer.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryBuffer.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -359,28 +359,16 @@
     <ClInclude Include="Profiler.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="VectorBuffer.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="File.h">
-      <Filter>IO</Filter>
-    </ClInclude>
     <ClInclude Include="FileSystem.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="JSONValue.h">
       <Filter>IO</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryBuffer.h">
-      <Filter>IO</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectRef.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="ResourceRef.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="Stream.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="ResourceCache.h">
@@ -530,6 +518,18 @@
     <ClInclude Include="StaticModel.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Stream.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorBuffer.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryBuffer.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -570,6 +570,9 @@
     </Filter>
     <Filter Include="_garbage\Thread">
       <UniqueIdentifier>{7aa3b481-a252-4961-95ae-1def4d4532b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO\StreamType">
+      <UniqueIdentifier>{d858ce5d-3646-45ef-b3fd-3202963897ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

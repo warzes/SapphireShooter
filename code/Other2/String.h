@@ -7,7 +7,7 @@ static const size_t CONVERSION_BUFFER_LENGTH = 256;
 template <class T> class Vector;
 class WString;
 
-// %String class.
+// String class.
 class String
 {
 public:

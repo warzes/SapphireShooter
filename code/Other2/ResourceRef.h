@@ -62,7 +62,7 @@ struct ResourceRef
 	bool operator != (const ResourceRef& rhs) const { return !(*this == rhs); }
 };
 
-// %List of typed resource references for serialization.
+// List of typed resource references for serialization.
 struct ResourceRefList
 {
 	// Resource type.

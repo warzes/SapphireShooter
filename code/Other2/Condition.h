@@ -2,7 +2,7 @@
 
 #if SE_ENABLE_THREADING
 
-// %Condition on which a thread can wait.
+// Condition on which a thread can wait.
 class Condition
 {
 public:

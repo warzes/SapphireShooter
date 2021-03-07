@@ -26,7 +26,7 @@ struct RaycastResult
     size_t subObject;
 };
 
-// %Octree cell, contains up to 8 child octants.
+// Octree cell, contains up to 8 child octants.
 struct Octant
 {
     // Construct.

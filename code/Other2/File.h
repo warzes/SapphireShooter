@@ -2,25 +2,18 @@
 
 #include "Stream.h"
 
-// %File open mode.
-enum FileMode
+enum class FileMode
 {
-	FILE_READ = 0,
-	FILE_WRITE,
-	FILE_READWRITE
+	Read = 0,
+	Write,
+	ReadWrite
 };
 
-class PackageFile;
-
-// Filesystem file.
 class File : public Stream
 {
 public:
-	// Construct.
-	File();
-	// Construct and open a file.
-	File(const String& fileName, FileMode fileMode = FILE_READ);
-	// Destruct. Close the file if open.
+	File() = default;
+	File(const String& fileName, FileMode fileMode = FileMode::Read);
 	~File();
 
 	// Read bytes from the file. Return number of bytes actually read.
@@ -35,29 +28,29 @@ public:
 	bool IsWritable() const override;
 
 	// Open a file. Return true on success.
-	bool Open(const String& fileName, FileMode fileMode = FILE_READ);
-	// Close the file.
+	bool Open(const String& fileName, FileMode fileMode = FileMode::Read);
+	// Close the fileFileMode::Read
 	void Close();
 	// Flush any buffered output to the file.
 	void Flush();
 
 	// Return the open mode.
-	FileMode Mode() const { return mode; }
+	FileMode Mode() const { return m_mode; }
 	// Return whether is open.
 	bool IsOpen() const;
 	// Return the file handle.
-	void* Handle() const { return handle; }
+	void* Handle() const { return m_handle; }
 
 	using Stream::Read;
 	using Stream::Write;
 
 private:
 	// Open mode.
-	FileMode mode;
+	FileMode m_mode = FileMode::Read;
 	// File handle.
-	void* handle;
+	void* m_handle = nullptr;
 	// Synchronization needed before read -flag.
-	bool readSyncNeeded;
+	bool m_readSyncNeeded = false;
 	// Synchronization needed before write -flag.
-	bool writeSyncNeeded;
+	bool m_writeSyncNeeded = false;
 };

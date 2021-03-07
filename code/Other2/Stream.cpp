@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "Math.h"
 #include "Stream.h"
+#include "Math.h"
 #include "JSONValue.h"
 #include "ObjectRef.h"
 #include "ResourceRef.h"
@@ -27,22 +27,22 @@ unsigned Stream::ReadVLE()
 	unsigned char byte;
 
 	byte = Read<unsigned char>();
-	ret = byte & 0x7f;
+	ret = byte & 0x7fU;
 	if (byte < 0x80)
 		return ret;
 
 	byte = Read<unsigned char>();
-	ret |= ((unsigned)(byte & 0x7f)) << 7;
-	if (byte < 0x80)
+	ret |= ((unsigned)(byte & 0x7fU)) << 7;
+	if (byte < 0x80U)
 		return ret;
 
 	byte = Read<unsigned char>();
-	ret |= ((unsigned)(byte & 0x7f)) << 14;
-	if (byte < 0x80)
+	ret |= ((unsigned)(byte & 0x7fU)) << 14;
+	if (byte < 0x80U)
 		return ret;
 
 	byte = Read<unsigned char>();
-	ret |= ((unsigned)byte) << 21;
+	ret |= ((unsigned)byte) << 21U;
 	return ret;
 }
 //-----------------------------------------------------------------------------
@@ -145,7 +145,7 @@ template<> JSONValue Stream::Read<JSONValue>()
 //-----------------------------------------------------------------------------
 void Stream::WriteFileID(const String& value)
 {
-	Write(value.CString(), Min((int)value.Length(), 4));
+	Write(value.CString(), Min(value.Length(), 4ULL));
 	for (size_t i = value.Length(); i < 4; ++i)
 		Write(' ');
 }
@@ -167,22 +167,22 @@ void Stream::WriteVLE(size_t value)
 		Write((unsigned char)value);
 	else if (value < 0x4000)
 	{
-		data[0] = (unsigned char)value | 0x80;
+		data[0] = (unsigned char)value | 0x80U;
 		data[1] = (unsigned char)(value >> 7);
 		Write(data, 2);
 	}
 	else if (value < 0x200000)
 	{
-		data[0] = (unsigned char)value | 0x80;
-		data[1] = (unsigned char)((value >> 7) | 0x80);
+		data[0] = (unsigned char)value | 0x80U;
+		data[1] = (unsigned char)((value >> 7) | 0x80U);
 		data[2] = (unsigned char)(value >> 14);
 		Write(data, 3);
 	}
 	else
 	{
-		data[0] = (unsigned char)value | 0x80;
-		data[1] = (unsigned char)((value >> 7) | 0x80);
-		data[2] = (unsigned char)((value >> 14) | 0x80);
+		data[0] = (unsigned char)value | 0x80U;
+		data[1] = (unsigned char)((value >> 7) | 0x80U);
+		data[2] = (unsigned char)((value >> 14) | 0x80U);
 		data[3] = (unsigned char)(value >> 21);
 		Write(data, 4);
 	}
@@ -197,7 +197,7 @@ void Stream::WriteLine(const String& value)
 //-----------------------------------------------------------------------------
 template<> void Stream::Write<bool>(const bool& value)
 {
-	Write<unsigned char>(value ? 1 : 0);
+	Write<unsigned char>(value ? 1u : 0u);
 }
 //-----------------------------------------------------------------------------
 template<> void Stream::Write<String>(const String& value)

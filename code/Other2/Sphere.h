@@ -6,7 +6,7 @@ class BoundingBox;
 class Polyhedron;
 class Frustum;
 
-// %Sphere in three-dimensional space.
+// Sphere in three-dimensional space.
 class Sphere
 {
 public:

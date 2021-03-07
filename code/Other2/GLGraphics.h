@@ -176,9 +176,9 @@ public:
 
 	// Screen mode changed event.
 	ScreenModeEvent screenModeEvent;
-	// %Graphics context lost event.
+	// Graphics context lost event.
 	Event contextLossEvent;
-	// %Graphics context restored event.
+	// Graphics context restored event.
 	Event contextRestoreEvent;
 
 private:

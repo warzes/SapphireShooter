@@ -53,7 +53,7 @@ struct ListIteratorBase
 			ptr = ptr->prev;
 	}
 
-	// %Node pointer.
+	// Node pointer.
 	ListNodeBase* ptr;
 };
 
@@ -103,7 +103,7 @@ protected:
 
 	// Head & tail pointers and list size.
 	ListNodeBase** ptrs;
-	// %Node allocator.
+	// Node allocator.
 	AllocatorBlock* allocator;
 };
 
@@ -111,7 +111,7 @@ protected:
 template <class T> class List : public ListBase
 {
 public:
-	// %List node.
+	// List node.
 	struct Node : public ListNodeBase
 	{
 		// Construct undefined.
@@ -125,7 +125,7 @@ public:
 		{
 		}
 
-		// %Node value.
+		// Node value.
 		T value;
 
 		// Return next node.
@@ -134,7 +134,7 @@ public:
 		Node* Prev() { return static_cast<Node*>(prev); }
 	};
 
-	// %List iterator.
+	// List iterator.
 	struct Iterator : public ListIteratorBase
 	{
 		// Construct.
@@ -163,7 +163,7 @@ public:
 		T& operator * () const { return (static_cast<Node*>(ptr))->value; }
 	};
 
-	// %List const iterator.
+	// List const iterator.
 	struct ConstIterator : public ListIteratorBase
 	{
 		// Construct.

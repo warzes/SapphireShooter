@@ -52,10 +52,10 @@ bool CreateDir(const String& pathName)
 
 bool CopyFile(const String& srcFileName, const String& destFileName)
 {
-	File srcFile(srcFileName, FILE_READ);
+	File srcFile(srcFileName, FileMode::Read);
 	if (!srcFile.IsOpen())
 		return false;
-	File destFile(destFileName, FILE_WRITE);
+	File destFile(destFileName, FileMode::Write);
 	if (!destFile.IsOpen())
 		return false;
 

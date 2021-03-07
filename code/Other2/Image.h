@@ -57,7 +57,7 @@ struct ImageLevel
 	size_t rows;
 };
 
-// %Image resource.
+// Image resource.
 class Image : public Resource
 {
 	OBJECT(Image);

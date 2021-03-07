@@ -75,7 +75,7 @@ public:
 	bool IsNull() const { return ptr == nullptr; }
 
 private:
-	// %Object pointer.
+	// Object pointer.
 	T* ptr;
 };
 

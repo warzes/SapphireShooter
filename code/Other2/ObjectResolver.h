@@ -25,7 +25,7 @@ struct StoredObjectRef
 	{
 	}
 
-	// %Object that contains the attribute.
+	// Object that contains the attribute.
 	Serializable* object;
 	// Description of the object ref attribute.
 	Attribute* attr;

@@ -7,7 +7,7 @@ class Stream;
 
 typedef HashMap<Pair<StringHash, StringHash>, SharedPtr<Resource> > ResourceMap;
 
-// %Resource cache subsystem. Loads resources on demand and stores them for later access.
+// Resource cache subsystem. Loads resources on demand and stores them for later access.
 class ResourceCache : public Object
 {
 	OBJECT(ResourceCache);

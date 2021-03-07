@@ -187,9 +187,9 @@ private:
 	Vector<SharedPtr<Node> > children;
 	// Id within the scene.
 	unsigned id;
-	// %Node name.
+	// Node name.
 	String name;
-	// %Node flags. Used to hold several boolean values (some subclass-specific) to reduce memory use.
+	// Node flags. Used to hold several boolean values (some subclass-specific) to reduce memory use.
 	mutable unsigned short flags;
 	// Layer number.
 	unsigned char layer;

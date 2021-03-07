@@ -11,3 +11,6 @@
 
 // full Math?
 #define SE_FULL_MATH        1
+
+// не собирать неиспользованный код
+#define SE_UNUSED_ENABLE    0

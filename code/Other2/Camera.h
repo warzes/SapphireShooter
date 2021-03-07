@@ -16,7 +16,7 @@ enum FaceCameraMode
     FC_LOOKAT_Y
 };
 
-// %Camera scene node.
+// Camera scene node.
 class Camera : public SpatialNode
 {
     OBJECT(Camera);

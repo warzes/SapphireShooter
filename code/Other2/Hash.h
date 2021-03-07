@@ -133,7 +133,7 @@ struct HashIteratorBase
 			ptr = ptr->prev;
 	}
 
-	// %Node pointer.
+	// Node pointer.
 	HashNodeBase* ptr;
 };
 
@@ -190,6 +190,6 @@ protected:
 
 	// Bucket head pointers.
 	HashNodeBase** ptrs;
-	// %Node allocator.
+	// Node allocator.
 	AllocatorBlock* allocator;
 };

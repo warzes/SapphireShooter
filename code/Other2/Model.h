@@ -130,7 +130,7 @@ private:
     Vector<Vector<SharedPtr<Geometry> > > geometries;
     // Local space bounding box.
     BoundingBox boundingBox;
-    // %Model's bones.
+    // Model's bones.
     Vector<Bone> bones;
     // Root bone index.
     size_t rootBoneIndex;

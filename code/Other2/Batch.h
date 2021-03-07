@@ -85,10 +85,10 @@ struct BatchQueue
     unsigned char additiveIndex;
 };
 
-// %List of lights for a geometry node.
+// List of lights for a geometry node.
 struct LightList
 {
-    // %List key.
+    // List key.
     unsigned long long key;
     // Lights.
     Vector<Light*> lights;
@@ -98,16 +98,16 @@ struct LightList
     size_t useCount;
 };
 
-// %Light information for a rendering pass, including properly formatted constant data.
+// Light information for a rendering pass, including properly formatted constant data.
 struct LightPass
 {
-    // %Light positions.
+    // Light positions.
     Vector4 lightPositions[MAX_LIGHTS_PER_PASS];
-    // %Light directions.
+    // Light directions.
     Vector4 lightDirections[MAX_LIGHTS_PER_PASS];
-    // %Light attenuation parameters.
+    // Light attenuation parameters.
     Vector4 lightAttenuations[MAX_LIGHTS_PER_PASS];
-    // %Light colors.
+    // Light colors.
     Color lightColors[MAX_LIGHTS_PER_PASS];
     // Shadow map sampling parameters.
     Vector4 shadowParameters[MAX_LIGHTS_PER_PASS];
@@ -133,7 +133,7 @@ struct ShadowView
     // Clear existing shadow casters and batch queue.
     void Clear();
 
-    // %Light that is using this view.
+    // Light that is using this view.
     Light* light;
     // Viewport within the shadow map.
     IntRect viewport;

@@ -163,9 +163,9 @@ public:
 
     // Screen mode changed event.
     ScreenModeEvent screenModeEvent;
-    // %Graphics context lost event. Will not be called on Direct3D but provided for compatibility.
+    // Graphics context lost event. Will not be called on Direct3D but provided for compatibility.
     Event contextLossEvent;
-    // %Graphics context restored event. Will not be called on Direct3D but provided for compatibility.
+    // Graphics context restored event. Will not be called on Direct3D but provided for compatibility.
     Event contextRestoreEvent;
 
 private:

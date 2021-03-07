@@ -160,7 +160,7 @@ public:
 	bool IsNull() const { return ptr == nullptr; }
 
 private:
-	// %Object pointer.
+	// Object pointer.
 	T* ptr;
 };
 
@@ -330,7 +330,7 @@ public:
 	bool IsExpired() const { return refCount && refCount->expired; }
 
 private:
-	// %Object pointer.
+	// Object pointer.
 	T* ptr;
 	// The object's weak reference count structure.
 	RefCount* refCount;
