@@ -5,15 +5,15 @@
 
 class Stream;
 
-/// Typed resource reference for serialization.
+// Typed resource reference for serialization.
 struct ResourceRef
 {
-	/// Resource type.
+	// Resource type.
 	StringHash type;
-	/// Resource name.
+	// Resource name.
 	String name;
 
-	/// Construct.
+	// Construct.
 	ResourceRef()
 	{
 	}
@@ -25,52 +25,52 @@ struct ResourceRef
 	{
 	}
 
-	/// Construct from a string.
+	// Construct from a string.
 	ResourceRef(const String& str)
 	{
 		FromString(str);
 	}
 
-	/// Construct from a C string.
+	// Construct from a C string.
 	ResourceRef(const char* str)
 	{
 		FromString(str);
 	}
 
-	/// Construct with type and resource name.
+	// Construct with type and resource name.
 	ResourceRef(StringHash type, const String& name_ = String::EMPTY) :
 		type(type),
 		name(name_)
 	{
 	}
 
-	/// Set from a string that contains the type and name separated by a semicolon. Return true on success.
+	// Set from a string that contains the type and name separated by a semicolon. Return true on success.
 	bool FromString(const String& str);
-	/// Set from a C string that contains the type and name separated by a semicolon. Return true on success.
+	// Set from a C string that contains the type and name separated by a semicolon. Return true on success.
 	bool FromString(const char* str);
-	/// Deserialize from a binary stream.
+	// Deserialize from a binary stream.
 	void FromBinary(Stream& source);
 
-	/// Return as a string.
+	// Return as a string.
 	String ToString() const;
-	/// Serialize to a binary stream.
+	// Serialize to a binary stream.
 	void ToBinary(Stream& dest) const;
 
-	/// Test for equality with another reference.
+	// Test for equality with another reference.
 	bool operator == (const ResourceRef& rhs) const { return type == rhs.type && name == rhs.name; }
-	/// Test for inequality with another reference.
+	// Test for inequality with another reference.
 	bool operator != (const ResourceRef& rhs) const { return !(*this == rhs); }
 };
 
-/// %List of typed resource references for serialization.
+// %List of typed resource references for serialization.
 struct ResourceRefList
 {
-	/// Resource type.
+	// Resource type.
 	StringHash type;
-	/// List of resource names.
+	// List of resource names.
 	Vector<String> names;
 
-	/// Construct.
+	// Construct.
 	ResourceRefList()
 	{
 	}
@@ -82,39 +82,39 @@ struct ResourceRefList
 	{
 	}
 
-	/// Construct from a string.
+	// Construct from a string.
 	ResourceRefList(const String& str)
 	{
 		FromString(str);
 	}
 
-	/// Construct from a C string.
+	// Construct from a C string.
 	ResourceRefList(const char* str)
 	{
 		FromString(str);
 	}
 
-	/// Construct with type and name list.
+	// Construct with type and name list.
 	ResourceRefList(StringHash type, const Vector<String>& names_ = Vector<String>()) :
 		type(type),
 		names(names_)
 	{
 	}
 
-	/// Set from a string that contains the type and names separated by semicolons. Return true on success.
+	// Set from a string that contains the type and names separated by semicolons. Return true on success.
 	bool FromString(const String& str);
-	/// Set from a C string that contains the type and names separated by semicolons. Return true on success.
+	// Set from a C string that contains the type and names separated by semicolons. Return true on success.
 	bool FromString(const char* str);
-	/// Deserialize from a binary stream.
+	// Deserialize from a binary stream.
 	void FromBinary(Stream& source);
 
-	/// Return as a string.
+	// Return as a string.
 	String ToString() const;
-	/// Deserialize from a binary stream.
+	// Deserialize from a binary stream.
 	void ToBinary(Stream& dest) const;
 
-	/// Test for equality with another reference list.
+	// Test for equality with another reference list.
 	bool operator == (const ResourceRefList& rhs) const { return type == rhs.type && names == rhs.names; }
-	/// Test for inequality with another reference list.
+	// Test for inequality with another reference list.
 	bool operator != (const ResourceRefList& rhs) const { return !(*this == rhs); }
 };

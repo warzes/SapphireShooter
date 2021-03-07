@@ -2,21 +2,21 @@
 
 #include "Matrix4.h"
 
-/// 3x4 matrix for scene node transform calculations.
+// 3x4 matrix for scene node transform calculations.
 class Matrix3x4
 {
 public:
-	/// Matrix values.
+	// Matrix values.
 	float m00, m01, m02, m03;
 	float m10, m11, m12, m13;
 	float m20, m21, m22, m23;
 
-	/// Construct undefined.
+	// Construct undefined.
 	Matrix3x4()
 	{
 	}
 
-	/// Copy-construct.
+	// Copy-construct.
 	Matrix3x4(const Matrix3x4& matrix) :
 		m00(matrix.m00), m01(matrix.m01), m02(matrix.m02), m03(matrix.m03),
 		m10(matrix.m10), m11(matrix.m11), m12(matrix.m12), m13(matrix.m13),
@@ -24,7 +24,7 @@ public:
 	{
 	}
 
-	/// Copy-construct from a 3x3 matrix and set the extra elements to identity.
+	// Copy-construct from a 3x3 matrix and set the extra elements to identity.
 	Matrix3x4(const Matrix3& matrix) :
 		m00(matrix.m00), m01(matrix.m01), m02(matrix.m02), m03(0.0f),
 		m10(matrix.m10), m11(matrix.m11), m12(matrix.m12), m13(0.0f),
@@ -32,7 +32,7 @@ public:
 	{
 	}
 
-	/// Copy-construct from a 4x4 matrix which is assumed to contain no projection.
+	// Copy-construct from a 4x4 matrix which is assumed to contain no projection.
 	Matrix3x4(const Matrix4& matrix) :
 		m00(matrix.m00), m01(matrix.m01), m02(matrix.m02), m03(matrix.m03),
 		m10(matrix.m10), m11(matrix.m11), m12(matrix.m12), m13(matrix.m13),
@@ -50,7 +50,7 @@ public:
 	{
 	}
 
-	/// Construct from a float array.
+	// Construct from a float array.
 	Matrix3x4(const float* data) :
 		m00(data[0]), m01(data[1]), m02(data[2]), m03(data[3]),
 		m10(data[4]), m11(data[5]), m12(data[6]), m13(data[7]),
@@ -58,24 +58,24 @@ public:
 	{
 	}
 
-	/// Construct from translation, rotation and uniform scale.
+	// Construct from translation, rotation and uniform scale.
 	Matrix3x4(const Vector3& translation, const Quaternion& rotation, float scale);
-	/// Construct from translation, rotation and nonuniform scale.
+	// Construct from translation, rotation and nonuniform scale.
 	Matrix3x4(const Vector3& translation, const Quaternion& rotation, const Vector3& scale);
 
-	/// Construct by parsing a string.
+	// Construct by parsing a string.
 	Matrix3x4(const String& str)
 	{
 		FromString(str);
 	}
 
-	/// Construct by parsing a C string.
+	// Construct by parsing a C string.
 	Matrix3x4(const char* str)
 	{
 		FromString(str);
 	}
 
-	/// Assign from another matrix.
+	// Assign from another matrix.
 	Matrix3x4& operator = (const Matrix3x4& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02; m03 = rhs.m03;
@@ -84,7 +84,7 @@ public:
 		return *this;
 	}
 
-	/// Assign from a 3x3 matrix and set the extra elements to identity.
+	// Assign from a 3x3 matrix and set the extra elements to identity.
 	Matrix3x4& operator = (const Matrix3& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02; m03 = 0.0;
@@ -93,7 +93,7 @@ public:
 		return *this;
 	}
 
-	/// Assign from a 4x4 matrix which is assumed to contain no projection.
+	// Assign from a 4x4 matrix which is assumed to contain no projection.
 	Matrix3x4& operator = (const Matrix4& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02; m03 = rhs.m03;
@@ -102,7 +102,7 @@ public:
 		return *this;
 	}
 
-	/// Test for equality with another matrix without epsilon.
+	// Test for equality with another matrix without epsilon.
 	bool operator == (const Matrix3x4& rhs) const
 	{
 		const float* leftData = Data();
@@ -117,10 +117,10 @@ public:
 		return true;
 	}
 
-	/// Test for inequality with another matrix without epsilon.
+	// Test for inequality with another matrix without epsilon.
 	bool operator != (const Matrix3x4& rhs) const { return !(*this == rhs); }
 
-	/// Multiply a Vector3 which is assumed to represent position.
+	// Multiply a Vector3 which is assumed to represent position.
 	Vector3 operator * (const Vector3& rhs) const
 	{
 		return Vector3(
@@ -130,7 +130,7 @@ public:
 		);
 	}
 
-	/// Multiply a Vector4.
+	// Multiply a Vector4.
 	Vector3 operator * (const Vector4& rhs) const
 	{
 		return Vector3(
@@ -140,7 +140,7 @@ public:
 		);
 	}
 
-	/// Add a matrix.
+	// Add a matrix.
 	Matrix3x4 operator + (const Matrix3x4& rhs) const
 	{
 		return Matrix3x4(
@@ -150,7 +150,7 @@ public:
 		);
 	}
 
-	/// Subtract a matrix.
+	// Subtract a matrix.
 	Matrix3x4 operator - (const Matrix3x4& rhs) const
 	{
 		return Matrix3x4(
@@ -160,7 +160,7 @@ public:
 		);
 	}
 
-	/// Multiply with a scalar.
+	// Multiply with a scalar.
 	Matrix3x4 operator * (float rhs) const
 	{
 		return Matrix3x4(
@@ -170,7 +170,7 @@ public:
 		);
 	}
 
-	/// Multiply a matrix.
+	// Multiply a matrix.
 	Matrix3x4 operator * (const Matrix3x4& rhs) const
 	{
 		return Matrix3x4(
@@ -189,7 +189,7 @@ public:
 		);
 	}
 
-	/// Multiply a 4x4 matrix.
+	// Multiply a 4x4 matrix.
 	Matrix4 operator * (const Matrix4& rhs) const
 	{
 		return Matrix4(
@@ -212,7 +212,7 @@ public:
 		);
 	}
 
-	/// Set translation elements.
+	// Set translation elements.
 	void SetTranslation(const Vector3& translation)
 	{
 		m03 = translation.x;
@@ -220,7 +220,7 @@ public:
 		m23 = translation.z;
 	}
 
-	/// Set rotation elements from a 3x3 matrix.
+	// Set rotation elements from a 3x3 matrix.
 	void SetRotation(const Matrix3& rotation)
 	{
 		m00 = rotation.m00; m01 = rotation.m01; m02 = rotation.m02;
@@ -228,7 +228,7 @@ public:
 		m20 = rotation.m20; m21 = rotation.m21; m22 = rotation.m22;
 	}
 
-	/// Set scaling elements.
+	// Set scaling elements.
 	void SetScale(const Vector3& scale)
 	{
 		m00 = scale.x;
@@ -236,7 +236,7 @@ public:
 		m22 = scale.z;
 	}
 
-	/// Set uniform scaling elements.
+	// Set uniform scaling elements.
 	void SetScale(float scale)
 	{
 		m00 = scale;
@@ -244,12 +244,12 @@ public:
 		m22 = scale;
 	}
 
-	/// Parse from a string. Return true on success.
+	// Parse from a string. Return true on success.
 	bool FromString(const String& str);
-	/// Parse from a C string. Return true on success.
+	// Parse from a C string. Return true on success.
 	bool FromString(const char* str);
 
-	/// Return the combined rotation and scaling matrix.
+	// Return the combined rotation and scaling matrix.
 	Matrix3 ToMatrix3() const
 	{
 		return Matrix3(
@@ -259,7 +259,7 @@ public:
 		);
 	}
 
-	/// Convert to a 4x4 matrix by filling in an identity last row.
+	// Convert to a 4x4 matrix by filling in an identity last row.
 	Matrix4 ToMatrix4() const
 	{
 		return Matrix4(
@@ -270,7 +270,7 @@ public:
 		);
 	}
 
-	/// Return the rotation matrix with scaling removed.
+	// Return the rotation matrix with scaling removed.
 	Matrix3 RotationMatrix() const
 	{
 		Vector3 invScale(
@@ -282,7 +282,7 @@ public:
 		return ToMatrix3().Scaled(invScale);
 	}
 
-	/// Return the translation part.
+	// Return the translation part.
 	Vector3 Translation() const
 	{
 		return Vector3(
@@ -292,10 +292,10 @@ public:
 		);
 	}
 
-	/// Return the rotation part.
+	// Return the rotation part.
 	Quaternion Rotation() const { return Quaternion(RotationMatrix()); }
 
-	/// Return the scaling part.
+	// Return the scaling part.
 	Vector3 Scale() const
 	{
 		return Vector3(
@@ -305,7 +305,7 @@ public:
 		);
 	}
 
-	/// Test for equality with another matrix with epsilon.
+	// Test for equality with another matrix with epsilon.
 	bool Equals(const Matrix3x4& rhs) const
 	{
 		const float* leftData = Data();
@@ -320,26 +320,26 @@ public:
 		return true;
 	}
 
-	/// Return decomposition to translation, rotation and scale.
+	// Return decomposition to translation, rotation and scale.
 	void Decompose(Vector3& translation, Quaternion& rotation, Vector3& scale) const;
-	/// Return inverse.
+	// Return inverse.
 	Matrix3x4 Inverse() const;
 
-	/// Return float data.
+	// Return float data.
 	const float* Data() const { return &m00; }
-	/// Return as string.
+	// Return as string.
 	String ToString() const;
 
-	/// Zero matrix.
+	// Zero matrix.
 	static const Matrix3x4 ZERO;
-	/// Identity matrix.
+	// Identity matrix.
 	static const Matrix3x4 IDENTITY;
 };
 
-/// Multiply a 3x4 matrix with a scalar.
+// Multiply a 3x4 matrix with a scalar.
 inline Matrix3x4 operator * (float lhs, const Matrix3x4& rhs) { return rhs * lhs; }
 
-/// Multiply a 3x4 matrix with a 4x4 matrix.
+// Multiply a 3x4 matrix with a 4x4 matrix.
 inline Matrix4 operator * (const Matrix4& lhs, const Matrix3x4& rhs)
 {
 	return Matrix4(

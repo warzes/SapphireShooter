@@ -24,7 +24,7 @@ bool JSONFile::BeginLoad(Stream& source)
 
 	// Remove any previous content
 	root.SetNull();
-	/// \todo If fails, log the line number on which the error occurred
+	// \todo If fails, log the line number on which the error occurred
 	bool success = root.Parse(pos, end);
 	if (!success)
 	{

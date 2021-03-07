@@ -10,87 +10,87 @@ class Matrix4;
 class Matrix3x4;
 class Sphere;
 
-/// Three-dimensional axis-aligned bounding box.
+// Three-dimensional axis-aligned bounding box.
 class BoundingBox
 {
 public:
-	/// Minimum vector.
+	// Minimum vector.
 	Vector3 min;
-	/// Maximum vector.
+	// Maximum vector.
 	Vector3 max;
 
-	/// Construct as undefined (negative size.)
+	// Construct as undefined (negative size.)
 	BoundingBox() :
 		min(Vector3(M_INFINITY, M_INFINITY, M_INFINITY)),
 		max(Vector3(-M_INFINITY, -M_INFINITY, -M_INFINITY))
 	{
 	}
 
-	/// Copy-construct.
+	// Copy-construct.
 	BoundingBox(const BoundingBox& box) :
 		min(box.min),
 		max(box.max)
 	{
 	}
 
-	/// Construct from a rect, with the Z dimension left zero.
+	// Construct from a rect, with the Z dimension left zero.
 	BoundingBox(const Rect& rect) :
 		min(Vector3(rect.min)),
 		max(Vector3(rect.max))
 	{
 	}
 
-	/// Construct from minimum and maximum vectors.
+	// Construct from minimum and maximum vectors.
 	BoundingBox(const Vector3& min_, const Vector3& max_) :
 		min(min_),
 		max(max_)
 	{
 	}
 
-	/// Construct from minimum and maximum floats (all dimensions same.)
+	// Construct from minimum and maximum floats (all dimensions same.)
 	BoundingBox(float min_, float max_) :
 		min(Vector3(min_, min_, min_)),
 		max(Vector3(max_, max_, max_))
 	{
 	}
 
-	/// Construct from an array of vertices.
+	// Construct from an array of vertices.
 	BoundingBox(const Vector3* vertices, size_t count)
 	{
 		Define(vertices, count);
 	}
 
-	/// Construct from a frustum.
+	// Construct from a frustum.
 	BoundingBox(const Frustum& frustum)
 	{
 		Define(frustum);
 	}
 
-	/// Construct from a polyhedron.
+	// Construct from a polyhedron.
 	BoundingBox(const Polyhedron& poly)
 	{
 		Define(poly);
 	}
 
-	/// Construct from a sphere.
+	// Construct from a sphere.
 	BoundingBox(const Sphere& sphere)
 	{
 		Define(sphere);
 	}
 
-	/// Construct by parsing a string.
+	// Construct by parsing a string.
 	BoundingBox(const String& str)
 	{
 		FromString(str);
 	}
 
-	/// Construct by parsing a C string.
+	// Construct by parsing a C string.
 	BoundingBox(const char* str)
 	{
 		FromString(str);
 	}
 
-	/// Assign from another bounding box.
+	// Assign from another bounding box.
 	BoundingBox& operator = (const BoundingBox& rhs)
 	{
 		min = rhs.min;
@@ -98,7 +98,7 @@ public:
 		return *this;
 	}
 
-	/// Assign from a Rect, with the Z dimension left zero.
+	// Assign from a Rect, with the Z dimension left zero.
 	BoundingBox& operator = (const Rect& rhs)
 	{
 		min = Vector3(rhs.min);
@@ -106,46 +106,46 @@ public:
 		return *this;
 	}
 
-	/// Test for equality with another bounding box without epsilon.
+	// Test for equality with another bounding box without epsilon.
 	bool operator == (const BoundingBox& rhs) const { return min == rhs.min && max == rhs.max; }
-	/// Test for inequality with another bounding box without epsilon.
+	// Test for inequality with another bounding box without epsilon.
 	bool operator != (const BoundingBox& rhs) const { return !(*this == rhs); }
 
-	/// Define from another bounding box.
+	// Define from another bounding box.
 	void Define(const BoundingBox& box)
 	{
 		min = box.min;
 		max = box.max;
 	}
 
-	/// Define from a Rect.
+	// Define from a Rect.
 	void Define(const Rect& rect)
 	{
 		min = Vector3(rect.min);
 		max = Vector3(rect.max);
 	}
 
-	/// Define from minimum and maximum vectors.
+	// Define from minimum and maximum vectors.
 	void Define(const Vector3& min_, const Vector3& max_)
 	{
 		min = min_;
 		max = max_;
 	}
 
-	/// Define from minimum and maximum floats (all dimensions same.)
+	// Define from minimum and maximum floats (all dimensions same.)
 	void Define(float min_, float max_)
 	{
 		min = Vector3(min_, min_, min_);
 		max = Vector3(max_, max_, max_);
 	}
 
-	/// Define from a point.
+	// Define from a point.
 	void Define(const Vector3& point)
 	{
 		min = max = point;
 	}
 
-	/// Merge a point.
+	// Merge a point.
 	void Merge(const Vector3& point)
 	{
 		// If undefined, set initial dimensions
@@ -169,7 +169,7 @@ public:
 			max.z = point.z;
 	}
 
-	/// Merge another bounding box.
+	// Merge another bounding box.
 	void Merge(const BoundingBox& box)
 	{
 		if (min.x > max.x)
@@ -193,59 +193,59 @@ public:
 			max.z = box.max.z;
 	}
 
-	/// Set as undefined (negative size) to allow the next merge to set initial size.
+	// Set as undefined (negative size) to allow the next merge to set initial size.
 	void Undefine()
 	{
 		min = Vector3(M_INFINITY, M_INFINITY, M_INFINITY);
 		max = -min;
 	}
 
-	/// Define from an array of vertices.
+	// Define from an array of vertices.
 	void Define(const Vector3* vertices, size_t count);
-	/// Define from a frustum.
+	// Define from a frustum.
 	void Define(const Frustum& frustum);
-	/// Define from a polyhedron.
+	// Define from a polyhedron.
 	void Define(const Polyhedron& poly);
-	/// Define from a sphere.
+	// Define from a sphere.
 	void Define(const Sphere& sphere);
-	/// Merge an array of vertices.
+	// Merge an array of vertices.
 	void Merge(const Vector3* vertices, size_t count);
-	/// Merge a frustum.
+	// Merge a frustum.
 	void Merge(const Frustum& frustum);
-	/// Merge a polyhedron.
+	// Merge a polyhedron.
 	void Merge(const Polyhedron& poly);
-	/// Merge a sphere.
+	// Merge a sphere.
 	void Merge(const Sphere& sphere);
-	/// Clip with another bounding box.
+	// Clip with another bounding box.
 	void Clip(const BoundingBox& box);
-	/// Transform with a 3x3 matrix.
+	// Transform with a 3x3 matrix.
 	void Transform(const Matrix3& transform);
-	/// Transform with a 3x4 matrix.
+	// Transform with a 3x4 matrix.
 	void Transform(const Matrix3x4& transform);
-	/// Parse from a string. Return true on success.
+	// Parse from a string. Return true on success.
 	bool FromString(const String& str);
-	/// Parse from a C string. Return true on success.
+	// Parse from a C string. Return true on success.
 	bool FromString(const char* str);
 
-	/// Return whether has non-negative size.
+	// Return whether has non-negative size.
 	bool IsDefined() const { return (min.x <= max.x); }
-	/// Return center.
+	// Return center.
 	Vector3 Center() const { return (max + min) * 0.5f; }
-	/// Return size.
+	// Return size.
 	Vector3 Size() const { return max - min; }
-	/// Return half-size.
+	// Return half-size.
 	Vector3 HalfSize() const { return (max - min) * 0.5f; }
-	/// Test for equality with another bounding box with epsilon.
+	// Test for equality with another bounding box with epsilon.
 	bool Equals(const BoundingBox& box) const { return min.Equals(box.min) && max.Equals(box.max); }
 
-	/// Return transformed by a 3x3 matrix.
+	// Return transformed by a 3x3 matrix.
 	BoundingBox Transformed(const Matrix3& transform) const;
-	/// Return transformed by a 3x4 matrix.
+	// Return transformed by a 3x4 matrix.
 	BoundingBox Transformed(const Matrix3x4& transform) const;
-	/// Return projected by a 4x4 projection matrix.
+	// Return projected by a 4x4 projection matrix.
 	Rect Projected(const Matrix4& projection) const;
 
-	/// Test if a point is inside.
+	// Test if a point is inside.
 	Intersection IsInside(const Vector3& point) const
 	{
 		if (point.x < min.x || point.x > max.x || point.y < min.y || point.y > max.y ||
@@ -255,7 +255,7 @@ public:
 			return INSIDE;
 	}
 
-	/// Test if another bounding box is inside, outside or intersects.
+	// Test if another bounding box is inside, outside or intersects.
 	Intersection IsInside(const BoundingBox& box) const
 	{
 		if (box.max.x < min.x || box.min.x > max.x || box.max.y < min.y || box.min.y > max.y ||
@@ -268,7 +268,7 @@ public:
 			return INSIDE;
 	}
 
-	/// Test if another bounding box is (partially) inside or outside.
+	// Test if another bounding box is (partially) inside or outside.
 	Intersection IsInsideFast(const BoundingBox& box) const
 	{
 		if (box.max.x < min.x || box.min.x > max.x || box.max.y < min.y || box.min.y > max.y ||
@@ -278,11 +278,11 @@ public:
 			return INSIDE;
 	}
 
-	/// Test if a sphere is inside, outside or intersects.
+	// Test if a sphere is inside, outside or intersects.
 	Intersection IsInside(const Sphere& sphere) const;
-	/// Test if a sphere is (partially) inside or outside.
+	// Test if a sphere is (partially) inside or outside.
 	Intersection IsInsideFast(const Sphere& sphere) const;
 
-	/// Return as string.
+	// Return as string.
 	String ToString() const;
 };

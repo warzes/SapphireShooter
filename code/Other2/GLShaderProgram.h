@@ -9,54 +9,54 @@
 class Graphics;
 class ShaderVariation;
 
-/// Description of a shader's vertex attribute.
+// Description of a shader's vertex attribute.
 struct VertexAttribute
 {
-	/// Name of attribute.
+	// Name of attribute.
 	String name;
-	/// Attribute binding point. 
+	// Attribute binding point. 
 	unsigned location;
-	/// Attribute semantic.
+	// Attribute semantic.
 	ElementSemantic semantic;
-	/// Attribute's semantic index.
+	// Attribute's semantic index.
 	unsigned char index;
 };
 
-/// Linked shader program consisting of vertex and pixel shaders.
+// Linked shader program consisting of vertex and pixel shaders.
 class ShaderProgram : public GPUObject
 {
 public:
-	/// Construct with shader pointers.
+	// Construct with shader pointers.
 	ShaderProgram(ShaderVariation* vs, ShaderVariation* ps);
-	/// Destruct.
+	// Destruct.
 	~ShaderProgram();
 
-	/// Release the linked shader program.
+	// Release the linked shader program.
 	void Release() override;
 
-	/// Attempt to link the shaders. Return true on success. Note: the shader program is bound if linking is successful.
+	// Attempt to link the shaders. Return true on success. Note: the shader program is bound if linking is successful.
 	bool Link();
 
-	/// Return the vertex shader.
+	// Return the vertex shader.
 	ShaderVariation* VertexShader() const;
-	/// Return the pixel shader.
+	// Return the pixel shader.
 	ShaderVariation* PixelShader() const;
-	/// Return vertex attribute descriptions.
+	// Return vertex attribute descriptions.
 	const Vector<VertexAttribute>& Attributes() const { return attributes; }
-	/// Return combined name of the shader program.
+	// Return combined name of the shader program.
 	String FullName() const;
 
-	/// Return the OpenGL shader program identifier. Used internally and should not be called by portable application code.
+	// Return the OpenGL shader program identifier. Used internally and should not be called by portable application code.
 	unsigned GLProgram() const { return program; }
 
 private:
-	/// OpenGL shader program identifier.
+	// OpenGL shader program identifier.
 	unsigned program;
-	/// Vertex shader.
+	// Vertex shader.
 	WeakPtr<ShaderVariation> vs;
-	/// Pixel shader.
+	// Pixel shader.
 	WeakPtr<ShaderVariation> ps;
-	/// Vertex attribute semantics and indices.
+	// Vertex attribute semantics and indices.
 	Vector<VertexAttribute> attributes;
 };
 

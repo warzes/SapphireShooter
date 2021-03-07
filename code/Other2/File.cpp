@@ -69,14 +69,14 @@ bool File::Open(const String& fileName, FileMode fileMode)
 	if (!handle)
 		return false;
 
-	name = fileName;
+	m_name = fileName;
 	mode = fileMode;
 	m_position = 0;
 	readSyncNeeded = false;
 	writeSyncNeeded = false;
 
 	fseek((FILE*)handle, 0, SEEK_END);
-	size = ftell((FILE*)handle);
+	m_size = ftell((FILE*)handle);
 	fseek((FILE*)handle, 0, SEEK_SET);
 	return true;
 }
@@ -86,8 +86,8 @@ size_t File::Read(void* dest, size_t numBytes)
 	if (!handle || mode == FILE_WRITE)
 		return 0;
 
-	if (numBytes + m_position > size)
-		numBytes = size - m_position;
+	if (numBytes + m_position > m_size)
+		numBytes = m_size - m_position;
 	if (!numBytes)
 		return 0;
 
@@ -117,8 +117,8 @@ size_t File::Seek(size_t newPosition)
 		return 0;
 
 	// Allow sparse seeks if writing
-	if (mode == FILE_READ && newPosition > size)
-		newPosition = size;
+	if (mode == FILE_READ && newPosition > m_size)
+		newPosition = m_size;
 
 	fseek((FILE*)handle, (long)newPosition, SEEK_SET);
 	m_position = newPosition;
@@ -151,10 +151,10 @@ size_t File::Write(const void* data, size_t numBytes)
 
 	readSyncNeeded = true;
 	m_position += numBytes;
-	if (m_position > size)
-		size = m_position;
+	if (m_position > m_size)
+		m_size = m_position;
 
-	return size;
+	return m_size;
 }
 
 bool File::IsReadable() const
@@ -174,7 +174,7 @@ void File::Close()
 		fclose((FILE*)handle);
 		handle = 0;
 		m_position = 0;
-		size = 0;
+		m_size = 0;
 	}
 }
 

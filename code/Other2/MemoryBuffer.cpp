@@ -35,8 +35,8 @@ MemoryBuffer::MemoryBuffer(const Vector<unsigned char>& data) :
 
 size_t MemoryBuffer::Read(void* dest, size_t numBytes)
 {
-	if (numBytes + m_position > size)
-		numBytes = size - m_position;
+	if (numBytes + m_position > m_size)
+		numBytes = m_size - m_position;
 	if (!numBytes)
 		return 0;
 
@@ -66,8 +66,8 @@ size_t MemoryBuffer::Read(void* dest, size_t numBytes)
 
 size_t MemoryBuffer::Seek(size_t newPosition)
 {
-	if (newPosition > size)
-		newPosition = size;
+	if (newPosition > m_size)
+		newPosition = m_size;
 
 	m_position = newPosition;
 	return m_position;
@@ -75,8 +75,8 @@ size_t MemoryBuffer::Seek(size_t newPosition)
 
 size_t MemoryBuffer::Write(const void* data, size_t numBytes)
 {
-	if (numBytes + m_position > size)
-		numBytes = size - m_position;
+	if (numBytes + m_position > m_size)
+		numBytes = m_size - m_position;
 	if (!numBytes || readOnly)
 		return 0;
 

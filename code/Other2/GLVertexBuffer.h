@@ -7,74 +7,74 @@
 #include "GPUObject.h"
 #include "GraphicsDefs.h"
 
-/// GPU buffer for vertex data.
+// GPU buffer for vertex data.
 class VertexBuffer : public RefCounted, public GPUObject
 {
 public:
-	/// Construct.
+	// Construct.
 	VertexBuffer();
-	/// Destruct.
+	// Destruct.
 	~VertexBuffer();
 
-	/// Release the vertex buffer and CPU shadow data.
+	// Release the vertex buffer and CPU shadow data.
 	void Release() override;
-	/// Recreate the GPU resource after data loss.
+	// Recreate the GPU resource after data loss.
 	void Recreate() override;
 
-	/// Define buffer. Immutable buffers must specify initial data here. Return true on success.
+	// Define buffer. Immutable buffers must specify initial data here. Return true on success.
 	bool Define(ResourceUsage usage, size_t numVertices, const Vector<VertexElement>& elements, bool useShadowData, const void* data = nullptr);
-	/// Define buffer. Immutable buffers must specify initial data here. Return true on success.
+	// Define buffer. Immutable buffers must specify initial data here. Return true on success.
 	bool Define(ResourceUsage usage, size_t numVertices, size_t numElements, const VertexElement* elements, bool useShadowData, const void* data = nullptr);
-	/// Redefine buffer data either completely or partially. Not supported for immutable buffers. Return true on success.
+	// Redefine buffer data either completely or partially. Not supported for immutable buffers. Return true on success.
 	bool SetData(size_t firstVertex, size_t numVertices, const void* data);
 
-	/// Return CPU-side shadow data if exists.
+	// Return CPU-side shadow data if exists.
 	unsigned char* ShadowData() const { return shadowData.Get(); }
-	/// Return number of vertices.
+	// Return number of vertices.
 	size_t NumVertices() const { return numVertices; }
-	/// Return number of vertex elements.
+	// Return number of vertex elements.
 	size_t NumElements() const { return elements.Size(); }
-	/// Return vertex elements.
+	// Return vertex elements.
 	const Vector<VertexElement>& Elements() const { return elements; }
-	/// Return size of vertex in bytes.
+	// Return size of vertex in bytes.
 	size_t VertexSize() const { return vertexSize; }
-	/// Return vertex declaration hash code.
+	// Return vertex declaration hash code.
 	unsigned ElementHash() const { return elementHash; }
-	/// Return resource usage type.
+	// Return resource usage type.
 	ResourceUsage Usage() const { return usage; }
-	/// Return whether is dynamic.
+	// Return whether is dynamic.
 	bool IsDynamic() const { return usage == USAGE_DYNAMIC; }
-	/// Return whether is immutable.
+	// Return whether is immutable.
 	bool IsImmutable() const { return usage == USAGE_IMMUTABLE; }
 
-	/// Return the OpenGL buffer identifier. Used internally and should not be called by portable application code.
+	// Return the OpenGL buffer identifier. Used internally and should not be called by portable application code.
 	unsigned GLBuffer() const { return buffer; }
 
-	/// Compute the hash code of one vertex element by index and semantic.
+	// Compute the hash code of one vertex element by index and semantic.
 	static unsigned ElementHash(size_t index, ElementSemantic semantic) { return (semantic + 1) << (index * 3); }
 
-	/// Vertex element D3D11 format by element type.
+	// Vertex element D3D11 format by element type.
 	static const unsigned elementFormats[];
-	/// Vertex element semantic names.
+	// Vertex element semantic names.
 	static const char* elementSemanticNames[];
 
 private:
-	/// Create the GPU-side vertex buffer. Return true on success.
+	// Create the GPU-side vertex buffer. Return true on success.
 	bool Create(const void* data);
 
-	/// OpenGL buffer object identifier.
+	// OpenGL buffer object identifier.
 	unsigned buffer;
-	/// CPU-side shadow data.
+	// CPU-side shadow data.
 	AutoArrayPtr<unsigned char> shadowData;
-	/// Number of vertices.
+	// Number of vertices.
 	size_t numVertices;
-	/// Size of vertex in bytes.
+	// Size of vertex in bytes.
 	size_t vertexSize;
-	/// Vertex elements.
+	// Vertex elements.
 	Vector<VertexElement> elements;
-	/// Vertex element hash code.
+	// Vertex element hash code.
 	unsigned elementHash;
-	/// Resource usage type.
+	// Resource usage type.
 	ResourceUsage usage;
 };
 

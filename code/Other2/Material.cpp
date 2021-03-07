@@ -245,7 +245,7 @@ bool Material::EndLoad()
         constantBuffers[SHADER_PS]->LoadJSON(root["psConstantBuffer"].GetObject());
     }
     
-    /// \todo Queue texture loads during BeginLoad()
+    // \todo Queue texture loads during BeginLoad()
     ResetTextures();
     if (root.Contains("textures"))
     {

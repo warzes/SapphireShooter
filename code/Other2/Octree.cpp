@@ -225,7 +225,7 @@ const BoundingBox& Octree::BoundingBoxAttr() const
 
 void Octree::SetNumLevelsAttr(int numLevels)
 {
-    /// Setting the number of level (last attribute) triggers octree resize when deserializing
+    // Setting the number of level (last attribute) triggers octree resize when deserializing
     Resize(root.worldBoundingBox, numLevels);
 }
 

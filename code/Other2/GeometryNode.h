@@ -11,118 +11,118 @@ class Material;
 class VertexBuffer;
 struct LightList;
 
-/// Geometry types.
+// Geometry types.
 enum GeometryType
 {
     GEOM_STATIC = 0,
     GEOM_INSTANCED
 };
 
-/// Description of geometry to be rendered. %Scene nodes that render the same object can share these to reduce memory load and allow instancing.
+// Description of geometry to be rendered. %Scene nodes that render the same object can share these to reduce memory load and allow instancing.
 struct Geometry : public RefCounted
 {
-    /// Default-construct.
+    // Default-construct.
     Geometry();
-    /// Destruct.
+    // Destruct.
     ~Geometry();
 
-    /// Draw using the Graphics subsystem. The constant buffers are not applied automatically, rather they must have been applied beforehand.
+    // Draw using the Graphics subsystem. The constant buffers are not applied automatically, rather they must have been applied beforehand.
     void Draw(Graphics* graphics);
-    /// Draw an instance range. A separate instance data vertex buffer must be bound.
+    // Draw an instance range. A separate instance data vertex buffer must be bound.
     void DrawInstanced(Graphics* graphics, size_t start, size_t count);
 
-    /// %Geometry vertex buffer.
+    // %Geometry vertex buffer.
     SharedPtr<VertexBuffer> vertexBuffer;
-    /// %Geometry index buffer.
+    // %Geometry index buffer.
     SharedPtr<IndexBuffer> indexBuffer;
-    /// Constant buffers.
+    // Constant buffers.
     SharedPtr<ConstantBuffer> constantBuffers[MAX_SHADER_STAGES];
-    /// %Geometry's primitive type.
+    // %Geometry's primitive type.
     PrimitiveType primitiveType;
-    /// Draw range start. Specifies index start if index buffer defined, vertex start otherwise.
+    // Draw range start. Specifies index start if index buffer defined, vertex start otherwise.
     size_t drawStart;
-    /// Draw range count. Specifies number of indices if index buffer defined, number of vertices otherwise.
+    // Draw range count. Specifies number of indices if index buffer defined, number of vertices otherwise.
     size_t drawCount;
-    /// LOD transition distance.
+    // LOD transition distance.
     float lodDistance;
 };
 
-/// Draw call source data.
+// Draw call source data.
 struct SourceBatch
 {
-    /// Construct empty.
+    // Construct empty.
     SourceBatch();
-    /// Destruct.
+    // Destruct.
     ~SourceBatch();
 
-    /// The geometry to render. Must be non-null.
+    // The geometry to render. Must be non-null.
     SharedPtr<Geometry> geometry;
-    /// The material to use for rendering. Must be non-null.
+    // The material to use for rendering. Must be non-null.
     SharedPtr<Material> material;
 };
 
-/// Base class for scene nodes that contain geometry to be rendered.
+// Base class for scene nodes that contain geometry to be rendered.
 class GeometryNode : public OctreeNode
 {
     OBJECT(GeometryNode);
 
 public:
-    /// Construct.
+    // Construct.
     GeometryNode();
-    /// Destruct.
+    // Destruct.
     ~GeometryNode();
 
-    /// Register factory and attributes.
+    // Register factory and attributes.
     static void RegisterObject();
 
-    /// Prepare object for rendering. Reset framenumber and light list and calculate distance from camera. Called by Renderer.
+    // Prepare object for rendering. Reset framenumber and light list and calculate distance from camera. Called by Renderer.
     void OnPrepareRender(unsigned frameNumber, Camera* camera) override;
 
-    /// Set geometry type, which is shared by all geometries.
+    // Set geometry type, which is shared by all geometries.
     void SetGeometryType(GeometryType type);
-    /// Set number of geometries.
+    // Set number of geometries.
     void SetNumGeometries(size_t num);
-    /// Set geometry at index.
+    // Set geometry at index.
     void SetGeometry(size_t index, Geometry* geometry);
-    /// Set material at every geometry index. Specifying null will use the default material (opaque white.)
+    // Set material at every geometry index. Specifying null will use the default material (opaque white.)
     void SetMaterial(Material* material);
-    /// Set material at geometry index.
+    // Set material at geometry index.
     void SetMaterial(size_t index, Material* material);
-    /// Set local space bounding box.
+    // Set local space bounding box.
     void SetLocalBoundingBox(const BoundingBox& box);
 
-    /// Return geometry type.
+    // Return geometry type.
     GeometryType GetGeometryType() const { return geometryType; }
-    /// Return number of geometries.
+    // Return number of geometries.
     size_t NumGeometries() const { return batches.Size(); }
-    /// Return geometry by index.
+    // Return geometry by index.
     Geometry* GetGeometry(size_t index) const;
-    /// Return material by geometry index.
+    // Return material by geometry index.
     Material* GetMaterial(size_t index) const;
-    /// Return source information for all draw calls.
+    // Return source information for all draw calls.
     const Vector<SourceBatch>& Batches() const { return batches; }
-    /// Return local space bounding box.
+    // Return local space bounding box.
     const BoundingBox& LocalBoundingBox() const { return boundingBox; }
 
-    /// Set new light list. Called by Renderer.
+    // Set new light list. Called by Renderer.
     void SetLightList(LightList* list) { lightList = list; }
-    /// Return current light list.
+    // Return current light list.
     LightList* GetLightList() const { return lightList; }
 
 protected:
-    /// Recalculate the world space bounding box.
+    // Recalculate the world space bounding box.
     void OnWorldBoundingBoxUpdate() const override;
-    /// Set materials list. Used in serialization.
+    // Set materials list. Used in serialization.
     void SetMaterialsAttr(const ResourceRefList& materials);
-    /// Return materials list. Used in serialization.
+    // Return materials list. Used in serialization.
     ResourceRefList MaterialsAttr() const;
 
-    /// %Light list for rendering.
+    // %Light list for rendering.
     LightList* lightList;
-    /// Geometry type.
+    // Geometry type.
     GeometryType geometryType;
-    /// Draw call source datas.
+    // Draw call source datas.
     Vector<SourceBatch> batches;
-    /// Local space bounding box.
+    // Local space bounding box.
     BoundingBox boundingBox;
 };

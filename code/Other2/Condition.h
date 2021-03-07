@@ -2,28 +2,28 @@
 
 #if SE_ENABLE_THREADING
 
-/// %Condition on which a thread can wait.
+// %Condition on which a thread can wait.
 class Condition
 {
 public:
-	/// Construct.
+	// Construct.
 	Condition();
 
-	/// Destruct.
+	// Destruct.
 	~Condition();
 
-	/// Set the condition. Will be automatically reset once a waiting thread wakes up.
+	// Set the condition. Will be automatically reset once a waiting thread wakes up.
 	void Set();
 
-	/// Wait on the condition.
+	// Wait on the condition.
 	void Wait();
 
 private:
 #ifndef WIN32
-	/// Mutex for the event, necessary for pthreads-based implementation.
+	// Mutex for the event, necessary for pthreads-based implementation.
 	void* mutex;
 #endif
-	/// Operating system specific event.
+	// Operating system specific event.
 	void* event;
 };
 

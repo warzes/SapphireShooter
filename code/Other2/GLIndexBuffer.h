@@ -6,54 +6,54 @@
 #include "GPUObject.h"
 #include "GraphicsDefs.h"
 
-/// GPU buffer for index data.
+// GPU buffer for index data.
 class IndexBuffer : public RefCounted, public GPUObject
 {
 public:
-	/// Construct.
+	// Construct.
 	IndexBuffer();
-	/// Destruct.
+	// Destruct.
 	~IndexBuffer();
 
-	/// Release the index buffer and CPU shadow data.
+	// Release the index buffer and CPU shadow data.
 	void Release() override;
-	/// Recreate the GPU resource after data loss.
+	// Recreate the GPU resource after data loss.
 	void Recreate() override;
 
-	/// Define buffer. Immutable buffers must specify initial data here.  Return true on success.
+	// Define buffer. Immutable buffers must specify initial data here.  Return true on success.
 	bool Define(ResourceUsage usage, size_t numIndices, size_t indexSize, bool useShadowData, const void* data = nullptr);
-	/// Redefine buffer data either completely or partially. Not supported for immutable buffers. Return true on success.
+	// Redefine buffer data either completely or partially. Not supported for immutable buffers. Return true on success.
 	bool SetData(size_t firstIndex, size_t numIndices, const void* data);
 
-	/// Return CPU-side shadow data if exists.
+	// Return CPU-side shadow data if exists.
 	unsigned char* ShadowData() const { return shadowData.Get(); }
-	/// Return number of indices.
+	// Return number of indices.
 	size_t NumIndices() const { return numIndices; }
-	/// Return size of index in bytes.
+	// Return size of index in bytes.
 	size_t IndexSize() const { return indexSize; }
-	/// Return resource usage type.
+	// Return resource usage type.
 	ResourceUsage Usage() const { return usage; }
-	/// Return whether is dynamic.
+	// Return whether is dynamic.
 	bool IsDynamic() const { return usage == USAGE_DYNAMIC; }
-	/// Return whether is immutable.
+	// Return whether is immutable.
 	bool IsImmutable() const { return usage == USAGE_IMMUTABLE; }
 
-	/// Return the OpenGL buffer identifier. Used internally and should not be called by portable application code.
+	// Return the OpenGL buffer identifier. Used internally and should not be called by portable application code.
 	unsigned GLBuffer() const { return buffer; }
 
 private:
-	/// Create the GPU-side index buffer. Return true on success.
+	// Create the GPU-side index buffer. Return true on success.
 	bool Create(const void* data);
 
-	/// OpenGL buffer object identifier.
+	// OpenGL buffer object identifier.
 	unsigned buffer;
-	/// CPU-side shadow data.
+	// CPU-side shadow data.
 	AutoArrayPtr<unsigned char> shadowData;
-	/// Number of indices.
+	// Number of indices.
 	size_t numIndices;
-	/// Size of index in bytes.
+	// Size of index in bytes.
 	size_t indexSize;
-	/// Resource usage type.
+	// Resource usage type.
 	ResourceUsage usage;
 };
 

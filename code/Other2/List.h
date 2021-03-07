@@ -3,209 +3,209 @@
 #include "Allocator.h"
 #include "Swap.h"
 
-/// Doubly-linked list node base class.
+// Doubly-linked list node base class.
 struct ListNodeBase
 {
-	/// Construct.
+	// Construct.
 	ListNodeBase() :
 		prev(nullptr),
 		next(nullptr)
 	{
 	}
 
-	/// Previous node.
+	// Previous node.
 	ListNodeBase* prev;
-	/// Next node.
+	// Next node.
 	ListNodeBase* next;
 };
 
-/// Doubly-linked list iterator base class.
+// Doubly-linked list iterator base class.
 struct ListIteratorBase
 {
-	/// Construct.
+	// Construct.
 	ListIteratorBase() :
 		ptr(nullptr)
 	{
 	}
 
-	/// Construct with a node pointer.
+	// Construct with a node pointer.
 	explicit ListIteratorBase(ListNodeBase* ptr_) :
 		ptr(ptr_)
 	{
 	}
 
-	/// Test for equality with another iterator.
+	// Test for equality with another iterator.
 	bool operator == (const ListIteratorBase& rhs) const { return ptr == rhs.ptr; }
-	/// Test for inequality with another iterator.
+	// Test for inequality with another iterator.
 	bool operator != (const ListIteratorBase& rhs) const { return ptr != rhs.ptr; }
 
-	/// Go to the next node.
+	// Go to the next node.
 	void GotoNext()
 	{
 		if (ptr)
 			ptr = ptr->next;
 	}
 
-	/// Go to the previous node.
+	// Go to the previous node.
 	void GotoPrev()
 	{
 		if (ptr)
 			ptr = ptr->prev;
 	}
 
-	/// %Node pointer.
+	// %Node pointer.
 	ListNodeBase* ptr;
 };
 
-/// Doubly-linked list base class.
+// Doubly-linked list base class.
 class ListBase
 {
 public:
-	/// Construct.
+	// Construct.
 	ListBase() :
 		ptrs(nullptr),
 		allocator(nullptr)
 	{
 	}
 
-	/// Destruct.
+	// Destruct.
 	~ListBase()
 	{
 		delete[] ptrs;
 	}
 
-	/// Swap with another linked list.
+	// Swap with another linked list.
 	void Swap(ListBase& list)
 	{
 		::Swap(ptrs, list.ptrs);
 		::Swap(allocator, list.allocator);
 	}
 
-	/// Return number of elements.
+	// Return number of elements.
 	size_t Size() const { return ptrs ? (reinterpret_cast<size_t*>(ptrs))[0] : 0; }
-	/// Return whether has no elements.
+	// Return whether has no elements.
 	bool IsEmpty() const { return Size() == 0; }
 
 protected:
-	/// Allocate head & tail pointers + room for size variable.
+	// Allocate head & tail pointers + room for size variable.
 	void AllocatePtrs();
-	/// Set new size.
+	// Set new size.
 	void SetSize(size_t size) { reinterpret_cast<size_t*>(ptrs)[0] = size; }
-	/// Set new head node.
+	// Set new head node.
 	void SetHead(ListNodeBase* head) { ptrs[1] = head; }
-	/// Set new tail node.
+	// Set new tail node.
 	void SetTail(ListNodeBase* tail) { ptrs[2] = tail; }
 
-	/// Return list head node.
+	// Return list head node.
 	ListNodeBase* Head() const { return ptrs ? ptrs[1] : nullptr; }
-	/// Return list tail node.
+	// Return list tail node.
 	ListNodeBase* Tail() const { return ptrs ? ptrs[2] : nullptr; }
 
-	/// Head & tail pointers and list size.
+	// Head & tail pointers and list size.
 	ListNodeBase** ptrs;
-	/// %Node allocator.
+	// %Node allocator.
 	AllocatorBlock* allocator;
 };
 
-/// Doubly-linked list template class. Elements can generally be assumed to be in non-continuous memory.
+// Doubly-linked list template class. Elements can generally be assumed to be in non-continuous memory.
 template <class T> class List : public ListBase
 {
 public:
-	/// %List node.
+	// %List node.
 	struct Node : public ListNodeBase
 	{
-		/// Construct undefined.
+		// Construct undefined.
 		Node()
 		{
 		}
 
-		/// Construct with value.
+		// Construct with value.
 		Node(const T& value_) :
 			value(value_)
 		{
 		}
 
-		/// %Node value.
+		// %Node value.
 		T value;
 
-		/// Return next node.
+		// Return next node.
 		Node* Next() const { return static_cast<Node*>(next); }
-		/// Return previous node.
+		// Return previous node.
 		Node* Prev() { return static_cast<Node*>(prev); }
 	};
 
-	/// %List iterator.
+	// %List iterator.
 	struct Iterator : public ListIteratorBase
 	{
-		/// Construct.
+		// Construct.
 		Iterator()
 		{
 		}
 
-		/// Construct with a node pointer.
+		// Construct with a node pointer.
 		explicit Iterator(Node* ptr_) :
 			ListIteratorBase(ptr_)
 		{
 		}
 
-		/// Preincrement the pointer.
+		// Preincrement the pointer.
 		Iterator& operator ++ () { GotoNext(); return *this; }
-		/// Postincrement the pointer.
+		// Postincrement the pointer.
 		Iterator operator ++ (int) { Iterator it = *this; GotoNext(); return it; }
-		/// Predecrement the pointer.
+		// Predecrement the pointer.
 		Iterator& operator -- () { GotoPrev(); return *this; }
-		/// Postdecrement the pointer.
+		// Postdecrement the pointer.
 		Iterator operator -- (int) { Iterator it = *this; GotoPrev(); return it; }
 
-		/// Point to the node value.
+		// Point to the node value.
 		T* operator -> () const { return &(static_cast<Node*>(ptr))->value; }
-		/// Dereference the node value.
+		// Dereference the node value.
 		T& operator * () const { return (static_cast<Node*>(ptr))->value; }
 	};
 
-	/// %List const iterator.
+	// %List const iterator.
 	struct ConstIterator : public ListIteratorBase
 	{
-		/// Construct.
+		// Construct.
 		ConstIterator()
 		{
 		}
 
-		/// Construct with a node pointer.
+		// Construct with a node pointer.
 		explicit ConstIterator(Node* ptr_) :
 			ListIteratorBase(ptr_)
 		{
 		}
 
-		/// Construct from a non-const iterator.
+		// Construct from a non-const iterator.
 		ConstIterator(const Iterator& it) :
 			ListIteratorBase(it.ptr)
 		{
 		}
 
-		/// Assign from a non-const iterator.
+		// Assign from a non-const iterator.
 		ConstIterator& operator = (const Iterator& rhs) { ptr = rhs.ptr; return *this; }
-		/// Preincrement the pointer.
+		// Preincrement the pointer.
 		ConstIterator& operator ++ () { GotoNext(); return *this; }
-		/// Postincrement the pointer.
+		// Postincrement the pointer.
 		ConstIterator operator ++ (int) { ConstIterator it = *this; GotoNext(); return it; }
-		/// Predecrement the pointer.
+		// Predecrement the pointer.
 		ConstIterator& operator -- () { GotoPrev(); return *this; }
-		/// Postdecrement the pointer.
+		// Postdecrement the pointer.
 		ConstIterator operator -- (int) { ConstIterator it = *this; GotoPrev(); return it; }
 
-		/// Point to the node value.
+		// Point to the node value.
 		const T* operator -> () const { return &(static_cast<Node*>(ptr))->value; }
-		/// Dereference the node value.
+		// Dereference the node value.
 		const T& operator * () const { return (static_cast<Node*>(ptr))->value; }
 	};
 
-	/// Construct empty.
+	// Construct empty.
 	List()
 	{
 	}
 
-	/// Copy-construct.
+	// Copy-construct.
 	List(const List<T>& list)
 	{
 		// Reserve the tail node + initial capacity according to the list's size
@@ -213,7 +213,7 @@ public:
 		*this = list;
 	}
 
-	/// Destruct.
+	// Destruct.
 	~List()
 	{
 		if (ptrs && allocator)
@@ -224,7 +224,7 @@ public:
 		}
 	}
 
-	/// Assign from another list.
+	// Assign from another list.
 	List& operator = (const List<T>& rhs)
 	{
 		if (&rhs != this)
@@ -235,21 +235,21 @@ public:
 		return *this;
 	}
 
-	/// Add-assign an element.
+	// Add-assign an element.
 	List& operator += (const T& rhs)
 	{
 		Push(rhs);
 		return *this;
 	}
 
-	/// Add-assign a list.
+	// Add-assign a list.
 	List& operator += (const List<T>& rhs)
 	{
 		Insert(End(), rhs);
 		return *this;
 	}
 
-	/// Test for equality with another list.
+	// Test for equality with another list.
 	bool operator == (const List<T>& rhs) const
 	{
 		if (rhs.Size() != Size())
@@ -268,17 +268,17 @@ public:
 		return true;
 	}
 
-	/// Test for inequality with another list.
+	// Test for inequality with another list.
 	bool operator != (const List<T>& rhs) const { return !(*this == rhs); }
 
-	/// Insert an element to the end.
+	// Insert an element to the end.
 	void Push(const T& value) { InsertNode(Tail(), value); }
-	/// Insert an element to the beginning.
+	// Insert an element to the beginning.
 	void PushFront(const T& value) { InsertNode(Head(), value); }
-	/// Insert an element at position.
+	// Insert an element at position.
 	void Insert(const Iterator& dest, const T& value) { InsertNode(static_cast<Node*>(dest.ptr_), value); }
 
-	/// Insert a list at position.
+	// Insert a list at position.
 	void Insert(const Iterator& dest, const List<T>& list)
 	{
 		Node* destNode = static_cast<Node*>(dest.ptr);
@@ -286,7 +286,7 @@ public:
 			destNode = InsertNode(destNode, *it)->Next();
 	}
 
-	/// Insert elements by iterators.
+	// Insert elements by iterators.
 	void Insert(const Iterator& dest, const ConstIterator& start, const ConstIterator& end)
 	{
 		Node* destNode = static_cast<Node*>(dest.ptr);
@@ -295,7 +295,7 @@ public:
 			destNode = InsertNode(destNode, *it++)->Next();
 	}
 
-	/// Insert elements.
+	// Insert elements.
 	void Insert(const Iterator& dest, const T* start, const T* end)
 	{
 		Node* destNode = static_cast<Node*>(dest.ptr);
@@ -304,27 +304,27 @@ public:
 			destNode = InsertNode(destNode, *ptr++)->Next();
 	}
 
-	/// Erase the last element.
+	// Erase the last element.
 	void Pop()
 	{
 		if (Size())
 			Erase(--End());
 	}
 
-	/// Erase the first element.
+	// Erase the first element.
 	void PopFront()
 	{
 		if (Size())
 			Erase(Begin());
 	}
 
-	/// Erase an element by iterator. Return iterator to the next element.
+	// Erase an element by iterator. Return iterator to the next element.
 	Iterator Erase(Iterator it)
 	{
 		return Iterator(EraseNode(static_cast<Node*>(it.ptr)));
 	}
 
-	/// Erase a range by iterators. Return an iterator to the next element.
+	// Erase a range by iterators. Return an iterator to the next element.
 	Iterator Erase(const Iterator& start, const Iterator& end)
 	{
 		Iterator it = start;
@@ -334,7 +334,7 @@ public:
 		return it;
 	}
 
-	/// Clear the list.
+	// Clear the list.
 	void Clear()
 	{
 		if (Size())
@@ -349,7 +349,7 @@ public:
 		}
 	}
 
-	/// Resize the list by removing or adding items at the end.
+	// Resize the list by removing or adding items at the end.
 	void Resize(size_t newSize)
 	{
 		while (Size() > newSize)
@@ -359,7 +359,7 @@ public:
 			InsertNode(Tail(), T());
 	}
 
-	/// Return iterator to value, or to the end if not found.
+	// Return iterator to value, or to the end if not found.
 	Iterator Find(const T& value)
 	{
 		Iterator it = Begin();
@@ -368,7 +368,7 @@ public:
 		return it;
 	}
 
-	/// Return const iterator to value, or to the end if not found.
+	// Return const iterator to value, or to the end if not found.
 	ConstIterator Find(const T& value) const
 	{
 		ConstIterator it = Begin();
@@ -377,32 +377,32 @@ public:
 		return it;
 	}
 
-	/// Return whether contains a specific value.
+	// Return whether contains a specific value.
 	bool Contains(const T& value) const { return Find(value) != End(); }
-	/// Return iterator to the first element.
+	// Return iterator to the first element.
 	Iterator Begin() { return Iterator(Head()); }
-	/// Return const iterator to the first element.
+	// Return const iterator to the first element.
 	ConstIterator Begin() const { return ConstIterator(Head()); }
-	/// Return iterator to the end.
+	// Return iterator to the end.
 	Iterator End() { return Iterator(Tail()); }
-	/// Return const iterator to the end.
+	// Return const iterator to the end.
 	ConstIterator End() const { return ConstIterator(Tail()); }
-	/// Return first element.
+	// Return first element.
 	T& Front() { return *Begin(); }
-	/// Return const first element.
+	// Return const first element.
 	const T& Front() const { return *Begin(); }
-	/// Return last element.
+	// Return last element.
 	T& Back() { return *(--End()); }
-	/// Return const last element.
+	// Return const last element.
 	const T& Back() const { return *(--End()); }
 
 private:
-	/// Return the head node.
+	// Return the head node.
 	Node* Head() const { return static_cast<Node*>(ListBase::Head()); }
-	/// Return the tail node.
+	// Return the tail node.
 	Node* Tail() const { return static_cast<Node*>(ListBase::Tail()); }
 
-	/// Reserve the tail node and initial node capacity.
+	// Reserve the tail node and initial node capacity.
 	void Initialize(size_t numNodes)
 	{
 		AllocatePtrs();
@@ -412,7 +412,7 @@ private:
 		SetTail(tail);
 	}
 
-	/// Allocate and insert a node into the list. Return the new node.
+	// Allocate and insert a node into the list. Return the new node.
 	Node* InsertNode(Node* dest, const T& value)
 	{
 		if (!dest)
@@ -443,7 +443,7 @@ private:
 		return newNode;
 	}
 
-	/// Erase and free a node. Return pointer to the next node, or to the end if could not erase.
+	// Erase and free a node. Return pointer to the next node, or to the end if could not erase.
 	Node* EraseNode(Node* node)
 	{
 		// The tail node can not be removed
@@ -466,7 +466,7 @@ private:
 		return next;
 	}
 
-	/// Reserve a node with optionally specified value.
+	// Reserve a node with optionally specified value.
 	Node* AllocateNode(const T& value = T())
 	{
 		Node* newNode = static_cast<Node*>(AllocatorGet(allocator));
@@ -474,7 +474,7 @@ private:
 		return newNode;
 	}
 
-	/// Free a node.
+	// Free a node.
 	void FreeNode(Node* node)
 	{
 		(node)->~Node();

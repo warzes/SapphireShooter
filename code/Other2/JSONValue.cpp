@@ -806,7 +806,7 @@ bool JSONValue::ReadJSONString(String& dest, const char*& pos, const char*& end,
 
 			case 'u':
 			{
-				/// \todo Doesn't handle unicode surrogate pairs
+				// \todo Doesn't handle unicode surrogate pairs
 				unsigned code;
 				sscanf(pos, "%x", &code);
 				pos += 4;

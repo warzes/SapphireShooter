@@ -5,33 +5,22 @@
 #include "ObjectRef.h"
 #include "ResourceRef.h"
 #include "Engine/DebugNew.h"
-
-Stream::Stream() :
-	m_position(0),
-	size(0)
+//-----------------------------------------------------------------------------
+Stream::Stream(size_t numBytes) 
+	: m_size(numBytes)
 {
 }
-
-Stream::Stream(size_t numBytes) :
-	m_position(0),
-	size(numBytes)
-{
-}
-
-Stream::~Stream()
-{
-}
-
+//-----------------------------------------------------------------------------
 void Stream::SetName(const String& newName)
 {
-	name = newName;
+	m_name = newName;
 }
-
+//-----------------------------------------------------------------------------
 void Stream::SetName(const char* newName)
 {
-	name = newName;
+	m_name = newName;
 }
-
+//-----------------------------------------------------------------------------
 unsigned Stream::ReadVLE()
 {
 	unsigned ret;
@@ -56,7 +45,7 @@ unsigned Stream::ReadVLE()
 	ret |= ((unsigned)byte) << 21;
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 String Stream::ReadLine()
 {
 	String ret;
@@ -83,7 +72,7 @@ String Stream::ReadLine()
 
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 String Stream::ReadFileID()
 {
 	String ret;
@@ -91,7 +80,7 @@ String Stream::ReadFileID()
 	Read(&ret[0], 4);
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 Vector<unsigned char> Stream::ReadBuffer()
 {
 	Vector<unsigned char> ret(ReadVLE());
@@ -99,12 +88,12 @@ Vector<unsigned char> Stream::ReadBuffer()
 		Read(&ret[0], ret.Size());
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 template<> bool Stream::Read<bool>()
 {
 	return Read<unsigned char>() != 0;
 }
-
+//-----------------------------------------------------------------------------
 template<> String Stream::Read<String>()
 {
 	String ret;
@@ -120,47 +109,47 @@ template<> String Stream::Read<String>()
 
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 template<> StringHash Stream::Read<StringHash>()
 {
 	return StringHash(Read<unsigned>());
 }
-
+//-----------------------------------------------------------------------------
 template<> ResourceRef Stream::Read<ResourceRef>()
 {
 	ResourceRef ret;
 	ret.FromBinary(*this);
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 template<> ResourceRefList Stream::Read<ResourceRefList>()
 {
 	ResourceRefList ret;
 	ret.FromBinary(*this);
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 template<> ObjectRef Stream::Read<ObjectRef>()
 {
 	ObjectRef ret;
 	ret.id = Read<unsigned>();
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 template<> JSONValue Stream::Read<JSONValue>()
 {
 	JSONValue ret;
 	ret.FromBinary(*this);
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 void Stream::WriteFileID(const String& value)
 {
 	Write(value.CString(), Min((int)value.Length(), 4));
 	for (size_t i = value.Length(); i < 4; ++i)
 		Write(' ');
 }
-
+//-----------------------------------------------------------------------------
 void Stream::WriteBuffer(const Vector<unsigned char>& value)
 {
 	size_t numBytes = value.Size();
@@ -169,7 +158,7 @@ void Stream::WriteBuffer(const Vector<unsigned char>& value)
 	if (numBytes)
 		Write(&value[0], numBytes);
 }
-
+//-----------------------------------------------------------------------------
 void Stream::WriteVLE(size_t value)
 {
 	unsigned char data[4];
@@ -198,46 +187,47 @@ void Stream::WriteVLE(size_t value)
 		Write(data, 4);
 	}
 }
-
+//-----------------------------------------------------------------------------
 void Stream::WriteLine(const String& value)
 {
 	Write(value.CString(), value.Length());
 	Write('\r');
 	Write('\n');
 }
-
+//-----------------------------------------------------------------------------
 template<> void Stream::Write<bool>(const bool& value)
 {
 	Write<unsigned char>(value ? 1 : 0);
 }
-
+//-----------------------------------------------------------------------------
 template<> void Stream::Write<String>(const String& value)
 {
 	// Write content and null terminator
 	Write(value.CString(), value.Length() + 1);
 }
-
+//-----------------------------------------------------------------------------
 template<> void Stream::Write<StringHash>(const StringHash& value)
 {
 	Write(value.Value());
 }
-
+//-----------------------------------------------------------------------------
 template<> void Stream::Write<ResourceRef>(const ResourceRef& value)
 {
 	value.ToBinary(*this);
 }
-
+//-----------------------------------------------------------------------------
 template<> void Stream::Write<ResourceRefList>(const ResourceRefList& value)
 {
 	value.ToBinary(*this);
 }
-
+//-----------------------------------------------------------------------------
 template<> void Stream::Write<ObjectRef>(const ObjectRef& value)
 {
 	Write(value.id);
 }
-
+//-----------------------------------------------------------------------------
 template<> void Stream::Write<JSONValue>(const JSONValue& value)
 {
 	value.ToBinary(*this);
 }
+//-----------------------------------------------------------------------------

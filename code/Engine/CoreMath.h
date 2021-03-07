@@ -32,20 +32,20 @@
 		return lhs + RoundingError >= rhs && lhs - RoundingError <= rhs;
 	}
 
-	/// Check whether a floating point value is NaN.
+	// Check whether a floating point value is NaN.
 	inline bool IsNaN(float value) { return value != value; }
-	/// Linear interpolation between two float values.
+	// Linear interpolation between two float values.
 	inline float Lerp(float lhs, float rhs, float t) { return lhs * (1.0f - t) + rhs * t; }
-	/// Return the smaller of two floats.
+	// Return the smaller of two floats.
 	inline float Min(float lhs, float rhs) { return lhs < rhs ? lhs : rhs; }
-	/// Return the larger of two floats.
+	// Return the larger of two floats.
 	inline float Max(float lhs, float rhs) { return lhs > rhs ? lhs : rhs; }
-	/// Return absolute value of a float.
+	// Return absolute value of a float.
 	inline float Abs(float value) { return value >= 0.0f ? value : -value; }
-	/// Return the sign of a float (-1, 0 or 1.)
+	// Return the sign of a float (-1, 0 or 1.)
 	inline float Sign(float value) { return value > 0.0f ? 1.0f : (value < 0.0f ? -1.0f : 0.0f); }
 
-	/// Clamp a float to a range.
+	// Clamp a float to a range.
 	inline float Clamp(float value, float min, float max)
 	{
 		if (value < min)
@@ -56,36 +56,36 @@
 			return value;
 	}
 
-	/// Smoothly damp between values.
+	// Smoothly damp between values.
 	inline float SmoothStep(float lhs, float rhs, float t)
 	{
 		t = Clamp((t - lhs) / (rhs - lhs), 0.0f, 1.0f); // Saturate t
 		return t * t * (3.0f - 2.0f * t);
 	}
 
-	/// Return sine of an angle in degrees.
+	// Return sine of an angle in degrees.
 	inline float Sin(float angle) { return sinf(angle * M_DEGTORAD); }
-	/// Return cosine of an angle in degrees.
+	// Return cosine of an angle in degrees.
 	inline float Cos(float angle) { return cosf(angle * M_DEGTORAD); }
-	/// Return tangent of an angle in degrees.
+	// Return tangent of an angle in degrees.
 	inline float Tan(float angle) { return tanf(angle * M_DEGTORAD); }
-	/// Return arc sine in degrees.
+	// Return arc sine in degrees.
 	inline float Asin(float x) { return M_RADTODEG * asinf(Clamp(x, -1.0f, 1.0f)); }
-	/// Return arc cosine in degrees.
+	// Return arc cosine in degrees.
 	inline float Acos(float x) { return M_RADTODEG * acosf(Clamp(x, -1.0f, 1.0f)); }
-	/// Return arc tangent in degrees.
+	// Return arc tangent in degrees.
 	inline float Atan(float x) { return M_RADTODEG * atanf(x); }
-	/// Return arc tangent of y/x in degrees.
+	// Return arc tangent of y/x in degrees.
 	inline float Atan2(float y, float x) { return M_RADTODEG * atan2f(y, x); }
 
-	/// Return the smaller of two integers.
+	// Return the smaller of two integers.
 	inline int Min(int lhs, int rhs) { return lhs < rhs ? lhs : rhs; }
-	/// Return the larger of two integers.
+	// Return the larger of two integers.
 	inline int Max(int lhs, int rhs) { return lhs > rhs ? lhs : rhs; }
-	/// Return absolute value of an integer
+	// Return absolute value of an integer
 	inline int Abs(int value) { return value >= 0 ? value : -value; }
 
-	/// Clamp an integer to a range.
+	// Clamp an integer to a range.
 	inline int Clamp(int value, int min, int max)
 	{
 		if (value < min)
@@ -96,7 +96,7 @@
 			return value;
 	}
 
-	/// Check whether an unsigned integer is a power of two.
+	// Check whether an unsigned integer is a power of two.
 	inline bool IsPowerOfTwo(unsigned value)
 	{
 		if (!value)
@@ -106,7 +106,7 @@
 		return value == 1;
 	}
 
-	/// Round up to next power of two.
+	// Round up to next power of two.
 	inline unsigned NextPowerOfTwo(unsigned value)
 	{
 		unsigned ret = 1;

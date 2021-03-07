@@ -6,10 +6,10 @@ class Attribute;
 class Serializable;
 struct ObjectRef;
 
-/// Stored object ref attribute.
+// Stored object ref attribute.
 struct StoredObjectRef
 {
-	/// Construct undefined.
+	// Construct undefined.
 	StoredObjectRef() :
 		object(nullptr),
 		attr(nullptr),
@@ -17,7 +17,7 @@ struct StoredObjectRef
 	{
 	}
 
-	/// Construct with values.
+	// Construct with values.
 	StoredObjectRef(Serializable* object_, Attribute* attr_, unsigned oldId_) :
 		object(object_),
 		attr(attr_),
@@ -25,28 +25,28 @@ struct StoredObjectRef
 	{
 	}
 
-	/// %Object that contains the attribute.
+	// %Object that contains the attribute.
 	Serializable* object;
-	/// Description of the object ref attribute.
+	// Description of the object ref attribute.
 	Attribute* attr;
-	/// Old id from the serialized data.
+	// Old id from the serialized data.
 	unsigned oldId;
 };
 
-/// Helper class for resolving object ref attributes when loading a scene.
+// Helper class for resolving object ref attributes when loading a scene.
 class ObjectResolver
 {
 public:
-	/// Store an object along with its old id from the serialized data.
+	// Store an object along with its old id from the serialized data.
 	void StoreObject(unsigned oldId, Serializable* object);
-	/// Store an object ref attribute that needs to be resolved later.
+	// Store an object ref attribute that needs to be resolved later.
 	void StoreObjectRef(Serializable* object, Attribute* attr, const ObjectRef& value);
-	/// Resolve the object ref attributes.
+	// Resolve the object ref attributes.
 	void Resolve();
 
 private:
-	/// Mapping of old id's to objects.
+	// Mapping of old id's to objects.
 	HashMap<unsigned, Serializable*> objects;
-	/// Stored object ref attributes.
+	// Stored object ref attributes.
 	Vector<StoredObjectRef> objectRefs;
 };

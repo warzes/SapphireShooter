@@ -3,74 +3,74 @@
 #include "Iterator.h"
 #include "Swap.h"
 
-/// %Vector base class.
+// %Vector base class.
 class VectorBase
 {
 public:
-	/// Construct.
+	// Construct.
 	VectorBase();
 
-	/// Swap with another vector.
+	// Swap with another vector.
 	void Swap(VectorBase& vector);
 
-	/// Return number of elements in the vector.
+	// Return number of elements in the vector.
 	size_t Size() const { return buffer ? reinterpret_cast<size_t*>(buffer)[0] : 0; }
-	/// Return element capacity of the vector.
+	// Return element capacity of the vector.
 	size_t Capacity() const { return buffer ? reinterpret_cast<size_t*>(buffer)[1] : 0; }
-	/// Return whether has no elements.
+	// Return whether has no elements.
 	bool IsEmpty() const { return Size() == 0; }
 
 protected:
-	/// Set new size.
+	// Set new size.
 	void SetSize(size_t size) { reinterpret_cast<size_t*>(buffer)[0] = size; }
-	/// Set new capacity.
+	// Set new capacity.
 	void SetCapacity(size_t capacity) { reinterpret_cast<size_t*>(buffer)[1] = capacity; }
 
-	/// Allocate the buffer for elements.
+	// Allocate the buffer for elements.
 	static unsigned char* AllocateBuffer(size_t size);
 
-	/// Buffer. Contains size and capacity in the beginning.
+	// Buffer. Contains size and capacity in the beginning.
 	unsigned char* buffer;
 };
 
-/// %Vector template class. Implements a dynamic-sized array where the elements are in continuous memory. The elements need to be safe to move with block copy.
+// %Vector template class. Implements a dynamic-sized array where the elements are in continuous memory. The elements need to be safe to move with block copy.
 template <class T> class Vector : public VectorBase
 {
 public:
 	typedef RandomAccessIterator<T> Iterator;
 	typedef RandomAccessConstIterator<T> ConstIterator;
 
-	/// Construct empty.
+	// Construct empty.
 	Vector()
 	{
 	}
 
-	/// Construct with initial size.
+	// Construct with initial size.
 	explicit Vector(size_t startSize)
 	{
 		Resize(startSize, 0);
 	}
 
-	/// Construct with initial data.
+	// Construct with initial data.
 	Vector(const T* data, size_t dataSize)
 	{
 		Resize(dataSize, data);
 	}
 
-	/// Copy-construct.
+	// Copy-construct.
 	Vector(const Vector<T>& vector)
 	{
 		*this = vector;
 	}
 
-	/// Destruct.
+	// Destruct.
 	~Vector()
 	{
 		DestructElements(Buffer(), Size());
 		delete[] buffer;
 	}
 
-	/// Assign from another vector.
+	// Assign from another vector.
 	Vector<T>& operator = (const Vector<T>& rhs)
 	{
 		if (&rhs != this)
@@ -81,21 +81,21 @@ public:
 		return *this;
 	}
 
-	/// Add-assign an element.
+	// Add-assign an element.
 	Vector<T>& operator += (const T& rhs)
 	{
 		Push(rhs);
 		return *this;
 	}
 
-	/// Add-assign another vector.
+	// Add-assign another vector.
 	Vector<T>& operator += (const Vector<T>& rhs)
 	{
 		Push(rhs);
 		return *this;
 	}
 
-	/// Add an element.
+	// Add an element.
 	Vector<T> operator + (const T& rhs) const
 	{
 		Vector<T> ret(*this);
@@ -103,7 +103,7 @@ public:
 		return ret;
 	}
 
-	/// Add another vector.
+	// Add another vector.
 	Vector<T> operator + (const Vector<T>& rhs) const
 	{
 		Vector<T> ret(*this);
@@ -111,7 +111,7 @@ public:
 		return ret;
 	}
 
-	/// Test for equality with another vector.
+	// Test for equality with another vector.
 	bool operator == (const Vector<T>& rhs) const
 	{
 		size_t size = Size();
@@ -130,26 +130,26 @@ public:
 		return true;
 	}
 
-	/// Test for inequality with another vector.
+	// Test for inequality with another vector.
 	bool operator != (const Vector<T>& rhs) const { return !(*this == rhs); }
-	/// Return element at index.
+	// Return element at index.
 	T& operator [] (size_t index) { assert(index < Size()); return Buffer()[index]; }
-	/// Return const element at index.
+	// Return const element at index.
 	const T& operator [] (size_t index) const { assert(index < Size()); return Buffer()[index]; }
 
-	/// Add an element at the end.
+	// Add an element at the end.
 	void Push(const T& value) { Resize(Size() + 1, &value); }
-	/// Add another vector at the end.
+	// Add another vector at the end.
 	void Push(const Vector<T>& vector) { Resize(Size() + vector.Size(), vector.Buffer()); }
 
-	/// Remove the last element.
+	// Remove the last element.
 	void Pop()
 	{
 		if (Size())
 			Resize(Size() - 1, 0);
 	}
 
-	/// Insert an element at position.
+	// Insert an element at position.
 	void Insert(size_t pos, const T& value)
 	{
 		if (pos > Size())
@@ -161,7 +161,7 @@ public:
 		Buffer()[pos] = value;
 	}
 
-	/// Insert another vector at position.
+	// Insert another vector at position.
 	void Insert(size_t pos, const Vector<T>& vector)
 	{
 		if (pos > Size())
@@ -173,7 +173,7 @@ public:
 		CopyElements(Buffer() + pos, vector.Buffer(), vector.Size());
 	}
 
-	/// Insert an element by iterator.
+	// Insert an element by iterator.
 	Iterator Insert(const Iterator& dest, const T& value)
 	{
 		size_t pos = dest - Begin();
@@ -184,7 +184,7 @@ public:
 		return Begin() + pos;
 	}
 
-	/// Insert a vector by iterator.
+	// Insert a vector by iterator.
 	Iterator Insert(const Iterator& dest, const Vector<T>& vector)
 	{
 		size_t pos = dest - Begin();
@@ -195,7 +195,7 @@ public:
 		return Begin() + pos;
 	}
 
-	/// Insert a vector partially by iterators.
+	// Insert a vector partially by iterators.
 	Iterator Insert(const Iterator& dest, const ConstIterator& start, const ConstIterator& end)
 	{
 		size_t pos = dest - Begin();
@@ -212,7 +212,7 @@ public:
 		return Begin() + pos;
 	}
 
-	/// Insert elements.
+	// Insert elements.
 	Iterator Insert(const Iterator& dest, const T* start, const T* end)
 	{
 		size_t pos = dest - Begin();
@@ -229,7 +229,7 @@ public:
 		return Begin() + pos;
 	}
 
-	/// Erase a range of elements.
+	// Erase a range of elements.
 	void Erase(size_t pos, size_t length = 1)
 	{
 		// Return if the range is illegal
@@ -240,7 +240,7 @@ public:
 		Resize(Size() - length, 0);
 	}
 
-	/// Erase an element by iterator. Return iterator to the next element.
+	// Erase an element by iterator. Return iterator to the next element.
 	Iterator Erase(const Iterator& it)
 	{
 		size_t pos = it - Begin();
@@ -251,7 +251,7 @@ public:
 		return Begin() + pos;
 	}
 
-	/// Erase a range by iterators. Return iterator to the next element.
+	// Erase a range by iterators. Return iterator to the next element.
 	Iterator Erase(const Iterator& start, const Iterator& end)
 	{
 		size_t pos = start - Begin();
@@ -263,7 +263,7 @@ public:
 		return Begin() + pos;
 	}
 
-	/// Erase an element if found.
+	// Erase an element if found.
 	bool Remove(const T& value)
 	{
 		Iterator it = Find(value);
@@ -276,12 +276,12 @@ public:
 			return false;
 	}
 
-	/// Clear the vector.
+	// Clear the vector.
 	void Clear() { Resize(0); }
-	/// Resize the vector.
+	// Resize the vector.
 	void Resize(size_t newSize) { Resize(newSize, nullptr); }
 
-	/// Set new capacity.
+	// Set new capacity.
 	void Reserve(size_t newCapacity)
 	{
 		size_t size = Size();
@@ -310,15 +310,15 @@ public:
 		}
 	}
 
-	/// Reallocate so that no extra memory is used.
+	// Reallocate so that no extra memory is used.
 	void Compact() { Reserve(Size()); }
 
-	/// Return element at index.
+	// Return element at index.
 	T& At(size_t index) { assert(index < Size()); return Buffer()[index]; }
-	/// Return const element at index.
+	// Return const element at index.
 	const T& At(size_t index) const { assert(index < Size()); return Buffer()[index]; }
 
-	/// Return iterator to first occurrence of value, or to the end if not found.
+	// Return iterator to first occurrence of value, or to the end if not found.
 	Iterator Find(const T& value)
 	{
 		Iterator it = Begin();
@@ -327,7 +327,7 @@ public:
 		return it;
 	}
 
-	/// Return const iterator to first occurrence of value, or to the end if not found.
+	// Return const iterator to first occurrence of value, or to the end if not found.
 	ConstIterator Find(const T& value) const
 	{
 		ConstIterator it = Begin();
@@ -336,30 +336,30 @@ public:
 		return it;
 	}
 
-	/// Return whether contains a specific value.
+	// Return whether contains a specific value.
 	bool Contains(const T& value) const { return Find(value) != End(); }
-	/// Return iterator to the beginning.
+	// Return iterator to the beginning.
 	Iterator Begin() { return Iterator(Buffer()); }
-	/// Return const iterator to the beginning.
+	// Return const iterator to the beginning.
 	ConstIterator Begin() const { return ConstIterator(Buffer()); }
-	/// Return iterator to the end.
+	// Return iterator to the end.
 	Iterator End() { return Iterator(Buffer() + Size()); }
-	/// Return const iterator to the end.
+	// Return const iterator to the end.
 	ConstIterator End() const { return ConstIterator(Buffer() + Size()); }
-	/// Return first element.
+	// Return first element.
 	T& Front() { assert(Size()); return Buffer()[0]; }
-	/// Return const first element.
+	// Return const first element.
 	const T& Front() const { assert(Size()); return Buffer()[0]; }
-	/// Return last element.
+	// Return last element.
 	T& Back() { assert(Size()); return Buffer()[Size() - 1]; }
-	/// Return const last element.
+	// Return const last element.
 	const T& Back() const { assert(Size()); return Buffer()[Size() - 1]; }
 
 private:
-	/// Return the buffer with right type.
+	// Return the buffer with right type.
 	T* Buffer() const { return reinterpret_cast<T*>(buffer + 2 * sizeof(size_t)); }
 
-	/// Resize the vector and create/remove new elements as necessary.
+	// Resize the vector and create/remove new elements as necessary.
 	void Resize(size_t newSize, const T* src)
 	{
 		size_t size = Size();
@@ -428,7 +428,7 @@ private:
 		}
 	}
 
-	/// Move a range of elements within the vector.
+	// Move a range of elements within the vector.
 	void MoveRange(size_t dest, size_t src, size_t count)
 	{
 		T* data = Buffer();
@@ -444,14 +444,14 @@ private:
 		}
 	}
 
-	/// Copy elements from one buffer to another.
+	// Copy elements from one buffer to another.
 	static void CopyElements(T* dest, const T* src, size_t count)
 	{
 		while (count--)
 			*dest++ = *src++;
 	}
 
-	/// Move elements from one buffer to another. Constructors or destructors are not called.
+	// Move elements from one buffer to another. Constructors or destructors are not called.
 	static void MoveElements(T* dest, const T* src, size_t count)
 	{
 		if (count)

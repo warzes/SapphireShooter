@@ -9,7 +9,7 @@ class Ray;
 struct Octant;
 struct RaycastResult;
 
-/// Base class for scene nodes that insert themselves to the octree for rendering.
+// Base class for scene nodes that insert themselves to the octree for rendering.
 class OctreeNode : public SpatialNode
 {
     friend class Octree;
@@ -17,56 +17,56 @@ class OctreeNode : public SpatialNode
     OBJECT(OctreeNode);
 
 public:
-    /// Construct.
+    // Construct.
     OctreeNode();
-    /// Destruct. Remove self from the octree.
+    // Destruct. Remove self from the octree.
     ~OctreeNode();
 
-    /// Register attributes.
+    // Register attributes.
     static void RegisterObject();
 
-    /// Prepare object for rendering. Reset framenumber and calculate distance from camera. Called by Renderer.
+    // Prepare object for rendering. Reset framenumber and calculate distance from camera. Called by Renderer.
     virtual void OnPrepareRender(unsigned frameNumber, Camera* camera);
-    /// Perform ray test on self and add possible hit to the result vector.
+    // Perform ray test on self and add possible hit to the result vector.
     virtual void OnRaycast(Vector<RaycastResult>& dest, const Ray& ray, float maxDistance);
 
-    /// Set whether to cast shadows. Default false on both lights and geometries.
+    // Set whether to cast shadows. Default false on both lights and geometries.
     void SetCastShadows(bool enable);
     
-    /// Return world space bounding box. Update if necessary.
+    // Return world space bounding box. Update if necessary.
     const BoundingBox& WorldBoundingBox() const { if (TestFlag(NF_BOUNDING_BOX_DIRTY)) OnWorldBoundingBoxUpdate(); return worldBoundingBox; }
-    /// Return whether casts shadows.
+    // Return whether casts shadows.
     bool CastShadows() const { return TestFlag(NF_CASTSHADOWS); }
-    /// Return current octree this node resides in.
+    // Return current octree this node resides in.
     Octree* GetOctree() const { return octree; }
-    /// Return current octree octant this node resides in.
+    // Return current octree octant this node resides in.
     Octant* GetOctant() const { return octant; }
-    /// Return distance from camera in the current view.
+    // Return distance from camera in the current view.
     float Distance() const { return distance; }
-    /// Return last frame number when was visible. The frames are counted by Renderer internally and have no significance outside it.
+    // Return last frame number when was visible. The frames are counted by Renderer internally and have no significance outside it.
     unsigned LastFrameNumber() const { return lastFrameNumber; }
 
 protected:
-    /// Search for an octree from the scene root and add self to it.
+    // Search for an octree from the scene root and add self to it.
     void OnSceneSet(Scene* newScene, Scene* oldScene) override;
-    /// Handle the transform matrix changing.
+    // Handle the transform matrix changing.
     void OnTransformChanged() override;
-    /// Recalculate the world space bounding box.
+    // Recalculate the world space bounding box.
     virtual void OnWorldBoundingBoxUpdate() const;
 
-    /// World space bounding box.
+    // World space bounding box.
     mutable BoundingBox worldBoundingBox;
-    /// Distance from camera in the current view.
+    // Distance from camera in the current view.
     float distance;
-    /// Last frame number when was visible.
+    // Last frame number when was visible.
     unsigned lastFrameNumber;
 
 private:
-    /// Remove from the current octree.
+    // Remove from the current octree.
     void RemoveFromOctree();
 
-    /// Current octree.
+    // Current octree.
     Octree* octree;
-    /// Current octree octant.
+    // Current octree octant.
     Octant* octant;
 };
