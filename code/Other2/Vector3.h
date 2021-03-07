@@ -79,7 +79,7 @@ public:
 	}
 
 	// Assign from another vector.
-	Vector3& operator = (const Vector3& rhs)
+	Vector3& operator=(const Vector3& rhs)
 	{
 		x = rhs.x;
 		y = rhs.y;
@@ -88,9 +88,9 @@ public:
 	}
 
 	// Test for equality with another vector without epsilon.
-	bool operator == (const Vector3& rhs) const { return x == rhs.x && y == rhs.y && z == rhs.z; }
+	bool operator==(const Vector3& rhs) const { return x == rhs.x && y == rhs.y && z == rhs.z; }
 	// Test for inequality with another vector without epsilon.
-	bool operator != (const Vector3& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Vector3& rhs) const { return !(*this == rhs); }
 	// Add a vector.
 	Vector3 operator + (const Vector3& rhs) const { return Vector3(x + rhs.x, y + rhs.y, z + rhs.z); }
 	// Return negation.

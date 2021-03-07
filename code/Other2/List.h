@@ -35,9 +35,9 @@ struct ListIteratorBase
 	}
 
 	// Test for equality with another iterator.
-	bool operator == (const ListIteratorBase& rhs) const { return ptr == rhs.ptr; }
+	bool operator==(const ListIteratorBase& rhs) const { return ptr == rhs.ptr; }
 	// Test for inequality with another iterator.
-	bool operator != (const ListIteratorBase& rhs) const { return ptr != rhs.ptr; }
+	bool operator!=(const ListIteratorBase& rhs) const { return ptr != rhs.ptr; }
 
 	// Go to the next node.
 	void GotoNext()
@@ -184,7 +184,7 @@ public:
 		}
 
 		// Assign from a non-const iterator.
-		ConstIterator& operator = (const Iterator& rhs) { ptr = rhs.ptr; return *this; }
+		ConstIterator& operator=(const Iterator& rhs) { ptr = rhs.ptr; return *this; }
 		// Preincrement the pointer.
 		ConstIterator& operator ++ () { GotoNext(); return *this; }
 		// Postincrement the pointer.
@@ -225,7 +225,7 @@ public:
 	}
 
 	// Assign from another list.
-	List& operator = (const List<T>& rhs)
+	List& operator=(const List<T>& rhs)
 	{
 		if (&rhs != this)
 		{
@@ -250,7 +250,7 @@ public:
 	}
 
 	// Test for equality with another list.
-	bool operator == (const List<T>& rhs) const
+	bool operator==(const List<T>& rhs) const
 	{
 		if (rhs.Size() != Size())
 			return false;
@@ -269,7 +269,7 @@ public:
 	}
 
 	// Test for inequality with another list.
-	bool operator != (const List<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const List<T>& rhs) const { return !(*this == rhs); }
 
 	// Insert an element to the end.
 	void Push(const T& value) { InsertNode(Tail(), value); }

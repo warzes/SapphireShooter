@@ -32,7 +32,7 @@ public:
 	}
 
 	// Assign from a pointer. Existing object is deleted and ownership is transferred from the source pointer, which becomes null.
-	AutoPtr<T>& operator = (const AutoPtr<T>& rhs)
+	AutoPtr<T>& operator=(const AutoPtr<T>& rhs)
 	{
 		delete ptr;
 		ptr = rhs.ptr;
@@ -41,7 +41,7 @@ public:
 	}
 
 	// Assign a new object. Existing object is deleted.
-	AutoPtr<T>& operator = (T* rhs)
+	AutoPtr<T>& operator=(T* rhs)
 	{
 		delete ptr;
 		ptr = rhs;
@@ -109,7 +109,7 @@ public:
 	}
 
 	// Assign from a pointer. Existing array is deleted and ownership is transferred from the source pointer, which becomes null.
-	AutoArrayPtr<T>& operator = (AutoArrayPtr<T>& rhs)
+	AutoArrayPtr<T>& operator=(AutoArrayPtr<T>& rhs)
 	{
 		delete array;
 		array = rhs.array;
@@ -118,7 +118,7 @@ public:
 	}
 
 	// Assign a new array. Existing array is deleted.
-	AutoArrayPtr<T>& operator = (T* rhs)
+	AutoArrayPtr<T>& operator=(T* rhs)
 	{
 		delete array;
 		array = rhs;
@@ -144,9 +144,9 @@ public:
 	// Dereference the array.
 	T& operator * () const { assert(array); return *array; }
 	// Index the array.
-	T& operator [] (size_t index) { assert(array); return array[index]; }
+	T& operator[](size_t index) { assert(array); return array[index]; }
 	// Const-index the array.
-	const T& operator [] (size_t index) const { assert(array); return array[index]; }
+	const T& operator[](size_t index) const { assert(array); return array[index]; }
 	// Convert to bool.
 	operator bool() const { return array != nullptr; }
 

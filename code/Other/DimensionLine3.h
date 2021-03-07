@@ -50,11 +50,11 @@ namespace dim
 
         /* === Operators === */
 
-        inline bool operator == (const L& Other)
+        inline bool operator==(const L& Other)
         {
             return Start == Other.Start && End == Other.End;
         }
-        inline bool operator != (const L& Other)
+        inline bool operator!=(const L& Other)
         {
             return Start != Other.Start && End != Other.End;
         }

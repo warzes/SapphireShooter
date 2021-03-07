@@ -55,7 +55,7 @@ public:
 	}
 
 	// Assign from another matrix.
-	Matrix3& operator = (const Matrix3& rhs)
+	Matrix3& operator=(const Matrix3& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02;
 		m10 = rhs.m10; m11 = rhs.m11; m12 = rhs.m12;
@@ -64,7 +64,7 @@ public:
 	}
 
 	// Test for equality with another matrix without epsilon.
-	bool operator == (const Matrix3& rhs) const
+	bool operator==(const Matrix3& rhs) const
 	{
 		const float* leftData = Data();
 		const float* rightData = rhs.Data();
@@ -79,7 +79,7 @@ public:
 	}
 
 	// Test for inequality with another matrix without epsilon.
-	bool operator != (const Matrix3& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Matrix3& rhs) const { return !(*this == rhs); }
 
 	// Multiply a Vector3.
 	Vector3 operator * (const Vector3& rhs) const

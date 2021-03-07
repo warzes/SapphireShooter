@@ -143,7 +143,7 @@ String::~String()
     delete[] buffer;
 }
 
-String& String::operator = (const String& rhs)
+String& String::operator=(const String& rhs)
 {
     Resize(rhs.Length());
     CopyChars(Buffer(), rhs.Buffer(), rhs.Length());
@@ -151,7 +151,7 @@ String& String::operator = (const String& rhs)
     return *this;
 }
 
-String& String::operator = (const char* rhs)
+String& String::operator=(const char* rhs)
 {
     size_t rhsLength = CStringLength(rhs);
     Resize(rhsLength);
@@ -160,7 +160,7 @@ String& String::operator = (const char* rhs)
     return *this;
 }
 
-String& String::operator = (char* rhs)
+String& String::operator=(char* rhs)
 {
     size_t rhsLength = CStringLength(rhs);
     Resize(rhsLength);

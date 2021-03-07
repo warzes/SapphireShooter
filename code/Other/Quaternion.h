@@ -84,7 +84,7 @@ namespace dim
 
         /* === Operators - copying === */
 
-        inline quaternion4<T>& operator = (const quaternion4<T>& Other)
+        inline quaternion4<T>& operator=(const quaternion4<T>& Other)
         {
             X = Other.X;
             Y = Other.Y;
@@ -95,11 +95,11 @@ namespace dim
 
         /* === Operators - comparisions === */
 
-        inline bool operator == (const quaternion4<T>& Other) const
+        inline bool operator==(const quaternion4<T>& Other) const
         {
             return compareVecEqual(*this, Other);
         }
-        inline bool operator != (const quaternion4<T>& Other) const
+        inline bool operator!=(const quaternion4<T>& Other) const
         {
             return compareVecNotEqual(*this, Other);
         }
@@ -204,11 +204,11 @@ namespace dim
 
         /* === Additional operators === */
 
-        inline const T& operator [] (size_t i) const
+        inline const T& operator[](size_t i) const
         {
             return *(&X + i);
         }
-        inline T& operator [] (size_t i)
+        inline T& operator[](size_t i)
         {
             return *(&X + i);
         }

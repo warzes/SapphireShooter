@@ -3,29 +3,15 @@
 // Reference to an object with id for serialization.
 struct ObjectRef
 {
-	// Object id.
-	unsigned id;
-
-	// Construct with no reference.
-	ObjectRef() :
-		id(0)
-	{
-	}
-
-	// Copy-construct.
-	ObjectRef(const ObjectRef& ref) :
-		id(ref.id)
-	{
-	}
-
-	// Construct with object id.
-	ObjectRef(unsigned id_) :
-		id(id_)
-	{
-	}
+	ObjectRef() = default;
+	ObjectRef(const ObjectRef& ref) : id(ref.id) {}
+	ObjectRef(unsigned id_) : id(id_) {}
 
 	// Test for equality with another reference.
-	bool operator == (const ObjectRef& rhs) const { return id == rhs.id; }
+	bool operator==(const ObjectRef& rhs) const { return id == rhs.id; }
 	// Test for inequality with another reference.
-	bool operator != (const ObjectRef& rhs) const { return !(*this == rhs); }
+	bool operator!=(const ObjectRef& rhs) const { return !(*this == rhs); }
+
+	// Object id.
+	unsigned id = 0;
 };

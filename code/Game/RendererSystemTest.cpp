@@ -38,7 +38,7 @@ void RendererSystemTest::Init()
 	RegisterRendererLibrary();
 
 	cache = new ResourceCache();
-	cache->AddResourceDir(ExecutableDir() + "Data");
+	cache->AddResourceDir(FileSystem::ExecutableDir() + "Data");
 
 	profiler = new Profiler();
 

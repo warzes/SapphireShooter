@@ -320,9 +320,9 @@ struct BlendModeDesc
 	}
 
 	// Test for equality with another blend mode description.
-	bool operator == (const BlendModeDesc& rhs) const { return blendEnable == rhs.blendEnable && srcBlend == rhs.srcBlend && destBlend == rhs.destBlend && blendOp == rhs.blendOp && srcBlendAlpha == rhs.srcBlendAlpha && destBlendAlpha == rhs.destBlendAlpha && blendOpAlpha == rhs.blendOpAlpha; }
+	bool operator==(const BlendModeDesc& rhs) const { return blendEnable == rhs.blendEnable && srcBlend == rhs.srcBlend && destBlend == rhs.destBlend && blendOp == rhs.blendOp && srcBlendAlpha == rhs.srcBlendAlpha && destBlendAlpha == rhs.destBlendAlpha && blendOpAlpha == rhs.blendOpAlpha; }
 	// Test for inequality with another blend mode description.
-	bool operator != (const BlendModeDesc& rhs) const { return !(*this == rhs); }
+	bool operator!=(const BlendModeDesc& rhs) const { return !(*this == rhs); }
 
 	// Blend enable flag.
 	bool blendEnable;

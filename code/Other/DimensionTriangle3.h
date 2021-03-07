@@ -45,7 +45,7 @@ namespace dim
 
         /* === Operators === */
 
-        inline triangle3d<T>& operator = (const triangle3d<T, C*>& other)
+        inline triangle3d<T>& operator=(const triangle3d<T, C*>& other)
         {
             PointA = *other.PointA; PointB = *other.PointB; PointC = *other.PointC;
             return *this;
@@ -94,11 +94,11 @@ namespace dim
 
         /* === Additional operators === */
 
-        inline const vector3d<T>& operator [] (u32 i) const
+        inline const vector3d<T>& operator[](u32 i) const
         {
             return *(&PointA + i);
         }
-        inline vector3d<T>& operator [] (u32 i)
+        inline vector3d<T>& operator[](u32 i)
         {
             return *(&PointA + i);
         }

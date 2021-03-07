@@ -62,9 +62,9 @@ public:
     }
 
     // Test for equality with another rect.
-    bool operator == (const IntRect& rhs) const { return left == rhs.left && top == rhs.top && right == rhs.right && bottom == rhs.bottom; }
+    bool operator==(const IntRect& rhs) const { return left == rhs.left && top == rhs.top && right == rhs.right && bottom == rhs.bottom; }
     // Test for inequality with another rect.
-    bool operator != (const IntRect& rhs) const { return !(*this == rhs); }
+    bool operator!=(const IntRect& rhs) const { return !(*this == rhs); }
 
     // Parse from a string. Return true on success.
     bool FromString(const String& str);

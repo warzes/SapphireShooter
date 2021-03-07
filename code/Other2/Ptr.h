@@ -48,7 +48,7 @@ private:
 	// Prevent copy construction.
 	RefCounted(const RefCounted& rhs);
 	// Prevent assignment.
-	RefCounted& operator = (const RefCounted& rhs);
+	RefCounted& operator=(const RefCounted& rhs);
 
 	// Reference count structure, allocated on demand.
 	RefCount* refCount;
@@ -85,7 +85,7 @@ public:
 	}
 
 	// Assign a raw pointer.
-	SharedPtr<T>& operator = (T* rhs)
+	SharedPtr<T>& operator=(T* rhs)
 	{
 		if (Get() == rhs)
 			return *this;
@@ -98,7 +98,7 @@ public:
 	}
 
 	// Assign another shared pointer.
-	SharedPtr<T>& operator = (const SharedPtr<T>& rhs)
+	SharedPtr<T>& operator=(const SharedPtr<T>& rhs)
 	{
 		if (*this == rhs)
 			return *this;
@@ -136,13 +136,13 @@ public:
 	}
 
 	// Test for equality with another shared pointer.
-	bool operator == (const SharedPtr<T>& rhs) const { return ptr == rhs.ptr; }
+	bool operator==(const SharedPtr<T>& rhs) const { return ptr == rhs.ptr; }
 	// Test for equality with a raw pointer.
-	bool operator == (T* rhs) const { return ptr == rhs; }
+	bool operator==(T* rhs) const { return ptr == rhs; }
 	// Test for inequality with another shared pointer.
-	bool operator != (const SharedPtr<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const SharedPtr<T>& rhs) const { return !(*this == rhs); }
 	// Test for inequality with a raw pointer.
-	bool operator != (T* rhs) const { return !(*this == rhs); }
+	bool operator!=(T* rhs) const { return !(*this == rhs); }
 	// Point to the object.
 	T* operator -> () const { assert(ptr); return ptr; }
 	// Dereference the object.
@@ -222,7 +222,7 @@ public:
 	}
 
 	// Assign another weak pointer.
-	WeakPtr<T>& operator = (const WeakPtr<T>& rhs)
+	WeakPtr<T>& operator=(const WeakPtr<T>& rhs)
 	{
 		if (*this == rhs)
 			return *this;
@@ -236,7 +236,7 @@ public:
 	}
 
 	// Assign a shared pointer.
-	WeakPtr<T>& operator = (const SharedPtr<T>& rhs)
+	WeakPtr<T>& operator=(const SharedPtr<T>& rhs)
 	{
 		if (*this == rhs)
 			return *this;
@@ -250,7 +250,7 @@ public:
 	}
 
 	// Assign a raw pointer.
-	WeakPtr<T>& operator = (T* rhs)
+	WeakPtr<T>& operator=(T* rhs)
 	{
 		if (Get() == rhs)
 			return *this;
@@ -293,17 +293,17 @@ public:
 	}
 
 	// Test for equality with another weak pointer.
-	bool operator == (const WeakPtr<T>& rhs) const { return ptr == rhs.ptr && refCount == rhs.refCount; }
+	bool operator==(const WeakPtr<T>& rhs) const { return ptr == rhs.ptr && refCount == rhs.refCount; }
 	// Test for equality with a shared pointer.
-	bool operator == (const SharedPtr<T>& rhs) const { return ptr == rhs.Get(); }
+	bool operator==(const SharedPtr<T>& rhs) const { return ptr == rhs.Get(); }
 	// Test for equality with a raw pointer.
-	bool operator == (T* rhs) const { return ptr == rhs; }
+	bool operator==(T* rhs) const { return ptr == rhs; }
 	// Test for inequality with another weak pointer.
-	bool operator != (const WeakPtr<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const WeakPtr<T>& rhs) const { return !(*this == rhs); }
 	// Test for inequality with a shared pointer.
-	bool operator != (const SharedPtr<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const SharedPtr<T>& rhs) const { return !(*this == rhs); }
 	// Test for inequality with a raw pointer.
-	bool operator != (T* rhs) const { return !(*this == rhs); }
+	bool operator!=(T* rhs) const { return !(*this == rhs); }
 	// Point to the object.
 	T* operator -> () const { T* ret = Get(); assert(ret); return ret; }
 	// Dereference the object.
@@ -386,7 +386,7 @@ public:
 	}
 
 	// Assign from another shared array pointer.
-	SharedArrayPtr<T>& operator = (const SharedArrayPtr<T>& rhs)
+	SharedArrayPtr<T>& operator=(const SharedArrayPtr<T>& rhs)
 	{
 		if (*this == rhs)
 			return *this;
@@ -401,7 +401,7 @@ public:
 	}
 
 	// Assign from a raw pointer. To avoid double refcount and double delete, assign only once from the same raw pointer.
-	SharedArrayPtr<T>& operator = (T* rhs)
+	SharedArrayPtr<T>& operator=(T* rhs)
 	{
 		if (Get() == rhs)
 			return *this;
@@ -424,13 +424,13 @@ public:
 	// Dereference the array.
 	T& operator * () const { assert(ptr); return *ptr; }
 	// Index the array.
-	T& operator [] (size_t index) { assert(ptr); return ptr[index]; }
+	T& operator[](size_t index) { assert(ptr); return ptr[index]; }
 	// Const-index the array.
-	const T& operator [] (size_t index) const { assert(ptr); return ptr[index]; }
+	const T& operator[](size_t index) const { assert(ptr); return ptr[index]; }
 	// Test for equality with another shared array pointer.
-	bool operator == (const SharedArrayPtr<T>& rhs) const { return ptr == rhs.ptr; }
+	bool operator==(const SharedArrayPtr<T>& rhs) const { return ptr == rhs.ptr; }
 	// Test for inequality with another shared array pointer.
-	bool operator != (const SharedArrayPtr<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const SharedArrayPtr<T>& rhs) const { return !(*this == rhs); }
 	// Convert to bool.
 	operator bool() const { return ptr != nullptr; }
 
@@ -487,7 +487,7 @@ public:
 
 private:
 	// Prevent direct assignment from an array pointer of different type.
-	template <class U> SharedArrayPtr<T>& operator = (const SharedArrayPtr<U>& rhs);
+	template <class U> SharedArrayPtr<T>& operator=(const SharedArrayPtr<U>& rhs);
 
 	// Pointer to the array.
 	T* ptr;
@@ -545,7 +545,7 @@ public:
 	}
 
 	// Assign from a shared array pointer.
-	WeakArrayPtr<T>& operator = (const SharedArrayPtr<T>& rhs)
+	WeakArrayPtr<T>& operator=(const SharedArrayPtr<T>& rhs)
 	{
 		if (ptr == rhs.Get() && refCount == rhs.RefCountPtr())
 			return *this;
@@ -560,7 +560,7 @@ public:
 	}
 
 	// Assign from another weak array pointer.
-	WeakArrayPtr<T>& operator = (const WeakArrayPtr<T>& rhs)
+	WeakArrayPtr<T>& operator=(const WeakArrayPtr<T>& rhs)
 	{
 		if (ptr == rhs.ptr && refCount == rhs.refCount)
 			return *this;
@@ -591,7 +591,7 @@ public:
 	}
 
 	// Index the array.
-	T& operator [] (size_t index)
+	T& operator[](size_t index)
 	{
 		T* rawPtr = Get();
 		assert(rawPtr);
@@ -599,7 +599,7 @@ public:
 	}
 
 	// Const-index the array.
-	const T& operator [] (size_t index) const
+	const T& operator[](size_t index) const
 	{
 		T* rawPtr = Get();
 		assert(rawPtr);
@@ -607,13 +607,13 @@ public:
 	}
 
 	// Test for equality with another weak array pointer.
-	bool operator == (const WeakArrayPtr<T>& rhs) const { return ptr == rhs.ptr && refCount == rhs.refCount; }
+	bool operator==(const WeakArrayPtr<T>& rhs) const { return ptr == rhs.ptr && refCount == rhs.refCount; }
 	// Test for equality with a shared array pointer.
-	bool operator == (const SharedArrayPtr<T>& rhs) const { return ptr == rhs.ptr && refCount == rhs.refCount; }
+	bool operator==(const SharedArrayPtr<T>& rhs) const { return ptr == rhs.ptr && refCount == rhs.refCount; }
 	// Test for inequality with another weak array pointer.
-	bool operator != (const WeakArrayPtr<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const WeakArrayPtr<T>& rhs) const { return !(*this == rhs); }
 	// Test for inequality with a shared array pointer.
-	bool operator != (const SharedArrayPtr<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const SharedArrayPtr<T>& rhs) const { return !(*this == rhs); }
 	// Convert to bool.
 	operator bool() const { return Get() != nullptr; }
 
@@ -671,7 +671,7 @@ public:
 
 private:
 	// Prevent direct assignment from a weak array pointer of different type.
-	template <class U> WeakArrayPtr<T>& operator = (const WeakArrayPtr<U>& rhs);
+	template <class U> WeakArrayPtr<T>& operator=(const WeakArrayPtr<U>& rhs);
 
 	// Pointer to the array.
 	T* ptr;

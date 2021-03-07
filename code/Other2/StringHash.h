@@ -43,28 +43,28 @@ public:
 	}
 
 	// Assign from another hash.
-	StringHash& operator = (const StringHash& rhs)
+	StringHash& operator=(const StringHash& rhs)
 	{
 		value = rhs.value;
 		return *this;
 	}
 
 	// Assign from a string.
-	StringHash& operator = (const String& rhs)
+	StringHash& operator=(const String& rhs)
 	{
 		value = String::CaseInsensitiveHash(rhs.CString());
 		return *this;
 	}
 
 	// Assign from a C string.
-	StringHash& operator = (const char* rhs)
+	StringHash& operator=(const char* rhs)
 	{
 		value = String::CaseInsensitiveHash(rhs);
 		return *this;
 	}
 
 	// Assign from a C string.
-	StringHash& operator = (char* rhs)
+	StringHash& operator=(char* rhs)
 	{
 		value = String::CaseInsensitiveHash(rhs);
 		return *this;
@@ -86,9 +86,9 @@ public:
 	}
 
 	// Test for equality with another hash.
-	bool operator == (const StringHash& rhs) const { return value == rhs.value; }
+	bool operator==(const StringHash& rhs) const { return value == rhs.value; }
 	// Test for inequality with another hash.
-	bool operator != (const StringHash& rhs) const { return value != rhs.value; }
+	bool operator!=(const StringHash& rhs) const { return value != rhs.value; }
 	// Test if less than another hash.
 	bool operator < (const StringHash& rhs) const { return value < rhs.value; }
 	// Test if greater than another hash.

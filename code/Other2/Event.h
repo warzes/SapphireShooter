@@ -80,7 +80,7 @@ private:
 	// Prevent copy construction.
 	Event(const Event& rhs);
 	// Prevent assignment.
-	Event& operator = (const Event& rhs);
+	Event& operator=(const Event& rhs);
 
 	// Event handlers.
 	Vector<AutoPtr<EventHandler> > handlers;

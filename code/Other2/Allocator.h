@@ -1,6 +1,5 @@
 #pragma once
 
-struct AllocatorBlock;
 struct AllocatorNode;
 
 // Allocator memory block.
@@ -17,7 +16,6 @@ struct AllocatorBlock
 	// Nodes follow.
 };
 
-// Allocator node.
 struct AllocatorNode
 {
 	// Next free node.
@@ -35,18 +33,16 @@ void* AllocatorGet(AllocatorBlock* allocator);
 void AllocatorFree(AllocatorBlock* allocator, void* node);
 
 // Allocator template class. Allocates objects of a specific class.
-template <class T> class Allocator
+template <class T> 
+class Allocator
 {
 public:
-	// Construct with optional initial capacity.
-	Allocator(size_t capacity = 0) :
-		allocator(nullptr)
+	Allocator(size_t capacity = 0) 
 	{
 		if (capacity)
 			Reserve(capacity);
 	}
 
-	// Destruct. All objects reserved from this allocator should be freed before this is called.
 	~Allocator()
 	{
 		Reset();
@@ -96,11 +92,9 @@ public:
 	}
 
 private:
-	// Prevent copy construction.
-	Allocator(const Allocator<T>& rhs);
-	// Prevent assignment.
-	Allocator<T>& operator = (const Allocator<T>& rhs);
+	Allocator(const Allocator<T>&) = delete;
+	Allocator<T>& operator=(const Allocator<T>&) = delete;
 
 	// Allocator block.
-	AllocatorBlock* allocator;
+	AllocatorBlock* allocator = nullptr;
 };

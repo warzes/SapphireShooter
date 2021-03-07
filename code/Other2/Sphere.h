@@ -61,7 +61,7 @@ public:
 	}
 
 	// Assign from another sphere.
-	Sphere& operator = (const Sphere& rhs)
+	Sphere& operator=(const Sphere& rhs)
 	{
 		center = rhs.center;
 		radius = rhs.radius;
@@ -69,9 +69,9 @@ public:
 	}
 
 	// Test for equality with another sphere without epsilon.
-	bool operator == (const Sphere& rhs) const { return center == rhs.center && radius == rhs.radius; }
+	bool operator==(const Sphere& rhs) const { return center == rhs.center && radius == rhs.radius; }
 	// Test for inequality with another sphere without epsilon.
-	bool operator != (const Sphere& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Sphere& rhs) const { return !(*this == rhs); }
 
 	// Define from another sphere.
 	void Define(const Sphere& sphere)

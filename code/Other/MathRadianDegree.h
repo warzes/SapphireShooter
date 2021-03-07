@@ -69,7 +69,7 @@ namespace math
 
         /* === Operators === */
 
-        inline Degree<T>& operator = (const Degree<T>& Other)
+        inline Degree<T>& operator=(const Degree<T>& Other)
         {
             Degree_ = Other.Degree_;
             return *this;
@@ -195,7 +195,7 @@ namespace math
 
         /* === Operators === */
 
-        inline Radian<T>& operator = (const Radian<T>& Other)
+        inline Radian<T>& operator=(const Radian<T>& Other)
         {
             Radian_ = Other.Radian_;
             return *this;

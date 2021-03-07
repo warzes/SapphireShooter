@@ -128,25 +128,25 @@ namespace dim
         }
 
         //! Returns the matrix component value at the specified offset (or rather index) 'i'.
-        inline const T& operator [] (size_t i) const
+        inline const T& operator[](size_t i) const
         {
             return M[i];
         }
-        inline T& operator [] (size_t i)
+        inline T& operator[](size_t i)
         {
             return M[i];
         }
 
-        inline bool operator == (const matrix4<T>& Other)
+        inline bool operator==(const matrix4<T>& Other)
         {
             return dim::compareMatEqual(*this, Other);
         }
-        inline bool operator != (const matrix4<T>& Other)
+        inline bool operator!=(const matrix4<T>& Other)
         {
             return dim::compareMatNotEqual(*this, Other);
         }
 
-        inline matrix4<T>& operator = (const matrix4<T>& Other)
+        inline matrix4<T>& operator=(const matrix4<T>& Other)
         {
             std::copy(Other.M, Other.M + 16, M);
             return *this;

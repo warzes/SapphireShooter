@@ -76,7 +76,7 @@ public:
 	}
 
 	// Assign from another matrix.
-	Matrix3x4& operator = (const Matrix3x4& rhs)
+	Matrix3x4& operator=(const Matrix3x4& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02; m03 = rhs.m03;
 		m10 = rhs.m10; m11 = rhs.m11; m12 = rhs.m12; m13 = rhs.m13;
@@ -85,7 +85,7 @@ public:
 	}
 
 	// Assign from a 3x3 matrix and set the extra elements to identity.
-	Matrix3x4& operator = (const Matrix3& rhs)
+	Matrix3x4& operator=(const Matrix3& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02; m03 = 0.0;
 		m10 = rhs.m10; m11 = rhs.m11; m12 = rhs.m12; m13 = 0.0;
@@ -94,7 +94,7 @@ public:
 	}
 
 	// Assign from a 4x4 matrix which is assumed to contain no projection.
-	Matrix3x4& operator = (const Matrix4& rhs)
+	Matrix3x4& operator=(const Matrix4& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02; m03 = rhs.m03;
 		m10 = rhs.m10; m11 = rhs.m11; m12 = rhs.m12; m13 = rhs.m13;
@@ -103,7 +103,7 @@ public:
 	}
 
 	// Test for equality with another matrix without epsilon.
-	bool operator == (const Matrix3x4& rhs) const
+	bool operator==(const Matrix3x4& rhs) const
 	{
 		const float* leftData = Data();
 		const float* rightData = rhs.Data();
@@ -118,7 +118,7 @@ public:
 	}
 
 	// Test for inequality with another matrix without epsilon.
-	bool operator != (const Matrix3x4& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Matrix3x4& rhs) const { return !(*this == rhs); }
 
 	// Multiply a Vector3 which is assumed to represent position.
 	Vector3 operator * (const Vector3& rhs) const

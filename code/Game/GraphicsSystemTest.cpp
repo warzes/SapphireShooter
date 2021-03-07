@@ -38,7 +38,7 @@ void GraphicsSystemTest::Init()
 	RegisterResourceLibrary();
 
 	cache = new ResourceCache();
-	cache->AddResourceDir(ExecutableDir() + "Data");
+	cache->AddResourceDir(FileSystem::ExecutableDir() + "Data");
 
 	graphics = new Graphics();
 	graphics->SetMode(IntVector2(1440, 900), false, true);

@@ -87,7 +87,7 @@ public:
 	}
 
 	// Assign from another quaternion.
-	Quaternion& operator = (const Quaternion& rhs)
+	Quaternion& operator=(const Quaternion& rhs)
 	{
 		w = rhs.w;
 		x = rhs.x;
@@ -117,9 +117,9 @@ public:
 	}
 
 	// Test for equality with another quaternion without epsilon.
-	bool operator == (const Quaternion& rhs) const { return w == rhs.w && x == rhs.x && y == rhs.y && z == rhs.z; }
+	bool operator==(const Quaternion& rhs) const { return w == rhs.w && x == rhs.x && y == rhs.y && z == rhs.z; }
 	// Test for inequality with another quaternion without epsilon.
-	bool operator != (const Quaternion& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Quaternion& rhs) const { return !(*this == rhs); }
 	// Multiply with a scalar.
 	Quaternion operator * (float rhs) const { return Quaternion(w * rhs, x * rhs, y * rhs, z * rhs); }
 	// Return negation.

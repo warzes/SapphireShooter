@@ -84,7 +84,7 @@ public:
 		}
 
 		// Assign from a non-const iterator.
-		ConstIterator& operator = (const Iterator& rhs) { ptr = rhs.ptr; return *this; }
+		ConstIterator& operator=(const Iterator& rhs) { ptr = rhs.ptr; return *this; }
 		// Preincrement the pointer.
 		ConstIterator& operator ++ () { GotoNext(); return *this; }
 		// Postincrement the pointer.
@@ -124,7 +124,7 @@ public:
 	}
 
 	// Assign a hash set.
-	HashSet& operator = (const HashSet<T>& rhs)
+	HashSet& operator=(const HashSet<T>& rhs)
 	{
 		if (&rhs != this)
 		{
@@ -149,7 +149,7 @@ public:
 	}
 
 	// Test for equality with another hash set.
-	bool operator == (const HashSet<T>& rhs) const
+	bool operator==(const HashSet<T>& rhs) const
 	{
 		if (rhs.Size() != Size())
 			return false;
@@ -164,7 +164,7 @@ public:
 	}
 
 	// Test for inequality with another hash set.
-	bool operator != (const HashSet<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const HashSet<T>& rhs) const { return !(*this == rhs); }
 
 	// Insert a key. Return an iterator to it.
 	Iterator Insert(const T& key)

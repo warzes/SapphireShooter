@@ -14,9 +14,9 @@ public:
 	~WString();
 
 	// Return char at index.
-	wchar_t& operator [] (size_t index) { assert(index < length); return buffer[index]; }
+	wchar_t& operator[](size_t index) { assert(index < length); return buffer[index]; }
 	// Return const char at index.
-	const wchar_t& operator [] (size_t index) const { assert(index < length); return buffer[index]; }
+	const wchar_t& operator[](size_t index) const { assert(index < length); return buffer[index]; }
 	// Return char at index.
 	wchar_t& At(size_t index) { assert(index < length); return buffer[index]; }
 	// Return const char at index.

@@ -54,25 +54,25 @@ namespace dim
             return M[(row << 1) + col];
         }
 
-        inline const T& operator [] (size_t i) const
+        inline const T& operator[](size_t i) const
         {
             return M[i];
         }
-        inline T& operator [] (size_t i)
+        inline T& operator[](size_t i)
         {
             return M[i];
         }
 
-        inline bool operator == (const matrix2<T>& Other)
+        inline bool operator==(const matrix2<T>& Other)
         {
             return dim::compareMatEqual(*this, Other);
         }
-        inline bool operator != (const matrix2<T>& Other)
+        inline bool operator!=(const matrix2<T>& Other)
         {
             return dim::compareMatNotEqual(*this, Other);
         }
 
-        inline matrix2<T>& operator = (const matrix2<T>& Other)
+        inline matrix2<T>& operator=(const matrix2<T>& Other)
         {
             std::copy(Other.M, Other.M + 4, M);
             return *this;

@@ -76,6 +76,7 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #if SE_PLATFORM_WINDOWS
 #	include <windows.h>
 #	include <MMSystem.h>
+#	include <sys/utime.h>
 #	if SE_DEBUG
 #		include <crtdbg.h>
 #	endif
@@ -83,6 +84,13 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #	undef far
 #	undef RGB
 #	undef TRANSPARENT
+#else
+#	include <dirent.h>
+#	include <errno.h>
+#	include <unistd.h>
+#	include <utime.h>
+#	include <sys/wait.h>
+#	define MAX_PATH 256
 #endif
 
 

@@ -52,11 +52,11 @@ namespace dim
 
         /* === Operators === */
 
-        inline bool operator == (const rect2d<T>& Other) const
+        inline bool operator==(const rect2d<T>& Other) const
         {
             return Left == Other.Left && Top == Other.Top && Right == Other.Right && Bottom == Other.Bottom;
         }
-        inline bool operator != (const rect2d<T>& Other) const
+        inline bool operator!=(const rect2d<T>& Other) const
         {
             return Left != Other.Left && Top != Other.Top && Right != Other.Right && Bottom != Other.Bottom;
         }

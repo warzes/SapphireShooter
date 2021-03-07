@@ -27,9 +27,9 @@ public:
 		}
 
 		// Test for equality with another pair.
-		bool operator == (const KeyValue& rhs) const { return first == rhs.first && second == rhs.second; }
+		bool operator==(const KeyValue& rhs) const { return first == rhs.first && second == rhs.second; }
 		// Test for inequality with another pair.
-		bool operator != (const KeyValue& rhs) const { return !(*this == rhs); }
+		bool operator!=(const KeyValue& rhs) const { return !(*this == rhs); }
 
 		// Key.
 		const T first;
@@ -40,7 +40,7 @@ public:
 		// Prevent copy construction.
 		KeyValue(const KeyValue& rhs);
 		// Prevent assignment.
-		KeyValue& operator = (const KeyValue& rhs);
+		KeyValue& operator=(const KeyValue& rhs);
 	};
 
 	// Hash map node.
@@ -118,7 +118,7 @@ public:
 		}
 
 		// Assign from a non-const iterator.
-		ConstIterator& operator = (const Iterator& rhs) { ptr = rhs.ptr; return *this; }
+		ConstIterator& operator=(const Iterator& rhs) { ptr = rhs.ptr; return *this; }
 		// Preincrement the pointer.
 		ConstIterator& operator ++ () { GotoNext(); return *this; }
 		// Postincrement the pointer.
@@ -158,7 +158,7 @@ public:
 	}
 
 	// Assign a hash map.
-	HashMap& operator = (const HashMap<T, U>& rhs)
+	HashMap& operator=(const HashMap<T, U>& rhs)
 	{
 		if (&rhs != this)
 		{
@@ -183,7 +183,7 @@ public:
 	}
 
 	// Test for equality with another hash map.
-	bool operator == (const HashMap<T, U>& rhs) const
+	bool operator==(const HashMap<T, U>& rhs) const
 	{
 		if (rhs.Size() != Size())
 			return false;
@@ -199,10 +199,10 @@ public:
 	}
 
 	// Test for inequality with another hash map.
-	bool operator != (const HashMap<T, U>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const HashMap<T, U>& rhs) const { return !(*this == rhs); }
 
 	// Index the map. Create a new pair if key not found.
-	U& operator [] (const T& key)
+	U& operator[](const T& key)
 	{
 		return InsertNode(key)->pair.second;
 	}

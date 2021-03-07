@@ -71,7 +71,7 @@ public:
 	}
 
 	// Assign from another vector.
-	Vector<T>& operator = (const Vector<T>& rhs)
+	Vector<T>& operator=(const Vector<T>& rhs)
 	{
 		if (&rhs != this)
 		{
@@ -112,7 +112,7 @@ public:
 	}
 
 	// Test for equality with another vector.
-	bool operator == (const Vector<T>& rhs) const
+	bool operator==(const Vector<T>& rhs) const
 	{
 		size_t size = Size();
 		if (rhs.Size() != size)
@@ -131,11 +131,11 @@ public:
 	}
 
 	// Test for inequality with another vector.
-	bool operator != (const Vector<T>& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Vector<T>& rhs) const { return !(*this == rhs); }
 	// Return element at index.
-	T& operator [] (size_t index) { assert(index < Size()); return Buffer()[index]; }
+	T& operator[](size_t index) { assert(index < Size()); return Buffer()[index]; }
 	// Return const element at index.
-	const T& operator [] (size_t index) const { assert(index < Size()); return Buffer()[index]; }
+	const T& operator[](size_t index) const { assert(index < Size()); return Buffer()[index]; }
 
 	// Add an element at the end.
 	void Push(const T& value) { Resize(Size() + 1, &value); }

@@ -36,7 +36,7 @@ public:
 	}
 
 	// Assign from another ray.
-	Ray& operator = (const Ray& rhs)
+	Ray& operator=(const Ray& rhs)
 	{
 		origin = rhs.origin;
 		direction = rhs.direction;
@@ -44,9 +44,9 @@ public:
 	}
 
 	// Check for equality with another ray without epsilon.
-	bool operator == (const Ray& rhs) const { return origin == rhs.origin && direction == rhs.direction; }
+	bool operator==(const Ray& rhs) const { return origin == rhs.origin && direction == rhs.direction; }
 	// Check for inequality with another ray without epsilon.
-	bool operator != (const Ray& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Ray& rhs) const { return !(*this == rhs); }
 
 	// Define from origin and direction. The direction will be normalized.
 	void Define(const Vector3& origin_, const Vector3& direction_)

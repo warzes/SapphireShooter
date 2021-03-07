@@ -40,17 +40,17 @@ namespace io
 
 		/* === Operators === */
 
-		string<T>& operator = (const string<T>& Str)
+		string<T>& operator=(const string<T>& Str)
 		{
 			Str_ = Str.Str_;
 			return *this;
 		}
 
-		bool operator == (const string<T>& Str) const
+		bool operator==(const string<T>& Str) const
 		{
 			return Str_ == Str.Str_;
 		}
-		bool operator != (const string<T>& Str) const
+		bool operator!=(const string<T>& Str) const
 		{
 			return Str_ != Str.Str_;
 		}
@@ -65,12 +65,12 @@ namespace io
 			return *this;
 		}
 
-		inline T& operator [] (u32 Index)
+		inline T& operator[](u32 Index)
 		{
 			return Str_[Index];
 		}
 
-		inline const T& operator [] (u32 Index) const
+		inline const T& operator[](u32 Index) const
 		{
 			return Str_[Index];
 		}

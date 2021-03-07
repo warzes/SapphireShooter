@@ -50,11 +50,11 @@ namespace dim
 
         /* === Operators - comparisions === */
 
-        inline bool operator == (const size2d<T>& Other) const
+        inline bool operator==(const size2d<T>& Other) const
         {
             return Width == Other.Width && Height == Other.Height;
         }
-        inline bool operator != (const size2d<T>& Other) const
+        inline bool operator!=(const size2d<T>& Other) const
         {
             return Width != Other.Width || Height != Other.Height;
         }

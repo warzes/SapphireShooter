@@ -117,11 +117,11 @@ namespace video
 
         /* === Operators - comparisions === */
 
-        inline bool operator == (const color& Other) const
+        inline bool operator==(const color& Other) const
         {
             return Red == Other.Red && Green == Other.Green && Blue == Other.Blue && Alpha == Other.Alpha;
         }
-        inline bool operator != (const color& Other) const
+        inline bool operator!=(const color& Other) const
         {
             return Red != Other.Red || Green != Other.Green || Blue != Other.Blue || Alpha != Other.Alpha;
         }
@@ -194,7 +194,7 @@ namespace video
 
         /* === Additional operators === */
 
-        inline const u8 operator [] (u32 i) const
+        inline const u8 operator[](u32 i) const
         {
             switch (i)
             {
@@ -206,7 +206,7 @@ namespace video
             return 0;
         }
 
-        inline u8& operator [] (u32 i)
+        inline u8& operator[](u32 i)
         {
             return *(&Red + i);
         }

@@ -52,7 +52,7 @@ public:
 	}
 
 	// Assign from another vector.
-	Vector2& operator = (const Vector2& rhs)
+	Vector2& operator=(const Vector2& rhs)
 	{
 		x = rhs.x;
 		y = rhs.y;
@@ -126,9 +126,9 @@ public:
 	bool FromString(const char* str);
 
 	// Test for equality with another vector without epsilon.
-	bool operator == (const Vector2& rhs) const { return x == rhs.x && y == rhs.y; }
+	bool operator==(const Vector2& rhs) const { return x == rhs.x && y == rhs.y; }
 	// Test for inequality with another vector without epsilon.
-	bool operator != (const Vector2& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Vector2& rhs) const { return !(*this == rhs); }
 	// Add a vector.
 	Vector2 operator + (const Vector2& rhs) const { return Vector2(x + rhs.x, y + rhs.y); }
 	// Return negation.

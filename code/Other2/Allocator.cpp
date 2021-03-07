@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Allocator.h"
 #include "Engine/DebugNew.h"
-
+//-----------------------------------------------------------------------------
 static AllocatorBlock* AllocatorGetBlock(AllocatorBlock* allocator, size_t nodeSize, size_t capacity)
 {
 	if (!capacity)
@@ -41,13 +41,13 @@ static AllocatorBlock* AllocatorGetBlock(AllocatorBlock* allocator, size_t nodeS
 	allocator->free = firstNewNode;
 	return newBlock;
 }
-
+//-----------------------------------------------------------------------------
 AllocatorBlock* AllocatorInitialize(size_t nodeSize, size_t initialCapacity)
 {
 	AllocatorBlock* block = AllocatorGetBlock(nullptr, nodeSize, initialCapacity);
 	return block;
 }
-
+//-----------------------------------------------------------------------------
 void AllocatorUninitialize(AllocatorBlock* allocator)
 {
 	while (allocator)
@@ -57,7 +57,7 @@ void AllocatorUninitialize(AllocatorBlock* allocator)
 		allocator = next;
 	}
 }
-
+//-----------------------------------------------------------------------------
 void* AllocatorGet(AllocatorBlock* allocator)
 {
 	if (!allocator)
@@ -79,7 +79,7 @@ void* AllocatorGet(AllocatorBlock* allocator)
 
 	return ptr;
 }
-
+//-----------------------------------------------------------------------------
 void AllocatorFree(AllocatorBlock* allocator, void* ptr)
 {
 	if (!allocator || !ptr)
@@ -92,3 +92,4 @@ void AllocatorFree(AllocatorBlock* allocator, void* ptr)
 	node->next = allocator->free;
 	allocator->free = node;
 }
+//-----------------------------------------------------------------------------

@@ -91,7 +91,7 @@ public:
 	}
 
 	// Assign from another bounding box.
-	BoundingBox& operator = (const BoundingBox& rhs)
+	BoundingBox& operator=(const BoundingBox& rhs)
 	{
 		min = rhs.min;
 		max = rhs.max;
@@ -99,7 +99,7 @@ public:
 	}
 
 	// Assign from a Rect, with the Z dimension left zero.
-	BoundingBox& operator = (const Rect& rhs)
+	BoundingBox& operator=(const Rect& rhs)
 	{
 		min = Vector3(rhs.min);
 		max = Vector3(rhs.max);
@@ -107,9 +107,9 @@ public:
 	}
 
 	// Test for equality with another bounding box without epsilon.
-	bool operator == (const BoundingBox& rhs) const { return min == rhs.min && max == rhs.max; }
+	bool operator==(const BoundingBox& rhs) const { return min == rhs.min && max == rhs.max; }
 	// Test for inequality with another bounding box without epsilon.
-	bool operator != (const BoundingBox& rhs) const { return !(*this == rhs); }
+	bool operator!=(const BoundingBox& rhs) const { return !(*this == rhs); }
 
 	// Define from another bounding box.
 	void Define(const BoundingBox& box)

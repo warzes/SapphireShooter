@@ -87,11 +87,11 @@ public:
 	~String();
 
 	// Assign a string.
-	String& operator = (const String& rhs);
+	String& operator=(const String& rhs);
 	// Assign a C string.
-	String& operator = (const char* rhs);
+	String& operator=(const char* rhs);
 	// Assign a C string.
-	String& operator = (char* rhs);
+	String& operator=(char* rhs);
 	// Add-assign a string.
 	String& operator += (const String& rhs);
 	// Add-assign a C string.
@@ -132,25 +132,25 @@ public:
 	// Add a character.
 	String operator + (char rhs) const;
 	// Test for equality with another string.
-	bool operator == (const String& rhs) const { return Compare(rhs) == 0; }
+	bool operator==(const String& rhs) const { return Compare(rhs) == 0; }
 	// Test for inequality with another string.
-	bool operator != (const String& rhs) const { return Compare(rhs) != 0; }
+	bool operator!=(const String& rhs) const { return Compare(rhs) != 0; }
 	// Test if string is less than another string.
 	bool operator < (const String& rhs) const { return Compare(rhs) < 0; }
 	// Test if string is greater than another string.
 	bool operator > (const String& rhs) const { return Compare(rhs) > 0; }
 	// Test for equality with a C string.
-	bool operator == (const char* rhs) const { return Compare(rhs) == 0; }
+	bool operator==(const char* rhs) const { return Compare(rhs) == 0; }
 	// Test for inequality with a C string.
-	bool operator != (const char* rhs) const { return Compare(rhs) != 0; }
+	bool operator!=(const char* rhs) const { return Compare(rhs) != 0; }
 	// Test if string is less than a C string.
 	bool operator < (const char* rhs) const { return Compare(rhs) < 0; }
 	// Test if string is greater than a C string.
 	bool operator > (const char* rhs) const { return Compare(rhs) > 0; }
 	// Return char at index.
-	char& operator [] (size_t index) { assert(index < Length()); return Buffer()[index]; }
+	char& operator[](size_t index) { assert(index < Length()); return Buffer()[index]; }
 	// Return const char at index.
-	const char& operator [] (size_t index) const { assert(index < Length()); return Buffer()[index]; }
+	const char& operator[](size_t index) const { assert(index < Length()); return Buffer()[index]; }
 
 	// Replace all occurrences of a character.
 	void Replace(char replaceThis, char replaceWith, bool caseSensitive = true);

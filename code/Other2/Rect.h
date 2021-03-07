@@ -66,7 +66,7 @@ public:
 	}
 
 	// Assign from another rect.
-	Rect& operator = (const Rect& rhs)
+	Rect& operator=(const Rect& rhs)
 	{
 		min = rhs.min;
 		max = rhs.max;
@@ -74,9 +74,9 @@ public:
 	}
 
 	// Test for equality with another rect without epsilon.
-	bool operator == (const Rect& rhs) const { return min == rhs.min && max == rhs.max; }
+	bool operator==(const Rect& rhs) const { return min == rhs.min && max == rhs.max; }
 	// Test for inequality with another rect without epsilon.
-	bool operator != (const Rect& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Rect& rhs) const { return !(*this == rhs); }
 
 	// Define from another rect.
 	void Define(const Rect& rect)

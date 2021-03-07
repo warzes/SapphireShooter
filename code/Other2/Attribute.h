@@ -111,7 +111,7 @@ private:
 	// Prevent copy construction.
 	Attribute(const Attribute& rhs);
 	// Prevent assignment.
-	Attribute& operator = (const Attribute& rhs);
+	Attribute& operator=(const Attribute& rhs);
 };
 
 // Template implementation of an attribute description with specific type.

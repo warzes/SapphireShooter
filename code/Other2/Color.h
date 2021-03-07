@@ -93,9 +93,9 @@ public:
 	}
 
 	// Test for equality with another color without epsilon.
-	bool operator == (const Color& rhs) const { return r == rhs.r && g == rhs.g && b == rhs.b && a == rhs.a; }
+	bool operator==(const Color& rhs) const { return r == rhs.r && g == rhs.g && b == rhs.b && a == rhs.a; }
 	// Test for inequality with another color without epsilon.
-	bool operator != (const Color& rhs) const { return !(*this == rhs); }
+	bool operator!=(const Color& rhs) const { return !(*this == rhs); }
 	// Multiply with a scalar.
 	Color operator * (float rhs) const { return Color(r * rhs, g * rhs, b * rhs, a * rhs); }
 	// Add a color.

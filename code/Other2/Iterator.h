@@ -46,9 +46,9 @@ template <class T> struct RandomAccessIterator
 	// Calculate offset to another iterator.
 	int operator - (const RandomAccessIterator& rhs) const { return (int)(ptr - rhs.ptr); }
 	// Test for equality with another iterator.
-	bool operator == (const RandomAccessIterator& rhs) const { return ptr == rhs.ptr; }
+	bool operator==(const RandomAccessIterator& rhs) const { return ptr == rhs.ptr; }
 	// Test for inequality with another iterator.
-	bool operator != (const RandomAccessIterator& rhs) const { return ptr != rhs.ptr; }
+	bool operator!=(const RandomAccessIterator& rhs) const { return ptr != rhs.ptr; }
 	// Test for less than with another iterator.
 	bool operator < (const RandomAccessIterator& rhs) const { return ptr < rhs.ptr; }
 	// Test for greater than with another iterator.
@@ -84,7 +84,7 @@ template <class T> struct RandomAccessConstIterator
 	}
 
 	// Assign from a non-const iterator.
-	RandomAccessConstIterator<T>& operator = (const RandomAccessIterator<T>& rhs) { ptr = rhs.ptr; return *this; }
+	RandomAccessConstIterator<T>& operator=(const RandomAccessIterator<T>& rhs) { ptr = rhs.ptr; return *this; }
 	// Point to the object.
 	const T* operator -> () const { return ptr; }
 	// Dereference the object.
@@ -116,9 +116,9 @@ template <class T> struct RandomAccessConstIterator
 	// Calculate offset to another iterator.
 	int operator - (const RandomAccessConstIterator& rhs) const { return (int)(ptr - rhs.ptr); }
 	// Test for equality with another iterator.
-	bool operator == (const RandomAccessConstIterator& rhs) const { return ptr == rhs.ptr; }
+	bool operator==(const RandomAccessConstIterator& rhs) const { return ptr == rhs.ptr; }
 	// Test for inequality with another iterator.
-	bool operator != (const RandomAccessConstIterator& rhs) const { return ptr != rhs.ptr; }
+	bool operator!=(const RandomAccessConstIterator& rhs) const { return ptr != rhs.ptr; }
 	// Test for less than with another iterator.
 	bool operator < (const RandomAccessConstIterator& rhs) const { return ptr < rhs.ptr; }
 	// Test for greater than with another iterator.

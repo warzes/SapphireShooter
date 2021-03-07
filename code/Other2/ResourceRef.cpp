@@ -3,12 +3,12 @@
 #include "Stream.h"
 #include "Object.h"
 #include "Engine/DebugNew.h"
-
+//-----------------------------------------------------------------------------
 bool ResourceRef::FromString(const String& str)
 {
 	return FromString(str.CString());
 }
-
+//-----------------------------------------------------------------------------
 bool ResourceRef::FromString(const char* str)
 {
 	Vector<String> values = String::Split(str, ';');
@@ -21,29 +21,29 @@ bool ResourceRef::FromString(const char* str)
 	else
 		return false;
 }
-
+//-----------------------------------------------------------------------------
 void ResourceRef::FromBinary(Stream& source)
 {
 	type = source.Read<StringHash>();
 	name = source.Read<String>();
 }
-
+//-----------------------------------------------------------------------------
 String ResourceRef::ToString() const
 {
 	return Object::TypeNameFromType(type) + ";" + name;
 }
-
+//-----------------------------------------------------------------------------
 void ResourceRef::ToBinary(Stream& dest) const
 {
 	dest.Write(type);
 	dest.Write(name);
 }
-
+//-----------------------------------------------------------------------------
 bool ResourceRefList::FromString(const String& str)
 {
 	return FromString(str.CString());
 }
-
+//-----------------------------------------------------------------------------
 bool ResourceRefList::FromString(const char* str)
 {
 	Vector<String> values = String::Split(str, ';');
@@ -58,7 +58,7 @@ bool ResourceRefList::FromString(const char* str)
 	else
 		return false;
 }
-
+//-----------------------------------------------------------------------------
 void ResourceRefList::FromBinary(Stream& source)
 {
 	type = source.Read<StringHash>();
@@ -67,7 +67,7 @@ void ResourceRefList::FromBinary(Stream& source)
 	for (size_t i = 0; i < num && !source.IsEof(); ++i)
 		names.Push(source.Read<String>());
 }
-
+//-----------------------------------------------------------------------------
 String ResourceRefList::ToString() const
 {
 	String ret(Object::TypeNameFromType(type));
@@ -78,7 +78,7 @@ String ResourceRefList::ToString() const
 	}
 	return ret;
 }
-
+//-----------------------------------------------------------------------------
 void ResourceRefList::ToBinary(Stream& dest) const
 {
 	dest.Write(type);
@@ -86,3 +86,4 @@ void ResourceRefList::ToBinary(Stream& dest) const
 	for (auto it = names.Begin(); it != names.End(); ++it)
 		dest.Write(*it);
 }
+//-----------------------------------------------------------------------------

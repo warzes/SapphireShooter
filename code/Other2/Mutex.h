@@ -34,7 +34,7 @@ private:
 	// Prevent copy construction.
 	MutexLock(const MutexLock& rhs);
 	// Prevent assignment.
-	MutexLock& operator = (const MutexLock& rhs);
+	MutexLock& operator=(const MutexLock& rhs);
 
 	// Mutex reference.
 	Mutex& mutex;

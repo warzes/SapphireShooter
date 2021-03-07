@@ -84,9 +84,9 @@ public:
 	}
 
 	// Test for equality with another vector.
-	bool operator == (const IntVector2& rhs) const { return x == rhs.x && y == rhs.y; }
+	bool operator==(const IntVector2& rhs) const { return x == rhs.x && y == rhs.y; }
 	// Test for inequality with another vector.
-	bool operator != (const IntVector2& rhs) const { return !(*this == rhs); }
+	bool operator!=(const IntVector2& rhs) const { return !(*this == rhs); }
 	// Add a vector.
 	IntVector2 operator + (const IntVector2& rhs) const { return IntVector2(x + rhs.x, y + rhs.y); }
 	// Return negation.

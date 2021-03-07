@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "File.h"
+#include "WString.h"
 #include "FileSystem.h"
 #include "Engine/DebugNew.h"
 //-----------------------------------------------------------------------------
@@ -47,18 +48,18 @@ bool File::Open(const String& fileName, FileMode fileMode)
 		return false;
 
 #if SE_PLATFORM_WINDOWS
-	m_handle = _wfopen(WideNativePath(fileName).CString(), openModesTranslate(fileMode));
+	m_handle = _wfopen(FileSystem::WideNativePath(fileName).CString(), openModesTranslate(fileMode));
 #else
-	m_handle = fopen(NativePath(fileName).CString(), openModesTranslate(fileMode));
+	m_handle = fopen(FileSystem::NativePath(fileName).CString(), openModesTranslate(fileMode));
 #endif
 
 	// If file did not exist in readwrite mode, retry with write-update mode
 	if (m_mode == FileMode::ReadWrite && !m_handle)
 	{
 #if SE_PLATFORM_WINDOWS
-		m_handle = _wfopen(WideNativePath(fileName).CString(), L"w+b");
+		m_handle = _wfopen(FileSystem::WideNativePath(fileName).CString(), L"w+b");
 #else
-		m_handle = fopen(NativePath(fileName).CString(), "w+b");
+		m_handle = fopen(FileSystem::NativePath(fileName).CString(), "w+b");
 #endif
 	}
 

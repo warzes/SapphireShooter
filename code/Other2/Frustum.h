@@ -34,7 +34,7 @@ public:
 	Frustum(const Frustum& frustum);
 
 	// Assign from another frustum.
-	Frustum& operator = (const Frustum& rhs);
+	Frustum& operator=(const Frustum& rhs);
 
 	// Define with projection parameters and a transform matrix.
 	void Define(float fov, float aspectRatio, float zoom, float nearZ, float farZ, const Matrix3x4& transform = Matrix3x4::IDENTITY);

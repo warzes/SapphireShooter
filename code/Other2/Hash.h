@@ -35,7 +35,7 @@ template<> inline unsigned MakeHash(const void* value)
 // Long long hash function.
 template<> inline unsigned MakeHash(const long long& value)
 {
-	return (value >> 32) | (value & 0xffffffff);
+	return (unsigned)((value >> 32) | (value & 0xffffffff));
 }
 
 // Unsigned long long hash function.
@@ -47,7 +47,7 @@ template<> inline unsigned MakeHash(const unsigned long long& value)
 // Int hash function.
 template<> inline unsigned MakeHash(const int& value)
 {
-	return value;
+	return (unsigned)value;
 }
 
 // Unsigned hash function.
@@ -59,7 +59,7 @@ template<> inline unsigned MakeHash(const unsigned& value)
 // Short hash function.
 template<> inline unsigned MakeHash(const short& value)
 {
-	return value;
+	return (unsigned)value;
 }
 
 // Unsigned short hash function.
@@ -71,7 +71,7 @@ template<> inline unsigned MakeHash(const unsigned short& value)
 // Char hash function.
 template<> inline unsigned MakeHash(const char& value)
 {
-	return value;
+	return (unsigned)value;
 }
 
 // Unsigned char hash function.
@@ -115,9 +115,9 @@ struct HashIteratorBase
 	}
 
 	// Test for equality with another iterator.
-	bool operator == (const HashIteratorBase& rhs) const { return ptr == rhs.ptr; }
+	bool operator==(const HashIteratorBase& rhs) const { return ptr == rhs.ptr; }
 	// Test for inequality with another iterator.
-	bool operator != (const HashIteratorBase& rhs) const { return ptr != rhs.ptr; }
+	bool operator!=(const HashIteratorBase& rhs) const { return ptr != rhs.ptr; }
 
 	// Go to the next node.
 	void GotoNext()

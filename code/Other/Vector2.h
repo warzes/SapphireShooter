@@ -108,11 +108,11 @@ namespace dim
 
         /* === Additional operators === */
 
-        inline const T& operator [] (size_t i) const
+        inline const T& operator[](size_t i) const
         {
             return *(&X + i);
         }
-        inline T& operator [] (size_t i)
+        inline T& operator[](size_t i)
         {
             return *(&X + i);
         }
@@ -254,11 +254,11 @@ namespace dim
 
     /* === Relation operators === */
 
-    template <typename T> inline bool operator == (const vector2d<T>& A, const vector2d<T>& B)
+    template <typename T> inline bool operator==(const vector2d<T>& A, const vector2d<T>& B)
     {
         return compareVecEqual(A, B);
     }
-    template <typename T> inline bool operator != (const vector2d<T>& A, const vector2d<T>& B)
+    template <typename T> inline bool operator!=(const vector2d<T>& A, const vector2d<T>& B)
     {
         return compareVecNotEqual(A, B);
     }

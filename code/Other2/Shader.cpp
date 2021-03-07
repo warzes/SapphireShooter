@@ -22,7 +22,7 @@ void Shader2::RegisterObject()
 
 bool Shader2::BeginLoad(Stream& source)
 {
-	String extension = Extension(source.Name());
+	String extension = FileSystem::Extension(source.Name());
 	stage = (extension == ".vs" || extension == ".vert") ? SHADER_VS : SHADER_PS;
 	sourceCode.Clear();
 	return ProcessIncludes(sourceCode, source);
@@ -72,7 +72,7 @@ bool Shader2::ProcessIncludes(String& code, Stream& source)
 
 		if (line.StartsWith("#include"))
 		{
-			String includeFileName = Path(source.Name()) + line.Substring(9).Replaced("\"", "").Trimmed();
+			String includeFileName = FileSystem::Path(source.Name()) + line.Substring(9).Replaced("\"", "").Trimmed();
 			//SE_LOG(("Shader include: " + includeFileName).CString());
 			AutoPtr<Stream> includeStream = cache->OpenResource(includeFileName);
 			if (!includeStream)
