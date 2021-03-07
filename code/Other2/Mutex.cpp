@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_ENABLE_THREADING
 #include "Mutex.h"
 #include "Engine/DebugNew.h"
 
@@ -66,3 +67,5 @@ MutexLock::~MutexLock()
 {
 	mutex.Release();
 }
+
+#endif

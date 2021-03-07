@@ -7,13 +7,13 @@
 #include "Engine/DebugNew.h"
 
 Stream::Stream() :
-	position(0),
+	m_position(0),
 	size(0)
 {
 }
 
 Stream::Stream(size_t numBytes) :
-	position(0),
+	m_position(0),
 	size(numBytes)
 {
 }
@@ -73,7 +73,7 @@ String Stream::ReadLine()
 			{
 				char next = Read<char>();
 				if (next != 10)
-					Seek(position - 1);
+					Seek(m_position - 1);
 			}
 			break;
 		}

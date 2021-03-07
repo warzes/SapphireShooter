@@ -23,7 +23,7 @@ public:
 	/// Read bytes from the stream. Return number of bytes actually read.
 	virtual size_t Read(void* dest, size_t numBytes) = 0;
 	/// Set position in bytes from the beginning of the stream. Return the position after the seek.
-	virtual size_t Seek(size_t position) = 0;
+	virtual size_t Seek(size_t m_position) = 0;
 	/// Write bytes to the stream. Return number of bytes actually written.
 	virtual size_t Write(const void* data, size_t size) = 0;
 	/// Return whether read operations are allowed.
@@ -66,15 +66,15 @@ public:
 	/// Return the stream name.
 	const String& Name() const { return name; }
 	/// Return current position in bytes.
-	size_t Position() const { return position; }
+	size_t Position() const { return m_position; }
 	/// Return size in bytes.
 	size_t Size() const { return size; }
 	/// Return whether the end of stream has been reached.
-	bool IsEof() const { return position >= size; }
+	bool IsEof() const { return m_position >= size; }
 
 protected:
 	/// Stream position.
-	size_t position;
+	size_t m_position;
 	/// Stream size.
 	size_t size;
 	/// Stream name.

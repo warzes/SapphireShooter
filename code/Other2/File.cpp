@@ -71,7 +71,7 @@ bool File::Open(const String& fileName, FileMode fileMode)
 
 	name = fileName;
 	mode = fileMode;
-	position = 0;
+	m_position = 0;
 	readSyncNeeded = false;
 	writeSyncNeeded = false;
 
@@ -86,15 +86,15 @@ size_t File::Read(void* dest, size_t numBytes)
 	if (!handle || mode == FILE_WRITE)
 		return 0;
 
-	if (numBytes + position > size)
-		numBytes = size - position;
+	if (numBytes + m_position > size)
+		numBytes = size - m_position;
 	if (!numBytes)
 		return 0;
 
 	// Need to reassign the position due to internal buffering when transitioning from writing to reading
 	if (readSyncNeeded)
 	{
-		fseek((FILE*)handle, (long)position, SEEK_SET);
+		fseek((FILE*)handle, (long)m_position, SEEK_SET);
 		readSyncNeeded = false;
 	}
 
@@ -102,12 +102,12 @@ size_t File::Read(void* dest, size_t numBytes)
 	if (ret != 1)
 	{
 		// If error, return to the position where the read began
-		fseek((FILE*)handle, (long)position, SEEK_SET);
+		fseek((FILE*)handle, (long)m_position, SEEK_SET);
 		return 0;
 	}
 
 	writeSyncNeeded = true;
-	position += numBytes;
+	m_position += numBytes;
 	return numBytes;
 }
 
@@ -121,10 +121,10 @@ size_t File::Seek(size_t newPosition)
 		newPosition = size;
 
 	fseek((FILE*)handle, (long)newPosition, SEEK_SET);
-	position = newPosition;
+	m_position = newPosition;
 	readSyncNeeded = false;
 	writeSyncNeeded = false;
-	return position;
+	return m_position;
 }
 
 size_t File::Write(const void* data, size_t numBytes)
@@ -138,21 +138,21 @@ size_t File::Write(const void* data, size_t numBytes)
 	// Need to reassign the position due to internal buffering when transitioning from reading to writing
 	if (writeSyncNeeded)
 	{
-		fseek((FILE*)handle, (long)position, SEEK_SET);
+		fseek((FILE*)handle, (long)m_position, SEEK_SET);
 		writeSyncNeeded = false;
 	}
 
 	if (fwrite(data, numBytes, 1, (FILE*)handle) != 1)
 	{
 		// If error, return to the position where the write began
-		fseek((FILE*)handle, (long)position, SEEK_SET);
+		fseek((FILE*)handle, (long)m_position, SEEK_SET);
 		return 0;
 	}
 
 	readSyncNeeded = true;
-	position += numBytes;
-	if (position > size)
-		size = position;
+	m_position += numBytes;
+	if (m_position > size)
+		size = m_position;
 
 	return size;
 }
@@ -173,7 +173,7 @@ void File::Close()
 	{
 		fclose((FILE*)handle);
 		handle = 0;
-		position = 0;
+		m_position = 0;
 		size = 0;
 	}
 }

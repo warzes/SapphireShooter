@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_ENABLE_THREADING
+
 /// Operating system mutual exclusion primitive.
 class Mutex
 {
@@ -37,3 +39,5 @@ private:
 	/// Mutex reference.
 	Mutex& mutex;
 };
+
+#endif

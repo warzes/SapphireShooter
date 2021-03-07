@@ -35,14 +35,14 @@ MemoryBuffer::MemoryBuffer(const Vector<unsigned char>& data) :
 
 size_t MemoryBuffer::Read(void* dest, size_t numBytes)
 {
-	if (numBytes + position > size)
-		numBytes = size - position;
+	if (numBytes + m_position > size)
+		numBytes = size - m_position;
 	if (!numBytes)
 		return 0;
 
-	unsigned char* srcPtr = &buffer[position];
+	unsigned char* srcPtr = &buffer[m_position];
 	unsigned char* destPtr = (unsigned char*)dest;
-	position += numBytes;
+	m_position += numBytes;
 
 	size_t copySize = numBytes;
 	while (copySize >= sizeof(unsigned))
@@ -69,20 +69,20 @@ size_t MemoryBuffer::Seek(size_t newPosition)
 	if (newPosition > size)
 		newPosition = size;
 
-	position = newPosition;
-	return position;
+	m_position = newPosition;
+	return m_position;
 }
 
 size_t MemoryBuffer::Write(const void* data, size_t numBytes)
 {
-	if (numBytes + position > size)
-		numBytes = size - position;
+	if (numBytes + m_position > size)
+		numBytes = size - m_position;
 	if (!numBytes || readOnly)
 		return 0;
 
 	unsigned char* srcPtr = (unsigned char*)data;
-	unsigned char* destPtr = &buffer[position];
-	position += numBytes;
+	unsigned char* destPtr = &buffer[m_position];
+	m_position += numBytes;
 
 	size_t copySize = numBytes;
 	while (copySize >= sizeof(unsigned))

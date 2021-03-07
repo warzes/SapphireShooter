@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_ENABLE_THREADING
+
 #ifdef _WIN32
 typedef unsigned TLSKeyID;
 #else
@@ -31,3 +33,5 @@ private:
 	/// Valid flag.
 	bool valid;
 };
+
+#endif
