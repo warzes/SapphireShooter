@@ -83,7 +83,7 @@ namespace dim
             dim::matrixAdd(Result, M, Other);
             return Result;
         }
-        inline matrix3<T>& operator += (const matrix3<T>& Other)
+        inline matrix3<T>& operator+=(const matrix3<T>& Other)
         {
             dim::matrixAdd(M, M, Other);
             return *this;
@@ -101,13 +101,13 @@ namespace dim
             return *this;
         }
 
-        inline matrix3<T> operator * (const matrix3<T>& Other) const
+        inline matrix3<T> operator*(const matrix3<T>& Other) const
         {
             matrix4<T> Result;
             dim::matrixMul<NUM, T>(Result.M, M, Other.M);
             return Result;
         }
-        inline matrix3<T> operator * (const T& Scalar) const
+        inline matrix3<T> operator*(const T& Scalar) const
         {
             matrix3<T> Result;
             dim::matrixMul(Result, *this, Scalar);
@@ -129,7 +129,7 @@ namespace dim
             return *this;
         }
 
-        inline vector3d<T> operator * (const vector3d<T>& Vector) const
+        inline vector3d<T> operator*(const vector3d<T>& Vector) const
         {
             return vector3d<T>(
                 Vector.X * M[0] + Vector.Y * M[3] + Vector.Z * M[6],
@@ -138,7 +138,7 @@ namespace dim
                 );
         }
 
-        inline vector2d<T> operator * (const vector2d<T>& Vector) const
+        inline vector2d<T> operator*(const vector2d<T>& Vector) const
         {
             return vector2d<T>(
                 Vector.X * M[0] + Vector.Y * M[3] + M[6],
@@ -146,7 +146,7 @@ namespace dim
                 );
         }
 
-        inline triangle3d<T> operator * (const triangle3d<T>& Triangle) const
+        inline triangle3d<T> operator*(const triangle3d<T>& Triangle) const
         {
             return triangle3d<T>(
                 *this * Triangle.PointA,
@@ -155,7 +155,7 @@ namespace dim
                 );
         }
 
-        inline triangle3d<T> operator * (const triangle3d<T, vector3d<T>*>& Triangle) const
+        inline triangle3d<T> operator*(const triangle3d<T, vector3d<T>*>& Triangle) const
         {
             return triangle3d<T>(
                 *this * (*Triangle.PointA),
@@ -164,7 +164,7 @@ namespace dim
                 );
         }
 
-        plane3d<T> operator * (const plane3d<T>& Plane) const
+        plane3d<T> operator*(const plane3d<T>& Plane) const
         {
             plane3d<T> NewPlane(Plane);
 

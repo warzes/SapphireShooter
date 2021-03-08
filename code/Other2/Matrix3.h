@@ -82,7 +82,7 @@ public:
 	bool operator!=(const Matrix3& rhs) const { return !(*this == rhs); }
 
 	// Multiply a Vector3.
-	Vector3 operator * (const Vector3& rhs) const
+	Vector3 operator*(const Vector3& rhs) const
 	{
 		return Vector3(
 			m00 * rhs.x + m01 * rhs.y + m02 * rhs.z,
@@ -112,7 +112,7 @@ public:
 	}
 
 	// Multiply with a scalar.
-	Matrix3 operator * (float rhs) const
+	Matrix3 operator*(float rhs) const
 	{
 		return Matrix3(
 			m00 * rhs, m01 * rhs, m02 * rhs,
@@ -122,7 +122,7 @@ public:
 	}
 
 	// Multiply a matrix.
-	Matrix3 operator * (const Matrix3& rhs) const
+	Matrix3 operator*(const Matrix3& rhs) const
 	{
 		return Matrix3(
 			m00 * rhs.m00 + m01 * rhs.m10 + m02 * rhs.m20,
@@ -218,4 +218,4 @@ public:
 };
 
 // Multiply a 3x3 matrix with a scalar.
-inline Matrix3 operator * (float lhs, const Matrix3& rhs) { return rhs * lhs; }
+inline Matrix3 operator*(float lhs, const Matrix3& rhs) { return rhs * lhs; }

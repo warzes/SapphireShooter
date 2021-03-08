@@ -121,7 +121,7 @@ public:
 	bool operator!=(const Matrix3x4& rhs) const { return !(*this == rhs); }
 
 	// Multiply a Vector3 which is assumed to represent position.
-	Vector3 operator * (const Vector3& rhs) const
+	Vector3 operator*(const Vector3& rhs) const
 	{
 		return Vector3(
 			(m00 * rhs.x + m01 * rhs.y + m02 * rhs.z + m03),
@@ -131,7 +131,7 @@ public:
 	}
 
 	// Multiply a Vector4.
-	Vector3 operator * (const Vector4& rhs) const
+	Vector3 operator*(const Vector4& rhs) const
 	{
 		return Vector3(
 			(m00 * rhs.x + m01 * rhs.y + m02 * rhs.z + m03 * rhs.w),
@@ -161,7 +161,7 @@ public:
 	}
 
 	// Multiply with a scalar.
-	Matrix3x4 operator * (float rhs) const
+	Matrix3x4 operator*(float rhs) const
 	{
 		return Matrix3x4(
 			m00 * rhs, m01 * rhs, m02 * rhs, m03 * rhs,
@@ -171,7 +171,7 @@ public:
 	}
 
 	// Multiply a matrix.
-	Matrix3x4 operator * (const Matrix3x4& rhs) const
+	Matrix3x4 operator*(const Matrix3x4& rhs) const
 	{
 		return Matrix3x4(
 			m00 * rhs.m00 + m01 * rhs.m10 + m02 * rhs.m20,
@@ -190,7 +190,7 @@ public:
 	}
 
 	// Multiply a 4x4 matrix.
-	Matrix4 operator * (const Matrix4& rhs) const
+	Matrix4 operator*(const Matrix4& rhs) const
 	{
 		return Matrix4(
 			m00 * rhs.m00 + m01 * rhs.m10 + m02 * rhs.m20 + m03 * rhs.m30,
@@ -337,10 +337,10 @@ public:
 };
 
 // Multiply a 3x4 matrix with a scalar.
-inline Matrix3x4 operator * (float lhs, const Matrix3x4& rhs) { return rhs * lhs; }
+inline Matrix3x4 operator*(float lhs, const Matrix3x4& rhs) { return rhs * lhs; }
 
 // Multiply a 3x4 matrix with a 4x4 matrix.
-inline Matrix4 operator * (const Matrix4& lhs, const Matrix3x4& rhs)
+inline Matrix4 operator*(const Matrix4& lhs, const Matrix3x4& rhs)
 {
 	return Matrix4(
 		lhs.m00 * rhs.m00 + lhs.m01 * rhs.m10 + lhs.m02 * rhs.m20,

@@ -98,16 +98,16 @@ public:
 	// Subtract a vector.
 	Vector3 operator - (const Vector3& rhs) const { return Vector3(x - rhs.x, y - rhs.y, z - rhs.z); }
 	// Multiply with a scalar.
-	Vector3 operator * (float rhs) const { return Vector3(x * rhs, y * rhs, z * rhs); }
+	Vector3 operator*(float rhs) const { return Vector3(x * rhs, y * rhs, z * rhs); }
 	// Multiply with a vector.
-	Vector3 operator * (const Vector3& rhs) const { return Vector3(x * rhs.x, y * rhs.y, z * rhs.z); }
+	Vector3 operator*(const Vector3& rhs) const { return Vector3(x * rhs.x, y * rhs.y, z * rhs.z); }
 	// Divide by a scalar.
 	Vector3 operator / (float rhs) const { return Vector3(x / rhs, y / rhs, z / rhs); }
 	// Divide by a vector.
 	Vector3 operator / (const Vector3& rhs) const { return Vector3(x / rhs.x, y / rhs.y, z / rhs.z); }
 
 	// Add-assign a vector.
-	Vector3& operator += (const Vector3& rhs)
+	Vector3& operator+=(const Vector3& rhs)
 	{
 		x += rhs.x;
 		y += rhs.y;
@@ -246,4 +246,4 @@ public:
 };
 
 // Multiply Vector3 with a scalar.
-inline Vector3 operator * (float lhs, const Vector3& rhs) { return rhs * lhs; }
+inline Vector3 operator*(float lhs, const Vector3& rhs) { return rhs * lhs; }

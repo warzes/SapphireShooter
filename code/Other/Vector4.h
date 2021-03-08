@@ -70,12 +70,12 @@ namespace dim
         /* === Operators - addition, subtraction, division, multiplication === */
 
         //! Pre-increment operator.
-        inline vector4d<T>& operator ++ ()
+        inline vector4d<T>& operator++()
         {
             ++X; ++Y; ++Z; return *this;
         }
         //! Post-increment operator.
-        inline vector4d<T>& operator ++ (int)
+        inline vector4d<T>& operator++(int)
         {
             const vector4d<T> Tmp(*this);
             ++* this;
@@ -83,12 +83,12 @@ namespace dim
         }
 
         //! Pre-decrement operator.
-        inline vector4d<T>& operator -- ()
+        inline vector4d<T>& operator--()
         {
             --X; --Y; --Z; return *this;
         }
         //! Post-decrement operator.
-        inline vector4d<T>& operator -- (int)
+        inline vector4d<T>& operator--(int)
         {
             const vector4d<T> Tmp(*this);
             --* this;
@@ -99,7 +99,7 @@ namespace dim
         {
             return vector4d<T>(X + Other.X, Y + Other.Y, Z + Other.Z, W);
         }
-        inline vector4d<T>& operator += (const vector4d<T>& Other)
+        inline vector4d<T>& operator+=(const vector4d<T>& Other)
         {
             X += Other.X; Y += Other.Y; Z += Other.Z; return *this;
         }
@@ -122,7 +122,7 @@ namespace dim
             X /= Other.X; Y /= Other.Y; Z /= Other.Z; return *this;
         }
 
-        inline vector4d<T> operator * (const vector4d<T>& Other) const
+        inline vector4d<T> operator*(const vector4d<T>& Other) const
         {
             return vector4d<T>(X * Other.X, Y * Other.Y, Z * Other.Z, W);
         }
@@ -131,7 +131,7 @@ namespace dim
             X *= Other.X; Y *= Other.Y; Z *= Other.Z; return *this;
         }
 
-        inline vector4d<T> operator * (const T& Size) const
+        inline vector4d<T> operator*(const T& Size) const
         {
             return vector4d<T>(X * Size, Y * Size, Z * Size, W);
         }
@@ -353,20 +353,20 @@ namespace dim
         return compareVecNotEqual(A, B);
     }
 
-    template <typename T> inline bool operator < (const vector4d<T>& A, const vector4d<T>& B)
+    template <typename T> inline bool operator<(const vector4d<T>& A, const vector4d<T>& B)
     {
         return compareVecLessThan(A, B);
     }
-    template <typename T> inline bool operator > (const vector4d<T>& A, const vector4d<T>& B)
+    template <typename T> inline bool operator>(const vector4d<T>& A, const vector4d<T>& B)
     {
         return compareVecGreaterThan(A, B);
     }
 
-    template <typename T> inline bool operator <= (const vector4d<T>& A, const vector4d<T>& B)
+    template <typename T> inline bool operator<=(const vector4d<T>& A, const vector4d<T>& B)
     {
         return compareVecLessThanOrEqual(A, B);
     }
-    template <typename T> inline bool operator >= (const vector4d<T>& A, const vector4d<T>& B)
+    template <typename T> inline bool operator>=(const vector4d<T>& A, const vector4d<T>& B)
     {
         return compareVecGreaterThanOrEqual(A, B);
     }

@@ -5,54 +5,45 @@ template <class T>
 class AutoPtr
 {
 public:
-	// Construct a null pointer.
-	AutoPtr() :
-		ptr(nullptr)
-	{
-	}
+	AutoPtr() = default;
 
 	// Copy-construct. Ownership is transferred, making the source pointer null.
-	AutoPtr(const AutoPtr<T>& ptr_) :
-		ptr(ptr_.ptr)
+	AutoPtr(const AutoPtr<T>& ptr_) : m_ptr(ptr_.m_ptr)
 	{
 		// Trick the compiler so that the AutoPtr can be copied to containers; the latest copy stays non-null
-		const_cast<AutoPtr<T>&>(ptr_).ptr = nullptr;
+		const_cast<AutoPtr<T>&>(ptr_).m_ptr = nullptr;
 	}
 
 	// Construct with a raw pointer; take ownership of the object.
-	AutoPtr(T* ptr_) :
-		ptr(ptr_)
-	{
-	}
+	AutoPtr(T* ptr_) : m_ptr(ptr_) {}
 
-	// Destruct. Delete the object pointed to.
 	~AutoPtr()
 	{
-		delete ptr;
+		delete m_ptr;
 	}
 
 	// Assign from a pointer. Existing object is deleted and ownership is transferred from the source pointer, which becomes null.
 	AutoPtr<T>& operator=(const AutoPtr<T>& rhs)
 	{
-		delete ptr;
-		ptr = rhs.ptr;
-		const_cast<AutoPtr<T>&>(rhs).ptr = nullptr;
+		delete m_ptr;
+		m_ptr = rhs.m_ptr;
+		const_cast<AutoPtr<T>&>(rhs).m_ptr = nullptr;
 		return *this;
 	}
 
 	// Assign a new object. Existing object is deleted.
 	AutoPtr<T>& operator=(T* rhs)
 	{
-		delete ptr;
-		ptr = rhs;
+		delete m_ptr;
+		m_ptr = rhs;
 		return *this;
 	}
 
 	// Detach the object from the pointer without destroying it and return it. The pointer becomes null.
 	T* Detach()
 	{
-		T* ret = ptr;
-		ptr = nullptr;
+		T* ret = m_ptr;
+		m_ptr = nullptr;
 		return ret;
 	}
 
@@ -63,73 +54,68 @@ public:
 	}
 
 	// Point to the object.
-	T* operator -> () const { assert(ptr); return ptr; }
+	T* operator->() const { assert(m_ptr); return m_ptr; }
 	// Dereference the object.
-	T& operator * () const { assert(ptr); return *ptr; }
+	T& operator*() const { assert(m_ptr); return *m_ptr; }
 	// Convert to the object.
-	operator T* () const { return ptr; }
+	operator T*() const { return m_ptr; }
 
 	// Return the object.
-	T* Get() const { return ptr; }
+	T* Get() const { return m_ptr; }
 	// Return whether is a null pointer.
-	bool IsNull() const { return ptr == nullptr; }
+	bool IsNull() const { return m_ptr == nullptr; }
 
 private:
 	// Object pointer.
-	T* ptr;
+	T* m_ptr = nullptr;
 };
 
 // Pointer which takes ownership of an array allocated with new[] and deletes it when the pointer goes out of scope.
-template <class T> class AutoArrayPtr
+template <class T> 
+class AutoArrayPtr
 {
 public:
-	// Construct a null pointer.
-	AutoArrayPtr() :
-		array(nullptr)
-	{
-	}
+	AutoArrayPtr() = default;
 
 	// Copy-construct. Ownership is transferred, making the source pointer null.
-	AutoArrayPtr(AutoArrayPtr<T>& ptr) :
-		array(ptr.array)
+	AutoArrayPtr(AutoArrayPtr<T>& ptr) : m_array(ptr.m_array)
 	{
-		ptr.array = nullptr;
+		ptr.m_array = nullptr;
 	}
 
 	// Construct and take ownership of the array.
-	AutoArrayPtr(T* array_) :
-		array(array_)
+	AutoArrayPtr(T* array_) : m_array(array_)
 	{
 	}
 
 	// Destruct. Delete the array pointed to.
 	~AutoArrayPtr()
 	{
-		delete[] array;
+		delete[] m_array;
 	}
 
 	// Assign from a pointer. Existing array is deleted and ownership is transferred from the source pointer, which becomes null.
 	AutoArrayPtr<T>& operator=(AutoArrayPtr<T>& rhs)
 	{
-		delete array;
-		array = rhs.array;
-		rhs.array = nullptr;
+		delete m_array;
+		m_array = rhs.m_array;
+		rhs.m_array = nullptr;
 		return *this;
 	}
 
 	// Assign a new array. Existing array is deleted.
 	AutoArrayPtr<T>& operator=(T* rhs)
 	{
-		delete array;
-		array = rhs;
+		delete m_array;
+		m_array = rhs;
 		return *this;
 	}
 
 	// Detach the array from the pointer without destroying it and return it. The pointer becomes null.
 	T* Detach()
 	{
-		T* ret = array;
-		array = nullptr;
+		T* ret = m_array;
+		m_array = nullptr;
 		return ret;
 	}
 
@@ -140,22 +126,22 @@ public:
 	}
 
 	// Point to the array.
-	T* operator -> () const { assert(array); return array; }
+	T* operator->() const { assert(m_array); return m_array; }
 	// Dereference the array.
-	T& operator * () const { assert(array); return *array; }
+	T& operator*() const { assert(m_array); return *m_array; }
 	// Index the array.
-	T& operator[](size_t index) { assert(array); return array[index]; }
+	T& operator[](size_t index) { assert(m_array); return m_array[index]; }
 	// Const-index the array.
-	const T& operator[](size_t index) const { assert(array); return array[index]; }
+	const T& operator[](size_t index) const { assert(m_array); return m_array[index]; }
 	// Convert to bool.
-	operator bool() const { return array != nullptr; }
+	operator bool() const { return m_array != nullptr; }
 
 	// Return the array.
-	T* Get() const { return array; }
+	T* Get() const { return m_array; }
 	// Return whether is a null pointer.
-	bool IsNull() const { return array == nullptr; }
+	bool IsNull() const { return m_array == nullptr; }
 
 private:
 	// Array pointer.
-	T* array;
+	T* m_array = nullptr;
 };

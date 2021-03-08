@@ -52,7 +52,7 @@ public:
 	}
 
 	// Add-assign a vector.
-	IntVector2& operator += (const IntVector2& rhs)
+	IntVector2& operator+=(const IntVector2& rhs)
 	{
 		x += rhs.x;
 		y += rhs.y;
@@ -94,7 +94,7 @@ public:
 	// Subtract a vector.
 	IntVector2 operator - (const IntVector2& rhs) const { return IntVector2(x - rhs.x, y - rhs.y); }
 	// Multiply with a scalar.
-	IntVector2 operator * (int rhs) const { return IntVector2(x * rhs, y * rhs); }
+	IntVector2 operator*(int rhs) const { return IntVector2(x * rhs, y * rhs); }
 	// Divide by a scalar.
 	IntVector2 operator / (int rhs) const { return IntVector2(x / rhs, y / rhs); }
 
@@ -113,4 +113,4 @@ public:
 };
 
 // Multiply IntVector2 with a scalar.
-inline IntVector2 operator * (int lhs, const IntVector2& rhs) { return rhs * lhs; }
+inline IntVector2 operator*(int lhs, const IntVector2& rhs) { return rhs * lhs; }

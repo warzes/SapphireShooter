@@ -75,7 +75,7 @@ namespace math
             return *this;
         }
 
-        inline Degree<T>& operator += (const Degree<T>& Other)
+        inline Degree<T>& operator+=(const Degree<T>& Other)
         {
             Degree_ += Other.Degree_;
             clamp();
@@ -108,7 +108,7 @@ namespace math
         {
             return Degree(Degree_ - Other.Degree_);
         }
-        inline Degree<T> operator * (const Degree<T>& Other) const
+        inline Degree<T> operator*(const Degree<T>& Other) const
         {
             return Degree(Degree_ * Other.Degree_);
         }
@@ -117,19 +117,19 @@ namespace math
             return Degree(Degree_ / Other.Degree_);
         }
 
-        inline bool operator > (const Degree<T>& Other) const
+        inline bool operator>(const Degree<T>& Other) const
         {
             return Degree_ > Other.Degree_;
         }
-        inline bool operator >= (const Degree<T>& Other) const
+        inline bool operator>=(const Degree<T>& Other) const
         {
             return Degree_ >= Other.Degree_;
         }
-        inline bool operator < (const Degree<T>& Other) const
+        inline bool operator<(const Degree<T>& Other) const
         {
             return Degree_ < Other.Degree_;
         }
-        inline bool operator <= (const Degree<T>& Other) const
+        inline bool operator<=(const Degree<T>& Other) const
         {
             return Degree_ <= Other.Degree_;
         }
@@ -201,7 +201,7 @@ namespace math
             return *this;
         }
 
-        inline Radian<T>& operator += (const Radian<T>& Other)
+        inline Radian<T>& operator+=(const Radian<T>& Other)
         {
             Radian_ += Other.Radian_;
             clamp();
@@ -234,7 +234,7 @@ namespace math
         {
             return Radian(Radian_ - Other.Radian_);
         }
-        inline Radian<T> operator * (const Radian<T>& Other) const
+        inline Radian<T> operator*(const Radian<T>& Other) const
         {
             return Radian(Radian_ * Other.Radian_);
         }
@@ -243,19 +243,19 @@ namespace math
             return Radian(Radian_ / Other.Radian_);
         }
 
-        inline bool operator > (const Radian<T>& Other) const
+        inline bool operator>(const Radian<T>& Other) const
         {
             return Radian_ > Other.Radian_;
         }
-        inline bool operator >= (const Radian<T>& Other) const
+        inline bool operator>=(const Radian<T>& Other) const
         {
             return Radian_ >= Other.Radian_;
         }
-        inline bool operator < (const Radian<T>& Other) const
+        inline bool operator<(const Radian<T>& Other) const
         {
             return Radian_ < Other.Radian_;
         }
-        inline bool operator <= (const Radian<T>& Other) const
+        inline bool operator<=(const Radian<T>& Other) const
         {
             return Radian_ <= Other.Radian_;
         }

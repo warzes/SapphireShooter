@@ -144,11 +144,11 @@ public:
 	// Test for inequality with a raw pointer.
 	bool operator!=(T* rhs) const { return !(*this == rhs); }
 	// Point to the object.
-	T* operator -> () const { assert(ptr); return ptr; }
+	T* operator->() const { assert(ptr); return ptr; }
 	// Dereference the object.
-	T& operator * () const { assert(ptr); return ptr; }
+	T& operator*() const { assert(ptr); return ptr; }
 	// Convert to the object.
-	operator T* () const { return ptr; }
+	operator T*() const { return ptr; }
 
 	// Return the object.
 	T* Get() const { return ptr; }
@@ -305,11 +305,11 @@ public:
 	// Test for inequality with a raw pointer.
 	bool operator!=(T* rhs) const { return !(*this == rhs); }
 	// Point to the object.
-	T* operator -> () const { T* ret = Get(); assert(ret); return ret; }
+	T* operator->() const { T* ret = Get(); assert(ret); return ret; }
 	// Dereference the object.
-	T& operator * () const { T* ret = Get(); assert(ret); return ret; }
+	T& operator*() const { T* ret = Get(); assert(ret); return ret; }
 	// Convert to the object.
-	operator T* () const { return Get(); }
+	operator T*() const { return Get(); }
 
 	// Return the object or null if it has been destroyed.
 	T* Get() const
@@ -420,9 +420,9 @@ public:
 	}
 
 	// Point to the array.
-	T* operator -> () const { assert(ptr); return ptr; }
+	T* operator->() const { assert(ptr); return ptr; }
 	// Dereference the array.
-	T& operator * () const { assert(ptr); return *ptr; }
+	T& operator*() const { assert(ptr); return *ptr; }
 	// Index the array.
 	T& operator[](size_t index) { assert(ptr); return ptr[index]; }
 	// Const-index the array.
@@ -575,7 +575,7 @@ public:
 	}
 
 	// Point to the array.
-	T* operator -> () const
+	T* operator->() const
 	{
 		T* rawPtr = Get();
 		assert(rawPtr);
@@ -583,7 +583,7 @@ public:
 	}
 
 	// Dereference the array.
-	T& operator * () const
+	T& operator*() const
 	{
 		T* rawPtr = Get();
 		assert(rawPtr);

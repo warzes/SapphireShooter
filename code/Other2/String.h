@@ -93,37 +93,37 @@ public:
 	// Assign a C string.
 	String& operator=(char* rhs);
 	// Add-assign a string.
-	String& operator += (const String& rhs);
+	String& operator+=(const String& rhs);
 	// Add-assign a C string.
-	String& operator += (const char* rhs);
+	String& operator+=(const char* rhs);
 	// Add-assign a C string.
-	String& operator += (char* rhs);
+	String& operator+=(char* rhs);
 	// Add-assign a character.
-	String& operator += (char rhs);
+	String& operator+=(char rhs);
 	// Add-assign an integer.
-	String& operator += (int rhs);
+	String& operator+=(int rhs);
 	// Add-assign a short integer.
-	String& operator += (short rhs);
+	String& operator+=(short rhs);
 	// Add-assign a long integer.
-	String& operator += (long rhs);
+	String& operator+=(long rhs);
 	// Add-assign a long long integer.
-	String& operator += (long long rhs);
+	String& operator+=(long long rhs);
 	// Add-assign an unsigned integer.
-	String& operator += (unsigned rhs);
+	String& operator+=(unsigned rhs);
 	// Add-assign a short unsigned integer.
-	String& operator += (unsigned short rhs);
+	String& operator+=(unsigned short rhs);
 	// Add-assign an unsigned long integer.
-	String& operator += (unsigned long rhs);
+	String& operator+=(unsigned long rhs);
 	// Add-assign an unsigned long long integer.
-	String& operator += (unsigned long long rhs);
+	String& operator+=(unsigned long long rhs);
 	// Add-assign a float.
-	String& operator += (float rhs);
+	String& operator+=(float rhs);
 	// Add-assign a float.
-	String& operator += (double rhs);
+	String& operator+=(double rhs);
 	// Add-assign a bool.
-	String& operator += (bool rhs);
+	String& operator+=(bool rhs);
 	// Add-assign an arbitrary type.
-	template <class T> String operator += (const T& rhs) { return *this += rhs.ToString(); }
+	template <class T> String operator+=(const T& rhs) { return *this += rhs.ToString(); }
 
 	// Add a string.
 	String operator + (const String& rhs) const;
@@ -136,17 +136,17 @@ public:
 	// Test for inequality with another string.
 	bool operator!=(const String& rhs) const { return Compare(rhs) != 0; }
 	// Test if string is less than another string.
-	bool operator < (const String& rhs) const { return Compare(rhs) < 0; }
+	bool operator<(const String& rhs) const { return Compare(rhs) < 0; }
 	// Test if string is greater than another string.
-	bool operator > (const String& rhs) const { return Compare(rhs) > 0; }
+	bool operator>(const String& rhs) const { return Compare(rhs) > 0; }
 	// Test for equality with a C string.
 	bool operator==(const char* rhs) const { return Compare(rhs) == 0; }
 	// Test for inequality with a C string.
 	bool operator!=(const char* rhs) const { return Compare(rhs) != 0; }
 	// Test if string is less than a C string.
-	bool operator < (const char* rhs) const { return Compare(rhs) < 0; }
+	bool operator<(const char* rhs) const { return Compare(rhs) < 0; }
 	// Test if string is greater than a C string.
-	bool operator > (const char* rhs) const { return Compare(rhs) > 0; }
+	bool operator>(const char* rhs) const { return Compare(rhs) > 0; }
 	// Return char at index.
 	char& operator[](size_t index) { assert(index < Length()); return Buffer()[index]; }
 	// Return const char at index.

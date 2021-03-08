@@ -97,7 +97,7 @@ public:
 	}
 
 	// Add-assign a quaternion.
-	Quaternion& operator += (const Quaternion& rhs)
+	Quaternion& operator+=(const Quaternion& rhs)
 	{
 		w += rhs.w;
 		x += rhs.x;
@@ -121,7 +121,7 @@ public:
 	// Test for inequality with another quaternion without epsilon.
 	bool operator!=(const Quaternion& rhs) const { return !(*this == rhs); }
 	// Multiply with a scalar.
-	Quaternion operator * (float rhs) const { return Quaternion(w * rhs, x * rhs, y * rhs, z * rhs); }
+	Quaternion operator*(float rhs) const { return Quaternion(w * rhs, x * rhs, y * rhs, z * rhs); }
 	// Return negation.
 	Quaternion operator - () const { return Quaternion(-w, -x, -y, -z); }
 	// Add a quaternion.
@@ -130,7 +130,7 @@ public:
 	Quaternion operator - (const Quaternion& rhs) const { return Quaternion(w - rhs.w, x - rhs.x, y - rhs.y, z - rhs.z); }
 
 	// Multiply a quaternion.
-	Quaternion operator * (const Quaternion& rhs) const
+	Quaternion operator*(const Quaternion& rhs) const
 	{
 		return Quaternion(
 			w * rhs.w - x * rhs.x - y * rhs.y - z * rhs.z,
@@ -141,7 +141,7 @@ public:
 	}
 
 	// Multiply a Vector3.
-	Vector3 operator * (const Vector3& rhs) const
+	Vector3 operator*(const Vector3& rhs) const
 	{
 		Vector3 qVec(x, y, z);
 		Vector3 cross1(qVec.CrossProduct(rhs));

@@ -3,7 +3,8 @@
 #include "Hash.h"
 
 // Pair template class.
-template <class T, class U> class Pair
+template <class T, class U> 
+class Pair
 {
 public:
 	// Construct undefined.
@@ -24,7 +25,7 @@ public:
 	bool operator!=(const Pair<T, U>& rhs) const { return !(*this == rhs); }
 
 	// Test for less than with another pair.
-	bool operator < (const Pair<T, U>& rhs) const
+	bool operator<(const Pair<T, U>& rhs) const
 	{
 		if (first < rhs.first)
 			return true;
@@ -34,7 +35,7 @@ public:
 	}
 
 	// Test for greater than with another pair.
-	bool operator > (const Pair<T, U>& rhs) const
+	bool operator>(const Pair<T, U>& rhs) const
 	{
 		if (first > rhs.first)
 			return true;

@@ -79,7 +79,7 @@ public:
 	}
 
 	// Add-assign a hash.
-	StringHash& operator += (const StringHash& rhs)
+	StringHash& operator+=(const StringHash& rhs)
 	{
 		value += rhs.value;
 		return *this;
@@ -90,9 +90,9 @@ public:
 	// Test for inequality with another hash.
 	bool operator!=(const StringHash& rhs) const { return value != rhs.value; }
 	// Test if less than another hash.
-	bool operator < (const StringHash& rhs) const { return value < rhs.value; }
+	bool operator<(const StringHash& rhs) const { return value < rhs.value; }
 	// Test if greater than another hash.
-	bool operator > (const StringHash& rhs) const { return value > rhs.value; }
+	bool operator>(const StringHash& rhs) const { return value > rhs.value; }
 	// Return true if nonzero hash value.
 	operator bool() const { return value != 0; }
 	// Return hash value.

@@ -51,16 +51,16 @@ public:
 	// Reserve initial capacity. Only possible before allocating the first object.
 	void Reserve(size_t capacity)
 	{
-		if (!allocator)
-			allocator = AllocatorInitialize(sizeof(T), capacity);
+		if (!m_allocator)
+			m_allocator = AllocatorInitialize(sizeof(T), capacity);
 	}
 
 	// Allocate and default-construct an object.
 	T* Allocate()
 	{
-		if (!allocator)
-			allocator = AllocatorInitialize(sizeof(T));
-		T* newObject = static_cast<T*>(AllocatorGet(allocator));
+		if (!m_allocator)
+			m_allocator = AllocatorInitialize(sizeof(T));
+		T* newObject = static_cast<T*>(AllocatorGet(m_allocator));
 		new(newObject) T();
 
 		return newObject;
@@ -69,9 +69,9 @@ public:
 	// Allocate and copy-construct an object.
 	T* Allocate(const T& object)
 	{
-		if (!allocator)
-			allocator = AllocatorInitialize(sizeof(T));
-		T* newObject = static_cast<T*>(AllocatorGet(allocator));
+		if (!m_allocator)
+			m_allocator = AllocatorInitialize(sizeof(T));
+		T* newObject = static_cast<T*>(AllocatorGet(m_allocator));
 		new(newObject) T(object);
 
 		return newObject;
@@ -81,14 +81,14 @@ public:
 	void Free(T* object)
 	{
 		(object)->~T();
-		AllocatorFree(allocator, object);
+		AllocatorFree(m_allocator, object);
 	}
 
 	// Free the allocator. All objects reserved from this allocator should be freed before this is called.
 	void Reset()
 	{
-		AllocatorUninitialize(allocator);
-		allocator = nullptr;
+		AllocatorUninitialize(m_allocator);
+		m_allocator = nullptr;
 	}
 
 private:
@@ -96,5 +96,5 @@ private:
 	Allocator<T>& operator=(const Allocator<T>&) = delete;
 
 	// Allocator block.
-	AllocatorBlock* allocator = nullptr;
+	AllocatorBlock* m_allocator = nullptr;
 };

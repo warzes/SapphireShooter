@@ -83,36 +83,19 @@ template<> inline unsigned MakeHash(const unsigned char& value)
 // Hash set/map node base class.
 struct HashNodeBase
 {
-	// Construct.
-	HashNodeBase() :
-		down(nullptr),
-		prev(nullptr),
-		next(nullptr)
-	{
-	}
-
 	// Next node in the bucket.
-	HashNodeBase* down;
+	HashNodeBase* down = nullptr;
 	// Previous node.
-	HashNodeBase* prev;
+	HashNodeBase* prev = nullptr;
 	// Next node.
-	HashNodeBase* next;
+	HashNodeBase* next = nullptr;
 };
 
 // Hash set/map iterator base class.
 struct HashIteratorBase
 {
-	// Construct.
-	HashIteratorBase() :
-		ptr(nullptr)
-	{
-	}
-
-	// Construct with a node pointer.
-	explicit HashIteratorBase(HashNodeBase* ptr_) :
-		ptr(ptr_)
-	{
-	}
+	HashIteratorBase() = default;
+	explicit HashIteratorBase(HashNodeBase* ptr_) : ptr(ptr_) {}
 
 	// Test for equality with another iterator.
 	bool operator==(const HashIteratorBase& rhs) const { return ptr == rhs.ptr; }
@@ -134,7 +117,7 @@ struct HashIteratorBase
 	}
 
 	// Node pointer.
-	HashNodeBase* ptr;
+	HashNodeBase* ptr = nullptr;
 };
 
 // Hash set/map base class.
@@ -146,50 +129,42 @@ public:
 	// Maximum load factor.
 	static const size_t MAX_LOAD_FACTOR = 4;
 
-	// Construct.
-	HashBase() :
-		ptrs(nullptr),
-		allocator(nullptr)
-	{
-	}
-
-	// Destruct.
 	~HashBase()
 	{
-		delete[] ptrs;
+		delete[] m_ptrs;
 	}
 
 	// Swap with another hash set or map.
 	void Swap(HashBase& hash);
 
 	// Return number of elements.
-	size_t Size() const { return ptrs ? (reinterpret_cast<size_t*>(ptrs))[0] : 0; }
+	size_t Size() const { return m_ptrs ? (reinterpret_cast<size_t*>(m_ptrs))[0] : 0; }
 	// Return whether has no elements.
 	bool IsEmpty() const { return Size() == 0; }
 
 protected:
 	// Allocate bucket head pointers + room for size and bucket count variables.
-	void AllocateBuckets(size_t size, size_t numBuckets);
+	void allocateBuckets(size_t size, size_t numBuckets);
 	// Reset bucket head pointers.
-	void ResetPtrs();
+	void resetPtrs();
 	// Set new size.
-	void SetSize(size_t size) { reinterpret_cast<size_t*>(ptrs)[0] = size; }
+	void setSize(size_t size) { reinterpret_cast<size_t*>(m_ptrs)[0] = size; }
 	// Set new head node.
-	void SetHead(HashNodeBase* head) { ptrs[2] = head; }
+	void setHead(HashNodeBase* head) { m_ptrs[2] = head; }
 	// Set new tail node.
-	void SetTail(HashNodeBase* tail) { ptrs[3] = tail; }
+	void setTail(HashNodeBase* tail) { m_ptrs[3] = tail; }
 
 	// Return number of buckets.
-	size_t NumBuckets() const { return ptrs ? (reinterpret_cast<size_t*>(ptrs))[1] : MIN_BUCKETS; }
+	size_t numBuckets() const { return m_ptrs ? (reinterpret_cast<size_t*>(m_ptrs))[1] : MIN_BUCKETS; }
 	// Return list head node.
-	HashNodeBase* Head() const { return ptrs ? ptrs[2] : nullptr; }
+	HashNodeBase* head() const { return m_ptrs ? m_ptrs[2] : nullptr; }
 	// Return list tail node.
-	HashNodeBase* Tail() const { return ptrs ? ptrs[3] : nullptr; }
+	HashNodeBase* tail() const { return m_ptrs ? m_ptrs[3] : nullptr; }
 	// Return bucket head pointers.
-	HashNodeBase** Ptrs() const { return ptrs ? ptrs + 4 : nullptr; }
+	HashNodeBase** ptrs() const { return m_ptrs ? m_ptrs + 4 : nullptr; }
 
 	// Bucket head pointers.
-	HashNodeBase** ptrs;
+	HashNodeBase** m_ptrs = nullptr;
 	// Node allocator.
-	AllocatorBlock* allocator;
+	AllocatorBlock* m_allocator = nullptr;
 };

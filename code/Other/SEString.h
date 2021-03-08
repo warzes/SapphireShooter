@@ -59,7 +59,7 @@ namespace io
 		{
 			return Str_ + Str.Str_;
 		}
-		string<T>& operator += (const string<T>& Str)
+		string<T>& operator+=(const string<T>& Str)
 		{
 			Str_ += Str.Str_;
 			return *this;

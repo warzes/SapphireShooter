@@ -65,7 +65,7 @@ namespace dim
         {
             return rect2d<T>(Left + Other.Left, Top + Other.Top, Right + Other.Right, Bottom + Other.Bottom);
         }
-        inline rect2d<T>& operator += (const rect2d<T>& Other)
+        inline rect2d<T>& operator+=(const rect2d<T>& Other)
         {
             Left += Other.Left; Top += Other.Top; Right += Other.Right; Bottom += Other.Bottom; return *this;
         }
@@ -88,7 +88,7 @@ namespace dim
             Left /= Other.Left; Top /= Other.Top; Right /= Other.Right; Bottom /= Other.Bottom; return *this;
         }
 
-        inline rect2d<T> operator * (const rect2d<T>& Other) const
+        inline rect2d<T> operator*(const rect2d<T>& Other) const
         {
             return rect2d<T>(Left * Other.Left, Top * Other.Top, Right * Other.Right, Bottom * Other.Bottom);
         }

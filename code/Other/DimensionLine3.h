@@ -63,7 +63,7 @@ namespace dim
         {
             return L(Start + Other.Start, End + Other.End);
         }
-        inline L& operator += (const L& Other)
+        inline L& operator+=(const L& Other)
         {
             Start += Other.Start; End += Other.End; return *this;
         }
@@ -86,7 +86,7 @@ namespace dim
             Start /= Other.Start; End /= Other.End; return *this;
         }
 
-        inline L operator * (const L& Other) const
+        inline L operator*(const L& Other) const
         {
             return L(Start * Other.Start, End * Other.End);
         }

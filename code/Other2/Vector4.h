@@ -89,16 +89,16 @@ public:
 	// Subtract a vector.
 	Vector4 operator - (const Vector4& rhs) const { return Vector4(x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w); }
 	// Multiply with a scalar.
-	Vector4 operator * (float rhs) const { return Vector4(x * rhs, y * rhs, z * rhs, w * rhs); }
+	Vector4 operator*(float rhs) const { return Vector4(x * rhs, y * rhs, z * rhs, w * rhs); }
 	// Multiply with a vector.
-	Vector4 operator * (const Vector4& rhs) const { return Vector4(x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w); }
+	Vector4 operator*(const Vector4& rhs) const { return Vector4(x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w); }
 	// Divide by a scalar.
 	Vector4 operator / (float rhs) const { return Vector4(x / rhs, y / rhs, z / rhs, w / rhs); }
 	// Divide by a vector.
 	Vector4 operator / (const Vector4& rhs) const { return Vector4(x / rhs.x, y / rhs.y, z / rhs.z, w / rhs.w); }
 
 	// Add-assign a vector.
-	Vector4& operator += (const Vector4& rhs)
+	Vector4& operator+=(const Vector4& rhs)
 	{
 		x += rhs.x;
 		y += rhs.y;
@@ -188,4 +188,4 @@ public:
 };
 
 // Multiply Vector4 with a scalar.
-inline Vector4 operator * (float lhs, const Vector4& rhs) { return rhs * lhs; }
+inline Vector4 operator*(float lhs, const Vector4& rhs) { return rhs * lhs; }

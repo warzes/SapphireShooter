@@ -82,14 +82,14 @@ public:
 	}
 
 	// Add-assign an element.
-	Vector<T>& operator += (const T& rhs)
+	Vector<T>& operator+=(const T& rhs)
 	{
 		Push(rhs);
 		return *this;
 	}
 
 	// Add-assign another vector.
-	Vector<T>& operator += (const Vector<T>& rhs)
+	Vector<T>& operator+=(const Vector<T>& rhs)
 	{
 		Push(rhs);
 		return *this;

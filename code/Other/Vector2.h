@@ -51,7 +51,7 @@ namespace dim
         {
             return vector2d<T>(X + Other.X, Y + Other.Y);
         }
-        inline vector2d<T>& operator += (const vector2d<T>& Other)
+        inline vector2d<T>& operator+=(const vector2d<T>& Other)
         {
             X += Other.X; Y += Other.Y; return *this;
         }
@@ -74,7 +74,7 @@ namespace dim
             X /= Other.X; Y /= Other.Y; return *this;
         }
 
-        inline vector2d<T> operator * (const vector2d<T>& Other) const
+        inline vector2d<T> operator*(const vector2d<T>& Other) const
         {
             return vector2d<T>(X * Other.X, Y * Other.Y);
         }
@@ -92,7 +92,7 @@ namespace dim
             X /= Size; Y /= Size; return *this;
         }
 
-        inline vector2d<T> operator * (T Size) const
+        inline vector2d<T> operator*(T Size) const
         {
             return vector2d<T>(X * Size, Y * Size);
         }
@@ -263,20 +263,20 @@ namespace dim
         return compareVecNotEqual(A, B);
     }
 
-    template <typename T> inline bool operator < (const vector2d<T>& A, const vector2d<T>& B)
+    template <typename T> inline bool operator<(const vector2d<T>& A, const vector2d<T>& B)
     {
         return compareVecLessThan(A, B);
     }
-    template <typename T> inline bool operator > (const vector2d<T>& A, const vector2d<T>& B)
+    template <typename T> inline bool operator>(const vector2d<T>& A, const vector2d<T>& B)
     {
         return compareVecGreaterThan(A, B);
     }
 
-    template <typename T> inline bool operator <= (const vector2d<T>& A, const vector2d<T>& B)
+    template <typename T> inline bool operator<=(const vector2d<T>& A, const vector2d<T>& B)
     {
         return compareVecLessThanOrEqual(A, B);
     }
-    template <typename T> inline bool operator >= (const vector2d<T>& A, const vector2d<T>& B)
+    template <typename T> inline bool operator>=(const vector2d<T>& A, const vector2d<T>& B)
     {
         return compareVecGreaterThanOrEqual(A, B);
     }

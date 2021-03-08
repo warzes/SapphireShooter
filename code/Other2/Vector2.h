@@ -60,7 +60,7 @@ public:
 	}
 
 	// Add-assign a vector.
-	Vector2& operator += (const Vector2& rhs)
+	Vector2& operator+=(const Vector2& rhs)
 	{
 		x += rhs.x;
 		y += rhs.y;
@@ -136,9 +136,9 @@ public:
 	// Subtract a vector.
 	Vector2 operator - (const Vector2& rhs) const { return Vector2(x - rhs.x, y - rhs.y); }
 	// Multiply with a scalar.
-	Vector2 operator * (float rhs) const { return Vector2(x * rhs, y * rhs); }
+	Vector2 operator*(float rhs) const { return Vector2(x * rhs, y * rhs); }
 	// Multiply with a vector.
-	Vector2 operator * (const Vector2& rhs) const { return Vector2(x * rhs.x, y * rhs.y); }
+	Vector2 operator*(const Vector2& rhs) const { return Vector2(x * rhs.x, y * rhs.y); }
 	// Divide by a scalar.
 	Vector2 operator / (float rhs) const { return Vector2(x / rhs, y / rhs); }
 	// Divide by a vector.
@@ -194,4 +194,4 @@ public:
 };
 
 // Multiply Vector2 with a scalar
-inline Vector2 operator * (float lhs, const Vector2& rhs) { return rhs * lhs; }
+inline Vector2 operator*(float lhs, const Vector2& rhs) { return rhs * lhs; }

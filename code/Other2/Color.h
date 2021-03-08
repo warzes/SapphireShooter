@@ -83,7 +83,7 @@ public:
 	}
 
 	// Add-assign a color.
-	Color& operator += (const Color& rhs)
+	Color& operator+=(const Color& rhs)
 	{
 		r += rhs.r;
 		g += rhs.g;
@@ -97,7 +97,7 @@ public:
 	// Test for inequality with another color without epsilon.
 	bool operator!=(const Color& rhs) const { return !(*this == rhs); }
 	// Multiply with a scalar.
-	Color operator * (float rhs) const { return Color(r * rhs, g * rhs, b * rhs, a * rhs); }
+	Color operator*(float rhs) const { return Color(r * rhs, g * rhs, b * rhs, a * rhs); }
 	// Add a color.
 	Color operator + (const Color& rhs) const { return Color(r + rhs.r, g + rhs.g, b + rhs.b, a + rhs.a); }
 	// Substract a color.
@@ -202,4 +202,4 @@ protected:
 };
 
 // Multiply Color with a scalar.
-inline Color operator * (float lhs, const Color& rhs) { return rhs * lhs; }
+inline Color operator*(float lhs, const Color& rhs) { return rhs * lhs; }

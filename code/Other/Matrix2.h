@@ -84,7 +84,7 @@ namespace dim
             dim::matrixAdd(Result, M, Other);
             return Result;
         }
-        inline matrix2<T>& operator += (const matrix2<T>& Other)
+        inline matrix2<T>& operator+=(const matrix2<T>& Other)
         {
             dim::matrixAdd(M, M, Other);
             return *this;
@@ -102,13 +102,13 @@ namespace dim
             return *this;
         }
 
-        inline matrix2<T> operator * (const matrix2<T>& Other) const
+        inline matrix2<T> operator*(const matrix2<T>& Other) const
         {
             matrix4<T> Result;
             dim::matrixMul<NUM, T>(Result.M, M, Other.M);
             return Result;
         }
-   /*     inline matrix2<T> operator * (const T& Scalar) const
+   /*     inline matrix2<T> operator*(const T& Scalar) const
         {
             matrix3<T> Result;
             dim::matrixMul(Result, *this, Scalar);
@@ -130,7 +130,7 @@ namespace dim
             return *this;
         }
 
-        inline vector2d<T> operator * (const vector2d<T>& Vector) const
+        inline vector2d<T> operator*(const vector2d<T>& Vector) const
         {
             return vector2d<T>(
                 Vector.X * M[0] + Vector.Y * M[2],

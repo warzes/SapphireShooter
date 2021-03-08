@@ -158,7 +158,7 @@ namespace dim
             dim::matrixAdd(Result, M, Other);
             return Result;
         }
-        inline matrix4<T>& operator += (const matrix4<T>& Other)
+        inline matrix4<T>& operator+=(const matrix4<T>& Other)
         {
             dim::matrixAdd(M, M, Other);
             return *this;
@@ -176,13 +176,13 @@ namespace dim
             return *this;
         }
 
-        inline matrix4<T> operator * (const matrix4<T>& Other) const
+        inline matrix4<T> operator*(const matrix4<T>& Other) const
         {
             matrix4<T> Result;
             dim::matrixMul<NUM, T>(Result.M, M, Other.M);
             return Result;
         }
-        inline matrix4<T> operator * (const T& Scalar) const
+        inline matrix4<T> operator*(const T& Scalar) const
         {
             matrix4<T> Result;
             dim::matrixMul(Result, *this, Scalar);
@@ -204,7 +204,7 @@ namespace dim
             return *this;
         }
 
-        inline vector2d<T> operator * (const vector2d<T>& Vector) const
+        inline vector2d<T> operator*(const vector2d<T>& Vector) const
         {
             return vector2d<T>(
                 Vector.X * M[0] + Vector.Y * M[4] + M[12],
@@ -212,7 +212,7 @@ namespace dim
                 );
         }
 
-        inline vector3d<T> operator * (const vector3d<T>& Vector) const
+        inline vector3d<T> operator*(const vector3d<T>& Vector) const
         {
             return vector3d<T>(
                 Vector.X * M[0] + Vector.Y * M[4] + Vector.Z * M[8] + M[12],
@@ -221,7 +221,7 @@ namespace dim
                 );
         }
 
-        inline vector4d<T> operator * (const vector4d<T>& Vector) const
+        inline vector4d<T> operator*(const vector4d<T>& Vector) const
         {
             return vector4d<T>(
                 Vector.X * M[0] + Vector.Y * M[4] + Vector.Z * M[8] + Vector.W * M[12],
@@ -231,7 +231,7 @@ namespace dim
                 );
         }
 
-        inline triangle3d<T> operator * (const triangle3d<T>& Triangle) const
+        inline triangle3d<T> operator*(const triangle3d<T>& Triangle) const
         {
             return triangle3d<T>(
                 *this * Triangle.PointA,
@@ -240,7 +240,7 @@ namespace dim
                 );
         }
 
-        inline triangle3d<T> operator * (const triangle3d<T, vector3d<T>*>& Triangle) const
+        inline triangle3d<T> operator*(const triangle3d<T, vector3d<T>*>& Triangle) const
         {
             return triangle3d<T>(
                 *this * (*Triangle.PointA),
@@ -249,7 +249,7 @@ namespace dim
                 );
         }
 
-        inline plane3d<T> operator * (const plane3d<T>& Plane) const
+        inline plane3d<T> operator*(const plane3d<T>& Plane) const
         {
             const vector3d<T> Member(*this * Plane.getMemberPoint());
             const matrix4<T> TransposedInverse(getInverse().getTransposed());
@@ -258,7 +258,7 @@ namespace dim
             return plane3d<T>(Normal, Normal.dot(Member));
         }
 
-        inline obbox3d<T> operator * (const obbox3d<T>& Box) const
+        inline obbox3d<T> operator*(const obbox3d<T>& Box) const
         {
             return obbox3d<T>(
                 *this * Box.Center,
@@ -266,7 +266,7 @@ namespace dim
                 );
         }
 
-        inline line3d<T> operator * (const line3d<T>& Line) const
+        inline line3d<T> operator*(const line3d<T>& Line) const
         {
             return line3d<T>(*this * Line.Start, *this * Line.End);
         }
