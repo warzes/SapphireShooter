@@ -39,6 +39,11 @@
 =====================================================================================================
 Разное по визуальному стилю
 =====================================================================================================
+Концепт сеттинга и монстров - https://www.youtube.com/watch?v=GLluVgrpz4k
+							- https://www.youtube.com/watch?v=dy0Z8JHfQVU
+
+
+
 Ассеты				- https://fertile-soil-productions.itch.io/modular-village-pack
 					- https://fertile-soil-productions.itch.io/mast
 					- https://o-lobster.itch.io/platformmetroidvania-pixel-art-asset-pack   - тайлы для платформера
