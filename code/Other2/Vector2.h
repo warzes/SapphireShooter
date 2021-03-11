@@ -68,11 +68,7 @@ public:
 	}
 
 	// Subtract-assign a vector.
-<<<<<<< HEAD
-	Vector2& operator-=(const Vector2& rhs)
-=======
 	Vector2& operator -= (const Vector2& rhs)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		x -= rhs.x;
 		y -= rhs.y;
@@ -134,19 +130,11 @@ public:
 	// Test for inequality with another vector without epsilon.
 	bool operator!=(const Vector2& rhs) const { return !(*this == rhs); }
 	// Add a vector.
-<<<<<<< HEAD
-	Vector2 operator+(const Vector2& rhs) const { return Vector2(x + rhs.x, y + rhs.y); }
-	// Return negation.
-	Vector2 operator-() const { return Vector2(-x, -y); }
-	// Subtract a vector.
-	Vector2 operator-(const Vector2& rhs) const { return Vector2(x - rhs.x, y - rhs.y); }
-=======
 	Vector2 operator + (const Vector2& rhs) const { return Vector2(x + rhs.x, y + rhs.y); }
 	// Return negation.
 	Vector2 operator - () const { return Vector2(-x, -y); }
 	// Subtract a vector.
 	Vector2 operator - (const Vector2& rhs) const { return Vector2(x - rhs.x, y - rhs.y); }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Multiply with a scalar.
 	Vector2 operator*(float rhs) const { return Vector2(x * rhs, y * rhs); }
 	// Multiply with a vector.

@@ -12,20 +12,14 @@ typedef pthread_t ThreadID;
 class Thread
 {
 public:
-<<<<<<< HEAD
-=======
 #if SE_ENABLE_THREADING
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Construct. Does not start the thread yet.
 	Thread();
 	// Destruct. If running, stop and wait for thread to finish.
 	virtual ~Thread();
 
 	// The function to run in the thread.
-<<<<<<< HEAD
-=======
 	// интересная идея на наследовании треда вместо колбэка
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	virtual void ThreadFunction() = 0;
 
 	// Start running the thread. Return true on success, or false if already running or if can not create the thread.
@@ -45,17 +39,11 @@ public:
 	// Return the current thread's ID.
 	static ThreadID CurrentThreadID();
 	// Return whether is executing in the main thread.
-<<<<<<< HEAD
-	static bool IsMainThread();
-
-protected:
-=======
 #endif
 	static bool IsMainThread();
 
 protected:
 #if SE_ENABLE_THREADING
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Thread handle.
 	void* handle;
 	// Running flag.

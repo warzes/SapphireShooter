@@ -51,7 +51,7 @@ namespace dim
             return *this;
         }
 
-        inline triangle3d<T> operator+(const vector3d<T>& Vector) const
+        inline triangle3d<T> operator + (const vector3d<T>& Vector) const
         {
             return triangle3d<T>(PointA + Vector, PointB + Vector, PointC + Vector);
         }
@@ -60,11 +60,11 @@ namespace dim
             PointA += Vector; PointB += Vector; PointC += Vector; return *this;
         }
 
-        inline triangle3d<T> operator-(const vector3d<T>& Vector) const
+        inline triangle3d<T> operator - (const vector3d<T>& Vector) const
         {
             return triangle3d<T>(PointA - Vector, PointB - Vector, PointC - Vector);
         }
-        inline triangle3d<T>& operator-=(const vector3d<T>& Vector)
+        inline triangle3d<T>& operator -= (const vector3d<T>& Vector)
         {
             PointA -= Vector; PointB -= Vector; PointC -= Vector; return *this;
         }
@@ -87,7 +87,7 @@ namespace dim
             PointA /= Vector; PointB /= Vector; PointC /= Vector; return *this;
         }
 
-        inline triangle3d<T> operator-() const
+        inline triangle3d<T> operator - () const
         {
             return triangle3d<T>(-PointA, -PointB, -PointC);
         }

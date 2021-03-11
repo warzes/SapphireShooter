@@ -5,28 +5,6 @@
 #include "Sort.h"
 #include "Vector.h"
 
-<<<<<<< HEAD
-// Hash map template class.
-template <class T, class U> class HashMap : public HashBase
-{
-public:
-	// Hash map key-value pair with const key.
-	class KeyValue
-	{
-	public:
-		// Default-construct.
-		KeyValue() :
-			first(T())
-		{
-		}
-
-		// Construct with key and value.
-		KeyValue(const T& key, const U& value) :
-			first(key),
-			second(value)
-		{
-		}
-=======
 // hash map template class.
 template <class T, class U> 
 class HashMap : public HashBase
@@ -38,7 +16,6 @@ public:
 	public:
 		KeyValue() : first(T()) {}
 		KeyValue(const T& key, const U& value) : first(key), second(value) {}
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Test for equality with another pair.
 		bool operator==(const KeyValue& rhs) const { return first == rhs.first && second == rhs.second; }
@@ -51,30 +28,6 @@ public:
 		U second;
 
 	private:
-<<<<<<< HEAD
-		// Prevent copy construction.
-		KeyValue(const KeyValue& rhs);
-		// Prevent assignment.
-		KeyValue& operator=(const KeyValue& rhs);
-	};
-
-	// Hash map node.
-	struct Node : public HashNodeBase
-	{
-		// Construct undefined.
-		Node()
-		{
-		}
-
-		// Construct with key and value.
-		Node(const T& key, const U& value) :
-			pair(key, value)
-		{
-		}
-
-		// Key-value pair.
-		KeyValue pair;
-=======
 		KeyValue(const KeyValue&) = delete;
 		KeyValue& operator=(const KeyValue&) = delete;
 	};
@@ -84,7 +37,6 @@ public:
 	{
 		Node() = default;
 		Node(const T& key, const U& value) : pair(key, value) {}
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Return next node.
 		Node* Next() const { return static_cast<Node*>(next); }
@@ -97,27 +49,11 @@ public:
 		KeyValue pair;
 	};
 
-<<<<<<< HEAD
-	// Hash map node iterator.
-	struct Iterator : public HashIteratorBase
-	{
-		// Construct.
-		Iterator()
-		{
-		}
-
-		// Construct with a node pointer.
-		Iterator(Node* ptr) :
-			HashIteratorBase(ptr)
-		{
-		}
-=======
 	// hash map node iterator.
 	struct Iterator : public HashIteratorBase
 	{
 		Iterator() = default;
 		Iterator(Node* ptr) : HashIteratorBase(ptr) {}
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Preincrement the pointer.
 		Iterator& operator++() { GotoNext(); return *this; }
@@ -134,34 +70,12 @@ public:
 		KeyValue& operator*() const { return (static_cast<Node*>(ptr))->pair; }
 	};
 
-<<<<<<< HEAD
-	// Hash map node const iterator.
-	struct ConstIterator : public HashIteratorBase
-	{
-		// Construct.
-		ConstIterator()
-		{
-		}
-
-		// Construct with a node pointer.
-		ConstIterator(Node* ptr) :
-			HashIteratorBase(ptr)
-		{
-		}
-
-		// Construct from a non-const iterator.
-		ConstIterator(const Iterator& rhs) :
-			HashIteratorBase(rhs.ptr)
-		{
-		}
-=======
 	// hash map node const iterator.
 	struct ConstIterator : public HashIteratorBase
 	{
 		ConstIterator() = default;
 		ConstIterator(Node* ptr) : HashIteratorBase(ptr) {}
 		ConstIterator(const Iterator& rhs) : HashIteratorBase(rhs.ptr) {}
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Assign from a non-const iterator.
 		ConstIterator& operator=(const Iterator& rhs) { ptr = rhs.ptr; return *this; }
@@ -180,27 +94,14 @@ public:
 		const KeyValue& operator*() const { return (static_cast<Node*>(ptr))->pair; }
 	};
 
-<<<<<<< HEAD
-	// Construct empty.
-	HashMap()
-	{
-	}
-
-	// Construct from another hash map.
-=======
 	HashMap() = default;
 
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	HashMap(const HashMap<T, U>& map)
 	{
 		Initialize(map.NumBuckets(), map.Size() + 1);
 		*this = map;
 	}
 
-<<<<<<< HEAD
-	// Destruct.
-=======
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	~HashMap()
 	{
 		if (m_ptrs && m_allocator)
@@ -211,10 +112,6 @@ public:
 		}
 	}
 
-<<<<<<< HEAD
-	// Assign a hash map.
-=======
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	HashMap& operator=(const HashMap<T, U>& rhs)
 	{
 		if (&rhs != this)
@@ -259,11 +156,7 @@ public:
 	bool operator!=(const HashMap<T, U>& rhs) const { return !(*this == rhs); }
 
 	// Index the map. Create a new pair if key not found.
-<<<<<<< HEAD
-	U& operator [] (const T& key)
-=======
 	U& operator[](const T& key)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		return insertNode(key)->pair.second;
 	}
@@ -282,11 +175,7 @@ public:
 	}
 
 	// Insert a pair by iterator. Return iterator to the value.
-<<<<<<< HEAD
-	Iterator Insert(const ConstIterator& it) { return Iterator(InsertNode(it->first, it->second)); }
-=======
 	Iterator Insert(const ConstIterator& it) { return Iterator(insertNode(it->first, it->second)); }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Insert a range by iterators.
 	void Insert(const ConstIterator& start, const ConstIterator& end)
@@ -396,11 +285,7 @@ public:
 	}
 
 	// Rehash to a specific bucket count, which must be a power of two. Return true on success.
-<<<<<<< HEAD
-	bool Rehash(size_t numBuckets)
-=======
 	bool Rehash(size_t numBucket)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		if (numBucket == numBuckets())
 			return true;
@@ -478,15 +363,6 @@ public:
 	}
 
 	// Return iterator to the first element. Is not the lowest key unless the map has been sorted.
-<<<<<<< HEAD
-	Iterator Begin() { return Iterator(Head()); }
-	// Return const iterator to the beginning.
-	ConstIterator Begin() const { return ConstIterator(Head()); }
-	// Return iterator to the end.
-	Iterator End() { return Iterator(Tail()); }
-	// Return const iterator to the end.
-	ConstIterator End() const { return ConstIterator(Tail()); }
-=======
 	Iterator Begin() { return Iterator(head()); }
 	// Return const iterator to the beginning.
 	ConstIterator Begin() const { return ConstIterator(head()); }
@@ -494,7 +370,6 @@ public:
 	Iterator End() { return Iterator(tail()); }
 	// Return const iterator to the end.
 	ConstIterator End() const { return ConstIterator(tail()); }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Return first keyvalue. Is not the lowest key unless the map has been sorted.
 	const T& Front() const { return *Begin(); }
 	// Return last keyvalue.
@@ -502,24 +377,6 @@ public:
 
 private:
 	// Return head node with correct type.
-<<<<<<< HEAD
-	Node* Head() const { return static_cast<Node*>(HashBase::Head()); }
-	// Return tail node with correct type.
-	Node* Tail() const { return static_cast<Node*>(HashBase::Tail()); }
-
-	// Reserve the tail node and initial buckets.
-	void Initialize(size_t numBuckets, size_t numNodes)
-	{
-		AllocateBuckets(0, numBuckets);
-		allocator = AllocatorInitialize(sizeof(Node), numNodes);
-		HashNodeBase* tail = AllocateNode();
-		SetHead(tail);
-		SetTail(tail);
-	}
-
-	// Find a node from the buckets.
-	Node* FindNode(const T& key, unsigned hashKey) const
-=======
 	Node* head() const { return static_cast<Node*>(HashBase::head()); }
 	// Return tail node with correct type.
 	Node* tail() const { return static_cast<Node*>(HashBase::tail()); }
@@ -536,7 +393,6 @@ private:
 
 	// Find a node from the buckets.
 	Node* findNode(const T& key, unsigned hashKey) const
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		if (!m_ptrs)
 			return nullptr;
@@ -553,11 +409,7 @@ private:
 	}
 
 	// Find a node and the previous node from the buckets.
-<<<<<<< HEAD
-	Node* FindNode(const T& key, unsigned hashKey, Node*& previous) const
-=======
 	Node* findNode(const T& key, unsigned hashKey, Node*& previous) const
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		previous = nullptr;
 		if (!m_ptrs)
@@ -576,11 +428,7 @@ private:
 	}
 
 	// Insert a key and default value and return either the new or existing node.
-<<<<<<< HEAD
-	Node* InsertNode(const T& key)
-=======
 	Node* insertNode(const T& key)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		unsigned hashKey = hash(key);
 
@@ -604,11 +452,7 @@ private:
 	}
 
 	// Insert a key and value and return either the new or existing node.
-<<<<<<< HEAD
-	Node* InsertNode(const T& key, const U& value)
-=======
 	Node* insertNode(const T& key, const U& value)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		unsigned hashKey = hash(key);
 
@@ -635,11 +479,7 @@ private:
 	}
 
 	// Allocate and insert a node into the list. Return the new node.
-<<<<<<< HEAD
-	Node* InsertNode(Node* dest, const T& key, const U& value)
-=======
 	Node* insertNode(Node* dest, const T& key, const U& value)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		// If no pointers yet, allocate with minimum bucket count
 		if (!m_ptrs)
@@ -666,11 +506,7 @@ private:
 	}
 
 	// Erase a node from the list. Return pointer to the next element, or to the end if could not erase.
-<<<<<<< HEAD
-	Node* EraseNode(Node* node)
-=======
 	Node* eraseNode(Node* node)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		// The tail node can not be removed
 		if (!node || node == tail())
@@ -693,11 +529,7 @@ private:
 	}
 
 	// Allocate a node with optionally specified key and value.
-<<<<<<< HEAD
-	Node* AllocateNode(const T& key = T(), const U& value = U())
-=======
 	Node* allocateNode(const T& key = T(), const U& value = U())
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		Node* newNode = static_cast<Node*>(AllocatorGet(m_allocator));
 		new(newNode) Node(key, value);
@@ -705,22 +537,14 @@ private:
 	}
 
 	// Free a node.
-<<<<<<< HEAD
-	void FreeNode(Node* node)
-=======
 	void freeNode(Node* node)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		(node)->~Node();
 		AllocatorFree(m_allocator, node);
 	}
 
 	// Rehash the buckets.
-<<<<<<< HEAD
-	void Rehash()
-=======
 	void rehash()
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		for (Iterator it = Begin(); it != End(); ++it)
 		{
@@ -732,15 +556,8 @@ private:
 	}
 
 	// Compare two nodes.
-<<<<<<< HEAD
-	static bool CompareNodes(Node*& lhs, Node*& rhs) { return lhs->pair.first < rhs->pair.first; }
-
-	// Compute a hash based on the key and the bucket size
-	unsigned Hash(const T& key) const { return MakeHash(key) & (NumBuckets() - 1); }
-=======
 	static bool compareNodes(Node*& lhs, Node*& rhs) { return lhs->pair.first < rhs->pair.first; }
 
 	// Compute a hash based on the key and the bucket size
 	unsigned hash(const T& key) const { return MakeHash(key) & (numBuckets() - 1); }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 };

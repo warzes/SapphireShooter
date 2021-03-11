@@ -128,7 +128,7 @@ namespace video
 
         /* === Operators - addition, subtraction, division, multiplication === */
 
-        inline color operator+(const color& Other) const
+        inline color operator + (const color& Other) const
         {
             return color(Red + Other.Red, Green + Other.Green, Blue + Other.Blue, Alpha + Other.Alpha);
         }
@@ -137,11 +137,11 @@ namespace video
             Red += Other.Red; Green += Other.Green; Blue += Other.Blue; Alpha += Other.Alpha; return *this;
         }
 
-        inline color operator-(const color& Other) const
+        inline color operator - (const color& Other) const
         {
             return color(Red - Other.Red, Green - Other.Green, Blue - Other.Blue, Alpha - Other.Alpha);
         }
-        inline color& operator-=(const color& Other)
+        inline color& operator -= (const color& Other)
         {
             Red -= Other.Red; Green -= Other.Green; Blue -= Other.Blue; Alpha -= Other.Alpha; return *this;
         }

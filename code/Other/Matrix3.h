@@ -77,7 +77,7 @@ namespace dim
             return *this;
         }
 
-        inline matrix3<T> operator+(const matrix3<T>& Other) const
+        inline matrix3<T> operator + (const matrix3<T>& Other) const
         {
             matrix3<T> Result;
             dim::matrixAdd(Result, M, Other);
@@ -89,13 +89,13 @@ namespace dim
             return *this;
         }
 
-        inline matrix3<T> operator-(const matrix3<T>& Other) const
+        inline matrix3<T> operator - (const matrix3<T>& Other) const
         {
             matrix3<T> Result;
             dim::matrixSub(Result, M, Other);
             return Result;
         }
-        inline matrix3<T>& operator-=(const matrix3<T>& Other)
+        inline matrix3<T>& operator -= (const matrix3<T>& Other)
         {
             dim::matrixSub(M, M, Other);
             return *this;

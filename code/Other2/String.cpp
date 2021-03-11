@@ -307,7 +307,7 @@ String& String::operator+=(bool rhs)
     return *this;
 }
 
-String String::operator+(const String& rhs) const
+String String::operator + (const String& rhs) const
 {
     String ret;
     ret.Resize(Length() + rhs.Length());
@@ -317,7 +317,7 @@ String String::operator+(const String& rhs) const
     return ret;
 }
 
-String String::operator+(const char* rhs) const
+String String::operator + (const char* rhs) const
 {
     size_t rhsLength = CStringLength(rhs);
     String ret;
@@ -328,7 +328,7 @@ String String::operator+(const char* rhs) const
     return ret;
 }
 
-String String::operator+(char rhs) const
+String String::operator + (char rhs) const
 {
     String ret(*this);
     ret += rhs;

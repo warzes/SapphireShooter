@@ -2,6 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Allocator.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
     <ClCompile Include="Hash.cpp">
       <Filter>Base</Filter>
     </ClCompile>
@@ -251,6 +254,9 @@
     <ClInclude Include="WString.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="Allocator.h">
+      <Filter>Base</Filter>
+    </ClInclude>
     <ClInclude Include="AutoPtr.h">
       <Filter>Base</Filter>
     </ClInclude>
@@ -261,6 +267,9 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="HashSet.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterator.h">
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="List.h">

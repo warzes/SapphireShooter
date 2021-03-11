@@ -61,7 +61,7 @@ namespace dim
 
         /* === Operators - addition, subtraction, division, multiplication === */
 
-        inline size2d<T> operator+(const size2d<T>& Other) const
+        inline size2d<T> operator + (const size2d<T>& Other) const
         {
             return size2d<T>(Width + Other.Width, Height + Other.Height);
         }
@@ -70,11 +70,11 @@ namespace dim
             Width += Other.Width; Height += Other.Height; return *this;
         }
 
-        inline size2d<T> operator-(const size2d<T>& Other) const
+        inline size2d<T> operator - (const size2d<T>& Other) const
         {
             return size2d<T>(Width - Other.Width, Height - Other.Height);
         }
-        inline size2d<T>& operator-=(const size2d<T>& Other)
+        inline size2d<T>& operator -= (const size2d<T>& Other)
         {
             Width -= Other.Width; Height -= Other.Height; return *this;
         }
@@ -97,7 +97,7 @@ namespace dim
             Width *= Other.Width; Height *= Other.Height; return *this;
         }
 
-        inline size2d<T> operator-() const
+        inline size2d<T> operator - () const
         {
             return size2d<T>(-Width, -Height);
         }

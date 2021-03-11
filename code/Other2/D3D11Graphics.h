@@ -49,15 +49,9 @@ public:
     // Set graphics mode. Create the window and rendering context if not created yet. Return true on success.
     bool SetMode(const IntVector2& size, bool fullscreen = false, bool resizable = false, int multisample = 1);
     // Set fullscreen mode on/off while retaining previous resolution. The initial graphics mode must have been set first. Return true on success.
-<<<<<<< HEAD
-    bool SetFullscreen(bool enable);
-    // Set new multisample level while retaining previous resolution. The initial graphics mode must have been set first. Return true on success.
-    bool SetMultisample(int multisample);
-=======
     //bool SetFullscreen(bool enable);
     // Set new multisample level while retaining previous resolution. The initial graphics mode must have been set first. Return true on success.
     //bool SetMultisample(int multisample);
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Set vertical sync on/off.
     void SetVSync(bool enable);
     // Close the window and destroy the rendering context and GPU objects.
@@ -65,15 +59,9 @@ public:
     // Present the contents of the backbuffer.
     void Present();
     // Set the color rendertarget and depth stencil buffer.
-<<<<<<< HEAD
-    void SetRenderTarget(Texture* renderTarget, Texture* stencilBuffer);
-    // Set multiple color rendertargets and the depth stencil buffer.
-    void SetRenderTargets(const Vector<Texture*>& renderTargets, Texture* stencilBuffer);
-=======
     void SetRenderTarget(Texture2* renderTarget, Texture2* stencilBuffer);
     // Set multiple color rendertargets and the depth stencil buffer.
     void SetRenderTargets(const Vector<Texture2*>& renderTargets, Texture2* stencilBuffer);
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Set the viewport rectangle. On window resize the viewport will automatically revert to the entire backbuffer.
     void SetViewport(const IntRect& viewport);
     // Bind a vertex buffer.
@@ -83,11 +71,7 @@ public:
     // Bind a constant buffer.
     void SetConstantBuffer(ShaderStage stage, size_t index, ConstantBuffer* buffer);
     // Bind a texture.
-<<<<<<< HEAD
-    void SetTexture(size_t index, Texture* texture);
-=======
     void SetTexture(size_t index, Texture2* texture);
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Bind vertex and pixel shaders.
     void SetShaders(ShaderVariation* vs, ShaderVariation* ps);
     // Set color write and blending related state using an arbitrary blend mode.
@@ -138,19 +122,6 @@ public:
     // Return current rendertarget height.
     int RenderTargetHeight() const { return renderTargetSize.y; }
     // Return whether is using fullscreen mode.
-<<<<<<< HEAD
-    bool IsFullscreen() const;
-    // Return whether the window is resizable.
-    bool IsResizable() const;
-    // Return whether is using vertical sync.
-    bool VSync() const { return vsync; }
-    // Return the rendering window.
-    Window* RenderWindow() const;
-    // Return the current color rendertarget by index, or null if rendering to the backbuffer.
-    Texture* RenderTarget(size_t index) const;
-    // Return the current depth-stencil buffer, or null if rendering to the backbuffer.
-    Texture* DepthStencil() const { return depthStencil; }
-=======
     //bool IsFullscreen() const;
     // Return whether the window is resizable.
     //bool IsResizable() const;
@@ -162,7 +133,6 @@ public:
     Texture2* RenderTarget(size_t index) const;
     // Return the current depth-stencil buffer, or null if rendering to the backbuffer.
     Texture2* DepthStencil() const { return depthStencil; }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Return the current viewport rectangle.
     const IntRect& Viewport() const { return viewport; }
     // Return currently bound vertex buffer by index.
@@ -172,11 +142,7 @@ public:
     // Return currently bound constant buffer by shader stage and index.
     ConstantBuffer* GetConstantBuffer(ShaderStage stage, size_t index) const;
     // Return currently bound texture by texture unit.
-<<<<<<< HEAD
-    Texture* GetTexture(size_t index) const;
-=======
     Texture2* GetTexture(size_t index) const;
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Return currently bound vertex shader.
     ShaderVariation* GetVertexShader() const { return vertexShader; }
     // Return currently bound pixel shader.
@@ -208,11 +174,7 @@ private:
     // Update swap chain state for a new mode and create views for the backbuffer & default depth buffer.
     bool UpdateSwapChain(int width, int height);
     // Handle window resize event.
-<<<<<<< HEAD
-    void HandleResize(WindowResizeEvent& event);
-=======
     //void HandleResize(WindowResizeEvent& event);
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Set texture state for the next draw call. PrepareDraw() calls this.
     void PrepareTextures();
     // Set state for the next draw call. Return false if the draw call should not be attempted.
@@ -223,11 +185,7 @@ private:
     // Implementation for holding OS-specific API objects.
     AutoPtr<GraphicsImpl> impl;
     // OS-level rendering window.
-<<<<<<< HEAD
-    AutoPtr<Window> window;
-=======
    // AutoPtr<Window> window;
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Current size of the backbuffer.
     IntVector2 backbufferSize;
     // Current size of the active rendertarget.
@@ -239,19 +197,11 @@ private:
     // Bound constant buffers by shader stage.
     ConstantBuffer* constantBuffers[MAX_SHADER_STAGES][MAX_CONSTANT_BUFFERS];
     // Bound textures by texture unit.
-<<<<<<< HEAD
-    Texture* textures[MAX_TEXTURE_UNITS];
-    // Bound rendertarget textures.
-    Texture* renderTargets[MAX_RENDERTARGETS];
-    // Bound depth-stencil texture.
-    Texture* depthStencil;
-=======
     Texture2* textures[MAX_TEXTURE_UNITS];
     // Bound rendertarget textures.
     Texture2* renderTargets[MAX_RENDERTARGETS];
     // Bound depth-stencil texture.
     Texture2* depthStencil;
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
     // Bound vertex shader.
     ShaderVariation* vertexShader;
     // Bound pixel shader.

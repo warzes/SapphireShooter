@@ -29,27 +29,16 @@ public:
 	bool IsWritable() const override;
 
 	// Return memory area.
-<<<<<<< HEAD
-	unsigned char* Data() { return buffer; }
-=======
 	unsigned char* Data() { return m_buffer; }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	using Stream::Read;
 	using Stream::Write;
 
 private:
 	// Pointer to the memory area.
-<<<<<<< HEAD
-	unsigned char* buffer;
-	// Read-only flag.
-	bool readOnly;
-};
-=======
 	unsigned char* m_buffer;
 	// Read-only flag.
 	bool m_readOnly;
 };
 
 #endif
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5

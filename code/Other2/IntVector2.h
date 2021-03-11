@@ -60,11 +60,7 @@ public:
 	}
 
 	// Subtract-assign a vector.
-<<<<<<< HEAD
-	IntVector2& operator-=(const IntVector2& rhs)
-=======
 	IntVector2& operator -= (const IntVector2& rhs)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		x -= rhs.x;
 		y -= rhs.y;
@@ -92,19 +88,11 @@ public:
 	// Test for inequality with another vector.
 	bool operator!=(const IntVector2& rhs) const { return !(*this == rhs); }
 	// Add a vector.
-<<<<<<< HEAD
-	IntVector2 operator+(const IntVector2& rhs) const { return IntVector2(x + rhs.x, y + rhs.y); }
-	// Return negation.
-	IntVector2 operator-() const { return IntVector2(-x, -y); }
-	// Subtract a vector.
-	IntVector2 operator-(const IntVector2& rhs) const { return IntVector2(x - rhs.x, y - rhs.y); }
-=======
 	IntVector2 operator + (const IntVector2& rhs) const { return IntVector2(x + rhs.x, y + rhs.y); }
 	// Return negation.
 	IntVector2 operator - () const { return IntVector2(-x, -y); }
 	// Subtract a vector.
 	IntVector2 operator - (const IntVector2& rhs) const { return IntVector2(x - rhs.x, y - rhs.y); }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Multiply with a scalar.
 	IntVector2 operator*(int rhs) const { return IntVector2(x * rhs, y * rhs); }
 	// Divide by a scalar.

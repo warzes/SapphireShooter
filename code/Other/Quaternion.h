@@ -124,7 +124,7 @@ namespace dim
 
         /* === Operators - addition, subtraction, division, multiplication === */
 
-        inline quaternion4<T> operator+(const quaternion4<T>& Other) const
+        inline quaternion4<T> operator + (const quaternion4<T>& Other) const
         {
             return quaternion4<T>(X + Other.X, Y + Other.Y, Z + Other.Z, W + Other.W);
         }
@@ -133,11 +133,11 @@ namespace dim
             X += Other.X; Y += Other.Y; Z += Other.Z; W += Other.W; return *this;
         }
 
-        inline quaternion4<T> operator-(const quaternion4<T>& Other) const
+        inline quaternion4<T> operator - (const quaternion4<T>& Other) const
         {
             return quaternion4<T>(X - Other.X, Y - Other.Y, Z - Other.Z, W - Other.W);
         }
-        inline quaternion4<T>& operator-=(const quaternion4<T>& Other)
+        inline quaternion4<T>& operator -= (const quaternion4<T>& Other)
         {
             X -= Other.X; Y -= Other.Y; Z -= Other.Z; W -= Other.W; return *this;
         }

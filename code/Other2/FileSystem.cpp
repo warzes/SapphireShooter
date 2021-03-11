@@ -41,11 +41,7 @@ bool FileSystem::CopyFile(const String& srcFileName, const String& destFileName)
 		return false;
 
 	// \todo Should use a fixed-size buffer to allow copying very large files
-<<<<<<< HEAD
-	size_t fileSize = srcFile.Size();
-=======
 	const size_t fileSize = srcFile.Size();
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	AutoArrayPtr<unsigned char> buffer(new unsigned char[fileSize]);
 
 	const size_t bytesRead = srcFile.Read(buffer.Get(), fileSize);

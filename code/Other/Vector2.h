@@ -47,7 +47,7 @@ namespace dim
 
         /* === Operators - addition, subtraction, division, multiplication === */
 
-        inline vector2d<T> operator+(const vector2d<T>& Other) const
+        inline vector2d<T> operator + (const vector2d<T>& Other) const
         {
             return vector2d<T>(X + Other.X, Y + Other.Y);
         }
@@ -56,11 +56,11 @@ namespace dim
             X += Other.X; Y += Other.Y; return *this;
         }
 
-        inline vector2d<T> operator-(const vector2d<T>& Other) const
+        inline vector2d<T> operator - (const vector2d<T>& Other) const
         {
             return vector2d<T>(X - Other.X, Y - Other.Y);
         }
-        inline vector2d<T>& operator-=(const vector2d<T>& Other)
+        inline vector2d<T>& operator -= (const vector2d<T>& Other)
         {
             X -= Other.X; Y -= Other.Y; return *this;
         }
@@ -101,7 +101,7 @@ namespace dim
             X *= Size; Y *= Size; return *this;
         }
 
-        inline vector2d<T> operator-() const
+        inline vector2d<T> operator - () const
         {
             return vector2d<T>(-X, -Y);
         }

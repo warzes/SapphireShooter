@@ -5,39 +5,18 @@ template <class T>
 class AutoPtr
 {
 public:
-<<<<<<< HEAD
-	// Construct a null pointer.
-	AutoPtr() :
-		ptr(nullptr)
-	{
-	}
-
-	// Copy-construct. Ownership is transferred, making the source pointer null.
-	AutoPtr(const AutoPtr<T>& ptr_) :
-		ptr(ptr_.ptr)
-=======
 	AutoPtr() = default;
 
 	// Copy-construct. Ownership is transferred, making the source pointer null.
 	AutoPtr(const AutoPtr<T>& ptr_) : m_ptr(ptr_.m_ptr)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		// Trick the compiler so that the AutoPtr can be copied to containers; the latest copy stays non-null
 		const_cast<AutoPtr<T>&>(ptr_).m_ptr = nullptr;
 	}
 
 	// Construct with a raw pointer; take ownership of the object.
-<<<<<<< HEAD
-	AutoPtr(T* ptr_) :
-		ptr(ptr_)
-	{
-	}
-
-	// Destruct. Delete the object pointed to.
-=======
 	AutoPtr(T* ptr_) : m_ptr(ptr_) {}
 
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	~AutoPtr()
 	{
 		delete m_ptr;
@@ -75,37 +54,6 @@ public:
 	}
 
 	// Point to the object.
-<<<<<<< HEAD
-	T* operator->() const { assert(ptr); return ptr; }
-	// Dereference the object.
-	T& operator*() const { assert(ptr); return *ptr; }
-	// Convert to the object.
-	operator T* () const { return ptr; }
-
-	// Return the object.
-	T* Get() const { return ptr; }
-	// Return whether is a null pointer.
-	bool IsNull() const { return ptr == nullptr; }
-
-private:
-	// Object pointer.
-	T* ptr;
-};
-
-// Pointer which takes ownership of an array allocated with new[] and deletes it when the pointer goes out of scope.
-template <class T> class AutoArrayPtr
-{
-public:
-	// Construct a null pointer.
-	AutoArrayPtr() :
-		array(nullptr)
-	{
-	}
-
-	// Copy-construct. Ownership is transferred, making the source pointer null.
-	AutoArrayPtr(AutoArrayPtr<T>& ptr) :
-		array(ptr.array)
-=======
 	T* operator->() const { assert(m_ptr); return m_ptr; }
 	// Dereference the object.
 	T& operator*() const { assert(m_ptr); return *m_ptr; }
@@ -131,18 +79,12 @@ public:
 
 	// Copy-construct. Ownership is transferred, making the source pointer null.
 	AutoArrayPtr(AutoArrayPtr<T>& ptr) : m_array(ptr.m_array)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		ptr.m_array = nullptr;
 	}
 
 	// Construct and take ownership of the array.
-<<<<<<< HEAD
-	AutoArrayPtr(T* array_) :
-		array(array_)
-=======
 	AutoArrayPtr(T* array_) : m_array(array_)
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 	}
 
@@ -184,26 +126,6 @@ public:
 	}
 
 	// Point to the array.
-<<<<<<< HEAD
-	T* operator->() const { assert(array); return array; }
-	// Dereference the array.
-	T& operator*() const { assert(array); return *array; }
-	// Index the array.
-	T& operator [] (size_t index) { assert(array); return array[index]; }
-	// Const-index the array.
-	const T& operator [] (size_t index) const { assert(array); return array[index]; }
-	// Convert to bool.
-	operator bool() const { return array != nullptr; }
-
-	// Return the array.
-	T* Get() const { return array; }
-	// Return whether is a null pointer.
-	bool IsNull() const { return array == nullptr; }
-
-private:
-	// Array pointer.
-	T* array;
-=======
 	T* operator->() const { assert(m_array); return m_array; }
 	// Dereference the array.
 	T& operator*() const { assert(m_array); return *m_array; }
@@ -222,5 +144,4 @@ private:
 private:
 	// Array pointer.
 	T* m_array = nullptr;
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 };

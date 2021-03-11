@@ -141,11 +141,7 @@ public:
 	}
 
 	// Add a matrix.
-<<<<<<< HEAD
-	Matrix3x4 operator+(const Matrix3x4& rhs) const
-=======
 	Matrix3x4 operator + (const Matrix3x4& rhs) const
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		return Matrix3x4(
 			m00 + rhs.m00, m01 + rhs.m01, m02 + rhs.m02, m03 + rhs.m03,
@@ -155,11 +151,7 @@ public:
 	}
 
 	// Subtract a matrix.
-<<<<<<< HEAD
-	Matrix3x4 operator-(const Matrix3x4& rhs) const
-=======
 	Matrix3x4 operator - (const Matrix3x4& rhs) const
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		return Matrix3x4(
 			m00 - rhs.m00, m01 - rhs.m01, m02 - rhs.m02, m03 - rhs.m03,

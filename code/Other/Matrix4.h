@@ -152,7 +152,7 @@ namespace dim
             return *this;
         }
 
-        inline matrix4<T> operator+(const matrix4<T>& Other) const
+        inline matrix4<T> operator + (const matrix4<T>& Other) const
         {
             matrix4<T> Result;
             dim::matrixAdd(Result, M, Other);
@@ -164,13 +164,13 @@ namespace dim
             return *this;
         }
 
-        inline matrix4<T> operator-(const matrix4<T>& Other) const
+        inline matrix4<T> operator - (const matrix4<T>& Other) const
         {
             matrix4<T> Result;
             dim::matrixSub(Result, M, Other);
             return Result;
         }
-        inline matrix4<T>& operator-=(const matrix4<T>& Other)
+        inline matrix4<T>& operator -= (const matrix4<T>& Other)
         {
             dim::matrixSub(M, M, Other);
             return *this;

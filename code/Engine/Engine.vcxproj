@@ -169,7 +169,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Allocator.h" />
     <ClInclude Include="BaseHeader.h" />
     <ClInclude Include="Billboard.h" />
     <ClInclude Include="Bloom.h" />
@@ -193,8 +192,6 @@
     <ClInclude Include="FrameBuffer2.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="InlineFunc.h" />
-    <ClInclude Include="Iterator.h" />
-    <ClInclude Include="IteratorAlgorithm.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Log.h" />
@@ -262,7 +259,6 @@
     <ClInclude Include="WindowDescription.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Allocator.cpp" />
     <ClCompile Include="Billboard.cpp" />
     <ClCompile Include="Bloom.cpp" />
     <ClCompile Include="Camera2D.cpp" />

@@ -95,7 +95,7 @@ namespace dim
             return Tmp;
         }
 
-        inline vector4d<T> operator+(const vector4d<T>& Other) const
+        inline vector4d<T> operator + (const vector4d<T>& Other) const
         {
             return vector4d<T>(X + Other.X, Y + Other.Y, Z + Other.Z, W);
         }
@@ -104,11 +104,11 @@ namespace dim
             X += Other.X; Y += Other.Y; Z += Other.Z; return *this;
         }
 
-        inline vector4d<T> operator-(const vector4d<T>& Other) const
+        inline vector4d<T> operator - (const vector4d<T>& Other) const
         {
             return vector4d<T>(X - Other.X, Y - Other.Y, Z - Other.Z);
         }
-        inline vector4d<T>& operator-=(const vector4d<T>& Other)
+        inline vector4d<T>& operator -= (const vector4d<T>& Other)
         {
             X -= Other.X; Y -= Other.Y; Z -= Other.Z; return *this;
         }
@@ -149,7 +149,7 @@ namespace dim
             X /= Size; Y /= Size; Z /= Size; return *this;
         }
 
-        inline vector4d<T> operator-() const
+        inline vector4d<T> operator - () const
         {
             return vector4d<T>(-X, -Y, -Z, W);
         }

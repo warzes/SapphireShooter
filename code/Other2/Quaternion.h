@@ -123,19 +123,11 @@ public:
 	// Multiply with a scalar.
 	Quaternion operator*(float rhs) const { return Quaternion(w * rhs, x * rhs, y * rhs, z * rhs); }
 	// Return negation.
-<<<<<<< HEAD
-	Quaternion operator-() const { return Quaternion(-w, -x, -y, -z); }
-	// Add a quaternion.
-	Quaternion operator+(const Quaternion& rhs) const { return Quaternion(w + rhs.w, x + rhs.x, y + rhs.y, z + rhs.z); }
-	// Subtract a quaternion.
-	Quaternion operator-(const Quaternion& rhs) const { return Quaternion(w - rhs.w, x - rhs.x, y - rhs.y, z - rhs.z); }
-=======
 	Quaternion operator - () const { return Quaternion(-w, -x, -y, -z); }
 	// Add a quaternion.
 	Quaternion operator + (const Quaternion& rhs) const { return Quaternion(w + rhs.w, x + rhs.x, y + rhs.y, z + rhs.z); }
 	// Subtract a quaternion.
 	Quaternion operator - (const Quaternion& rhs) const { return Quaternion(w - rhs.w, x - rhs.x, y - rhs.y, z - rhs.z); }
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Multiply a quaternion.
 	Quaternion operator*(const Quaternion& rhs) const

@@ -55,7 +55,7 @@ namespace io
 			return Str_ != Str.Str_;
 		}
 
-		string<T> operator+(const string<T>& Str) const
+		string<T> operator + (const string<T>& Str) const
 		{
 			return Str_ + Str.Str_;
 		}
@@ -696,7 +696,7 @@ namespace io
 		return Result;
 	}
 
-	template <typename T> string<T> operator+(const c8* cStr, const string<T>& spStr)
+	template <typename T> string<T> operator + (const c8* cStr, const string<T>& spStr)
 	{
 		return string<T>(cStr) + spStr;
 	}

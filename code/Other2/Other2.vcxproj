@@ -165,6 +165,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Allocator.h" />
     <ClInclude Include="AreaAllocator.h" />
     <ClInclude Include="Attribute.h" />
     <ClInclude Include="AutoPtr.h" />
@@ -203,6 +204,7 @@
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="IntRect.h" />
     <ClInclude Include="IntVector2.h" />
+    <ClInclude Include="Iterator.h" />
     <ClInclude Include="JSONFile.h" />
     <ClInclude Include="JSONValue.h" />
     <ClInclude Include="Light.h" />
@@ -259,6 +261,7 @@
     <ClInclude Include="WString.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Allocator.cpp" />
     <ClCompile Include="AreaAllocator.cpp" />
     <ClCompile Include="Attribute.cpp" />
     <ClCompile Include="Batch.cpp" />

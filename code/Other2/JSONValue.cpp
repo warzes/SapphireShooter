@@ -62,11 +62,7 @@ JSONValue::~JSONValue()
 {
 	setType(JSON_NULL);
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(const JSONValue& rhs)
 {
 	setType(rhs.m_type);
@@ -101,99 +97,63 @@ JSONValue& JSONValue::operator=(const JSONValue& rhs)
 
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(bool rhs)
 {
 	setType(JSON_BOOL);
 	m_data.boolValue = rhs;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(int rhs)
 {
 	setType(JSON_NUMBER);
 	m_data.numberValue = (double)rhs;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(unsigned rhs)
 {
 	setType(JSON_NUMBER);
 	m_data.numberValue = (double)rhs;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(float rhs)
 {
 	setType(JSON_NUMBER);
 	m_data.numberValue = (double)rhs;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(double rhs)
 {
 	setType(JSON_NUMBER);
 	m_data.numberValue = rhs;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(const String& value)
 {
 	setType(JSON_STRING);
 	*(reinterpret_cast<String*>(&m_data)) = value;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(const char* value)
 {
 	setType(JSON_STRING);
 	*(reinterpret_cast<String*>(&m_data)) = value;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(const JSONArray& value)
 {
 	setType(JSON_ARRAY);
 	*(reinterpret_cast<JSONArray*>(&m_data)) = value;
 	return *this;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 JSONValue& JSONValue::operator=(const JSONObject& value)
 {
 	setType(JSON_OBJECT);
@@ -236,11 +196,7 @@ const JSONValue& JSONValue::operator[](const String& key) const
 	else
 		return EMPTY;
 }
-<<<<<<< HEAD
-
-=======
 //-----------------------------------------------------------------------------
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 bool JSONValue::operator==(const JSONValue& rhs) const
 {
 	if (m_type != rhs.m_type)

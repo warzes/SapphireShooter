@@ -25,11 +25,7 @@ bool JSONFile::BeginLoad(Stream& source)
 	// Remove any previous content
 	root.SetNull();
 	// \todo If fails, log the line number on which the error occurred
-<<<<<<< HEAD
-	bool success = root.Parse(pos, end);
-=======
 	bool success = root.parse(pos, end);
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	if (!success)
 	{
 		SE_LOG_ERROR(("Parsing JSON from " + source.Name() + " failed; data may be partial").CString());

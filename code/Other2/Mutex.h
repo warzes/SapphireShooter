@@ -1,10 +1,7 @@
 #pragma once
 
-<<<<<<< HEAD
-=======
 #if SE_ENABLE_THREADING
 
->>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 // Operating system mutual exclusion primitive.
 class Mutex
 {
