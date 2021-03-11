@@ -3,13 +3,13 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Macros.h">
-      <Filter>_OLD\base</Filter>
+      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
-      <Filter>_OLD\base</Filter>
+      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="InlineFunc.h">
-      <Filter>_OLD\base</Filter>
+      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>_OLD\core\debug\LogSystem</Filter>
@@ -36,10 +36,10 @@
       <Filter>_OLD\core\math</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>_OLD\core\pattern</Filter>
+      <Filter>core\pattern</Filter>
     </ClInclude>
     <ClInclude Include="NonCopyable.h">
-      <Filter>_OLD\core\pattern</Filter>
+      <Filter>core\pattern</Filter>
     </ClInclude>
     <ClInclude Include="SpotLight.h">
       <Filter>_OLD\graphics\_old\LightType</Filter>
@@ -261,16 +261,16 @@
       <Filter>_OLD\other</Filter>
     </ClInclude>
     <ClInclude Include="BaseHeader.h">
-      <Filter>_OLD\base</Filter>
+      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="Iterator.h">
-      <Filter>_OLD\core\Container</Filter>
+      <Filter>core\Container</Filter>
     </ClInclude>
     <ClInclude Include="IteratorAlgorithm.h">
-      <Filter>_OLD\core\Container</Filter>
+      <Filter>core\Container</Filter>
     </ClInclude>
     <ClInclude Include="Allocator.h">
-      <Filter>_OLD\core\Container</Filter>
+      <Filter>core\Container</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -480,21 +480,15 @@
       <Filter>_OLD\other</Filter>
     </ClCompile>
     <ClCompile Include="Allocator.cpp">
-      <Filter>_OLD\core\Container</Filter>
+      <Filter>core\Container</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_OLD">
       <UniqueIdentifier>{ff9d1bc2-6d72-4da0-a182-9c907a8b97d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="_OLD\base">
-      <UniqueIdentifier>{1dc1c259-d45e-495a-b6c9-9e7cdd0ffee8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="_OLD\core">
       <UniqueIdentifier>{6c089be9-ed85-4ea1-9f34-e4974aca7dfb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="_OLD\core\Container">
-      <UniqueIdentifier>{be351d7e-47f8-4ccc-945b-e591967b3ca0}</UniqueIdentifier>
     </Filter>
     <Filter Include="_OLD\core\debug">
       <UniqueIdentifier>{0b371bec-848e-45a6-b9c2-4856011855c1}</UniqueIdentifier>
@@ -507,9 +501,6 @@
     </Filter>
     <Filter Include="_OLD\core\math">
       <UniqueIdentifier>{aa54ec83-b811-41ff-bfae-a53632eb97b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="_OLD\core\pattern">
-      <UniqueIdentifier>{88f994bd-277b-4ef9-9008-e777191a4762}</UniqueIdentifier>
     </Filter>
     <Filter Include="_OLD\core\io">
       <UniqueIdentifier>{f75c9cdd-565d-4567-8f57-ec85295c8fa5}</UniqueIdentifier>
@@ -606,6 +597,18 @@
     </Filter>
     <Filter Include="_OLD\utils">
       <UniqueIdentifier>{a4e0929a-6109-40de-ab1c-8b3bb49cbff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{1dc1c259-d45e-495a-b6c9-9e7cdd0ffee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{256dd9ff-6193-4489-ba18-650873fe87c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Container">
+      <UniqueIdentifier>{be351d7e-47f8-4ccc-945b-e591967b3ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\pattern">
+      <UniqueIdentifier>{88f994bd-277b-4ef9-9008-e777191a4762}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
