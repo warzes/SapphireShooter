@@ -4,30 +4,30 @@
 
 class Graphics;
 
-/// Base class for objects that allocate GPU resources.
+// Base class for objects that allocate GPU resources.
 class GPUObject
 {
 public:
-	/// Construct. Acquire the %Graphics subsystem if available and register self.
+	// Construct. Acquire the %Graphics subsystem if available and register self.
 	GPUObject();
-	/// Destruct. Unregister from the %Graphics subsystem.
+	// Destruct. Unregister from the %Graphics subsystem.
 	virtual ~GPUObject();
 
-	/// Release the GPU resource.
+	// Release the GPU resource.
 	virtual void Release();
-	/// Recreate the GPU resource after data loss. Not called on all rendering API's.
+	// Recreate the GPU resource after data loss. Not called on all rendering API's.
 	virtual void Recreate();
-	/// Return whether the contents have been lost due to graphics context having been destroyed.
+	// Return whether the contents have been lost due to graphics context having been destroyed.
 	virtual bool IsDataLost() const { return dataLost; }
 
-	/// Set data lost state. Not needed on all rendering API's.
+	// Set data lost state. Not needed on all rendering API's.
 	void SetDataLost(bool enable) { dataLost = enable; }
 
 protected:
-	/// %Graphics subsystem pointer.
+	// Graphics subsystem pointer.
 	WeakPtr<Graphics> graphics;
 
 private:
-	/// Data lost flag.
+	// Data lost flag.
 	bool dataLost;
 };

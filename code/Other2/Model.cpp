@@ -39,7 +39,7 @@ void Model::RegisterObject()
 
 bool Model::BeginLoad(Stream& source)
 {
-    /// \todo Develop own format for Turso3D
+    // \todo Develop own format for Turso3D
     if (source.ReadFileID() != "UMDL")
     {
         SE_LOG_ERROR((source.Name() + " is not a valid model file").CString());
@@ -138,7 +138,7 @@ bool Model::BeginLoad(Stream& source)
         // Read bone mappings
         size_t boneMappingCount = source.Read<unsigned>();
         boneMappings[i].Resize(boneMappingCount);
-        /// \todo Should read as a batch
+        // \todo Should read as a batch
         for (size_t j = 0; j < boneMappingCount; ++j)
             boneMappings[i][j] = source.Read<unsigned>();
 

@@ -1,12 +1,12 @@
 #pragma once
 
-/// Reference to an object with id for serialization.
+// Reference to an object with id for serialization.
 struct ObjectRef
 {
-	/// %Object id.
+	// Object id.
 	unsigned id;
 
-	/// Construct with no reference.
+	// Construct with no reference.
 	ObjectRef() :
 		id(0)
 	{
@@ -18,14 +18,14 @@ struct ObjectRef
 	{
 	}
 
-	/// Construct with object id.
+	// Construct with object id.
 	ObjectRef(unsigned id_) :
 		id(id_)
 	{
 	}
 
-	/// Test for equality with another reference.
-	bool operator == (const ObjectRef& rhs) const { return id == rhs.id; }
-	/// Test for inequality with another reference.
-	bool operator != (const ObjectRef& rhs) const { return !(*this == rhs); }
+	// Test for equality with another reference.
+	bool operator==(const ObjectRef& rhs) const { return id == rhs.id; }
+	// Test for inequality with another reference.
+	bool operator!=(const ObjectRef& rhs) const { return !(*this == rhs); }
 };

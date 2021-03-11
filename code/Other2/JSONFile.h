@@ -5,26 +5,26 @@
 
 class Stream;
 
-/// JSON document. Contains a root JSON value and can be read/written to file as text.
+// JSON document. Contains a root JSON value and can be read/written to file as text.
 class JSONFile : public Resource
 {
 	OBJECT(JSONFile);
 
 public:
-	/// Load from a stream as text. Return true on success. Will contain partial data on failure.
+	// Load from a stream as text. Return true on success. Will contain partial data on failure.
 	bool BeginLoad(Stream& source) override;
-	/// Save to a stream as text. Return true on success.
+	// Save to a stream as text. Return true on success.
 	bool Save(Stream& dest) override;
 
-	/// Register object factory.
+	// Register object factory.
 	static void RegisterObject();
 
-	/// Return the root value.
+	// Return the root value.
 	JSONValue& Root() { return root; }
-	/// Return the const root value.
+	// Return the const root value.
 	const JSONValue& Root() const { return root; }
 
 private:
-	/// Root value.
+	// Root value.
 	JSONValue root;
 };

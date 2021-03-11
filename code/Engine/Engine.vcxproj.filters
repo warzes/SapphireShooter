@@ -263,6 +263,15 @@
     <ClInclude Include="BaseHeader.h">
       <Filter>base</Filter>
     </ClInclude>
+    <ClInclude Include="Iterator.h">
+      <Filter>core\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="IteratorAlgorithm.h">
+      <Filter>core\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator.h">
+      <Filter>core\Container</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -469,6 +478,9 @@
     </ClCompile>
     <ClCompile Include="TestAnims.cpp">
       <Filter>other</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator.cpp">
+      <Filter>core\Container</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

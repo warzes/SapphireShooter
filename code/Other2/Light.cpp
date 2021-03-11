@@ -335,7 +335,7 @@ void Light::SetupShadowViews(Camera* mainCamera, Vector<AutoPtr<ShadowView> >& s
                 shadowBox.Define(lightViewFrustum);
 
                 // If shadow camera is far away from the frustum, can bring it closer for better depth precision
-                /// \todo The minimum distance is somewhat arbitrary
+                // \todo The minimum distance is somewhat arbitrary
                 float minDistance = mainCamera->FarClip() * 0.25f;
                 if (shadowBox.min.z > minDistance)
                 {

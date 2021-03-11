@@ -64,12 +64,12 @@ namespace dim
         /* === Operators - addition, subtraction, division, multiplication === */
 
         //! Pre-increment operator.
-        inline vector3d<T>& operator ++ ()
+        inline vector3d<T>& operator++()
         {
             ++X; ++Y; ++Z; return *this;
         }
         //! Post-increment operator.
-        inline vector3d<T>& operator ++ (int)
+        inline vector3d<T>& operator++(int)
         {
             const vector3d<T> Tmp(*this);
             ++* this;
@@ -77,32 +77,32 @@ namespace dim
         }
 
         //! Pre-decrement operator.
-        inline vector3d<T>& operator -- ()
+        inline vector3d<T>& operator--()
         {
             --X; --Y; --Z; return *this;
         }
         //! Post-decrement operator.
-        inline vector3d<T>& operator -- (int)
+        inline vector3d<T>& operator--(int)
         {
             const vector3d<T> Tmp(*this);
             --* this;
             return Tmp;
         }
 
-        inline vector3d<T> operator + (const vector3d<T>& Other) const
+        inline vector3d<T> operator+(const vector3d<T>& Other) const
         {
             return vector3d<T>(X + Other.X, Y + Other.Y, Z + Other.Z);
         }
-        inline vector3d<T>& operator += (const vector3d<T>& Other)
+        inline vector3d<T>& operator+=(const vector3d<T>& Other)
         {
             X += Other.X; Y += Other.Y; Z += Other.Z; return *this;
         }
 
-        inline vector3d<T> operator - (const vector3d<T>& Other) const
+        inline vector3d<T> operator-(const vector3d<T>& Other) const
         {
             return vector3d<T>(X - Other.X, Y - Other.Y, Z - Other.Z);
         }
-        inline vector3d<T>& operator -= (const vector3d<T>& Other)
+        inline vector3d<T>& operator-=(const vector3d<T>& Other)
         {
             X -= Other.X; Y -= Other.Y; Z -= Other.Z; return *this;
         }
@@ -116,7 +116,7 @@ namespace dim
             X /= Other.X; Y /= Other.Y; Z /= Other.Z; return *this;
         }
 
-        inline vector3d<T> operator * (const vector3d<T>& Other) const
+        inline vector3d<T> operator*(const vector3d<T>& Other) const
         {
             return vector3d<T>(X * Other.X, Y * Other.Y, Z * Other.Z);
         }
@@ -125,7 +125,7 @@ namespace dim
             X *= Other.X; Y *= Other.Y; Z *= Other.Z; return *this;
         }
 
-        inline vector3d<T> operator * (const T& Size) const
+        inline vector3d<T> operator*(const T& Size) const
         {
             return vector3d<T>(X * Size, Y * Size, Z * Size);
         }
@@ -143,7 +143,7 @@ namespace dim
             X /= Size; Y /= Size; Z /= Size; return *this;
         }
 
-        inline vector3d<T> operator - () const
+        inline vector3d<T> operator-() const
         {
             return vector3d<T>(-X, -Y, -Z);
         }
@@ -414,29 +414,29 @@ namespace dim
 
     /* === Relation operators === */
 
-    template <typename T> inline bool operator == (const vector3d<T>& A, const vector3d<T>& B)
+    template <typename T> inline bool operator==(const vector3d<T>& A, const vector3d<T>& B)
     {
         return compareVecEqual(A, B);
     }
-    template <typename T> inline bool operator != (const vector3d<T>& A, const vector3d<T>& B)
+    template <typename T> inline bool operator!=(const vector3d<T>& A, const vector3d<T>& B)
     {
         return compareVecNotEqual(A, B);
     }
 
-    template <typename T> inline bool operator < (const vector3d<T>& A, const vector3d<T>& B)
+    template <typename T> inline bool operator<(const vector3d<T>& A, const vector3d<T>& B)
     {
         return compareVecLessThan(A, B);
     }
-    template <typename T> inline bool operator > (const vector3d<T>& A, const vector3d<T>& B)
+    template <typename T> inline bool operator>(const vector3d<T>& A, const vector3d<T>& B)
     {
         return compareVecGreaterThan(A, B);
     }
 
-    template <typename T> inline bool operator <= (const vector3d<T>& A, const vector3d<T>& B)
+    template <typename T> inline bool operator<=(const vector3d<T>& A, const vector3d<T>& B)
     {
         return compareVecLessThanOrEqual(A, B);
     }
-    template <typename T> inline bool operator >= (const vector3d<T>& A, const vector3d<T>& B)
+    template <typename T> inline bool operator>=(const vector3d<T>& A, const vector3d<T>& B)
     {
         return compareVecGreaterThanOrEqual(A, B);
     }

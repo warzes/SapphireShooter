@@ -22,10 +22,10 @@ static const DXGI_FORMAT d3dElementFormats[] = {
     DXGI_FORMAT_R32G32B32A32_FLOAT  //                          --||--
 };
 
-/// \cond PRIVATE
+// \cond PRIVATE
 struct GraphicsImpl
 {
-    /// Construct.
+    // Construct.
     GraphicsImpl() :
         device(nullptr),
         deviceContext(nullptr),
@@ -46,42 +46,42 @@ struct GraphicsImpl
             renderTargetViews[i] = nullptr;
     }
 
-    /// Graphics device.
+    // Graphics device.
     ID3D11Device* device;
-    /// Immediate device context.
+    // Immediate device context.
     ID3D11DeviceContext* deviceContext;
-    /// Swap chain.
+    // Swap chain.
     IDXGISwapChain* swapChain;
-    /// Default (backbuffer) rendertarget view.
+    // Default (backbuffer) rendertarget view.
     ID3D11RenderTargetView* defaultRenderTargetView;
-    /// Default depth-stencil texture.
+    // Default depth-stencil texture.
     ID3D11Texture2D* defaultDepthTexture;
-    /// Default depth-stencil view.
+    // Default depth-stencil view.
     ID3D11DepthStencilView* defaultDepthStencilView;
-    /// Current blend state object.
+    // Current blend state object.
     ID3D11BlendState* blendState;
-    /// Current depth state object.
+    // Current depth state object.
     ID3D11DepthStencilState* depthState;
-    /// Current rasterizer state object.
+    // Current rasterizer state object.
     ID3D11RasterizerState* rasterizerState;
-    /// Current shader resource views.
+    // Current shader resource views.
     ID3D11ShaderResourceView* resourceViews[MAX_TEXTURE_UNITS];
-    /// Current sampler states.
+    // Current sampler states.
     ID3D11SamplerState* samplers[MAX_TEXTURE_UNITS];
-    /// Current color rendertarget views.
+    // Current color rendertarget views.
     ID3D11RenderTargetView* renderTargetViews[MAX_RENDERTARGETS];
-    /// Current depth-stencil view.
+    // Current depth-stencil view.
     ID3D11DepthStencilView* depthStencilView;
-    /// Stencil ref value set to the device.
+    // Stencil ref value set to the device.
     unsigned char stencilRef;
-    /// Current blend state hash code.
+    // Current blend state hash code.
     unsigned long long blendStateHash;
-    /// Current depth state hash code.
+    // Current depth state hash code.
     unsigned long long depthStateHash;
-    /// Current rasterizer state hash code.
+    // Current rasterizer state hash code.
     unsigned long long rasterizerStateHash;
 };
-/// \endcond
+// \endcond
 
 Graphics::Graphics() :
     backbufferSize(IntVector2::ZERO),
@@ -278,7 +278,7 @@ void Graphics::SetRenderTargets(const Vector<Texture*>& renderTargets_, Texture*
 
 void Graphics::SetViewport(const IntRect& viewport_)
 {
-    /// \todo Implement a member function in IntRect for clipping
+    // \todo Implement a member function in IntRect for clipping
     viewport.left = Clamp(viewport_.left, 0, renderTargetSize.x - 1);
     viewport.top = Clamp(viewport_.top, 0, renderTargetSize.y - 1);
     viewport.right = Clamp(viewport_.right, viewport.left + 1, renderTargetSize.x);
@@ -443,7 +443,7 @@ void Graphics::SetScissorTest(bool scissorEnable, const IntRect& scissorRect)
 
     if (scissorRect != renderState.scissorRect)
     {
-        /// \todo Implement a member function in IntRect for clipping
+        // \todo Implement a member function in IntRect for clipping
         renderState.scissorRect.left = Clamp(scissorRect.left, 0, renderTargetSize.x - 1);
         renderState.scissorRect.top = Clamp(scissorRect.top, 0, renderTargetSize.y - 1);
         renderState.scissorRect.right = Clamp(scissorRect.right, renderState.scissorRect.left + 1, renderTargetSize.x);
@@ -603,7 +603,7 @@ void Graphics::AddGPUObject(GPUObject* object)
 
 void Graphics::RemoveGPUObject(GPUObject* object)
 {
-    /// \todo Requires a linear search, needs to be profiled whether becomes a problem with a large number of objects
+    // \todo Requires a linear search, needs to be profiled whether becomes a problem with a large number of objects
     gpuObjects.Remove(object);
 }
 

@@ -109,11 +109,11 @@ static const unsigned glFillModes[] =
 
 static unsigned MAX_FRAMEBUFFER_AGE = 16;
 
-/// OpenGL framebuffer.
+// OpenGL framebuffer.
 class Framebuffer2
 {
 public:
-    /// Construct.
+    // Construct.
     Framebuffer2() :
         depthStencil(nullptr),
         drawBuffers(0),
@@ -124,21 +124,21 @@ public:
             renderTargets[i] = nullptr;
     }
 
-    /// Destruct.
+    // Destruct.
     ~Framebuffer2()
     {
         glDeleteFramebuffers(1, &buffer);
     }
 
-    /// OpenGL FBO handle.
+    // OpenGL FBO handle.
     unsigned buffer;
-    /// Color rendertargets bound to this FBO.
+    // Color rendertargets bound to this FBO.
     Texture2* renderTargets[MAX_RENDERTARGETS];
-    /// Depth-stencil texture bound to this FBO.
+    // Depth-stencil texture bound to this FBO.
     Texture2* depthStencil;
-    /// Enabled draw buffers.
+    // Enabled draw buffers.
     unsigned drawBuffers;
-    /// First use flag; used for setting up readbuffers.
+    // First use flag; used for setting up readbuffers.
     bool firstUse;
 };
 
@@ -274,7 +274,7 @@ void Graphics::Present()
     //context->Present();
 
     // In case of third party hooks which modify the GL state and don't restore it properly, re-enable depth test now
-    /// \todo Need to restore other state?
+    // \todo Need to restore other state?
     glEnable(GL_DEPTH_TEST);
 }
 
@@ -309,7 +309,7 @@ void Graphics::SetViewport(const IntRect& viewport_)
 {
     PrepareFramebuffer();
 
-    /// \todo Implement a member function in IntRect for clipping
+    // \todo Implement a member function in IntRect for clipping
     viewport.left = Clamp(viewport_.left, 0, renderTargetSize.x - 1);
     viewport.top = Clamp(viewport_.top, 0, renderTargetSize.y - 1);
     viewport.right = Clamp(viewport_.right, viewport.left + 1, renderTargetSize.x);
@@ -501,7 +501,7 @@ void Graphics::SetRasterizerState(CullMode cullMode, FillMode fillMode)
 void Graphics::SetScissorTest(bool scissorEnable, const IntRect& scissorRect)
 {
     renderState.scissorEnable = scissorEnable;
-    /// \todo Implement a member function in IntRect for clipping
+    // \todo Implement a member function in IntRect for clipping
     renderState.scissorRect.left = Clamp(scissorRect.left, 0, renderTargetSize.x - 1);
     renderState.scissorRect.top = Clamp(scissorRect.top, 0, renderTargetSize.y - 1);
     renderState.scissorRect.right = Clamp(scissorRect.right, renderState.scissorRect.left + 1, renderTargetSize.x);
@@ -709,7 +709,7 @@ void Graphics::AddGPUObject(GPUObject* object)
 
 void Graphics::RemoveGPUObject(GPUObject* object)
 {
-    /// \todo Requires a linear search, needs to be profiled whether becomes a problem with a large number of objects
+    // \todo Requires a linear search, needs to be profiled whether becomes a problem with a large number of objects
     gpuObjects.Remove(object);
 }
 
@@ -805,7 +805,7 @@ bool Graphics::CreateContext(int multisample_)
     psConstantBuffers = numBlocks;
 
     // Create and bind a vertex array object that will stay in use throughout
-    /// \todo Investigate performance gain of using multiple VAO's
+    // \todo Investigate performance gain of using multiple VAO's
     unsigned vertexArrayObject;
     glGenVertexArrays(1, &vertexArrayObject);
     glBindVertexArray(vertexArrayObject);
@@ -1253,7 +1253,7 @@ bool Graphics::PrepareDraw(bool instanced, size_t instanceStart)
         if (renderState.depthBias != glRenderState.depthBias || renderState.slopeScaledDepthBias !=
             glRenderState.slopeScaledDepthBias)
         {
-            /// \todo Check if this matches Direct3D
+            // \todo Check if this matches Direct3D
             glPolygonOffset(renderState.slopeScaledDepthBias, (float)renderState.depthBias);
             glRenderState.depthBias = renderState.depthBias;
             glRenderState.slopeScaledDepthBias = renderState.slopeScaledDepthBias;

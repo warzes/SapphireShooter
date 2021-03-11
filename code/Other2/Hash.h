@@ -2,88 +2,88 @@
 
 struct AllocatorBlock;
 
-/// Pointer hash function.
+// Pointer hash function.
 template <class T> unsigned MakeHash(T* value)
 {
 	return ((unsigned)(size_t)value) / sizeof(T);
 }
 
-/// Const pointer hash function.
+// Const pointer hash function.
 template <class T> unsigned MakeHash(const T* value)
 {
 	return ((unsigned)(size_t)value) / sizeof(T);
 }
 
-/// Generic hash function.
+// Generic hash function.
 template <class T> unsigned MakeHash(const T& value)
 {
 	return value.ToHash();
 }
 
-/// Void pointer hash function.
+// Void pointer hash function.
 template<> inline unsigned MakeHash(void* value)
 {
 	return (unsigned)(size_t)value;
 }
 
-/// Const void pointer hash function.
+// Const void pointer hash function.
 template<> inline unsigned MakeHash(const void* value)
 {
 	return (unsigned)(size_t)value;
 }
 
-/// Long long hash function.
+// Long long hash function.
 template<> inline unsigned MakeHash(const long long& value)
 {
 	return (value >> 32) | (value & 0xffffffff);
 }
 
-/// Unsigned long long hash function.
+// Unsigned long long hash function.
 template<> inline unsigned MakeHash(const unsigned long long& value)
 {
 	return (value >> 32) | (value & 0xffffffff);
 }
 
-/// Int hash function.
+// Int hash function.
 template<> inline unsigned MakeHash(const int& value)
 {
 	return value;
 }
 
-/// Unsigned hash function.
+// Unsigned hash function.
 template<> inline unsigned MakeHash(const unsigned& value)
 {
 	return value;
 }
 
-/// Short hash function.
+// Short hash function.
 template<> inline unsigned MakeHash(const short& value)
 {
 	return value;
 }
 
-/// Unsigned short hash function.
+// Unsigned short hash function.
 template<> inline unsigned MakeHash(const unsigned short& value)
 {
 	return value;
 }
 
-/// Char hash function.
+// Char hash function.
 template<> inline unsigned MakeHash(const char& value)
 {
 	return value;
 }
 
-/// Unsigned char hash function.
+// Unsigned char hash function.
 template<> inline unsigned MakeHash(const unsigned char& value)
 {
 	return value;
 }
 
-/// Hash set/map node base class.
+// Hash set/map node base class.
 struct HashNodeBase
 {
-	/// Construct.
+	// Construct.
 	HashNodeBase() :
 		down(nullptr),
 		prev(nullptr),
@@ -91,105 +91,105 @@ struct HashNodeBase
 	{
 	}
 
-	/// Next node in the bucket.
+	// Next node in the bucket.
 	HashNodeBase* down;
-	/// Previous node.
+	// Previous node.
 	HashNodeBase* prev;
-	/// Next node.
+	// Next node.
 	HashNodeBase* next;
 };
 
-/// Hash set/map iterator base class.
+// Hash set/map iterator base class.
 struct HashIteratorBase
 {
-	/// Construct.
+	// Construct.
 	HashIteratorBase() :
 		ptr(nullptr)
 	{
 	}
 
-	/// Construct with a node pointer.
+	// Construct with a node pointer.
 	explicit HashIteratorBase(HashNodeBase* ptr_) :
 		ptr(ptr_)
 	{
 	}
 
-	/// Test for equality with another iterator.
-	bool operator == (const HashIteratorBase& rhs) const { return ptr == rhs.ptr; }
-	/// Test for inequality with another iterator.
-	bool operator != (const HashIteratorBase& rhs) const { return ptr != rhs.ptr; }
+	// Test for equality with another iterator.
+	bool operator==(const HashIteratorBase& rhs) const { return ptr == rhs.ptr; }
+	// Test for inequality with another iterator.
+	bool operator!=(const HashIteratorBase& rhs) const { return ptr != rhs.ptr; }
 
-	/// Go to the next node.
+	// Go to the next node.
 	void GotoNext()
 	{
 		if (ptr)
 			ptr = ptr->next;
 	}
 
-	/// Go to the previous node.
+	// Go to the previous node.
 	void GotoPrev()
 	{
 		if (ptr)
 			ptr = ptr->prev;
 	}
 
-	/// %Node pointer.
+	// Node pointer.
 	HashNodeBase* ptr;
 };
 
-/// Hash set/map base class.
+// Hash set/map base class.
 class HashBase
 {
 public:
-	/// Initial amount of buckets.
+	// Initial amount of buckets.
 	static const size_t MIN_BUCKETS = 8;
-	/// Maximum load factor.
+	// Maximum load factor.
 	static const size_t MAX_LOAD_FACTOR = 4;
 
-	/// Construct.
+	// Construct.
 	HashBase() :
 		ptrs(nullptr),
 		allocator(nullptr)
 	{
 	}
 
-	/// Destruct.
+	// Destruct.
 	~HashBase()
 	{
 		delete[] ptrs;
 	}
 
-	/// Swap with another hash set or map.
+	// Swap with another hash set or map.
 	void Swap(HashBase& hash);
 
-	/// Return number of elements.
+	// Return number of elements.
 	size_t Size() const { return ptrs ? (reinterpret_cast<size_t*>(ptrs))[0] : 0; }
-	/// Return whether has no elements.
+	// Return whether has no elements.
 	bool IsEmpty() const { return Size() == 0; }
 
 protected:
-	/// Allocate bucket head pointers + room for size and bucket count variables.
+	// Allocate bucket head pointers + room for size and bucket count variables.
 	void AllocateBuckets(size_t size, size_t numBuckets);
-	/// Reset bucket head pointers.
+	// Reset bucket head pointers.
 	void ResetPtrs();
-	/// Set new size.
+	// Set new size.
 	void SetSize(size_t size) { reinterpret_cast<size_t*>(ptrs)[0] = size; }
-	/// Set new head node.
+	// Set new head node.
 	void SetHead(HashNodeBase* head) { ptrs[2] = head; }
-	/// Set new tail node.
+	// Set new tail node.
 	void SetTail(HashNodeBase* tail) { ptrs[3] = tail; }
 
-	/// Return number of buckets.
+	// Return number of buckets.
 	size_t NumBuckets() const { return ptrs ? (reinterpret_cast<size_t*>(ptrs))[1] : MIN_BUCKETS; }
-	/// Return list head node.
+	// Return list head node.
 	HashNodeBase* Head() const { return ptrs ? ptrs[2] : nullptr; }
-	/// Return list tail node.
+	// Return list tail node.
 	HashNodeBase* Tail() const { return ptrs ? ptrs[3] : nullptr; }
-	/// Return bucket head pointers.
+	// Return bucket head pointers.
 	HashNodeBase** Ptrs() const { return ptrs ? ptrs + 4 : nullptr; }
 
-	/// Bucket head pointers.
+	// Bucket head pointers.
 	HashNodeBase** ptrs;
-	/// %Node allocator.
+	// Node allocator.
 	AllocatorBlock* allocator;
 };

@@ -43,7 +43,7 @@ Frustum::Frustum(const Frustum& frustum)
 	*this = frustum;
 }
 
-Frustum& Frustum::operator = (const Frustum& rhs)
+Frustum& Frustum::operator=(const Frustum& rhs)
 {
 	for (size_t i = 0; i < NUM_FRUSTUM_PLANES; ++i)
 		planes[i] = rhs.planes[i];

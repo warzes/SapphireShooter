@@ -136,7 +136,7 @@ bool ShaderVariation::Compile()
     endMacro.Definition = nullptr;
     macros.Push(endMacro);
 
-    /// \todo Level 3 could be used, but can lead to longer shader compile times, considering there is no binary caching yet
+    // \todo Level 3 could be used, but can lead to longer shader compile times, considering there is no binary caching yet
     DWORD flags = D3DCOMPILE_OPTIMIZATION_LEVEL2 | D3DCOMPILE_PREFER_FLOW_CONTROL;
     ID3DBlob* errorBlob = nullptr;
     if (FAILED(D3DCompile(parent->SourceCode().CString(), parent->SourceCode().Length(), "", &macros[0], 0, "main", 

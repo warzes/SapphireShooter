@@ -30,7 +30,7 @@ namespace dim
 
         /* === Operators === */
 
-        inline polygon<T>& operator = (const polygon<T>& Other)
+        inline polygon<T>& operator=(const polygon<T>& Other)
         {
             Points = Other.Points;
             return *this;

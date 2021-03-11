@@ -4,25 +4,25 @@
 
 class String;
 
-/// Two-dimensional bounding rectangle with integer values.
+// Two-dimensional bounding rectangle with integer values.
 class IntRect
 {
 public:
-    /// Left coordinate.
+    // Left coordinate.
     int left;
-    /// Top coordinate.
+    // Top coordinate.
     int top;
-    /// Right coordinate.
+    // Right coordinate.
     int right;
-    /// Bottom coordinate.
+    // Bottom coordinate.
     int bottom;
 
-    /// Construct undefined.
+    // Construct undefined.
     IntRect()
     {
     }
 
-    /// Copy-construct.
+    // Copy-construct.
     IntRect(const IntRect& rect) :
         left(rect.left),
         top(rect.top),
@@ -31,7 +31,7 @@ public:
     {
     }
 
-    /// Construct from coordinates.
+    // Construct from coordinates.
     IntRect(int left_, int top_, int right_, int bottom_) :
         left(left_),
         top(top_),
@@ -40,7 +40,7 @@ public:
     {
     }
 
-    /// Construct from an int array.
+    // Construct from an int array.
     IntRect(const int* data) :
         left(data[0]),
         top(data[1]),
@@ -49,36 +49,36 @@ public:
     {
     }
 
-    /// Construct by parsing a string.
+    // Construct by parsing a string.
     IntRect(const String& str)
     {
         FromString(str);
     }
 
-    /// Construct by parsing a C string.
+    // Construct by parsing a C string.
     IntRect(const char* str)
     {
         FromString(str);
     }
 
-    /// Test for equality with another rect.
-    bool operator == (const IntRect& rhs) const { return left == rhs.left && top == rhs.top && right == rhs.right && bottom == rhs.bottom; }
-    /// Test for inequality with another rect.
-    bool operator != (const IntRect& rhs) const { return !(*this == rhs); }
+    // Test for equality with another rect.
+    bool operator==(const IntRect& rhs) const { return left == rhs.left && top == rhs.top && right == rhs.right && bottom == rhs.bottom; }
+    // Test for inequality with another rect.
+    bool operator!=(const IntRect& rhs) const { return !(*this == rhs); }
 
-    /// Parse from a string. Return true on success.
+    // Parse from a string. Return true on success.
     bool FromString(const String& str);
-    /// Parse from a C string. Return true on success.
+    // Parse from a C string. Return true on success.
     bool FromString(const char* str);
 
-    /// Return size.
+    // Return size.
     IntVector2 Size() const { return IntVector2(Width(), Height()); }
-    /// Return width.
+    // Return width.
     int Width() const { return right - left; }
-    /// Return height.
+    // Return height.
     int Height() const { return bottom - top; }
 
-    /// Test whether a point is inside.
+    // Test whether a point is inside.
     Intersection IsInside(const IntVector2& point) const
     {
         if (point.x < left || point.y < top || point.x >= right || point.y >= bottom)
@@ -87,7 +87,7 @@ public:
             return INSIDE;
     }
 
-    /// Test whether another rect is inside or intersects.
+    // Test whether another rect is inside or intersects.
     Intersection IsInside(const IntRect& rect) const
     {
         if (rect.right <= left || rect.left >= right || rect.bottom <= top || rect.top >= bottom)
@@ -98,11 +98,11 @@ public:
             return INTERSECTS;
     }
 
-    /// Return integer data.
+    // Return integer data.
     const int* Data() const { return &left; }
-    /// Return as string.
+    // Return as string.
     String ToString() const;
 
-    /// Zero-sized rect.
+    // Zero-sized rect.
     static const IntRect ZERO;
 };

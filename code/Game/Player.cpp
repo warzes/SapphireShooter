@@ -133,7 +133,7 @@ void Player::processInput(Camera3D& cam, float dt)
 	if (keyboard.KeyPressed(Keyboard::KEY_F))
 	{
 		//m_toggleFlashlight = !m_toggleFlashlight;
-		//// Check if the flash light is toggled on
+		/// Check if the flash light is toggled on
 		//if (m_toggleFlashlight)
 		//{
 		//	// Turn on the flash light
@@ -151,7 +151,7 @@ void Player::processInput(Camera3D& cam, float dt)
 	}
 	if (keyboard.KeyPressed(Keyboard::KEY_R))
 	{
-		//// Check if the weapon is not full 
+		/// Check if the weapon is not full 
 		//if (m_currWeapon->GetAmmoCount() != m_currWeapon->GetMaxAmmoCount())
 		//{
 		//	// Reload
@@ -177,7 +177,7 @@ void Player::processInput(Camera3D& cam, float dt)
 	//}
 	//if (mouse.ButtonDown(Mouse::BUTTON_RIGHT))
 	//{
-	//	//// Check if the player is not using assault rifle
+	//	/// Check if the player is not using assault rifle
 	//	//if (!m_usingAR)
 	//	//{
 	//	//	// Set sniper aiming to true

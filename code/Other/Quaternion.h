@@ -84,7 +84,7 @@ namespace dim
 
         /* === Operators - copying === */
 
-        inline quaternion4<T>& operator = (const quaternion4<T>& Other)
+        inline quaternion4<T>& operator=(const quaternion4<T>& Other)
         {
             X = Other.X;
             Y = Other.Y;
@@ -95,49 +95,49 @@ namespace dim
 
         /* === Operators - comparisions === */
 
-        inline bool operator == (const quaternion4<T>& Other) const
+        inline bool operator==(const quaternion4<T>& Other) const
         {
             return compareVecEqual(*this, Other);
         }
-        inline bool operator != (const quaternion4<T>& Other) const
+        inline bool operator!=(const quaternion4<T>& Other) const
         {
             return compareVecNotEqual(*this, Other);
         }
 
-        inline bool operator < (const quaternion4<T>& Other) const
+        inline bool operator<(const quaternion4<T>& Other) const
         {
             return compareVecLessThan(*this, Other);
         }
-        inline bool operator > (const quaternion4<T>& Other) const
+        inline bool operator>(const quaternion4<T>& Other) const
         {
             return compareVecGreaterThan(*this, Other);
         }
 
-        inline bool operator <= (const quaternion4<T>& Other) const
+        inline bool operator<=(const quaternion4<T>& Other) const
         {
             return compareVecLessThanOrEqual(*this, Other);
         }
-        inline bool operator >= (const quaternion4<T>& Other) const
+        inline bool operator>=(const quaternion4<T>& Other) const
         {
             return compareVecGreaterThanOrEqual(*this, Other);
         }
 
         /* === Operators - addition, subtraction, division, multiplication === */
 
-        inline quaternion4<T> operator + (const quaternion4<T>& Other) const
+        inline quaternion4<T> operator+(const quaternion4<T>& Other) const
         {
             return quaternion4<T>(X + Other.X, Y + Other.Y, Z + Other.Z, W + Other.W);
         }
-        inline quaternion4<T>& operator += (const quaternion4<T>& Other)
+        inline quaternion4<T>& operator+=(const quaternion4<T>& Other)
         {
             X += Other.X; Y += Other.Y; Z += Other.Z; W += Other.W; return *this;
         }
 
-        inline quaternion4<T> operator - (const quaternion4<T>& Other) const
+        inline quaternion4<T> operator-(const quaternion4<T>& Other) const
         {
             return quaternion4<T>(X - Other.X, Y - Other.Y, Z - Other.Z, W - Other.W);
         }
-        inline quaternion4<T>& operator -= (const quaternion4<T>& Other)
+        inline quaternion4<T>& operator-=(const quaternion4<T>& Other)
         {
             X -= Other.X; Y -= Other.Y; Z -= Other.Z; W -= Other.W; return *this;
         }
@@ -151,7 +151,7 @@ namespace dim
             X /= Other.X; Y /= Other.Y; Z /= Other.Z; W /= Other.W; return *this;
         }
 
-        quaternion4<T> operator * (const quaternion4<T>& Other) const
+        quaternion4<T> operator*(const quaternion4<T>& Other) const
         {
             quaternion4<T> Result;
 
@@ -168,7 +168,7 @@ namespace dim
             return *this;
         }
 
-        vector3d<T> operator * (const vector3d<T>& Vector) const
+        vector3d<T> operator*(const vector3d<T>& Vector) const
         {
             vector3d<T> uv, uuv;
             vector3d<T> qvec(X, Y, Z);
@@ -193,7 +193,7 @@ namespace dim
             X /= Size; Y /= Size; Z /= Size; W /= Size; return *this;
         }
 
-        inline quaternion4 operator * (const T& Size) const
+        inline quaternion4 operator*(const T& Size) const
         {
             return quaternion4(X * Size, Y * Size, Z * Size, W * Size);
         }

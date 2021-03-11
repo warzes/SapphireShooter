@@ -50,29 +50,29 @@ namespace dim
 
         /* === Operators === */
 
-        inline bool operator == (const L& Other)
+        inline bool operator==(const L& Other)
         {
             return Start == Other.Start && End == Other.End;
         }
-        inline bool operator != (const L& Other)
+        inline bool operator!=(const L& Other)
         {
             return Start != Other.Start && End != Other.End;
         }
 
-        inline L operator + (const L& Other) const
+        inline L operator+(const L& Other) const
         {
             return L(Start + Other.Start, End + Other.End);
         }
-        inline L& operator += (const L& Other)
+        inline L& operator+=(const L& Other)
         {
             Start += Other.Start; End += Other.End; return *this;
         }
 
-        inline L operator - (const L& Other) const
+        inline L operator-(const L& Other) const
         {
             return L(Start - Other.Start, End - Other.End);
         }
-        inline L& operator -= (const L& Other)
+        inline L& operator-=(const L& Other)
         {
             Start -= Other.Start; End -= Other.End; return *this;
         }
@@ -86,7 +86,7 @@ namespace dim
             Start /= Other.Start; End /= Other.End; return *this;
         }
 
-        inline L operator * (const L& Other) const
+        inline L operator*(const L& Other) const
         {
             return L(Start * Other.Start, End * Other.End);
         }
@@ -95,7 +95,7 @@ namespace dim
             Start *= Other.Start; End *= Other.End; return *this;
         }
 
-        inline L operator - () const
+        inline L operator-() const
         {
             return L(-Start, -End);
         }

@@ -117,31 +117,31 @@ namespace video
 
         /* === Operators - comparisions === */
 
-        inline bool operator == (const color& Other) const
+        inline bool operator==(const color& Other) const
         {
             return Red == Other.Red && Green == Other.Green && Blue == Other.Blue && Alpha == Other.Alpha;
         }
-        inline bool operator != (const color& Other) const
+        inline bool operator!=(const color& Other) const
         {
             return Red != Other.Red || Green != Other.Green || Blue != Other.Blue || Alpha != Other.Alpha;
         }
 
         /* === Operators - addition, subtraction, division, multiplication === */
 
-        inline color operator + (const color& Other) const
+        inline color operator+(const color& Other) const
         {
             return color(Red + Other.Red, Green + Other.Green, Blue + Other.Blue, Alpha + Other.Alpha);
         }
-        inline color& operator += (const color& Other)
+        inline color& operator+=(const color& Other)
         {
             Red += Other.Red; Green += Other.Green; Blue += Other.Blue; Alpha += Other.Alpha; return *this;
         }
 
-        inline color operator - (const color& Other) const
+        inline color operator-(const color& Other) const
         {
             return color(Red - Other.Red, Green - Other.Green, Blue - Other.Blue, Alpha - Other.Alpha);
         }
-        inline color& operator -= (const color& Other)
+        inline color& operator-=(const color& Other)
         {
             Red -= Other.Red; Green -= Other.Green; Blue -= Other.Blue; Alpha -= Other.Alpha; return *this;
         }
@@ -164,7 +164,7 @@ namespace video
             Red /= Factor; Green /= Factor; Blue /= Factor; return *this;
         }
 
-        inline color operator * (const color& Other) const
+        inline color operator*(const color& Other) const
         {
             return color(Red * Other.Red, Green * Other.Green, Blue * Other.Blue, Alpha * Other.Alpha);
         }
@@ -173,7 +173,7 @@ namespace video
             Red *= Other.Red; Green *= Other.Green; Blue *= Other.Blue; Alpha *= Other.Alpha; return *this;
         }
 
-        inline color operator * (u8 Factor) const
+        inline color operator*(u8 Factor) const
         {
             return color(Red * Factor, Green * Factor, Blue * Factor, Alpha);
         }
@@ -182,7 +182,7 @@ namespace video
             Red *= Factor; Green *= Factor; Blue *= Factor; return *this;
         }
 
-        inline color operator * (f32 Factor) const
+        inline color operator*(f32 Factor) const
         {
             return color(u8(f32(Red) * Factor), u8(f32(Green) * Factor), u8(f32(Blue) * Factor), Alpha);
         }

@@ -5,7 +5,7 @@ class ListBase;
 class VectorBase;
 class String;
 
-/// Swap two values.
+// Swap two values.
 template<class T> inline void Swap(T& first, T& second)
 {
 	T temp = first;
@@ -13,14 +13,14 @@ template<class T> inline void Swap(T& first, T& second)
 	second = temp;
 }
 
-/// Swap two hash sets/maps.
+// Swap two hash sets/maps.
 template<> void Swap<HashBase>(HashBase& first, HashBase& second);
 
-/// Swap two lists.
+// Swap two lists.
 template<> void Swap<ListBase>(ListBase& first, ListBase& second);
 
-/// Swap two vectors.
+// Swap two vectors.
 template<> void Swap<VectorBase>(VectorBase& first, VectorBase& second);
 
-/// Swap two strings.
+// Swap two strings.
 template<> void Swap<String>(String& first, String& second);

@@ -38,7 +38,7 @@ namespace dim
 
         /* === Operators === */
 
-        inline void operator = (const quadrangle3d<T>& Other)
+        inline void operator=(const quadrangle3d<T>& Other)
         {
             PointA = Other.PointA;
             PointB = Other.PointB;

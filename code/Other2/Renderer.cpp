@@ -272,7 +272,7 @@ void Renderer::CollectLightInteractions()
             case LIGHT_POINT:
                 // Check which lit geometries are shadow casters and inside each shadow frustum. First check whether the
                 // shadow frustum is inside the view at all
-                /// \todo Could use a frustum-frustum test for more accuracy
+                // \todo Could use a frustum-frustum test for more accuracy
                 if (frustum.IsInsideFast(BoundingBox(shadowFrustum)))
                     CollectShadowBatches(litGeometries, shadowQueue, shadowFrustum, true, true);
                 break;
@@ -832,7 +832,7 @@ void Renderer::RenderBatches(const Vector<Batch>& batches, Camera* camera_, bool
         vsFrameConstantBuffer->SetConstant(VS_FRAME_DEPTH_PARAMETERS, depthParameters);
         vsFrameConstantBuffer->Apply();
 
-        /// \todo Add also fog settings
+        // \todo Add also fog settings
         psFrameConstantBuffer->SetConstant(PS_FRAME_AMBIENT_COLOR, camera_->AmbientColor());
         psFrameConstantBuffer->Apply();
 
@@ -978,7 +978,7 @@ void Renderer::LoadPassShaders(Pass* pass)
 
 ShaderVariation* Renderer::FindShaderVariation(ShaderStage stage, Pass* pass, unsigned short bits)
 {
-    /// \todo Evaluate whether the hash lookup is worth the memory save vs using just straightforward vectors
+    // \todo Evaluate whether the hash lookup is worth the memory save vs using just straightforward vectors
     HashMap<unsigned short, WeakPtr<ShaderVariation> >& variations = pass->shaderVariations[stage];
     HashMap<unsigned short, WeakPtr<ShaderVariation> >::Iterator it = variations.Find(bits);
 

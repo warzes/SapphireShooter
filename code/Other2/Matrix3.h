@@ -2,21 +2,21 @@
 
 #include "Vector3.h"
 
-/// 3x3 matrix for rotation and scaling.
+// 3x3 matrix for rotation and scaling.
 class Matrix3
 {
 public:
-	/// Matrix values.
+	// Matrix values.
 	float m00, m01, m02;
 	float m10, m11, m12;
 	float m20, m21, m22;
 
-	/// Construct undefined.
+	// Construct undefined.
 	Matrix3()
 	{
 	}
 
-	/// Copy-construct.
+	// Copy-construct.
 	Matrix3(const Matrix3& matrix) :
 		m00(matrix.m00), m01(matrix.m01), m02(matrix.m02),
 		m10(matrix.m10), m11(matrix.m11), m12(matrix.m12),
@@ -24,7 +24,7 @@ public:
 	{
 	}
 
-	/// Construct from values.
+	// Construct from values.
 	Matrix3(float v00, float v01, float v02,
 		float v10, float v11, float v12,
 		float v20, float v21, float v22) :
@@ -34,7 +34,7 @@ public:
 	{
 	}
 
-	/// Construct from a float array.
+	// Construct from a float array.
 	Matrix3(const float* data) :
 		m00(data[0]), m01(data[1]), m02(data[2]),
 		m10(data[3]), m11(data[4]), m12(data[5]),
@@ -42,20 +42,20 @@ public:
 	{
 	}
 
-	/// Construct by parsing a string.
+	// Construct by parsing a string.
 	Matrix3(const String& str)
 	{
 		FromString(str);
 	}
 
-	/// Construct by parsing a C string.
+	// Construct by parsing a C string.
 	Matrix3(const char* str)
 	{
 		FromString(str);
 	}
 
-	/// Assign from another matrix.
-	Matrix3& operator = (const Matrix3& rhs)
+	// Assign from another matrix.
+	Matrix3& operator=(const Matrix3& rhs)
 	{
 		m00 = rhs.m00; m01 = rhs.m01; m02 = rhs.m02;
 		m10 = rhs.m10; m11 = rhs.m11; m12 = rhs.m12;
@@ -63,8 +63,8 @@ public:
 		return *this;
 	}
 
-	/// Test for equality with another matrix without epsilon.
-	bool operator == (const Matrix3& rhs) const
+	// Test for equality with another matrix without epsilon.
+	bool operator==(const Matrix3& rhs) const
 	{
 		const float* leftData = Data();
 		const float* rightData = rhs.Data();
@@ -78,11 +78,11 @@ public:
 		return true;
 	}
 
-	/// Test for inequality with another matrix without epsilon.
-	bool operator != (const Matrix3& rhs) const { return !(*this == rhs); }
+	// Test for inequality with another matrix without epsilon.
+	bool operator!=(const Matrix3& rhs) const { return !(*this == rhs); }
 
-	/// Multiply a Vector3.
-	Vector3 operator * (const Vector3& rhs) const
+	// Multiply a Vector3.
+	Vector3 operator*(const Vector3& rhs) const
 	{
 		return Vector3(
 			m00 * rhs.x + m01 * rhs.y + m02 * rhs.z,
@@ -91,8 +91,8 @@ public:
 		);
 	}
 
-	/// Add a matrix.
-	Matrix3 operator + (const Matrix3& rhs) const
+	// Add a matrix.
+	Matrix3 operator+(const Matrix3& rhs) const
 	{
 		return Matrix3(
 			m00 + rhs.m00, m01 + rhs.m01, m02 + rhs.m02,
@@ -101,8 +101,8 @@ public:
 		);
 	}
 
-	/// Subtract a matrix.
-	Matrix3 operator - (const Matrix3& rhs) const
+	// Subtract a matrix.
+	Matrix3 operator-(const Matrix3& rhs) const
 	{
 		return Matrix3(
 			m00 - rhs.m00, m01 - rhs.m01, m02 - rhs.m02,
@@ -111,8 +111,8 @@ public:
 		);
 	}
 
-	/// Multiply with a scalar.
-	Matrix3 operator * (float rhs) const
+	// Multiply with a scalar.
+	Matrix3 operator*(float rhs) const
 	{
 		return Matrix3(
 			m00 * rhs, m01 * rhs, m02 * rhs,
@@ -121,8 +121,8 @@ public:
 		);
 	}
 
-	/// Multiply a matrix.
-	Matrix3 operator * (const Matrix3& rhs) const
+	// Multiply a matrix.
+	Matrix3 operator*(const Matrix3& rhs) const
 	{
 		return Matrix3(
 			m00 * rhs.m00 + m01 * rhs.m10 + m02 * rhs.m20,
@@ -137,7 +137,7 @@ public:
 		);
 	}
 
-	/// Set scaling elements.
+	// Set scaling elements.
 	void SetScale(const Vector3& scale)
 	{
 		m00 = scale.x;
@@ -145,7 +145,7 @@ public:
 		m22 = scale.z;
 	}
 
-	/// Set uniform scaling elements.
+	// Set uniform scaling elements.
 	void SetScale(float scale)
 	{
 		m00 = scale;
@@ -153,12 +153,12 @@ public:
 		m22 = scale;
 	}
 
-	/// Parse from a string. Return true on success.
+	// Parse from a string. Return true on success.
 	bool FromString(const String& str);
-	/// Parse from a C string. Return true on success.
+	// Parse from a C string. Return true on success.
 	bool FromString(const char* str);
 
-	/// Return the scaling part.
+	// Return the scaling part.
 	Vector3 Scale() const
 	{
 		return Vector3(
@@ -168,7 +168,7 @@ public:
 		);
 	}
 
-	/// Return transpose.
+	// Return transpose.
 	Matrix3 Transpose() const
 	{
 		return Matrix3(
@@ -178,7 +178,7 @@ public:
 		);
 	}
 
-	/// Return scaled by a vector.
+	// Return scaled by a vector.
 	Matrix3 Scaled(const Vector3& scale) const
 	{
 		return Matrix3(
@@ -188,7 +188,7 @@ public:
 		);
 	}
 
-	/// Test for equality with another matrix with epsilon.
+	// Test for equality with another matrix with epsilon.
 	bool Equals(const Matrix3& rhs) const
 	{
 		const float* leftData = Data();
@@ -203,19 +203,19 @@ public:
 		return true;
 	}
 
-	/// Return inverse.
+	// Return inverse.
 	Matrix3 Inverse() const;
 
-	/// Return float data.
+	// Return float data.
 	const float* Data() const { return &m00; }
-	/// Return as string.
+	// Return as string.
 	String ToString() const;
 
-	/// Zero matrix.
+	// Zero matrix.
 	static const Matrix3 ZERO;
-	/// Identity matrix.
+	// Identity matrix.
 	static const Matrix3 IDENTITY;
 };
 
-/// Multiply a 3x3 matrix with a scalar.
-inline Matrix3 operator * (float lhs, const Matrix3& rhs) { return rhs * lhs; }
+// Multiply a 3x3 matrix with a scalar.
+inline Matrix3 operator*(float lhs, const Matrix3& rhs) { return rhs * lhs; }

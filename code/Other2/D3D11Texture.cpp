@@ -69,7 +69,7 @@ static const D3D11_RTV_DIMENSION rtvDimension[] =
     D3D11_RTV_DIMENSION_TEXTURE1D,
     D3D11_RTV_DIMENSION_TEXTURE2D,
     D3D11_RTV_DIMENSION_TEXTURE3D,
-    D3D11_RTV_DIMENSION_TEXTURE2D, /// \todo Implement views per face
+    D3D11_RTV_DIMENSION_TEXTURE2D, // \todo Implement views per face
 };
 
 static const D3D11_DSV_DIMENSION dsvDimension[] =
@@ -200,7 +200,7 @@ bool Texture::Define(TextureType type_, ResourceUsage usage_, const IntVector2& 
         textureDesc.MipLevels = (unsigned)numLevels_;
         textureDesc.ArraySize = (unsigned)NumFaces();
         textureDesc.Format = textureFormat[format_];
-        /// \todo Support defining multisampled textures
+        // \todo Support defining multisampled textures
         textureDesc.SampleDesc.Count = 1;
         textureDesc.SampleDesc.Quality = 0;
         textureDesc.Usage = (usage != USAGE_RENDERTARGET) ? (D3D11_USAGE)usage : D3D11_USAGE_DEFAULT;
@@ -447,7 +447,7 @@ bool Texture::SetData(size_t face, size_t level, IntRect rect, const ImageLevel&
 
 void* Texture::D3DRenderTargetView(size_t /*index*/) const
 {
-    /// \todo Handle different indices for eg. cube maps
+    // \todo Handle different indices for eg. cube maps
     return renderTargetView;
 }
 

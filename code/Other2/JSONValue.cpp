@@ -78,7 +78,7 @@ JSONValue::~JSONValue()
 	SetType(JSON_NULL);
 }
 
-JSONValue& JSONValue::operator = (const JSONValue& rhs)
+JSONValue& JSONValue::operator=(const JSONValue& rhs)
 {
 	SetType(rhs.type);
 
@@ -111,63 +111,63 @@ JSONValue& JSONValue::operator = (const JSONValue& rhs)
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (bool rhs)
+JSONValue& JSONValue::operator=(bool rhs)
 {
 	SetType(JSON_BOOL);
 	data.boolValue = rhs;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (int rhs)
+JSONValue& JSONValue::operator=(int rhs)
 {
 	SetType(JSON_NUMBER);
 	data.numberValue = (double)rhs;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (unsigned rhs)
+JSONValue& JSONValue::operator=(unsigned rhs)
 {
 	SetType(JSON_NUMBER);
 	data.numberValue = (double)rhs;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (float rhs)
+JSONValue& JSONValue::operator=(float rhs)
 {
 	SetType(JSON_NUMBER);
 	data.numberValue = (double)rhs;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (double rhs)
+JSONValue& JSONValue::operator=(double rhs)
 {
 	SetType(JSON_NUMBER);
 	data.numberValue = rhs;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (const String& value)
+JSONValue& JSONValue::operator=(const String& value)
 {
 	SetType(JSON_STRING);
 	*(reinterpret_cast<String*>(&data)) = value;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (const char* value)
+JSONValue& JSONValue::operator=(const char* value)
 {
 	SetType(JSON_STRING);
 	*(reinterpret_cast<String*>(&data)) = value;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (const JSONArray& value)
+JSONValue& JSONValue::operator=(const JSONArray& value)
 {
 	SetType(JSON_ARRAY);
 	*(reinterpret_cast<JSONArray*>(&data)) = value;
 	return *this;
 }
 
-JSONValue& JSONValue::operator = (const JSONObject& value)
+JSONValue& JSONValue::operator=(const JSONObject& value)
 {
 	SetType(JSON_OBJECT);
 	*(reinterpret_cast<JSONObject*>(&data)) = value;
@@ -210,7 +210,7 @@ const JSONValue& JSONValue::operator [] (const String& key) const
 		return EMPTY;
 }
 
-bool JSONValue::operator == (const JSONValue& rhs) const
+bool JSONValue::operator==(const JSONValue& rhs) const
 {
 	if (type != rhs.type)
 		return false;
@@ -806,7 +806,7 @@ bool JSONValue::ReadJSONString(String& dest, const char*& pos, const char*& end,
 
 			case 'u':
 			{
-				/// \todo Doesn't handle unicode surrogate pairs
+				// \todo Doesn't handle unicode surrogate pairs
 				unsigned code;
 				sscanf(pos, "%x", &code);
 				pos += 4;

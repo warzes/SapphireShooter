@@ -59,7 +59,7 @@ bool CopyFile(const String& srcFileName, const String& destFileName)
 	if (!destFile.IsOpen())
 		return false;
 
-	/// \todo Should use a fixed-size buffer to allow copying very large files
+	// \todo Should use a fixed-size buffer to allow copying very large files
 	size_t fileSize = srcFile.Size();
 	AutoArrayPtr<unsigned char> buffer(new unsigned char[fileSize]);
 
@@ -235,7 +235,7 @@ static void ScanDirInternal(Vector<String>& result, String path, const String& s
 	{
 		while ((de = readdir(dir)))
 		{
-			/// \todo Filename may be unnormalized Unicode on Mac OS X. Re-normalize as necessary
+			// \todo Filename may be unnormalized Unicode on Mac OS X. Re-normalize as necessary
 			String fileName(de->d_name);
 			bool normalEntry = fileName != "." && fileName != "..";
 			if (normalEntry && !(flags & SCAN_HIDDEN) && fileName.StartsWith("."))

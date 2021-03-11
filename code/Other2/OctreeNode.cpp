@@ -52,7 +52,7 @@ void OctreeNode::OnRaycast(Vector<RaycastResult>& dest, const Ray& ray, float ma
 
 void OctreeNode::OnSceneSet(Scene* newScene, Scene*)
 {
-    /// Remove from current octree if any
+    // Remove from current octree if any
     RemoveFromOctree();
 
     if (newScene)

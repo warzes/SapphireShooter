@@ -1,44 +1,43 @@
 #pragma once
 
-struct AllocatorBlock;
 struct AllocatorNode;
 
-/// %Allocator memory block.
+// Allocator memory block.
 struct AllocatorBlock
 {
-	/// Size of a node.
+	// Size of a node.
 	size_t nodeSize;
-	/// Number of nodes in this block.
+	// Number of nodes in this block.
 	size_t capacity;
-	/// First free node.
+	// First free node.
 	AllocatorNode* free;
-	/// Next allocator block.
+	// Next allocator block.
 	AllocatorBlock* next;
-	/// Nodes follow.
+	// Nodes follow.
 };
 
-/// %Allocator node.
+// Allocator node.
 struct AllocatorNode
 {
-	/// Next free node.
+	// Next free node.
 	AllocatorNode* next;
-	/// Data follows.
+	// Data follows.
 };
 
-/// Initialize a fixed-size allocator with the node size and initial capacity.
+// Initialize a fixed-size allocator with the node size and initial capacity.
 AllocatorBlock* AllocatorInitialize(size_t nodeSize, size_t initialCapacity = 1);
-/// Uninitialize a fixed-size allocator. Frees all blocks in the chain.
+// Uninitialize a fixed-size allocator. Frees all blocks in the chain.
 void AllocatorUninitialize(AllocatorBlock* allocator);
-/// Allocate a node. Creates a new block if necessary.
+// Allocate a node. Creates a new block if necessary.
 void* AllocatorGet(AllocatorBlock* allocator);
-/// Free a node. Does not free any blocks.
+// Free a node. Does not free any blocks.
 void AllocatorFree(AllocatorBlock* allocator, void* node);
 
-/// %Allocator template class. Allocates objects of a specific class.
+// Allocator template class. Allocates objects of a specific class.
 template <class T> class Allocator
 {
 public:
-	/// Construct with optional initial capacity.
+	// Construct with optional initial capacity.
 	Allocator(size_t capacity = 0) :
 		allocator(nullptr)
 	{
@@ -46,20 +45,20 @@ public:
 			Reserve(capacity);
 	}
 
-	/// Destruct. All objects reserved from this allocator should be freed before this is called.
+	// Destruct. All objects reserved from this allocator should be freed before this is called.
 	~Allocator()
 	{
 		Reset();
 	}
 
-	/// Reserve initial capacity. Only possible before allocating the first object.
+	// Reserve initial capacity. Only possible before allocating the first object.
 	void Reserve(size_t capacity)
 	{
 		if (!allocator)
 			allocator = AllocatorInitialize(sizeof(T), capacity);
 	}
 
-	/// Allocate and default-construct an object.
+	// Allocate and default-construct an object.
 	T* Allocate()
 	{
 		if (!allocator)
@@ -70,7 +69,7 @@ public:
 		return newObject;
 	}
 
-	/// Allocate and copy-construct an object.
+	// Allocate and copy-construct an object.
 	T* Allocate(const T& object)
 	{
 		if (!allocator)
@@ -81,14 +80,14 @@ public:
 		return newObject;
 	}
 
-	/// Destruct and free an object.
+	// Destruct and free an object.
 	void Free(T* object)
 	{
 		(object)->~T();
 		AllocatorFree(allocator, object);
 	}
 
-	/// Free the allocator. All objects reserved from this allocator should be freed before this is called.
+	// Free the allocator. All objects reserved from this allocator should be freed before this is called.
 	void Reset()
 	{
 		AllocatorUninitialize(allocator);
@@ -96,11 +95,11 @@ public:
 	}
 
 private:
-	/// Prevent copy construction.
+	// Prevent copy construction.
 	Allocator(const Allocator<T>& rhs);
-	/// Prevent assignment.
-	Allocator<T>& operator = (const Allocator<T>& rhs);
+	// Prevent assignment.
+	Allocator<T>& operator=(const Allocator<T>& rhs);
 
-	/// Allocator block.
+	// Allocator block.
 	AllocatorBlock* allocator;
 };

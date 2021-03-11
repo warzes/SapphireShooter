@@ -3,42 +3,42 @@
 #include "String.h"
 #include "IntRect.h"
 
-/// Clear rendertarget color.
+// Clear rendertarget color.
 static const unsigned CLEAR_COLOR = 1;
-/// Clear rendertarget depth.
+// Clear rendertarget depth.
 static const unsigned CLEAR_DEPTH = 2;
-/// Clear rendertarget stencil.
+// Clear rendertarget stencil.
 static const unsigned CLEAR_STENCIL = 4;
-/// Clear color+depth+stencil.
+// Clear color+depth+stencil.
 static const unsigned CLEAR_ALL = 7;
 
-/// Maximum simultaneous vertex buffers.
+// Maximum simultaneous vertex buffers.
 static const size_t MAX_VERTEX_STREAMS = 4;
-/// Maximum simultaneous constant buffers.
+// Maximum simultaneous constant buffers.
 static const size_t MAX_CONSTANT_BUFFERS = 15;
-/// Maximum number of textures in use at once.
+// Maximum number of textures in use at once.
 static const size_t MAX_TEXTURE_UNITS = 16;
-/// Maximum number of textures reserved for materials, starting from 0.
+// Maximum number of textures reserved for materials, starting from 0.
 static const size_t MAX_MATERIAL_TEXTURE_UNITS = 8;
-/// Maximum number of color rendertargets in use at once.
+// Maximum number of color rendertargets in use at once.
 static const size_t MAX_RENDERTARGETS = 4;
-/// Number of cube map faces.
+// Number of cube map faces.
 static const size_t MAX_CUBE_FACES = 6;
 
-/// Disable color write.
+// Disable color write.
 static const unsigned char COLORMASK_NONE = 0x0;
-/// Write to red channel.
+// Write to red channel.
 static const unsigned char COLORMASK_R = 0x1;
-/// Write to green channel.
+// Write to green channel.
 static const unsigned char COLORMASK_G = 0x2;
-/// Write to blue channel.
+// Write to blue channel.
 static const unsigned char COLORMASK_B = 0x4;
-/// Write to alpha channel.
+// Write to alpha channel.
 static const unsigned char COLORMASK_A = 0x8;
-/// Write to all color channels (default.)
+// Write to all color channels (default.)
 static const unsigned char COLORMASK_ALL = 0xf;
 
-/// Shader stages.
+// Shader stages.
 enum ShaderStage
 {
 	SHADER_VS = 0,
@@ -46,7 +46,7 @@ enum ShaderStage
 	MAX_SHADER_STAGES
 };
 
-/// Element types for constant buffers and vertex elements.
+// Element types for constant buffers and vertex elements.
 enum ElementType
 {
 	ELEM_INT = 0,
@@ -60,7 +60,7 @@ enum ElementType
 	MAX_ELEMENT_TYPES
 };
 
-/// Element semantics for vertex elements.
+// Element semantics for vertex elements.
 enum ElementSemantic
 {
 	SEM_POSITION = 0,
@@ -74,7 +74,7 @@ enum ElementSemantic
 	MAX_ELEMENT_SEMANTICS
 };
 
-/// Primitive types.
+// Primitive types.
 enum PrimitiveType
 {
 	POINT_LIST = 1,
@@ -85,7 +85,7 @@ enum PrimitiveType
 	MAX_PRIMITIVE_TYPES
 };
 
-/// Blend factors.
+// Blend factors.
 enum BlendFactor
 {
 	BLEND_ZERO = 1,
@@ -102,7 +102,7 @@ enum BlendFactor
 	MAX_BLEND_FACTORS
 };
 
-/// Blend operations.
+// Blend operations.
 enum BlendOp
 {
 	BLEND_OP_ADD = 1,
@@ -113,7 +113,7 @@ enum BlendOp
 	MAX_BLEND_OPS
 };
 
-/// Predefined blend modes.
+// Predefined blend modes.
 enum BlendMode
 {
 	BLEND_MODE_REPLACE = 0,
@@ -128,7 +128,7 @@ enum BlendMode
 	MAX_BLEND_MODES
 };
 
-/// Fill modes.
+// Fill modes.
 enum FillMode
 {
 	FILL_WIREFRAME = 2,
@@ -136,7 +136,7 @@ enum FillMode
 	MAX_FILL_MODES
 };
 
-/// Triangle culling modes.
+// Triangle culling modes.
 enum CullMode
 {
 	CULL_NONE = 1,
@@ -145,7 +145,7 @@ enum CullMode
 	MAX_CULL_MODES
 };
 
-/// Depth or stencil compare modes.
+// Depth or stencil compare modes.
 enum CompareFunc
 {
 	CMP_NEVER = 1,
@@ -159,7 +159,7 @@ enum CompareFunc
 	MAX_COMPARE_MODES
 };
 
-/// Stencil operations.
+// Stencil operations.
 enum StencilOp
 {
 	STENCIL_OP_KEEP = 1,
@@ -173,7 +173,7 @@ enum StencilOp
 	MAX_STENCIL_OPS
 };
 
-/// Texture types.
+// Texture types.
 enum TextureType
 {
 	TEX_1D = 0,
@@ -182,7 +182,7 @@ enum TextureType
 	TEX_CUBE,
 };
 
-/// Resource usage modes. Rendertarget usage can only be used with textures.
+// Resource usage modes. Rendertarget usage can only be used with textures.
 enum ResourceUsage
 {
 	USAGE_DEFAULT = 0,
@@ -191,7 +191,7 @@ enum ResourceUsage
 	USAGE_RENDERTARGET
 };
 
-/// Texture filtering modes.
+// Texture filtering modes.
 enum TextureFilterMode
 {
 	FILTER_POINT = 0,
@@ -204,7 +204,7 @@ enum TextureFilterMode
 	COMPARE_ANISOTROPIC
 };
 
-/// Texture addressing modes.
+// Texture addressing modes.
 enum TextureAddressMode
 {
 	ADDRESS_WRAP = 1,
@@ -214,10 +214,10 @@ enum TextureAddressMode
 	ADDRESS_MIRROR_ONCE
 };
 
-/// Description of an element in a vertex declaration.
+// Description of an element in a vertex declaration.
 struct VertexElement
 {
-	/// Default-construct.
+	// Default-construct.
 	VertexElement() :
 		type(ELEM_VECTOR3),
 		semantic(SEM_POSITION),
@@ -227,7 +227,7 @@ struct VertexElement
 	{
 	}
 
-	/// Construct with type, semantic, index and whether is per-instance data.
+	// Construct with type, semantic, index and whether is per-instance data.
 	VertexElement(ElementType type_, ElementSemantic semantic_, unsigned char index_ = 0, bool perInstance_ = false) :
 		type(type_),
 		semantic(semantic_),
@@ -237,28 +237,28 @@ struct VertexElement
 	{
 	}
 
-	/// Data type of element.
+	// Data type of element.
 	ElementType type;
-	/// Semantic of element.
+	// Semantic of element.
 	ElementSemantic semantic;
-	/// Semantic index of element, for example multi-texcoords.
+	// Semantic index of element, for example multi-texcoords.
 	unsigned char index;
-	/// Per-instance flag.
+	// Per-instance flag.
 	bool perInstance;
-	/// Offset of element from vertex start. Filled by VertexBuffer.
+	// Offset of element from vertex start. Filled by VertexBuffer.
 	size_t offset;
 };
 
-/// Description of a shader constant.
+// Description of a shader constant.
 struct Constant
 {
-	/// Construct empty.
+	// Construct empty.
 	Constant() :
 		numElements(1)
 	{
 	}
 
-	/// Construct with type, name and optional number of elements.
+	// Construct with type, name and optional number of elements.
 	Constant(ElementType type_, const String& name_, size_t numElements_ = 1) :
 		type(type_),
 		name(name_),
@@ -266,7 +266,7 @@ struct Constant
 	{
 	}
 
-	/// Construct with type, name and optional number of elements.
+	// Construct with type, name and optional number of elements.
 	Constant(ElementType type_, const char* name_, size_t numElements_ = 1) :
 		type(type_),
 		name(name_),
@@ -274,28 +274,28 @@ struct Constant
 	{
 	}
 
-	/// Data type of constant.
+	// Data type of constant.
 	ElementType type;
-	/// Name of constant.
+	// Name of constant.
 	String name;
-	/// Number of elements. Default 1.
+	// Number of elements. Default 1.
 	size_t numElements;
-	/// Element size. Filled by ConstantBuffer.
+	// Element size. Filled by ConstantBuffer.
 	size_t elementSize;
-	/// Offset from the beginning of the buffer. Filled by ConstantBuffer.
+	// Offset from the beginning of the buffer. Filled by ConstantBuffer.
 	size_t offset;
 };
 
-/// Description of a blend mode.
+// Description of a blend mode.
 struct BlendModeDesc
 {
-	/// Default-construct.
+	// Default-construct.
 	BlendModeDesc()
 	{
 		Reset();
 	}
 
-	/// Construct with parameters.
+	// Construct with parameters.
 	BlendModeDesc(bool blendEnable_, BlendFactor srcBlend_, BlendFactor destBlend_, BlendOp blendOp_, BlendFactor srcBlendAlpha_, BlendFactor destBlendAlpha_, BlendOp blendOpAlpha_) :
 		blendEnable(blendEnable_),
 		srcBlend(srcBlend_),
@@ -307,7 +307,7 @@ struct BlendModeDesc
 	{
 	}
 
-	/// Reset to defaults.
+	// Reset to defaults.
 	void Reset()
 	{
 		blendEnable = false;
@@ -319,37 +319,37 @@ struct BlendModeDesc
 		blendOpAlpha = BLEND_OP_ADD;
 	}
 
-	/// Test for equality with another blend mode description.
-	bool operator == (const BlendModeDesc& rhs) const { return blendEnable == rhs.blendEnable && srcBlend == rhs.srcBlend && destBlend == rhs.destBlend && blendOp == rhs.blendOp && srcBlendAlpha == rhs.srcBlendAlpha && destBlendAlpha == rhs.destBlendAlpha && blendOpAlpha == rhs.blendOpAlpha; }
-	/// Test for inequality with another blend mode description.
-	bool operator != (const BlendModeDesc& rhs) const { return !(*this == rhs); }
+	// Test for equality with another blend mode description.
+	bool operator==(const BlendModeDesc& rhs) const { return blendEnable == rhs.blendEnable && srcBlend == rhs.srcBlend && destBlend == rhs.destBlend && blendOp == rhs.blendOp && srcBlendAlpha == rhs.srcBlendAlpha && destBlendAlpha == rhs.destBlendAlpha && blendOpAlpha == rhs.blendOpAlpha; }
+	// Test for inequality with another blend mode description.
+	bool operator!=(const BlendModeDesc& rhs) const { return !(*this == rhs); }
 
-	/// Blend enable flag.
+	// Blend enable flag.
 	bool blendEnable;
-	/// Source color blend factor.
+	// Source color blend factor.
 	BlendFactor srcBlend;
-	/// Destination color blend factor.
+	// Destination color blend factor.
 	BlendFactor destBlend;
-	/// Color blend operation.
+	// Color blend operation.
 	BlendOp blendOp;
-	/// Source alpha blend factor.
+	// Source alpha blend factor.
 	BlendFactor srcBlendAlpha;
-	/// Destination alpha blend factor.
+	// Destination alpha blend factor.
 	BlendFactor destBlendAlpha;
-	/// Alpha blend operation.
+	// Alpha blend operation.
 	BlendOp blendOpAlpha;
 };
 
-/// Description of a stencil test.
+// Description of a stencil test.
 struct StencilTestDesc
 {
-	/// Default-construct.
+	// Default-construct.
 	StencilTestDesc()
 	{
 		Reset();
 	}
 
-	/// Reset to defaults.
+	// Reset to defaults.
 	void Reset()
 	{
 		stencilReadMask = 0xff;
@@ -364,38 +364,38 @@ struct StencilTestDesc
 		backPass = STENCIL_OP_KEEP;
 	}
 
-	/// Stencil read bit mask.
+	// Stencil read bit mask.
 	unsigned char stencilReadMask;
-	/// Stencil write bit mask.
+	// Stencil write bit mask.
 	unsigned char stencilWriteMask;
-	/// Stencil front face compare function.
+	// Stencil front face compare function.
 	CompareFunc frontFunc;
-	/// Operation for front face stencil test fail.
+	// Operation for front face stencil test fail.
 	StencilOp frontFail;
-	/// Operation for front face depth test fail.
+	// Operation for front face depth test fail.
 	StencilOp frontDepthFail;
-	/// Operation for front face pass.
+	// Operation for front face pass.
 	StencilOp frontPass;
-	/// Stencil back face compare function.
+	// Stencil back face compare function.
 	CompareFunc backFunc;
-	/// Operation for back face stencil test fail.
+	// Operation for back face stencil test fail.
 	StencilOp backFail;
-	/// Operation for back face depth test fail.
+	// Operation for back face depth test fail.
 	StencilOp backDepthFail;
-	/// Operation for back face pass.
+	// Operation for back face pass.
 	StencilOp backPass;
 };
 
-/// Collection of render state.
+// Collection of render state.
 struct RenderState
 {
-	/// Default-construct.
+	// Default-construct.
 	RenderState()
 	{
 		Reset();
 	}
 
-	/// Reset to defaults.
+	// Reset to defaults.
 	void Reset()
 	{
 		depthFunc = CMP_LESS_EQUAL;
@@ -415,59 +415,59 @@ struct RenderState
 		stencilTest.Reset();
 	}
 
-	/// Depth test function.
+	// Depth test function.
 	CompareFunc depthFunc;
-	/// Depth write enable.
+	// Depth write enable.
 	bool depthWrite;
-	/// Depth clipping enable.
+	// Depth clipping enable.
 	bool depthClip;
-	/// Constant depth bias.
+	// Constant depth bias.
 	int depthBias;
-	/// Slope-scaled depth bias.
+	// Slope-scaled depth bias.
 	float slopeScaledDepthBias;
-	/// Rendertarget color channel write mask.
+	// Rendertarget color channel write mask.
 	unsigned char colorWriteMask;
-	/// Alpha-to-coverage enable.
+	// Alpha-to-coverage enable.
 	bool alphaToCoverage;
-	/// Blend mode parameters.
+	// Blend mode parameters.
 	BlendModeDesc blendMode;
-	/// Polygon culling mode.
+	// Polygon culling mode.
 	CullMode cullMode;
-	/// Polygon fill mode.
+	// Polygon fill mode.
 	FillMode fillMode;
-	/// Scissor test enable.
+	// Scissor test enable.
 	bool scissorEnable;
-	/// Scissor rectangle as pixels from rendertarget top left corner.
+	// Scissor rectangle as pixels from rendertarget top left corner.
 	IntRect scissorRect;
-	/// Stencil test enable.
+	// Stencil test enable.
 	bool stencilEnable;
-	/// Stencil reference value.
+	// Stencil reference value.
 	unsigned char stencilRef;
-	/// Stencil test parameters.
+	// Stencil test parameters.
 	StencilTestDesc stencilTest;
 };
 
-/// Vertex element sizes by element type.
+// Vertex element sizes by element type.
 extern const size_t elementSizes[];
-/// Resource usage names.
+// Resource usage names.
 extern const char* resourceUsageNames[];
-/// Element type names.
+// Element type names.
 extern const char* elementTypeNames[];
-/// Vertex element semantic names.
+// Vertex element semantic names.
 extern const char* elementSemanticNames[];
-/// Blend factor names.
+// Blend factor names.
 extern const char* blendFactorNames[];
-/// Blend operation names.
+// Blend operation names.
 extern const char* blendOpNames[];
-/// Predefined blend mode names.
+// Predefined blend mode names.
 extern const char* blendModeNames[];
-/// Fill mode names.
+// Fill mode names.
 extern const char* fillModeNames[];
-/// Culling mode names.
+// Culling mode names.
 extern const char* cullModeNames[];
-/// Compare function names.
+// Compare function names.
 extern const char* compareFuncNames[];
-/// Stencil operation names.
+// Stencil operation names.
 extern const char* stencilOpNames[];
-/// Predefined blend modes.
+// Predefined blend modes.
 extern const BlendModeDesc blendModes[];

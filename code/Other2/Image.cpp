@@ -88,15 +88,15 @@ FMT_RGBA8,
 FMT_RGBA8
 };
 
-/// \cond PRIVATE
+// \cond PRIVATE
 struct DDColorKey
 {
 	unsigned dwColorSpaceLowValue;
 	unsigned dwColorSpaceHighValue;
 };
-/// \endcond
+// \endcond
 
-/// \cond PRIVATE
+// \cond PRIVATE
 struct DDPixelFormat
 {
 	unsigned dwSize;
@@ -149,9 +149,9 @@ struct DDPixelFormat
 		unsigned dwYUVZBitMask;
 	};
 };
-/// \endcond
+// \endcond
 
-/// \cond PRIVATE
+// \cond PRIVATE
 struct DDSCaps2
 {
 	unsigned dwCaps;
@@ -163,9 +163,9 @@ struct DDSCaps2
 		unsigned dwVolumeDepth;
 	};
 };
-/// \endcond
+// \endcond
 
-/// \cond PRIVATE
+// \cond PRIVATE
 struct DDSurfaceDesc2
 {
 	unsigned dwSize;
@@ -207,7 +207,7 @@ struct DDSurfaceDesc2
 	DDSCaps2 ddsCaps;
 	unsigned dwTextureStage;
 };
-/// \endcond
+// \endcond
 
 Image::Image() :
 	size(IntVector2::ZERO),

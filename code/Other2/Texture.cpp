@@ -58,7 +58,7 @@ bool Texture2::EndLoad()
 
 	Image* image = loadImages[0];
 	bool success = Define(TEX_2D, USAGE_IMMUTABLE, image->Size(), image->Format(), initialData.Size(), &initialData[0]);
-	/// \todo Read a parameter file for the sampling parameters
+	// \todo Read a parameter file for the sampling parameters
 	success &= DefineSampler(FILTER_TRILINEAR, ADDRESS_WRAP, ADDRESS_WRAP, ADDRESS_WRAP);
 
 	loadImages.Clear();
