@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Allocator.h"
+#include "Engine/Allocator.h"
 #include "Pair.h"
 #include "Sort.h"
 #include "Vector.h"
@@ -531,7 +531,7 @@ private:
 	// Allocate a node with optionally specified key and value.
 	Node* allocateNode(const T& key = T(), const U& value = U())
 	{
-		Node* newNode = static_cast<Node*>(AllocatorGet(m_allocator));
+		Node* newNode = static_cast<Node*>(AllocatorReserve(m_allocator));
 		new(newNode) Node(key, value);
 		return newNode;
 	}

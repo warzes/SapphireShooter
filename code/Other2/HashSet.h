@@ -446,7 +446,7 @@ private:
 	// Allocate a node with optionally specified key.
 	Node* AllocateNode(const T& key = T())
 	{
-		Node* newNode = static_cast<Node*>(AllocatorGet(m_allocator));
+		Node* newNode = static_cast<Node*>(AllocatorReserve(m_allocator));
 		new(newNode) Node(key);
 		return newNode;
 	}

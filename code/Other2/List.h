@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Allocator.h"
+#include "Engine/Allocator.h"
 #include "Swap.h"
 
 // Doubly-linked list node base class.
@@ -410,7 +410,7 @@ private:
 	// Reserve a node with optionally specified value.
 	Node* allocateNode(const T& value = T())
 	{
-		Node* newNode = static_cast<Node*>(AllocatorGet(m_allocator));
+		Node* newNode = static_cast<Node*>(AllocatorReserve(m_allocator));
 		new(newNode) Node(value);
 		return newNode;
 	}
