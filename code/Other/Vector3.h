@@ -150,11 +150,11 @@ namespace dim
 
         /* === Additional operators === */
 
-        inline const T& operator [] (size_t i) const
+        inline const T& operator[](size_t i) const
         {
             return *(&X + i);
         }
-        inline T& operator [] (size_t i)
+        inline T& operator[](size_t i)
         {
             return *(&X + i);
         }

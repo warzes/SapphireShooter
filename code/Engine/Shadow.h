@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "FrameBuffer2.h"
 #include "CubeDepthBuffer.h"
 #include "Light.h"
@@ -20,3 +22,5 @@ public:
 	void updateBuffer();
 	ShadowTransforms generateShadowTransforms();
 };
+
+#endif

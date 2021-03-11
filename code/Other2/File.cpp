@@ -1,48 +1,45 @@
 #include "stdafx.h"
 #include "File.h"
+#include "WString.h"
 #include "FileSystem.h"
 #include "Engine/DebugNew.h"
-
-#ifdef _WIN32
-static const wchar_t* openModes[] =
+//-----------------------------------------------------------------------------
+#if SE_PLATFORM_WINDOWS
+constexpr inline const wchar_t* openModesTranslate(FileMode mode)
 {
-L"rb",
-L"wb",
-L"r+b",
-L"w+b"
-};
-#else
-static const char* openModes[] =
-{
-"rb",
-"wb",
-"r+b",
-"w+b"
-};
-#endif
-
-File::File() :
-	mode(FILE_READ),
-	handle(nullptr),
-	readSyncNeeded(false),
-	writeSyncNeeded(false)
-{
+	switch(mode)
+	{
+	case FileMode::Read: return L"rb";
+	case FileMode::Write: return L"wb";
+	case FileMode::ReadWrite: return L"r+b";
+	default: break;
+	}
+	return L"w+b";
 }
-
-File::File(const String& fileName, FileMode mode) :
-	mode(FILE_READ),
-	handle(nullptr),
-	readSyncNeeded(false),
-	writeSyncNeeded(false)
+#else
+constexpr inline const char* openModesTranslate(FileMode mode)
+{
+	switch (mode)
+	{
+	case FileMode::Read: return "rb";
+	case FileMode::Write: return "wb";
+	case FileMode::ReadWrite: return "r+b";
+	default: break;
+	}
+	return "w+b";
+}
+#endif
+//-----------------------------------------------------------------------------
+File::File(const String& fileName, FileMode mode)
 {
 	Open(fileName, mode);
 }
-
+//-----------------------------------------------------------------------------
 File::~File()
 {
 	Close();
 }
-
+//-----------------------------------------------------------------------------
 bool File::Open(const String& fileName, FileMode fileMode)
 {
 	Close();
@@ -50,141 +47,142 @@ bool File::Open(const String& fileName, FileMode fileMode)
 	if (fileName.IsEmpty())
 		return false;
 
-#ifdef _WIN32
-	handle = _wfopen(WideNativePath(fileName).CString(), openModes[fileMode]);
+#if SE_PLATFORM_WINDOWS
+	m_handle = _wfopen(FileSystem::WideNativePath(fileName).CString(), openModesTranslate(fileMode));
 #else
-	handle = fopen(NativePath(fileName).CString(), openModes[fileMode]);
+	m_handle = fopen(FileSystem::NativePath(fileName).CString(), openModesTranslate(fileMode));
 #endif
 
 	// If file did not exist in readwrite mode, retry with write-update mode
-	if (mode == FILE_READWRITE && !handle)
+	if (m_mode == FileMode::ReadWrite && !m_handle)
 	{
-#ifdef _WIN32
-		handle = _wfopen(WideNativePath(fileName).CString(), openModes[fileMode + 1]);
+#if SE_PLATFORM_WINDOWS
+		m_handle = _wfopen(FileSystem::WideNativePath(fileName).CString(), L"w+b");
 #else
-		handle = fopen(NativePath(fileName).CString(), openModes[fileMode + 1]);
+		m_handle = fopen(FileSystem::NativePath(fileName).CString(), "w+b");
 #endif
 	}
 
-	if (!handle)
+	if (!m_handle)
 		return false;
 
-	name = fileName;
-	mode = fileMode;
-	position = 0;
-	readSyncNeeded = false;
-	writeSyncNeeded = false;
+	m_name = fileName;
+	m_mode = fileMode;
+	m_position = 0;
+	m_readSyncNeeded = false;
+	m_writeSyncNeeded = false;
 
-	fseek((FILE*)handle, 0, SEEK_END);
-	size = ftell((FILE*)handle);
-	fseek((FILE*)handle, 0, SEEK_SET);
+	fseek((FILE*)m_handle, 0, SEEK_END);
+	m_size = static_cast<size_t>(ftell((FILE*)m_handle));
+	fseek((FILE*)m_handle, 0, SEEK_SET);
 	return true;
 }
-
+//-----------------------------------------------------------------------------
 size_t File::Read(void* dest, size_t numBytes)
 {
-	if (!handle || mode == FILE_WRITE)
+	if (!m_handle || m_mode == FileMode::Write)
 		return 0;
 
-	if (numBytes + position > size)
-		numBytes = size - position;
+	if (numBytes + m_position > m_size)
+		numBytes = m_size - m_position;
 	if (!numBytes)
 		return 0;
 
 	// Need to reassign the position due to internal buffering when transitioning from writing to reading
-	if (readSyncNeeded)
+	if (m_readSyncNeeded)
 	{
-		fseek((FILE*)handle, (long)position, SEEK_SET);
-		readSyncNeeded = false;
+		fseek((FILE*)m_handle, (long)m_position, SEEK_SET);
+		m_readSyncNeeded = false;
 	}
 
-	size_t ret = fread(dest, numBytes, 1, (FILE*)handle);
+	size_t ret = fread(dest, numBytes, 1, (FILE*)m_handle);
 	if (ret != 1)
 	{
 		// If error, return to the position where the read began
-		fseek((FILE*)handle, (long)position, SEEK_SET);
+		fseek((FILE*)m_handle, (long)m_position, SEEK_SET);
 		return 0;
 	}
 
-	writeSyncNeeded = true;
-	position += numBytes;
+	m_writeSyncNeeded = true;
+	m_position += numBytes;
 	return numBytes;
 }
-
+//-----------------------------------------------------------------------------
 size_t File::Seek(size_t newPosition)
 {
-	if (!handle)
+	if (!m_handle)
 		return 0;
 
 	// Allow sparse seeks if writing
-	if (mode == FILE_READ && newPosition > size)
-		newPosition = size;
+	if (m_mode == FileMode::Read && newPosition > m_size)
+		newPosition = m_size;
 
-	fseek((FILE*)handle, (long)newPosition, SEEK_SET);
-	position = newPosition;
-	readSyncNeeded = false;
-	writeSyncNeeded = false;
-	return position;
+	fseek((FILE*)m_handle, (long)newPosition, SEEK_SET);
+	m_position = newPosition;
+	m_readSyncNeeded = false;
+	m_writeSyncNeeded = false;
+	return m_position;
 }
-
+//-----------------------------------------------------------------------------
 size_t File::Write(const void* data, size_t numBytes)
 {
-	if (!handle || mode == FILE_READ)
+	if (!m_handle || m_mode == FileMode::Read)
 		return 0;
 
 	if (!numBytes)
 		return 0;
 
 	// Need to reassign the position due to internal buffering when transitioning from reading to writing
-	if (writeSyncNeeded)
+	if (m_writeSyncNeeded)
 	{
-		fseek((FILE*)handle, (long)position, SEEK_SET);
-		writeSyncNeeded = false;
+		fseek((FILE*)m_handle, (long)m_position, SEEK_SET);
+		m_writeSyncNeeded = false;
 	}
 
-	if (fwrite(data, numBytes, 1, (FILE*)handle) != 1)
+	if (fwrite(data, numBytes, 1, (FILE*)m_handle) != 1)
 	{
 		// If error, return to the position where the write began
-		fseek((FILE*)handle, (long)position, SEEK_SET);
+		fseek((FILE*)m_handle, (long)m_position, SEEK_SET);
 		return 0;
 	}
 
-	readSyncNeeded = true;
-	position += numBytes;
-	if (position > size)
-		size = position;
+	m_readSyncNeeded = true;
+	m_position += numBytes;
+	if (m_position > m_size)
+		m_size = m_position;
 
-	return size;
+	return m_size;
 }
-
+//-----------------------------------------------------------------------------
 bool File::IsReadable() const
 {
-	return handle != 0 && mode != FILE_WRITE;
+	return m_handle != 0 && m_mode != FileMode::Write;
 }
-
+//-----------------------------------------------------------------------------
 bool File::IsWritable() const
 {
-	return handle != 0 && mode != FILE_READ;
+	return m_handle != 0 && m_mode != FileMode::Read;
 }
-
+//-----------------------------------------------------------------------------
 void File::Close()
 {
-	if (handle)
+	if (m_handle)
 	{
-		fclose((FILE*)handle);
-		handle = 0;
-		position = 0;
-		size = 0;
+		fclose((FILE*)m_handle);
+		m_handle = 0;
+		m_position = 0;
+		m_size = 0;
 	}
 }
-
+//-----------------------------------------------------------------------------
 void File::Flush()
 {
-	if (handle)
-		fflush((FILE*)handle);
+	if (m_handle)
+		fflush((FILE*)m_handle);
 }
-
+//-----------------------------------------------------------------------------
 bool File::IsOpen() const
 {
-	return handle != 0;
+	return m_handle != 0;
 }
+//-----------------------------------------------------------------------------

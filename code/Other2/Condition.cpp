@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_ENABLE_THREADING
 #include "Condition.h"
 #include "Engine/DebugNew.h"
 
@@ -60,4 +61,5 @@ void Condition::Wait()
 	pthread_cond_wait(c, m);
 	pthread_mutex_unlock(m);
 }
+#endif
 #endif

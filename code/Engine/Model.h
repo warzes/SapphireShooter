@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Mesh.h"
 #include "Transformation.h"
 #include "ShaderProgram.h"
@@ -40,3 +42,5 @@ private:
 	glm::vec3 m_position, m_rotation, m_scale;
 	float m_rotationAngle;
 };
+
+#endif

@@ -1,17 +1,25 @@
 #pragma once
 
+#if SE_UNUSED_ENABLE
+
 #include "Allocator.h"
 #include "Hash.h"
 #include "Sort.h"
 #include "Vector.h"
 
 // Hash set template class.
+<<<<<<< HEAD
 template <class T> class HashSet : public HashBase
+=======
+template <class T> 
+class HashSet : public HashBase
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 {
 public:
 	// Hash set node.
 	struct Node : public HashNodeBase
 	{
+<<<<<<< HEAD
 		// Construct undefined.
 		Node()
 		{
@@ -25,6 +33,10 @@ public:
 
 		// Key.
 		T key;
+=======
+		Node() = default;
+		Node(const T& rhs) : key(rhs) {}
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Return next node.
 		Node* Next() const { return static_cast<Node*>(next); }
@@ -32,11 +44,15 @@ public:
 		Node* Prev() const { return static_cast<Node*>(prev); }
 		// Return next node in the bucket.
 		Node* Down() const { return static_cast<Node*>(down); }
+
+
+		T key;
 	};
 
 	// Hash set node iterator.
 	struct Iterator : public HashIteratorBase
 	{
+<<<<<<< HEAD
 		// Construct.
 		Iterator()
 		{
@@ -47,6 +63,10 @@ public:
 			HashIteratorBase(rhs)
 		{
 		}
+=======
+		Iterator() = default;
+		Iterator(Node* rhs) : HashIteratorBase(rhs) {}
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Preincrement the pointer.
 		Iterator& operator++() { GotoNext(); return *this; }
@@ -66,6 +86,7 @@ public:
 	// Hash set node const iterator.
 	struct ConstIterator : public HashIteratorBase
 	{
+<<<<<<< HEAD
 		// Construct.
 		ConstIterator()
 		{
@@ -82,6 +103,11 @@ public:
 			HashIteratorBase(rhs.ptr)
 		{
 		}
+=======
+		ConstIterator() = default;
+		ConstIterator(Node* rhs) : HashIteratorBase(rhs) {}
+		ConstIterator(const Iterator& rhs) : HashIteratorBase(rhs.ptr) {}
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Assign from a non-const iterator.
 		ConstIterator& operator=(const Iterator& rhs) { ptr = rhs.ptr; return *this; }
@@ -100,26 +126,34 @@ public:
 		const T& operator*() const { return (static_cast<Node*>(ptr))->key; }
 	};
 
+<<<<<<< HEAD
 	// Construct empty.
 	HashSet()
 	{
 	}
 
 	// Construct from another hash set.
+=======
+	HashSet() = default;
+
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	HashSet(const HashSet<T>& set)
 	{
 		Initialize(set.NumBuckets(), set.Size() + 1);
 		*this = set;
 	}
 
+<<<<<<< HEAD
 	// Destruct.
+=======
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	~HashSet()
 	{
-		if (ptrs && allocator)
+		if (ptrs && m_allocator)
 		{
 			Clear();
 			FreeNode(Tail());
-			AllocatorUninitialize(allocator);
+			AllocatorUninitialize(m_allocator);
 		}
 	}
 
@@ -171,18 +205,18 @@ public:
 	{
 		unsigned hashKey = Hash(key);
 
-		Node* existing = FindNode(key, hashKey);
+		Node* existing = findNode(key, hashKey);
 		if (existing)
 			return Iterator(existing);
 
 		Node* newNode = InsertNode(Tail(), key);
-		newNode->down = Ptrs()[hashKey];
-		Ptrs()[hashKey] = newNode;
+		newNode->down = ptrs()[hashKey];
+		ptrs()[hashKey] = newNode;
 
 		// Rehash if the maximum load factor has been exceeded
 		if (Size() > NumBuckets() * MAX_LOAD_FACTOR)
 		{
-			AllocateBuckets(Size(), NumBuckets() << 1);
+			allocateBuckets(Size(), NumBuckets() << 1);
 			Rehash();
 		}
 
@@ -211,14 +245,14 @@ public:
 		unsigned hashKey = Hash(key);
 
 		Node* previous;
-		Node* node = FindNode(key, hashKey, previous);
+		Node* node = findNode(key, hashKey, previous);
 		if (!node)
 			return false;
 
 		if (previous)
 			previous->down = node->down;
 		else
-			Ptrs()[hashKey] = node->down;
+			ptrs()[hashKey] = node->down;
 
 		EraseNode(node);
 		return true;
@@ -236,7 +270,7 @@ public:
 		unsigned hashKey = Hash(node->key);
 
 		Node* previous = nullptr;
-		Node* current = static_cast<Node*>(Ptrs()[hashKey]);
+		Node* current = static_cast<Node*>(ptrs()[hashKey]);
 		while (current && current != node)
 		{
 			previous = current;
@@ -248,7 +282,7 @@ public:
 		if (previous)
 			previous->down = node->down;
 		else
-			Ptrs()[hashKey] = node->down;
+			ptrs()[hashKey] = node->down;
 
 		EraseNode(node);
 		return Iterator(next);
@@ -264,7 +298,7 @@ public:
 
 			Node* tail = Tail();
 			tail->prev = nullptr;
-			SetHead(tail);
+			setHead(tail);
 			SetSize(0);
 			ResetPtrs();
 		}
@@ -288,7 +322,7 @@ public:
 
 		::Sort(RandomAccessIterator<Node*>(ptrs), RandomAccessIterator<Node*>(ptrs + numKeys), CompareNodes);
 
-		SetHead(ptrs[0]);
+		setHead(ptrs[0]);
 		ptrs[0]->prev = nullptr;
 		for (size_t i = 1; i < numKeys; ++i)
 		{
@@ -316,7 +350,7 @@ public:
 		if (check != 1)
 			return false;
 
-		AllocateBuckets(Size(), numBuckets);
+		allocateBuckets(Size(), numBuckets);
 		Rehash();
 		return true;
 	}
@@ -328,7 +362,7 @@ public:
 			return End();
 
 		unsigned hashKey = Hash(key);
-		Node* node = FindNode(key, hashKey);
+		Node* node = findNode(key, hashKey);
 		if (node)
 			return Iterator(node);
 		else
@@ -342,7 +376,7 @@ public:
 			return End();
 
 		unsigned hashKey = Hash(key);
-		Node* node = FindNode(key, hashKey);
+		Node* node = findNode(key, hashKey);
 		if (node)
 			return ConstIterator(node);
 		else
@@ -356,10 +390,11 @@ public:
 			return false;
 
 		unsigned hashKey = Hash(key);
-		return FindNode(key, hashKey) != nullptr;
+		return findNode(key, hashKey) != nullptr;
 	}
 
 	// Return iterator to the first element. Is not the lowest value unless the set has been sorted.
+<<<<<<< HEAD
 	Iterator Begin() { return Iterator(Head()); }
 	// Return const iterator to the first element. Is not the lowest value unless the set has been sorted.
 	ConstIterator Begin() const { return ConstIterator(Head()); }
@@ -367,6 +402,15 @@ public:
 	Iterator End() { return Iterator(Tail()); }
 	// Return const iterator to the end.
 	ConstIterator End() const { return ConstIterator(Tail()); }
+=======
+	Iterator Begin() { return Iterator(head()); }
+	// Return const iterator to the first element. Is not the lowest value unless the set has been sorted.
+	ConstIterator Begin() const { return ConstIterator(head()); }
+	// Return iterator to the end.
+	Iterator End() { return Iterator(Tail()); }
+	// Return const iterator to the end.
+	ConstIterator End() const { return ConstIterator(tail()); }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Return first key. Is not the lowest value unless the set has been sorted.
 	const T& Front() const { return *Begin(); }
 	// Return last key.
@@ -374,27 +418,40 @@ public:
 
 private:
 	// Return head node with correct type.
+<<<<<<< HEAD
 	Node* Head() const { return static_cast<Node*>(HashBase::Head()); }
 	// Return tail node with correct type.
 	Node* Tail() const { return static_cast<Node*>(HashBase::Tail()); }
 
 	// Reserve the tail node and initial buckets.
 	void Initialize(size_t numBuckets, size_t numNodes)
+=======
+	Node* head() const { return static_cast<Node*>(HashBase::head()); }
+	// Return tail node with correct type.
+	Node* tail() const { return static_cast<Node*>(HashBase::tail()); }
+
+	// Reserve the tail node and initial buckets.
+	void initialize(size_t numBuckets, size_t numNodes)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
-		AllocateBuckets(0, numBuckets);
-		allocator = AllocatorInitialize(sizeof(Node), numNodes);
+		allocateBuckets(0, numBuckets);
+		m_allocator = AllocatorInitialize(sizeof(Node), numNodes);
 		HashNodeBase* tail = AllocateNode();
-		SetHead(tail);
+		setHead(tail);
 		SetTail(tail);
 	}
 
 	// Find a node from the buckets.
+<<<<<<< HEAD
 	Node* FindNode(const T& key, unsigned hashKey) const
+=======
+	Node* findNode(const T& key, unsigned hashKey) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		if (!ptrs)
 			return nullptr;
 
-		Node* node = static_cast<Node*>(Ptrs()[hashKey]);
+		Node* node = static_cast<Node*>(ptrs()[hashKey]);
 		while (node)
 		{
 			if (node->key == key)
@@ -406,13 +463,17 @@ private:
 	}
 
 	// Find a node and the previous node from the buckets.
+<<<<<<< HEAD
 	Node* FindNode(const T& key, unsigned hashKey, Node*& previous) const
+=======
+	Node* findNode(const T& key, unsigned hashKey, Node*& previous) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		previous = nullptr;
 		if (!ptrs)
 			return nullptr;
 
-		Node* node = static_cast<Node*>(Ptrs()[hashKey]);
+		Node* node = static_cast<Node*>(ptrs()[hashKey]);
 		while (node)
 		{
 			if (node->key == key)
@@ -444,7 +505,7 @@ private:
 
 		// Reassign the head node if necessary
 		if (dest == Head())
-			SetHead(newNode);
+			setHead(newNode);
 
 		SetSize(Size() + 1);
 
@@ -466,7 +527,7 @@ private:
 
 		// Reassign the head node if necessary
 		if (node == Head())
-			SetHead(next);
+			setHead(next);
 
 		FreeNode(node);
 		SetSize(Size() - 1);
@@ -477,7 +538,7 @@ private:
 	// Allocate a node with optionally specified key.
 	Node* AllocateNode(const T& key = T())
 	{
-		Node* newNode = static_cast<Node*>(AllocatorGet(allocator));
+		Node* newNode = static_cast<Node*>(AllocatorGet(m_allocator));
 		new(newNode) Node(key);
 		return newNode;
 	}
@@ -486,7 +547,7 @@ private:
 	void FreeNode(Node* node)
 	{
 		(node)->~Node();
-		AllocatorFree(allocator, node);
+		AllocatorFree(m_allocator, node);
 	}
 
 	// Rehash the buckets.
@@ -496,8 +557,8 @@ private:
 		{
 			Node* node = static_cast<Node*>(it.ptr);
 			unsigned hashKey = Hash(*it);
-			node->down = Ptrs()[hashKey];
-			Ptrs()[hashKey] = node;
+			node->down = ptrs()[hashKey];
+			ptrs()[hashKey] = node;
 		}
 	}
 
@@ -507,3 +568,5 @@ private:
 	// Compute a hash based on the key and the bucket size
 	unsigned Hash(const T& key) const { return MakeHash(key) & (NumBuckets() - 1); }
 };
+
+#endif

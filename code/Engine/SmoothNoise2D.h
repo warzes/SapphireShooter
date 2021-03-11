@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "TextureGenerator.h"
 
 typedef std::vector<std::vector<double> > NoiseData2D;
@@ -14,3 +16,5 @@ public:
 	SmoothNoise2D(const unsigned& zoomLevel = 1) : zoom(zoomLevel) { if (zoom == 0) zoom = 1; }
 	virtual void fillData(std::vector<GLubyte>& data, const unsigned& width, const unsigned& height, const unsigned& depth) const;
 };
+
+#endif

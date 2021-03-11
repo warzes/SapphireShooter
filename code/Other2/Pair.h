@@ -3,7 +3,12 @@
 #include "Hash.h"
 
 // Pair template class.
+<<<<<<< HEAD
 template <class T, class U> class Pair
+=======
+template <class T, class U> 
+class Pair
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 {
 public:
 	// Construct undefined.

@@ -94,11 +94,11 @@ namespace dim
 
         /* === Additional operators === */
 
-        inline const vector3d<T>& operator [] (u32 i) const
+        inline const vector3d<T>& operator[](u32 i) const
         {
             return *(&PointA + i);
         }
-        inline vector3d<T>& operator [] (u32 i)
+        inline vector3d<T>& operator[](u32 i)
         {
             return *(&PointA + i);
         }

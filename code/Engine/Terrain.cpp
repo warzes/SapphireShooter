@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Terrain.h"
 #include "ShaderManager.h"
 #include "OGLFunc.h"
@@ -329,3 +330,4 @@ void Terrain::Draw(Camera3D& _cam, DirectionalLight* directionLight, PointLight*
 	m_terrainShader->UnBind();
 }
 //-----------------------------------------------------------------------------
+#endif

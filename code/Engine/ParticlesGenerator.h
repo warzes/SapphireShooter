@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Transformationable.h"
 #include "InterfaceCamera.h"
 
@@ -135,3 +137,5 @@ void ParticlesGenerator<T, P>::updateBuffers()
 	glBufferSubData(GL_ARRAY_BUFFER, 0, amount * sizeof(glm::vec4), &colors[0]);
 	glBindVertexArray(0);
 }
+
+#endif

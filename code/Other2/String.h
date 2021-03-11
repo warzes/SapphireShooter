@@ -126,11 +126,19 @@ public:
 	template <class T> String operator+=(const T& rhs) { return *this += rhs.ToString(); }
 
 	// Add a string.
+<<<<<<< HEAD
 	String operator+(const String& rhs) const;
 	// Add a C string.
 	String operator+(const char* rhs) const;
 	// Add a character.
 	String operator+(char rhs) const;
+=======
+	String operator + (const String& rhs) const;
+	// Add a C string.
+	String operator + (const char* rhs) const;
+	// Add a character.
+	String operator + (char rhs) const;
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Test for equality with another string.
 	bool operator==(const String& rhs) const { return Compare(rhs) == 0; }
 	// Test for inequality with another string.
@@ -148,9 +156,15 @@ public:
 	// Test if string is greater than a C string.
 	bool operator>(const char* rhs) const { return Compare(rhs) > 0; }
 	// Return char at index.
+<<<<<<< HEAD
 	char& operator [] (size_t index) { assert(index < Length()); return Buffer()[index]; }
 	// Return const char at index.
 	const char& operator [] (size_t index) const { assert(index < Length()); return Buffer()[index]; }
+=======
+	char& operator[](size_t index) { assert(index < Length()); return Buffer()[index]; }
+	// Return const char at index.
+	const char& operator[](size_t index) const { assert(index < Length()); return Buffer()[index]; }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Replace all occurrences of a character.
 	void Replace(char replaceThis, char replaceWith, bool caseSensitive = true);
@@ -364,7 +378,11 @@ private:
 };
 
 // Add a string to a C string.
+<<<<<<< HEAD
 inline String operator+(const char* lhs, const String& rhs)
+=======
+inline String operator + (const char* lhs, const String& rhs)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 {
 	String ret(lhs);
 	ret += rhs;
@@ -372,7 +390,11 @@ inline String operator+(const char* lhs, const String& rhs)
 }
 
 // Add a string to a wide character C string.
+<<<<<<< HEAD
 inline String operator+(const wchar_t* lhs, const String& rhs)
+=======
+inline String operator + (const wchar_t* lhs, const String& rhs)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 {
 	String ret(lhs);
 	ret += rhs;

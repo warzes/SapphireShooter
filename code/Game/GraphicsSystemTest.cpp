@@ -30,14 +30,15 @@ GraphicsSystemTest::~GraphicsSystemTest()
 //-----------------------------------------------------------------------------
 void GraphicsSystemTest::Init()
 {
+#if SE_OPENGL
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+#endif
 	RegisterGraphicsLibrary();
 	RegisterResourceLibrary();
 
 	cache = new ResourceCache();
-	cache->AddResourceDir(ExecutableDir() + "../Data");
+	cache->AddResourceDir(FileSystem::ExecutableDir() + "Data");
 
 	graphics = new Graphics();
 	graphics->SetMode(IntVector2(1440, 900), false, true);
@@ -170,7 +171,9 @@ void GraphicsSystemTest::Render()
 	ivb->SetData(0, NUM_OBJECTS, instanceData);
 	delete[] instanceData;
 
+#if SE_OPENGL
 	glEnable(GL_DEPTH_TEST);
+#endif
 	graphics->Clear(CLEAR_COLOR | CLEAR_DEPTH, Color(0.0f, 0.0f, 0.5f));
 	graphics->SetVertexBuffer(0, vb);
 	graphics->SetVertexBuffer(1, ivb);
@@ -182,6 +185,8 @@ void GraphicsSystemTest::Render()
 	graphics->SetColorState(BLEND_MODE_REPLACE);
 	graphics->SetRasterizerState(CULL_BACK, FILL_SOLID);
 	graphics->DrawIndexedInstanced(TRIANGLE_LIST, 0, 3, 0, 0, NUM_OBJECTS);
+
+	graphics->Present();
 }
 //-----------------------------------------------------------------------------
 void GraphicsSystemTest::Close()

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "PerlinNoise2D.h"
 /* Perlin noise from GLM library to generate terrains */
 /* Based on: OpenGL 4 ShadingLanguage Cookbook Second Edition David Wolff */
@@ -48,3 +49,4 @@ void PerlinNoise2D::fillData(std::vector<GLubyte>& data, const unsigned& width, 
 		}
 	}
 }
+#endif

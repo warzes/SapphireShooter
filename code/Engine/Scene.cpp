@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Scene.h"
 #include "Engine.h"
 #include "ShaderManager.h"
@@ -237,3 +238,4 @@ void Scene2::initShadersManager()
 	setDepthProgram(ShaderManager::Get().LoadShader("Depth", "shaders/depth/depth.vs", "shaders/depth/depth.fs", "shaders/depth/depth.gs"));
 	setAnimDepthProgram(ShaderManager::Get().LoadShader("AnimDepth", "shaders/depth/anim_depth.vs", "shaders/depth/depth.fs", "shaders/depth/depth.gs"));
 }
+#endif

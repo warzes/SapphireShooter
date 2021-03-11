@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "DepthBuffer.h"
 
 void DepthBuffer::create(const unsigned& width, const unsigned& height)
@@ -23,3 +24,4 @@ void DepthBuffer::attach() const
 {
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, getId(), 0);
 }
+#endif

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Texture2D.h"
 #include "OGLFunc.h"
 //-----------------------------------------------------------------------------
@@ -47,3 +48,4 @@ void Texture2D::Delete()
 	glDeleteTextures(1, &ID);
 }
 //-----------------------------------------------------------------------------
+#endif

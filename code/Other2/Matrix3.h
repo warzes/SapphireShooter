@@ -92,7 +92,11 @@ public:
 	}
 
 	// Add a matrix.
+<<<<<<< HEAD
 	Matrix3 operator+(const Matrix3& rhs) const
+=======
+	Matrix3 operator + (const Matrix3& rhs) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		return Matrix3(
 			m00 + rhs.m00, m01 + rhs.m01, m02 + rhs.m02,
@@ -102,7 +106,11 @@ public:
 	}
 
 	// Subtract a matrix.
+<<<<<<< HEAD
 	Matrix3 operator-(const Matrix3& rhs) const
+=======
+	Matrix3 operator - (const Matrix3& rhs) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		return Matrix3(
 			m00 - rhs.m00, m01 - rhs.m01, m02 - rhs.m02,

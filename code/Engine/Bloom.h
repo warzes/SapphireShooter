@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Plane.h"
 #include "FrameBuffer2.h"
 
@@ -18,3 +20,5 @@ public:
 	void blurTexture(std::shared_ptr<ShaderProgram> blurProgram, const Texture& texture);
 	const Texture& getResultTexture() const { return pingPongBuffer[!horizontal].getTextures()[0]; }
 };
+
+#endif

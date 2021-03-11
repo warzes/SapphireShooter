@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Singleton.h"
 #include "ShaderProgram.h"
 
@@ -15,3 +17,4 @@ public:
 private:
 	std::map<std::string, std::shared_ptr<ShaderProgram>> m_shaders;
 };
+#endif

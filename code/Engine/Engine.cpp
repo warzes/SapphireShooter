@@ -73,8 +73,10 @@ void Engine::EndFrame()
 void Engine::Close() noexcept
 {
 	Mouse::Get().SetMouseVisible(true);
+#if SE_OPENGL
 	TextureManager::Get().Clear();
 	ShaderManager::Get().Clear();
+#endif
 	m_renderSystem.Close();
 	m_window.Close();
 }

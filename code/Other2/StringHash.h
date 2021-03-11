@@ -71,7 +71,11 @@ public:
 	}
 
 	// Add a hash.
+<<<<<<< HEAD
 	StringHash operator+(const StringHash& rhs) const
+=======
+	StringHash operator + (const StringHash& rhs) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		StringHash ret;
 		ret.value = value + rhs.value;

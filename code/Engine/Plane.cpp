@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Plane.h"
 //-----------------------------------------------------------------------------
 Plane2::Plane2()
@@ -38,3 +39,4 @@ void Plane2::Render(std::shared_ptr<ShaderProgram> program, const unsigned& amou
 	glBindVertexArray(0);
 }
 //-----------------------------------------------------------------------------
+#endif

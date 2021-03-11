@@ -22,7 +22,7 @@ bool ResourceCache::AddResourceDir(const String& pathName, bool addFirst)
 {
 	PROFILE(AddResourceDir);
 
-	if (!DirExists(pathName))
+	if (!FileSystem::DirExists(pathName))
 	{
 		SE_LOG_ERROR(("Could not open directory " + pathName).CString());
 		return false;
@@ -206,7 +206,7 @@ AutoPtr<Stream> ResourceCache::OpenResource(const String& nameIn)
 
 	for (size_t i = 0; i < resourceDirs.Size(); ++i)
 	{
-		if (FileExists(resourceDirs[i] + name))
+		if (FileSystem::FileExists(resourceDirs[i] + name))
 		{
 			// Construct the file first with full path, then rename it to not contain the resource path,
 			// so that the file's name can be used in further OpenResource() calls (for example over the network)
@@ -290,19 +290,19 @@ bool ResourceCache::Exists(const String& nameIn) const
 
 	for (size_t i = 0; i < resourceDirs.Size(); ++i)
 	{
-		if (FileExists(resourceDirs[i] + name))
+		if (FileSystem::FileExists(resourceDirs[i] + name))
 			return true;
 	}
 
 	// Fallback using absolute path
-	return FileExists(name);
+	return FileSystem::FileExists(name);
 }
 
 String ResourceCache::ResourceFileName(const String& name) const
 {
 	for (unsigned i = 0; i < resourceDirs.Size(); ++i)
 	{
-		if (FileExists(resourceDirs[i] + name))
+		if (FileSystem::FileExists(resourceDirs[i] + name))
 			return resourceDirs[i] + name;
 	}
 
@@ -312,15 +312,15 @@ String ResourceCache::ResourceFileName(const String& name) const
 String ResourceCache::SanitateResourceName(const String& nameIn) const
 {
 	// Sanitate unsupported constructs from the resource name
-	String name = NormalizePath(nameIn);
+	String name = FileSystem::NormalizePath(nameIn);
 	name.Replace("../", "");
 	name.Replace("./", "");
 
 	// If the path refers to one of the resource directories, normalize the resource name
 	if (resourceDirs.Size())
 	{
-		String namePath = Path(name);
-		String exePath = ExecutableDir();
+		String namePath = FileSystem::Path(name);
+		String exePath = FileSystem::ExecutableDir();
 		for (unsigned i = 0; i < resourceDirs.Size(); ++i)
 		{
 			String relativeResourcePath = resourceDirs[i];
@@ -333,7 +333,7 @@ String ResourceCache::SanitateResourceName(const String& nameIn) const
 				namePath = namePath.Substring(relativeResourcePath.Length());
 		}
 
-		name = namePath + FileNameAndExtension(name);
+		name = namePath + FileSystem::FileNameAndExtension(name);
 	}
 
 	return name.Trimmed();
@@ -342,9 +342,9 @@ String ResourceCache::SanitateResourceName(const String& nameIn) const
 String ResourceCache::SanitateResourceDirName(const String& nameIn) const
 {
 	// Convert path to absolute
-	String fixedPath = AddTrailingSlash(nameIn);
-	if (!IsAbsolutePath(fixedPath))
-		fixedPath = CurrentDir() + fixedPath;
+	String fixedPath = FileSystem::AddTrailingSlash(nameIn);
+	if (!FileSystem::IsAbsolutePath(fixedPath))
+		fixedPath = FileSystem::CurrentDir() + fixedPath;
 
 	// Sanitate away /./ construct
 	fixedPath.Replace("/./", "/");

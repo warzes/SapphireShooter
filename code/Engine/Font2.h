@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Texture.h"
 
 class Font
@@ -26,3 +28,5 @@ public:
 	std::string getFontPath() const { return font; }
 	std::map<char, Character>& getCharacters() { return characters; }
 };
+
+#endif

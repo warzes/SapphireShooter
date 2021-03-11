@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_ENABLE_THREADING
 #include "ThreadLocalValue.h"
 #include "Engine/DebugNew.h"
 
@@ -49,3 +50,4 @@ void* ThreadLocalValue::Value() const
 	else
 		return nullptr;
 }
+#endif

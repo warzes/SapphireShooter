@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "EngineDescription.h"
 #include "Camera3D.h"
 #include "Model.h"
@@ -30,3 +32,5 @@ private:
 	int m_width = 0;
 	int m_height = 0;
 };
+
+#endif

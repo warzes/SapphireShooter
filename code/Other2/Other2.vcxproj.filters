@@ -83,25 +83,13 @@
     <ClCompile Include="Profiler.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
-    <ClCompile Include="File.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="FileSystem.cpp">
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="JSONValue.cpp">
       <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryBuffer.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceRef.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="Stream.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="VectorBuffer.cpp">
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="Decompress.cpp">
@@ -120,16 +108,16 @@
       <Filter>Resource</Filter>
     </ClCompile>
     <ClCompile Include="Condition.cpp">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClCompile>
     <ClCompile Include="Mutex.cpp">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClCompile>
     <ClCompile Include="Thread.cpp">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClCompile>
     <ClCompile Include="ThreadLocalValue.cpp">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClCompile>
     <ClCompile Include="Attribute.cpp">
       <Filter>Object</Filter>
@@ -245,6 +233,18 @@
     <ClCompile Include="StaticModel.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Stream.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorBuffer.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryBuffer.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>IO\StreamType</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -350,28 +350,16 @@
     <ClInclude Include="Profiler.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="VectorBuffer.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="File.h">
-      <Filter>IO</Filter>
-    </ClInclude>
     <ClInclude Include="FileSystem.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="JSONValue.h">
       <Filter>IO</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryBuffer.h">
-      <Filter>IO</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectRef.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="ResourceRef.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="Stream.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="ResourceCache.h">
@@ -390,16 +378,16 @@
       <Filter>Resource</Filter>
     </ClInclude>
     <ClInclude Include="Condition.h">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClInclude>
     <ClInclude Include="Mutex.h">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClInclude>
     <ClInclude Include="Thread.h">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClInclude>
     <ClInclude Include="ThreadLocalValue.h">
-      <Filter>Thread</Filter>
+      <Filter>_garbage\Thread</Filter>
     </ClInclude>
     <ClInclude Include="Attribute.h">
       <Filter>Object</Filter>
@@ -521,6 +509,18 @@
     <ClInclude Include="StaticModel.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Stream.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorBuffer.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryBuffer.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>IO\StreamType</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -532,17 +532,11 @@
     <Filter Include="Math">
       <UniqueIdentifier>{6dec1cbd-5aa9-4b0a-9a28-e10f0105405f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{8e0a32aa-0fdf-48d3-b7c4-40acd1d851a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="IO">
       <UniqueIdentifier>{e3a97995-d88c-40ae-b725-d09be25db667}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource">
       <UniqueIdentifier>{10396338-1e1b-42c1-a319-623d996648b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Thread">
-      <UniqueIdentifier>{7aa3b481-a252-4961-95ae-1def4d4532b5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{d41e56df-3354-4942-907a-de49de2dc72a}</UniqueIdentifier>
@@ -561,6 +555,15 @@
     </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{9c1847d3-2db6-4957-b144-7b9cb808c126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_garbage">
+      <UniqueIdentifier>{88359f63-dd04-4ceb-90df-ffbc81bef4d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_garbage\Thread">
+      <UniqueIdentifier>{7aa3b481-a252-4961-95ae-1def4d4532b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO\StreamType">
+      <UniqueIdentifier>{d858ce5d-3646-45ef-b3fd-3202963897ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

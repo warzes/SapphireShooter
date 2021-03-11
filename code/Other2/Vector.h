@@ -96,7 +96,11 @@ public:
 	}
 
 	// Add an element.
+<<<<<<< HEAD
 	Vector<T> operator+(const T& rhs) const
+=======
+	Vector<T> operator + (const T& rhs) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		Vector<T> ret(*this);
 		ret.Push(rhs);
@@ -104,7 +108,11 @@ public:
 	}
 
 	// Add another vector.
+<<<<<<< HEAD
 	Vector<T> operator+(const Vector<T>& rhs) const
+=======
+	Vector<T> operator + (const Vector<T>& rhs) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		Vector<T> ret(*this);
 		ret.Push(rhs);
@@ -133,9 +141,15 @@ public:
 	// Test for inequality with another vector.
 	bool operator!=(const Vector<T>& rhs) const { return !(*this == rhs); }
 	// Return element at index.
+<<<<<<< HEAD
 	T& operator [] (size_t index) { assert(index < Size()); return Buffer()[index]; }
 	// Return const element at index.
 	const T& operator [] (size_t index) const { assert(index < Size()); return Buffer()[index]; }
+=======
+	T& operator[](size_t index) { assert(index < Size()); return Buffer()[index]; }
+	// Return const element at index.
+	const T& operator[](size_t index) const { assert(index < Size()); return Buffer()[index]; }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Add an element at the end.
 	void Push(const T& value) { Resize(Size() + 1, &value); }

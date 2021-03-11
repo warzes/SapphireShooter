@@ -5,6 +5,7 @@
 #include "AutoPtr.h"
 #include "GPUObject.h"
 #include "GraphicsDefs.h"
+#include "Vector.h"
 
 class JSONValue;
 

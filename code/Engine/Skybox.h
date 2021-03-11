@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Texture.h"
 #include "Geometry.h"
 
@@ -18,3 +20,5 @@ public:
 
 	Texture& getTexture() { return texture; }
 };
+
+#endif

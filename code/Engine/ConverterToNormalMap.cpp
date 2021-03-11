@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "ConverterToNormalMap.h"
 /* Sobel operator for generating height map to normal map */
 /* Based on: https://stackoverflow.com/questions/2368728/can-normal-maps-be-generated-from-a-texture/2368794#2368794 */
@@ -84,3 +85,4 @@ void ConverterToNormalMap::convert(const std::vector<GLubyte>& data, Texture& te
 	Texture::unbind(GL_TEXTURE_2D);
 	delete[] inputData;
 }
+#endif

@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Texture.h"
 
 class ConverterToNormalMap
@@ -13,3 +15,5 @@ class ConverterToNormalMap
 public:
 	void convert(const std::vector<GLubyte>& data, Texture& textureDestination, const unsigned& width, const unsigned& height);
 };
+
+#endif

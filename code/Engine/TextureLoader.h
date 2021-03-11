@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 class TextureLoader
 {
 public:
@@ -10,3 +12,5 @@ private:
 	static std::string getError(const std::string& fileName);
 	static GLenum getFormat(const unsigned& nrChannels);
 };
+
+#endif

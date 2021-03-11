@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Shape.h"
 #include "Texture2D.h"
 #include "Transformation.h"
@@ -33,3 +35,5 @@ private:
 
 	Transform m_transform;
 };
+
+#endif

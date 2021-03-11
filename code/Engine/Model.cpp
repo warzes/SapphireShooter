@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Model.h"
 #include "TextureManager.h"
 #include "ShaderManager.h"
@@ -164,3 +165,5 @@ std::vector<MeshTexture> Model3::loadMaterialTextures(aiMaterial* mat, aiTexture
 
 	return textures;
 }
+
+#endif

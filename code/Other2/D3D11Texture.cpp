@@ -80,7 +80,7 @@ static const D3D11_DSV_DIMENSION dsvDimension[] =
     D3D11_DSV_DIMENSION_TEXTURE2D,
 };
 
-Texture::Texture() :
+Texture2::Texture2() :
     texture(nullptr),
     resourceView(nullptr),
     sampler(nullptr),
@@ -91,12 +91,12 @@ Texture::Texture() :
 {
 }
 
-Texture::~Texture()
+Texture2::~Texture2()
 {
     Release();
 }
 
-void Texture::Release()
+void Texture2::Release()
 {
     if (graphics)
     {
@@ -161,7 +161,7 @@ void Texture::Release()
     }
 }
 
-bool Texture::Define(TextureType type_, ResourceUsage usage_, const IntVector2& size_, ImageFormat format_, size_t numLevels_, const ImageLevel* initialData)
+bool Texture2::Define(TextureType type_, ResourceUsage usage_, const IntVector2& size_, ImageFormat format_, size_t numLevels_, const ImageLevel* initialData)
 {
     PROFILE(DefineTexture);
 
@@ -244,7 +244,7 @@ bool Texture::Define(TextureType type_, ResourceUsage usage_, const IntVector2& 
             format = format_;
             numLevels = numLevels_;
 
-            LOGDEBUGF("Created texture width %d height %d format %d numLevels %d", size.x, size.y, (int)format, numLevels);
+            SE_LOG("Created texture width " + std::to_string(size.x) + " height " + std::to_string(size.y) + " format " + std::to_string((int)format) + "numLevels " + std::to_string(numLevels));
         }
 
         D3D11_SHADER_RESOURCE_VIEW_DESC resourceViewDesc;
@@ -306,7 +306,7 @@ bool Texture::Define(TextureType type_, ResourceUsage usage_, const IntVector2& 
     return true;
 }
 
-bool Texture::DefineSampler(TextureFilterMode filter_, TextureAddressMode u, TextureAddressMode v, TextureAddressMode w, unsigned maxAnisotropy_, float minLod_, float maxLod_, const Color& borderColor_)
+bool Texture2::DefineSampler(TextureFilterMode filter_, TextureAddressMode u, TextureAddressMode v, TextureAddressMode w, unsigned maxAnisotropy_, float minLod_, float maxLod_, const Color& borderColor_)
 {
     PROFILE(DefineTextureSampler);
 
@@ -350,13 +350,13 @@ bool Texture::DefineSampler(TextureFilterMode filter_, TextureAddressMode u, Tex
             return false;
         }
         else
-            LOGDEBUG("Created sampler state");
+            SE_LOG("Created sampler state");
     }
 
     return true;
 }
 
-bool Texture::SetData(size_t face, size_t level, IntRect rect, const ImageLevel& data)
+bool Texture2::SetData(size_t face, size_t level, IntRect rect, const ImageLevel& data)
 {
     PROFILE(UpdateTextureLevel);
 
@@ -445,7 +445,7 @@ bool Texture::SetData(size_t face, size_t level, IntRect rect, const ImageLevel&
     return true;
 }
 
-void* Texture::D3DRenderTargetView(size_t /*index*/) const
+void* Texture2::D3DRenderTargetView(size_t /*index*/) const
 {
     // \todo Handle different indices for eg. cube maps
     return renderTargetView;

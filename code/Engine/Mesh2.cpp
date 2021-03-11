@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Mesh2.h"
 
 Mesh2::Mesh2(const std::vector<MeshVertex>& verts, const std::vector<unsigned>& inds, const std::vector<MeshTexture>& texs, const Material2& mat) : vertices(verts), indices(inds), textures(texs), material(mat)
@@ -94,3 +95,5 @@ void Mesh2::Render(std::shared_ptr<ShaderProgram> program)
 	glBindVertexArray(0);
 	Texture::unbind(GL_TEXTURE_2D);
 }
+
+#endif

@@ -1,5 +1,6 @@
 #pragma once
 
+#if SE_OPENGL
 #include "TextureGenerator.h"
 
 class TextureGenerator2D : public TextureGenerator
@@ -7,3 +8,5 @@ class TextureGenerator2D : public TextureGenerator
 public:
 	virtual void generate(Texture& texture, const TextureGenerateMethod& method, const unsigned& width, const unsigned& height, const unsigned& depth = 1);
 };
+
+#endif

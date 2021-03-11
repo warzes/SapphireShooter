@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Texture.h"
 
 class TextureGenerateMethod
@@ -19,3 +21,5 @@ public:
 
 	const std::vector<GLubyte>& getTextureData() const { return data; }
 };
+
+#endif

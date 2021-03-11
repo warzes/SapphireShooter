@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Camera3D.h"
 #include "Terrain.h"
 #include "SpotLight.h"
@@ -43,3 +45,5 @@ private:
 	bool m_jumping = false;
 	bool m_sprinting = false;
 };
+
+#endif

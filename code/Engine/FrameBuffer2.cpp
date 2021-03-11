@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "FrameBuffer2.h"
 
 FrameBuffer::FrameBuffer()
@@ -108,3 +109,5 @@ void FrameBuffer::makeColorTextureBuffer(const unsigned& width, const unsigned& 
 	glDrawBuffers(ARRSIZE, &attachments[0]);
 	Texture::unbind(GL_TEXTURE_2D);
 }
+
+#endif

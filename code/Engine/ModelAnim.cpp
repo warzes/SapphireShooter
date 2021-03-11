@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "ModelAnim.h"
 #include "Engine.h"
 
@@ -272,3 +273,5 @@ unsigned ModelAnim::findScaling(const float& animationTime, const aiNodeAnim* aN
 			return i;
 	}
 }
+
+#endif

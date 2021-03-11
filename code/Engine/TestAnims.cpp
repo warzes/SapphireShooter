@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "TestAnims.h"
 
 TestAnims::TestAnims() : ModelAnim("objects/stickman/stickman.fbx")
@@ -15,3 +16,4 @@ TestAnims::TestAnims() : ModelAnim("objects/stickman/stickman.fbx")
 	setLoop(true);
 	setSpeed(0.25);
 }
+#endif

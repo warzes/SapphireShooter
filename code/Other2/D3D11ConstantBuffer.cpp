@@ -113,7 +113,7 @@ bool ConstantBuffer::Create(const void* data)
             return false;
         }
         else
-            LOGDEBUGF("Created constant buffer size %u", (unsigned)byteSize);
+            SE_LOG("Created constant buffer size " + std::to_string((unsigned)byteSize));
     }
 
     return true;

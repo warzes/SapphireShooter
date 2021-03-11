@@ -1,5 +1,6 @@
 #pragma once
 
+#if SE_OPENGL
 #include "FrameBuffer2.h"
 #include "RenderBuffer.h"
 
@@ -26,3 +27,4 @@ public:
 	unsigned getRefractTextureId() { return refractionFrame.getTextures()[0].getId(); }
 	unsigned getRefractDepthTextureId() { return refractDepth.getId(); }
 };
+#endif

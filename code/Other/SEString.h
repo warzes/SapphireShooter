@@ -65,12 +65,12 @@ namespace io
 			return *this;
 		}
 
-		inline T& operator [] (u32 Index)
+		inline T& operator[](u32 Index)
 		{
 			return Str_[Index];
 		}
 
-		inline const T& operator [] (u32 Index) const
+		inline const T& operator[](u32 Index) const
 		{
 			return Str_[Index];
 		}

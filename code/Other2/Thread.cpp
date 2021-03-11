@@ -2,7 +2,9 @@
 #include "Thread.h"
 #include "Engine/DebugNew.h"
 
-#ifdef _WIN32
+#if SE_ENABLE_THREADING
+
+#if SE_ENABLE_THREADING
 DWORD WINAPI ThreadFunctionStatic(void* data)
 {
 	Thread* thread = static_cast<Thread*>(data);
@@ -105,8 +107,12 @@ ThreadID Thread::CurrentThreadID()
 	return pthread_self();
 #endif
 }
-
+#endif
 bool Thread::IsMainThread()
 {
+#if SE_ENABLE_THREADING
 	return CurrentThreadID() == mainThreadID;
+#else
+	return true;
+#endif
 }

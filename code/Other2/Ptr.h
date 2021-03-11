@@ -148,7 +148,11 @@ public:
 	// Dereference the object.
 	T& operator*() const { assert(ptr); return ptr; }
 	// Convert to the object.
+<<<<<<< HEAD
 	operator T* () const { return ptr; }
+=======
+	operator T*() const { return ptr; }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Return the object.
 	T* Get() const { return ptr; }
@@ -309,7 +313,11 @@ public:
 	// Dereference the object.
 	T& operator*() const { T* ret = Get(); assert(ret); return ret; }
 	// Convert to the object.
+<<<<<<< HEAD
 	operator T* () const { return Get(); }
+=======
+	operator T*() const { return Get(); }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Return the object or null if it has been destroyed.
 	T* Get() const
@@ -424,9 +432,15 @@ public:
 	// Dereference the array.
 	T& operator*() const { assert(ptr); return *ptr; }
 	// Index the array.
+<<<<<<< HEAD
 	T& operator [] (size_t index) { assert(ptr); return ptr[index]; }
 	// Const-index the array.
 	const T& operator [] (size_t index) const { assert(ptr); return ptr[index]; }
+=======
+	T& operator[](size_t index) { assert(ptr); return ptr[index]; }
+	// Const-index the array.
+	const T& operator[](size_t index) const { assert(ptr); return ptr[index]; }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Test for equality with another shared array pointer.
 	bool operator==(const SharedArrayPtr<T>& rhs) const { return ptr == rhs.ptr; }
 	// Test for inequality with another shared array pointer.
@@ -591,7 +605,11 @@ public:
 	}
 
 	// Index the array.
+<<<<<<< HEAD
 	T& operator [] (size_t index)
+=======
+	T& operator[](size_t index)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		T* rawPtr = Get();
 		assert(rawPtr);
@@ -599,7 +617,11 @@ public:
 	}
 
 	// Const-index the array.
+<<<<<<< HEAD
 	const T& operator [] (size_t index) const
+=======
+	const T& operator[](size_t index) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		T* rawPtr = Get();
 		assert(rawPtr);

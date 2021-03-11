@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Player.h"
 #include "Keyboard.h"
 #include "PhysicsManager.h"
@@ -195,3 +196,5 @@ void Player::processInput(Camera3D& cam, float dt)
 
 	cam.MouseMoveUpdate(dt);
 }
+
+#endif

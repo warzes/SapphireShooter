@@ -23,16 +23,30 @@ enum Intersection
 	INSIDE
 };
 
+<<<<<<< HEAD
+=======
+// Return the smaller of two number.
+template <typename T>
+constexpr inline T Min(T lhs, T rhs) { return lhs < rhs ? lhs : rhs; }
+
+// Return the larger of two number.
+template <typename T>
+constexpr inline T Max(T lhs, T rhs) { return lhs > rhs ? lhs : rhs; }
+
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 // Check whether two floating point values are equal within accuracy.
 inline bool Equals(float lhs, float rhs) { return lhs + M_EPSILON >= rhs && lhs - M_EPSILON <= rhs; }
 // Check whether a floating point value is NaN.
 inline bool IsNaN(float value) { return value != value; }
 // Linear interpolation between two float values.
 inline float Lerp(float lhs, float rhs, float t) { return lhs * (1.0f - t) + rhs * t; }
+<<<<<<< HEAD
 // Return the smaller of two floats.
 inline float Min(float lhs, float rhs) { return lhs < rhs ? lhs : rhs; }
 // Return the larger of two floats.
 inline float Max(float lhs, float rhs) { return lhs > rhs ? lhs : rhs; }
+=======
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 // Return absolute value of a float.
 inline float Abs(float value) { return value >= 0.0f ? value : -value; }
 // Return the sign of a float (-1, 0 or 1.)
@@ -71,10 +85,13 @@ inline float Atan(float x) { return M_RADTODEG * atanf(x); }
 // Return arc tangent of y/x in degrees.
 inline float Atan2(float y, float x) { return M_RADTODEG * atan2f(y, x); }
 
+<<<<<<< HEAD
 // Return the smaller of two integers.
 inline int Min(int lhs, int rhs) { return lhs < rhs ? lhs : rhs; }
 // Return the larger of two integers.
 inline int Max(int lhs, int rhs) { return lhs > rhs ? lhs : rhs; }
+=======
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 // Return absolute value of an integer
 inline int Abs(int value) { return value >= 0 ? value : -value; }
 

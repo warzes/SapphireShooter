@@ -11,7 +11,11 @@
 // Standart header
 //=============================================================================
 SE_PRAGMA_WARNING_DISABLE_MSVC(4514)
+SE_PRAGMA_WARNING_DISABLE_MSVC(4625)
+SE_PRAGMA_WARNING_DISABLE_MSVC(4626)
 SE_PRAGMA_WARNING_DISABLE_MSVC(4820)
+SE_PRAGMA_WARNING_DISABLE_MSVC(5026)
+SE_PRAGMA_WARNING_DISABLE_MSVC(5027)
 SE_PRAGMA_WARNING_DISABLE_MSVC(5045)
 
 SE_PRAGMA_WARNING_LEVEL(3)
@@ -54,6 +58,15 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #include <thread>
 #include <mutex>
 
+#if SE_PLATFORM_WINDOWS
+#	define WIN32_LEAN_AND_MEAN      // 
+#	define WIN32_EXTRA_LEAN         // 
+#	define VC_EXTRALEAN
+#	define NOMINMAX
+#	define _WIN32_WINNT 0x0600		// Windows Vista
+#endif
+
+
 #if SE_D3D11 && SE_PLATFORM_WINDOWS
 #	include <d3d11.h>
 #	include <d3dcompiler.h>
@@ -61,13 +74,9 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #endif
 
 #if SE_PLATFORM_WINDOWS
-#	define WIN32_LEAN_AND_MEAN      // 
-#	define WIN32_EXTRA_LEAN         // 
-#	define VC_EXTRALEAN
-#	define NOMINMAX
-#	define _WIN32_WINNT 0x0600		// Windows Vista
 #	include <windows.h>
 #	include <MMSystem.h>
+#	include <sys/utime.h>
 #	if SE_DEBUG
 #		include <crtdbg.h>
 #	endif
@@ -75,6 +84,13 @@ SE_PRAGMA_WARNING_DISABLE_MSVC(5219)
 #	undef far
 #	undef RGB
 #	undef TRANSPARENT
+#else
+#	include <dirent.h>
+#	include <errno.h>
+#	include <unistd.h>
+#	include <utime.h>
+#	include <sys/wait.h>
+#	define MAX_PATH 256
 #endif
 
 

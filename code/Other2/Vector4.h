@@ -83,11 +83,19 @@ public:
 	// Test for inequality with another vector without epsilon.
 	bool operator!=(const Vector4& rhs) const { return !(*this == rhs); }
 	// Add a vector.
+<<<<<<< HEAD
 	Vector4 operator+(const Vector4& rhs) const { return Vector4(x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w); }
 	// Return negation.
 	Vector4 operator-() const { return Vector4(-x, -y, -z, -w); }
 	// Subtract a vector.
 	Vector4 operator-(const Vector4& rhs) const { return Vector4(x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w); }
+=======
+	Vector4 operator + (const Vector4& rhs) const { return Vector4(x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w); }
+	// Return negation.
+	Vector4 operator - () const { return Vector4(-x, -y, -z, -w); }
+	// Subtract a vector.
+	Vector4 operator - (const Vector4& rhs) const { return Vector4(x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w); }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Multiply with a scalar.
 	Vector4 operator*(float rhs) const { return Vector4(x * rhs, y * rhs, z * rhs, w * rhs); }
 	// Multiply with a vector.
@@ -108,7 +116,11 @@ public:
 	}
 
 	// Subtract-assign a vector.
+<<<<<<< HEAD
 	Vector4& operator-=(const Vector4& rhs)
+=======
+	Vector4& operator -= (const Vector4& rhs)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		x -= rhs.x;
 		y -= rhs.y;

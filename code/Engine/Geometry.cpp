@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Geometry.h"
 //-----------------------------------------------------------------------------
 Geometry2::~Geometry2()
@@ -7,3 +8,4 @@ Geometry2::~Geometry2()
 	glDeleteBuffers(1, &m_VBO);
 }
 //-----------------------------------------------------------------------------
+#endif

@@ -99,9 +99,15 @@ public:
 	// Multiply with a scalar.
 	Color operator*(float rhs) const { return Color(r * rhs, g * rhs, b * rhs, a * rhs); }
 	// Add a color.
+<<<<<<< HEAD
 	Color operator+(const Color& rhs) const { return Color(r + rhs.r, g + rhs.g, b + rhs.b, a + rhs.a); }
 	// Substract a color.
 	Color operator-(const Color& rhs) const { return Color(r - rhs.r, g - rhs.g, b - rhs.b, a - rhs.a); }
+=======
+	Color operator + (const Color& rhs) const { return Color(r + rhs.r, g + rhs.g, b + rhs.b, a + rhs.a); }
+	// Substract a color.
+	Color operator - (const Color& rhs) const { return Color(r - rhs.r, g - rhs.g, b - rhs.b, a - rhs.a); }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Return float data.
 	const float* Data() const { return &r; }

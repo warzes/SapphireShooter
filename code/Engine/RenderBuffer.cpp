@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "RenderBuffer.h"
 
 void RenderBuffer::create(const unsigned& width, const unsigned& height)
@@ -62,3 +63,4 @@ void RenderBuffer::remove()
 	glDeleteRenderbuffers(1, &RBO);
 	RBO = 0;
 }
+#endif

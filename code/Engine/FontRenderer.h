@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Font2.h"
 #include "Geometry.h"
 #include "Engine.h"
@@ -32,3 +34,5 @@ public:
 	void setText(const std::string& textLine) { text = textLine; }
 	std::string getText() const { return text; }
 };
+
+#endif

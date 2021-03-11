@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Light.h"
 
 unsigned Light2::amount = 0;
@@ -27,3 +28,4 @@ void Light2::Render(std::shared_ptr<ShaderProgram> program)
 	program->SetFloat(string(prefix + ".linear").c_str(), linear);
 	program->SetFloat(string(prefix + ".quadratic").c_str(), quadratic);
 }
+#endif

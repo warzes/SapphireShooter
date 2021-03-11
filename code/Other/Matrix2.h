@@ -54,11 +54,11 @@ namespace dim
             return M[(row << 1) + col];
         }
 
-        inline const T& operator [] (size_t i) const
+        inline const T& operator[](size_t i) const
         {
             return M[i];
         }
-        inline T& operator [] (size_t i)
+        inline T& operator[](size_t i)
         {
             return M[i];
         }

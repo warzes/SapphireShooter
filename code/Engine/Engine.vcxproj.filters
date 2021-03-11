@@ -3,265 +3,265 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Macros.h">
-      <Filter>base</Filter>
+      <Filter>_OLD\base</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
-      <Filter>base</Filter>
+      <Filter>_OLD\base</Filter>
     </ClInclude>
     <ClInclude Include="InlineFunc.h">
-      <Filter>base</Filter>
+      <Filter>_OLD\base</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
-      <Filter>core\debug\LogSystem</Filter>
+      <Filter>_OLD\core\debug\LogSystem</Filter>
     </ClInclude>
     <ClInclude Include="CoreLogSystem.h">
-      <Filter>core\debug\LogSystem\detail</Filter>
+      <Filter>_OLD\core\debug\LogSystem\detail</Filter>
     </ClInclude>
     <ClInclude Include="CoreLogThread.h">
-      <Filter>core\debug\LogSystem\detail</Filter>
+      <Filter>_OLD\core\debug\LogSystem\detail</Filter>
     </ClInclude>
     <ClInclude Include="LogVerbosity.h">
-      <Filter>core\debug\LogSystem\detail</Filter>
+      <Filter>_OLD\core\debug\LogSystem\detail</Filter>
     </ClInclude>
     <ClInclude Include="PlatformLog.h">
-      <Filter>core\debug\LogSystem\detail</Filter>
+      <Filter>_OLD\core\debug\LogSystem\detail</Filter>
     </ClInclude>
     <ClInclude Include="DebugNew.h">
-      <Filter>core\debug</Filter>
+      <Filter>_OLD\core\debug</Filter>
     </ClInclude>
     <ClInclude Include="Point2.h">
-      <Filter>core\math</Filter>
+      <Filter>_OLD\core\math</Filter>
     </ClInclude>
     <ClInclude Include="CoreMath.h">
-      <Filter>core\math</Filter>
+      <Filter>_OLD\core\math</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>core\pattern</Filter>
+      <Filter>_OLD\core\pattern</Filter>
     </ClInclude>
     <ClInclude Include="NonCopyable.h">
-      <Filter>core\pattern</Filter>
+      <Filter>_OLD\core\pattern</Filter>
     </ClInclude>
     <ClInclude Include="SpotLight.h">
-      <Filter>graphics\_old\LightType</Filter>
+      <Filter>_OLD\graphics\_old\LightType</Filter>
     </ClInclude>
     <ClInclude Include="DirectionalLight.h">
-      <Filter>graphics\_old\LightType</Filter>
+      <Filter>_OLD\graphics\_old\LightType</Filter>
     </ClInclude>
     <ClInclude Include="PointLight.h">
-      <Filter>graphics\_old\LightType</Filter>
+      <Filter>_OLD\graphics\_old\LightType</Filter>
     </ClInclude>
     <ClInclude Include="ParticleEmitter.h">
-      <Filter>graphics\_old\Particle System</Filter>
+      <Filter>_OLD\graphics\_old\Particle System</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>graphics\_old\Particle System</Filter>
+      <Filter>_OLD\graphics\_old\Particle System</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClInclude>
     <ClInclude Include="Terrain.h">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClInclude>
     <ClInclude Include="Transformation.h">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClInclude>
     <ClInclude Include="Camera3D.h">
-      <Filter>graphics</Filter>
+      <Filter>_OLD\graphics</Filter>
     </ClInclude>
     <ClInclude Include="Camera2D.h">
-      <Filter>graphics</Filter>
+      <Filter>_OLD\graphics</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
-      <Filter>input</Filter>
+      <Filter>_OLD\input</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
-      <Filter>input</Filter>
+      <Filter>_OLD\input</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsManager.h">
-      <Filter>physics</Filter>
+      <Filter>_OLD\physics</Filter>
     </ClInclude>
     <ClInclude Include="WindowDescription.h">
-      <Filter>platform</Filter>
+      <Filter>_OLD\platform</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
-      <Filter>platform</Filter>
+      <Filter>_OLD\platform</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
-      <Filter>platform</Filter>
+      <Filter>_OLD\platform</Filter>
     </ClInclude>
     <ClInclude Include="Shadow.h">
-      <Filter>render\new\effect</Filter>
+      <Filter>_OLD\render\new\effect</Filter>
     </ClInclude>
     <ClInclude Include="Bloom.h">
-      <Filter>render\new\effect</Filter>
+      <Filter>_OLD\render\new\effect</Filter>
     </ClInclude>
     <ClInclude Include="ParticlesGenerator.h">
-      <Filter>render\new\effect</Filter>
+      <Filter>_OLD\render\new\effect</Filter>
     </ClInclude>
     <ClInclude Include="PostProcessing.h">
-      <Filter>render\new\effect</Filter>
+      <Filter>_OLD\render\new\effect</Filter>
     </ClInclude>
     <ClInclude Include="WaterBuffers.h">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="CubeDepthBuffer.h">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="DepthBuffer.h">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="FrameBuffer2.h">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="MultisampledFrameBuffer.h">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="MultisampledRenderBuffer.h">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="RenderBuffer.h">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="FontRenderer.h">
-      <Filter>render\new\renderable\font</Filter>
+      <Filter>_OLD\render\new\renderable\font</Filter>
     </ClInclude>
     <ClInclude Include="Font2.h">
-      <Filter>render\new\renderable\font</Filter>
+      <Filter>_OLD\render\new\renderable\font</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
-      <Filter>render\new\renderable\light</Filter>
+      <Filter>_OLD\render\new\renderable\light</Filter>
     </ClInclude>
     <ClInclude Include="ModelAnim.h">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClInclude>
     <ClInclude Include="Mesh2.h">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClInclude>
     <ClInclude Include="MeshBone.h">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClInclude>
     <ClInclude Include="Model2.h">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClInclude>
     <ClInclude Include="Skybox.h">
-      <Filter>render\new\renderable\skybox</Filter>
+      <Filter>_OLD\render\new\renderable\skybox</Filter>
     </ClInclude>
     <ClInclude Include="SmoothNoise3D.h">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClInclude>
     <ClInclude Include="PerlinNoise2D.h">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClInclude>
     <ClInclude Include="PerlinNoise3D.h">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClInclude>
     <ClInclude Include="Random.h">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClInclude>
     <ClInclude Include="SmoothNoise2D.h">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClInclude>
     <ClInclude Include="TextureGenerator3D.h">
-      <Filter>render\new\texture\texture-generator</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator</Filter>
     </ClInclude>
     <ClInclude Include="ConverterToNormalMap.h">
-      <Filter>render\new\texture\texture-generator</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator</Filter>
     </ClInclude>
     <ClInclude Include="TextureGenerator.h">
-      <Filter>render\new\texture\texture-generator</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator</Filter>
     </ClInclude>
     <ClInclude Include="TextureGenerator2D.h">
-      <Filter>render\new\texture\texture-generator</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator</Filter>
     </ClInclude>
     <ClInclude Include="TextureLoader.h">
-      <Filter>render\new\texture</Filter>
+      <Filter>_OLD\render\new\texture</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>render\new\texture</Filter>
+      <Filter>_OLD\render\new\texture</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>render\old\Resource\Renderable\Shape</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Geometry.h">
-      <Filter>render\old\Resource\Renderable\Shape</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Water.h">
-      <Filter>render\old\Resource\Renderable\water</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable\water</Filter>
     </ClInclude>
     <ClInclude Include="Transformationable.h">
-      <Filter>render\old\Resource\Renderable</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
-      <Filter>render\old\Resource\Renderable</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="Renderable.h">
-      <Filter>render\old\Resource\Renderable</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
-      <Filter>render\old\Resource\Shader</Filter>
+      <Filter>_OLD\render\old\Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>render\old\Resource\Shader</Filter>
+      <Filter>_OLD\render\old\Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
-      <Filter>render\old\Resource</Filter>
+      <Filter>_OLD\render\old\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Framebuffer.h">
-      <Filter>render\old\Resource</Filter>
+      <Filter>_OLD\render\old\Resource</Filter>
     </ClInclude>
     <ClInclude Include="OGLFunc.h">
-      <Filter>render\old\OpenGL API</Filter>
+      <Filter>_OLD\render\old\OpenGL API</Filter>
     </ClInclude>
     <ClInclude Include="WGLFunc.h">
-      <Filter>render\old\OpenGL API</Filter>
+      <Filter>_OLD\render\old\OpenGL API</Filter>
     </ClInclude>
     <ClInclude Include="RenderDescription.h">
-      <Filter>render\old</Filter>
+      <Filter>_OLD\render\old</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem.h">
-      <Filter>render\old</Filter>
+      <Filter>_OLD\render\old</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
-      <Filter>resource</Filter>
+      <Filter>_OLD\resource</Filter>
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
-      <Filter>resource</Filter>
+      <Filter>_OLD\resource</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>scene</Filter>
+      <Filter>_OLD\scene</Filter>
     </ClInclude>
     <ClInclude Include="RandomUtils.h">
-      <Filter>utils</Filter>
+      <Filter>_OLD\utils</Filter>
     </ClInclude>
     <ClInclude Include="PerlinNoise.h">
-      <Filter>utils</Filter>
+      <Filter>_OLD\utils</Filter>
     </ClInclude>
     <ClInclude Include="EngineDescription.h">
-      <Filter>engine</Filter>
+      <Filter>_OLD\engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
-      <Filter>engine</Filter>
+      <Filter>_OLD\engine</Filter>
     </ClInclude>
     <ClInclude Include="TestAnims.h">
-      <Filter>other</Filter>
+      <Filter>_OLD\other</Filter>
     </ClInclude>
     <ClInclude Include="Billboard.h">
-      <Filter>other</Filter>
+      <Filter>_OLD\other</Filter>
     </ClInclude>
     <ClInclude Include="BaseHeader.h">
-      <Filter>base</Filter>
+      <Filter>_OLD\base</Filter>
     </ClInclude>
     <ClInclude Include="Iterator.h">
       <Filter>core\Container</Filter>
@@ -276,333 +276,336 @@
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Log.cpp">
-      <Filter>core\debug\LogSystem</Filter>
+      <Filter>_OLD\core\debug\LogSystem</Filter>
     </ClCompile>
     <ClCompile Include="CoreLogSystem.cpp">
-      <Filter>core\debug\LogSystem\detail</Filter>
+      <Filter>_OLD\core\debug\LogSystem\detail</Filter>
     </ClCompile>
     <ClCompile Include="CoreLogThread.cpp">
-      <Filter>core\debug\LogSystem\detail</Filter>
+      <Filter>_OLD\core\debug\LogSystem\detail</Filter>
     </ClCompile>
     <ClCompile Include="Point2.cpp">
-      <Filter>core\math</Filter>
+      <Filter>_OLD\core\math</Filter>
     </ClCompile>
     <ClCompile Include="DirectionalLight.cpp">
-      <Filter>graphics\_old\LightType</Filter>
+      <Filter>_OLD\graphics\_old\LightType</Filter>
     </ClCompile>
     <ClCompile Include="PointLight.cpp">
-      <Filter>graphics\_old\LightType</Filter>
+      <Filter>_OLD\graphics\_old\LightType</Filter>
     </ClCompile>
     <ClCompile Include="SpotLight.cpp">
-      <Filter>graphics\_old\LightType</Filter>
+      <Filter>_OLD\graphics\_old\LightType</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>graphics\_old\Particle System</Filter>
+      <Filter>_OLD\graphics\_old\Particle System</Filter>
     </ClCompile>
     <ClCompile Include="ParticleEmitter.cpp">
-      <Filter>graphics\_old\Particle System</Filter>
+      <Filter>_OLD\graphics\_old\Particle System</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClCompile>
     <ClCompile Include="Shape.cpp">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClCompile>
     <ClCompile Include="Terrain.cpp">
-      <Filter>graphics\_old</Filter>
+      <Filter>_OLD\graphics\_old</Filter>
     </ClCompile>
     <ClCompile Include="Camera2D.cpp">
-      <Filter>graphics</Filter>
+      <Filter>_OLD\graphics</Filter>
     </ClCompile>
     <ClCompile Include="Camera3D.cpp">
-      <Filter>graphics</Filter>
+      <Filter>_OLD\graphics</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>input</Filter>
+      <Filter>_OLD\input</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
-      <Filter>input</Filter>
+      <Filter>_OLD\input</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsManager.cpp">
-      <Filter>physics</Filter>
+      <Filter>_OLD\physics</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
-      <Filter>platform</Filter>
+      <Filter>_OLD\platform</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>platform</Filter>
+      <Filter>_OLD\platform</Filter>
     </ClCompile>
     <ClCompile Include="Bloom.cpp">
-      <Filter>render\new\effect</Filter>
+      <Filter>_OLD\render\new\effect</Filter>
     </ClCompile>
     <ClCompile Include="PostProcessing.cpp">
-      <Filter>render\new\effect</Filter>
+      <Filter>_OLD\render\new\effect</Filter>
     </ClCompile>
     <ClCompile Include="Shadow.cpp">
-      <Filter>render\new\effect</Filter>
+      <Filter>_OLD\render\new\effect</Filter>
     </ClCompile>
     <ClCompile Include="CubeDepthBuffer.cpp">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="DepthBuffer.cpp">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="FrameBuffer2.cpp">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="MultisampledFrameBuffer.cpp">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="MultisampledRenderBuffer.cpp">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="RenderBuffer.cpp">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="WaterBuffers.cpp">
-      <Filter>render\new\frameBuffer</Filter>
+      <Filter>_OLD\render\new\frameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="Font2.cpp">
-      <Filter>render\new\renderable\font</Filter>
+      <Filter>_OLD\render\new\renderable\font</Filter>
     </ClCompile>
     <ClCompile Include="FontRenderer.cpp">
-      <Filter>render\new\renderable\font</Filter>
+      <Filter>_OLD\render\new\renderable\font</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
-      <Filter>render\new\renderable\light</Filter>
+      <Filter>_OLD\render\new\renderable\light</Filter>
     </ClCompile>
     <ClCompile Include="Mesh2.cpp">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClCompile>
     <ClCompile Include="MeshBone.cpp">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClCompile>
     <ClCompile Include="Model2.cpp">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClCompile>
     <ClCompile Include="ModelAnim.cpp">
-      <Filter>render\new\renderable\model</Filter>
+      <Filter>_OLD\render\new\renderable\model</Filter>
     </ClCompile>
     <ClCompile Include="Skybox.cpp">
-      <Filter>render\new\renderable\skybox</Filter>
+      <Filter>_OLD\render\new\renderable\skybox</Filter>
     </ClCompile>
     <ClCompile Include="PerlinNoise2D.cpp">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClCompile>
     <ClCompile Include="PerlinNoise3D.cpp">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClCompile>
     <ClCompile Include="Random.cpp">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClCompile>
     <ClCompile Include="SmoothNoise2D.cpp">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClCompile>
     <ClCompile Include="SmoothNoise3D.cpp">
-      <Filter>render\new\texture\texture-generator\method</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator\method</Filter>
     </ClCompile>
     <ClCompile Include="ConverterToNormalMap.cpp">
-      <Filter>render\new\texture\texture-generator</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator</Filter>
     </ClCompile>
     <ClCompile Include="TextureGenerator2D.cpp">
-      <Filter>render\new\texture\texture-generator</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator</Filter>
     </ClCompile>
     <ClCompile Include="TextureGenerator3D.cpp">
-      <Filter>render\new\texture\texture-generator</Filter>
+      <Filter>_OLD\render\new\texture\texture-generator</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>render\new\texture</Filter>
+      <Filter>_OLD\render\new\texture</Filter>
     </ClCompile>
     <ClCompile Include="TextureLoader.cpp">
-      <Filter>render\new\texture</Filter>
+      <Filter>_OLD\render\new\texture</Filter>
     </ClCompile>
     <ClCompile Include="Geometry.cpp">
-      <Filter>render\old\Resource\Renderable\Shape</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
-      <Filter>render\old\Resource\Renderable\Shape</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Water.cpp">
-      <Filter>render\old\Resource\Renderable\water</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable\water</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
-      <Filter>render\old\Resource\Renderable</Filter>
+      <Filter>_OLD\render\old\Resource\Renderable</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>render\old\Resource\Shader</Filter>
+      <Filter>_OLD\render\old\Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
-      <Filter>render\old\Resource\Shader</Filter>
+      <Filter>_OLD\render\old\Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Framebuffer.cpp">
-      <Filter>render\old\Resource</Filter>
+      <Filter>_OLD\render\old\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
-      <Filter>render\old\Resource</Filter>
+      <Filter>_OLD\render\old\Resource</Filter>
     </ClCompile>
     <ClCompile Include="WGLFunc.cpp">
-      <Filter>render\old\OpenGL API</Filter>
+      <Filter>_OLD\render\old\OpenGL API</Filter>
     </ClCompile>
     <ClCompile Include="OGLFunc.cpp">
-      <Filter>render\old\OpenGL API</Filter>
+      <Filter>_OLD\render\old\OpenGL API</Filter>
     </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
-      <Filter>render\old</Filter>
+      <Filter>_OLD\render\old</Filter>
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
-      <Filter>resource</Filter>
+      <Filter>_OLD\resource</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
-      <Filter>resource</Filter>
+      <Filter>_OLD\resource</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>scene</Filter>
+      <Filter>_OLD\scene</Filter>
     </ClCompile>
     <ClCompile Include="PerlinNoise.cpp">
-      <Filter>utils</Filter>
+      <Filter>_OLD\utils</Filter>
     </ClCompile>
     <ClCompile Include="RandomUtils.cpp">
-      <Filter>utils</Filter>
+      <Filter>_OLD\utils</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
-      <Filter>engine</Filter>
+      <Filter>_OLD\engine</Filter>
     </ClCompile>
     <ClCompile Include="Billboard.cpp">
-      <Filter>other</Filter>
+      <Filter>_OLD\other</Filter>
     </ClCompile>
     <ClCompile Include="TestAnims.cpp">
-      <Filter>other</Filter>
+      <Filter>_OLD\other</Filter>
     </ClCompile>
     <ClCompile Include="Allocator.cpp">
       <Filter>core\Container</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="base">
+    <Filter Include="_OLD">
+      <UniqueIdentifier>{ff9d1bc2-6d72-4da0-a182-9c907a8b97d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\base">
       <UniqueIdentifier>{1dc1c259-d45e-495a-b6c9-9e7cdd0ffee8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core">
+    <Filter Include="_OLD\core">
       <UniqueIdentifier>{6c089be9-ed85-4ea1-9f34-e4974aca7dfb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics">
-      <UniqueIdentifier>{72a1ae49-1548-459b-8dbb-fe54ca728c2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="input">
-      <UniqueIdentifier>{6a5f11cf-6ee5-450d-9b23-4e1f4603511c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="physics">
-      <UniqueIdentifier>{6e86385c-1cf4-4d73-9526-7de95fa385e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="platform">
-      <UniqueIdentifier>{f1d06264-b9d7-42d2-a610-1a720bff47eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render">
-      <UniqueIdentifier>{4ac791ea-e005-4782-bd3f-c29333295830}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{a9a4d484-ed1d-4293-be5e-c2d38b8b48ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="scene">
-      <UniqueIdentifier>{10a71041-9838-4d99-aaf0-b8bead6b14f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="utils">
-      <UniqueIdentifier>{a4e0929a-6109-40de-ab1c-8b3bb49cbff4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\Container">
+    <Filter Include="_OLD\core\Container">
       <UniqueIdentifier>{be351d7e-47f8-4ccc-945b-e591967b3ca0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\debug">
+    <Filter Include="_OLD\core\debug">
       <UniqueIdentifier>{0b371bec-848e-45a6-b9c2-4856011855c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\math">
-      <UniqueIdentifier>{aa54ec83-b811-41ff-bfae-a53632eb97b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\pattern">
-      <UniqueIdentifier>{88f994bd-277b-4ef9-9008-e777191a4762}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\debug\LogSystem">
+    <Filter Include="_OLD\core\debug\LogSystem">
       <UniqueIdentifier>{60dde117-3b15-47e6-8434-994b369f827e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\debug\LogSystem\detail">
+    <Filter Include="_OLD\core\debug\LogSystem\detail">
       <UniqueIdentifier>{e2f56bf8-1a5f-4a67-aefb-3989219a517b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\_old">
-      <UniqueIdentifier>{4dc97a87-7065-45c4-a5c9-b4beedd620ef}</UniqueIdentifier>
+    <Filter Include="_OLD\core\math">
+      <UniqueIdentifier>{aa54ec83-b811-41ff-bfae-a53632eb97b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\_old\LightType">
-      <UniqueIdentifier>{f8714c7c-457f-4c6c-892e-2af3a83ec63c}</UniqueIdentifier>
+    <Filter Include="_OLD\core\pattern">
+      <UniqueIdentifier>{88f994bd-277b-4ef9-9008-e777191a4762}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\_old\Particle System">
-      <UniqueIdentifier>{4644813b-9f9d-4aba-8a29-e8f453f7f491}</UniqueIdentifier>
+    <Filter Include="_OLD\core\io">
+      <UniqueIdentifier>{f75c9cdd-565d-4567-8f57-ec85295c8fa5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="render\new">
-      <UniqueIdentifier>{1cdc9095-67e7-422d-8509-a5d97f92c101}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\effect">
-      <UniqueIdentifier>{9c4542e1-d3b1-4dac-bf83-6bbee10ceca1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\frameBuffer">
-      <UniqueIdentifier>{17ac65f8-53c1-40d5-96dc-00cd1326f091}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\renderable">
-      <UniqueIdentifier>{b2dfa739-3140-46d2-af46-8faed0e5704f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\texture">
-      <UniqueIdentifier>{896b2eb4-bf28-4d7b-8ffe-c3b043def36f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\renderable\font">
-      <UniqueIdentifier>{0e853c90-fbb4-4ebc-a1f4-cc7b7a0dc7f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\renderable\light">
-      <UniqueIdentifier>{25d86b94-fb1b-4012-b5fc-a15e9648f5f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\renderable\model">
-      <UniqueIdentifier>{c5b9acf9-22eb-4b7a-854d-b6713b66b442}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\renderable\skybox">
-      <UniqueIdentifier>{404e6d21-938d-4c7f-9b80-5b0966a41a17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\texture\texture-generator">
-      <UniqueIdentifier>{b1db3423-20d0-433e-994d-a0f58d4c6dd0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\new\texture\texture-generator\method">
-      <UniqueIdentifier>{3bd46d7b-8ef1-4e12-bf66-acafe48c1b54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\old">
-      <UniqueIdentifier>{fa1a68a4-90d6-4294-bde6-d6d7f2c2edf3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\old\OpenGL API">
-      <UniqueIdentifier>{acfb1e5b-223d-45ba-a688-4deae87c1857}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\old\Resource">
-      <UniqueIdentifier>{d43bd2c2-7c0f-446c-ba4d-076962222447}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\old\Resource\Renderable">
-      <UniqueIdentifier>{67a990db-4dd8-4957-8f6c-2229867bf953}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\old\Resource\Renderable\Shape">
-      <UniqueIdentifier>{5c0c8148-e943-44f1-a240-81883a0e08c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\old\Resource\Renderable\water">
-      <UniqueIdentifier>{2b2e6f89-0e98-410d-b1dc-1aa2a89ed80a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render\old\Resource\Shader">
-      <UniqueIdentifier>{d4eae895-0c9e-4425-ba0a-738f9fd7c72b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine">
+    <Filter Include="_OLD\engine">
       <UniqueIdentifier>{aeecd6bc-eb94-40bd-b2f0-8daf15f6077b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="other">
+    <Filter Include="_OLD\graphics">
+      <UniqueIdentifier>{72a1ae49-1548-459b-8dbb-fe54ca728c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\graphics\_old">
+      <UniqueIdentifier>{4dc97a87-7065-45c4-a5c9-b4beedd620ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\graphics\_old\LightType">
+      <UniqueIdentifier>{f8714c7c-457f-4c6c-892e-2af3a83ec63c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\graphics\_old\Particle System">
+      <UniqueIdentifier>{4644813b-9f9d-4aba-8a29-e8f453f7f491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\input">
+      <UniqueIdentifier>{6a5f11cf-6ee5-450d-9b23-4e1f4603511c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\other">
       <UniqueIdentifier>{12bf90c9-38a7-4b08-9331-7de70e21d91b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\io">
-      <UniqueIdentifier>{f75c9cdd-565d-4567-8f57-ec85295c8fa5}</UniqueIdentifier>
+    <Filter Include="_OLD\physics">
+      <UniqueIdentifier>{6e86385c-1cf4-4d73-9526-7de95fa385e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\platform">
+      <UniqueIdentifier>{f1d06264-b9d7-42d2-a610-1a720bff47eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render">
+      <UniqueIdentifier>{4ac791ea-e005-4782-bd3f-c29333295830}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new">
+      <UniqueIdentifier>{1cdc9095-67e7-422d-8509-a5d97f92c101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\effect">
+      <UniqueIdentifier>{9c4542e1-d3b1-4dac-bf83-6bbee10ceca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\frameBuffer">
+      <UniqueIdentifier>{17ac65f8-53c1-40d5-96dc-00cd1326f091}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\renderable">
+      <UniqueIdentifier>{b2dfa739-3140-46d2-af46-8faed0e5704f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\renderable\font">
+      <UniqueIdentifier>{0e853c90-fbb4-4ebc-a1f4-cc7b7a0dc7f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\renderable\light">
+      <UniqueIdentifier>{25d86b94-fb1b-4012-b5fc-a15e9648f5f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\renderable\model">
+      <UniqueIdentifier>{c5b9acf9-22eb-4b7a-854d-b6713b66b442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\renderable\skybox">
+      <UniqueIdentifier>{404e6d21-938d-4c7f-9b80-5b0966a41a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\texture">
+      <UniqueIdentifier>{896b2eb4-bf28-4d7b-8ffe-c3b043def36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\texture\texture-generator">
+      <UniqueIdentifier>{b1db3423-20d0-433e-994d-a0f58d4c6dd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\new\texture\texture-generator\method">
+      <UniqueIdentifier>{3bd46d7b-8ef1-4e12-bf66-acafe48c1b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\old">
+      <UniqueIdentifier>{fa1a68a4-90d6-4294-bde6-d6d7f2c2edf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\old\OpenGL API">
+      <UniqueIdentifier>{acfb1e5b-223d-45ba-a688-4deae87c1857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\old\Resource">
+      <UniqueIdentifier>{d43bd2c2-7c0f-446c-ba4d-076962222447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\old\Resource\Renderable">
+      <UniqueIdentifier>{67a990db-4dd8-4957-8f6c-2229867bf953}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\old\Resource\Renderable\Shape">
+      <UniqueIdentifier>{5c0c8148-e943-44f1-a240-81883a0e08c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\old\Resource\Renderable\water">
+      <UniqueIdentifier>{2b2e6f89-0e98-410d-b1dc-1aa2a89ed80a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\render\old\Resource\Shader">
+      <UniqueIdentifier>{d4eae895-0c9e-4425-ba0a-738f9fd7c72b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\resource">
+      <UniqueIdentifier>{a9a4d484-ed1d-4293-be5e-c2d38b8b48ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\scene">
+      <UniqueIdentifier>{10a71041-9838-4d99-aaf0-b8bead6b14f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_OLD\utils">
+      <UniqueIdentifier>{a4e0929a-6109-40de-ab1c-8b3bb49cbff4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

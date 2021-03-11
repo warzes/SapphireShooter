@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "PerlinNoise3D.h"
 
 PerlinNoise3D::PerlinNoise3D(const double& pFrequency, const double& pAmplitude, const double& pPersistance, const unsigned& pOctaves, const double& pMulitplier, const unsigned& pOffsetX, const unsigned& pOffsetY, const unsigned& pOffsetZ)
@@ -51,3 +52,4 @@ void PerlinNoise3D::fillData(std::vector<GLubyte>& data, const unsigned& width, 
 		}
 	}
 }
+#endif

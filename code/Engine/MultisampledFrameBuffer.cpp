@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "MultisampledFrameBuffer.h"
 
 void MultisampledFrameBuffer::makeColorTextureBuffer(const unsigned& width, const unsigned& height)
@@ -19,3 +20,4 @@ void MultisampledFrameBuffer::makeColorTextureBuffer(const unsigned& width, cons
 	glDrawBuffers(ARRSIZE, &attachments[0]);
 	Texture::unbind(GL_TEXTURE_2D_MULTISAMPLE);
 }
+#endif

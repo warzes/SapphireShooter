@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Model.h"
 #include "Camera3D.h"
 #include "Terrain.h"
@@ -59,3 +61,5 @@ private:
 
 	EnemyType m_type;
 };
+
+#endif

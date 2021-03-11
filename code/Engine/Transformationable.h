@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Renderable.h"
 
 // TODO: надо не наследоваться а включать
@@ -40,3 +42,5 @@ private:
 	glm::vec3 m_scale = glm::vec3(1.0f);
 	glm::mat4 m_rotation = glm::mat4(1.0f);
 };
+
+#endif

@@ -10,15 +10,25 @@
 class Image;
 
 // Texture on the GPU.
+<<<<<<< HEAD
 class Texture : public Resource, public GPUObject
+=======
+class Texture2 : public Resource, public GPUObject
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 {
-    OBJECT(Texture);
+    OBJECT(Texture2);
 
 public:
     // Construct.
+<<<<<<< HEAD
     Texture();
     // Destruct.
     ~Texture();
+=======
+    Texture2();
+    // Destruct.
+    ~Texture2();
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
     // Register object factory.
     static void RegisterObject();

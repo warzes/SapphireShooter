@@ -178,3 +178,5 @@ void Mesh::createMesh(bool instancing)
 
 	glBindVertexArray(0);
 }
+
+#endif

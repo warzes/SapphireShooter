@@ -15,12 +15,23 @@
 #	pragma message("link to 3rdparty.lib")
 #   pragma comment(lib, "3rdparty.lib")
 
+#if SE_OPENGL
 #	pragma message("link to OpenGL32.lib")
 #   pragma comment(lib, "OpenGL32.lib")
+#endif
+#if SE_D3D11
+#	pragma message("link to D3D11.lib")
+#   pragma comment(lib, "D3D11.lib")
+#	pragma message("link to d3dcompiler.lib")
+#   pragma comment(lib, "d3dcompiler.lib")
+//#	pragma message("link to dxgi.lib")
+//#   pragma comment(lib, "dxgi.lib")
+#	pragma message("link to dxguid.lib")
+#   pragma comment(lib, "dxguid.lib")
+#endif
 #	pragma message("link to winmm.lib")
 #   pragma comment(lib, "winmm.lib")
 #endif
-
 //-----------------------------------------------------------------------------
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {

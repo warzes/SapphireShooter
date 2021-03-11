@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "MeshBone.h"
 
 void MeshBone::BoneData::addBoneData(const unsigned& boneId, const float& weight)
@@ -44,3 +45,4 @@ void MeshBone::initBones()
 
 	glBindVertexArray(0);
 }
+#endif

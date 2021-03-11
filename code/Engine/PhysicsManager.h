@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Camera3D.h"
 #include "Game/Enemy.h" // TODO:
 
@@ -46,3 +48,5 @@ private:
 	bool m_castRay = false;
 	float m_gravity = -90.0f;
 };
+
+#endif

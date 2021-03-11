@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Vertex.h"
 
 enum class ShapeType
@@ -23,3 +25,5 @@ public:
 	virtual unsigned int GetIndexDataCount() = 0;
 	virtual void InitVertexData() = 0;
 };
+
+#endif

@@ -1,5 +1,7 @@
 #pragma once
 
+#if SE_OPENGL
+
 #include "Material.h"
 #include "Geometry.h"
 #include "Texture.h"
@@ -46,3 +48,5 @@ public:
 	const std::vector<unsigned>& getIndices() const { return indices; }
 	const std::vector<MeshTexture>& getTextures() const { return textures; }
 };
+
+#endif

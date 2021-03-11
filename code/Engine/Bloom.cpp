@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if SE_OPENGL
 #include "Bloom.h"
 #include "Engine.h"
 
@@ -40,3 +41,4 @@ void Bloom::blurTexture(std::shared_ptr<ShaderProgram> blurProgram, const Textur
 	}
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
+#endif

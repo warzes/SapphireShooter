@@ -5,6 +5,7 @@
 #include "Sort.h"
 #include "Vector.h"
 
+<<<<<<< HEAD
 // Hash map template class.
 template <class T, class U> class HashMap : public HashBase
 {
@@ -25,6 +26,19 @@ public:
 			second(value)
 		{
 		}
+=======
+// hash map template class.
+template <class T, class U> 
+class HashMap : public HashBase
+{
+public:
+	// hash map key-value pair with const key.
+	class KeyValue
+	{
+	public:
+		KeyValue() : first(T()) {}
+		KeyValue(const T& key, const U& value) : first(key), second(value) {}
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Test for equality with another pair.
 		bool operator==(const KeyValue& rhs) const { return first == rhs.first && second == rhs.second; }
@@ -37,6 +51,7 @@ public:
 		U second;
 
 	private:
+<<<<<<< HEAD
 		// Prevent copy construction.
 		KeyValue(const KeyValue& rhs);
 		// Prevent assignment.
@@ -59,6 +74,17 @@ public:
 
 		// Key-value pair.
 		KeyValue pair;
+=======
+		KeyValue(const KeyValue&) = delete;
+		KeyValue& operator=(const KeyValue&) = delete;
+	};
+
+	// hash map node.
+	struct Node : public HashNodeBase
+	{
+		Node() = default;
+		Node(const T& key, const U& value) : pair(key, value) {}
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Return next node.
 		Node* Next() const { return static_cast<Node*>(next); }
@@ -66,8 +92,12 @@ public:
 		Node* Prev() const { return static_cast<Node*>(prev); }
 		// Return next node in the bucket.
 		Node* Down() const { return static_cast<Node*>(down); }
+
+		// Key-value pair.
+		KeyValue pair;
 	};
 
+<<<<<<< HEAD
 	// Hash map node iterator.
 	struct Iterator : public HashIteratorBase
 	{
@@ -81,6 +111,13 @@ public:
 			HashIteratorBase(ptr)
 		{
 		}
+=======
+	// hash map node iterator.
+	struct Iterator : public HashIteratorBase
+	{
+		Iterator() = default;
+		Iterator(Node* ptr) : HashIteratorBase(ptr) {}
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Preincrement the pointer.
 		Iterator& operator++() { GotoNext(); return *this; }
@@ -97,6 +134,7 @@ public:
 		KeyValue& operator*() const { return (static_cast<Node*>(ptr))->pair; }
 	};
 
+<<<<<<< HEAD
 	// Hash map node const iterator.
 	struct ConstIterator : public HashIteratorBase
 	{
@@ -116,6 +154,14 @@ public:
 			HashIteratorBase(rhs.ptr)
 		{
 		}
+=======
+	// hash map node const iterator.
+	struct ConstIterator : public HashIteratorBase
+	{
+		ConstIterator() = default;
+		ConstIterator(Node* ptr) : HashIteratorBase(ptr) {}
+		ConstIterator(const Iterator& rhs) : HashIteratorBase(rhs.ptr) {}
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 		// Assign from a non-const iterator.
 		ConstIterator& operator=(const Iterator& rhs) { ptr = rhs.ptr; return *this; }
@@ -134,30 +180,41 @@ public:
 		const KeyValue& operator*() const { return (static_cast<Node*>(ptr))->pair; }
 	};
 
+<<<<<<< HEAD
 	// Construct empty.
 	HashMap()
 	{
 	}
 
 	// Construct from another hash map.
+=======
+	HashMap() = default;
+
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	HashMap(const HashMap<T, U>& map)
 	{
 		Initialize(map.NumBuckets(), map.Size() + 1);
 		*this = map;
 	}
 
+<<<<<<< HEAD
 	// Destruct.
+=======
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	~HashMap()
 	{
-		if (ptrs && allocator)
+		if (m_ptrs && m_allocator)
 		{
 			Clear();
-			FreeNode(Tail());
-			AllocatorUninitialize(allocator);
+			freeNode(tail());
+			AllocatorUninitialize(m_allocator);
 		}
 	}
 
+<<<<<<< HEAD
 	// Assign a hash map.
+=======
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	HashMap& operator=(const HashMap<T, U>& rhs)
 	{
 		if (&rhs != this)
@@ -202,26 +259,34 @@ public:
 	bool operator!=(const HashMap<T, U>& rhs) const { return !(*this == rhs); }
 
 	// Index the map. Create a new pair if key not found.
+<<<<<<< HEAD
 	U& operator [] (const T& key)
+=======
+	U& operator[](const T& key)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
-		return InsertNode(key)->pair.second;
+		return insertNode(key)->pair.second;
 	}
 
 	// Insert a pair. Return an iterator to it.
 	Iterator Insert(const Pair<T, U>& pair)
 	{
-		return Iterator(InsertNode(pair.first, pair.second));
+		return Iterator(insertNode(pair.first, pair.second));
 	}
 
 	// Insert a map.
 	void Insert(const HashMap<T, U>& map)
 	{
 		for (ConstIterator it = map.Begin(); it != map.End(); ++it)
-			InsertNode(it->first, it->second);
+			insertNode(it->first, it->second);
 	}
 
 	// Insert a pair by iterator. Return iterator to the value.
+<<<<<<< HEAD
 	Iterator Insert(const ConstIterator& it) { return Iterator(InsertNode(it->first, it->second)); }
+=======
+	Iterator Insert(const ConstIterator& it) { return Iterator(insertNode(it->first, it->second)); }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Insert a range by iterators.
 	void Insert(const ConstIterator& start, const ConstIterator& end)
@@ -234,38 +299,38 @@ public:
 	// Erase a pair by key. Return true if was found.
 	bool Erase(const T& key)
 	{
-		if (!ptrs)
+		if (!m_ptrs)
 			return false;
 
-		unsigned hashKey = Hash(key);
+		unsigned hashKey = hash(key);
 
 		Node* previous;
-		Node* node = FindNode(key, hashKey, previous);
+		Node* node = findNode(key, hashKey, previous);
 		if (!node)
 			return false;
 
 		if (previous)
 			previous->down = node->down;
 		else
-			Ptrs()[hashKey] = node->down;
+			ptrs()[hashKey] = node->down;
 
-		EraseNode(node);
+		eraseNode(node);
 		return true;
 	}
 
 	// Erase a pair by iterator. Return iterator to the next pair.
 	Iterator Erase(const Iterator& it)
 	{
-		if (!ptrs || !it.ptr)
+		if (!m_ptrs || !it.ptr)
 			return End();
 
 		Node* node = static_cast<Node*>(it.ptr);
 		Node* next = node->Next();
 
-		unsigned hashKey = Hash(node->pair.first);
+		unsigned hashKey = hash(node->pair.first);
 
 		Node* previous = nullptr;
-		Node* current = static_cast<Node*>(Ptrs()[hashKey]);
+		Node* current = static_cast<Node*>(ptrs()[hashKey]);
 		while (current && current != node)
 		{
 			previous = current;
@@ -277,9 +342,9 @@ public:
 		if (previous)
 			previous->down = node->down;
 		else
-			Ptrs()[hashKey] = node->down;
+			ptrs()[hashKey] = node->down;
 
-		EraseNode(node);
+		eraseNode(node);
 		return Iterator(next);
 	}
 
@@ -289,13 +354,13 @@ public:
 		if (Size())
 		{
 			for (Iterator it = Begin(); it != End();)
-				FreeNode(static_cast<Node*>(it++.ptr));
+				freeNode(static_cast<Node*>(it++.ptr));
 
-			Node* tail = Tail();
-			tail->prev = nullptr;
-			SetHead(tail);
-			SetSize(0);
-			ResetPtrs();
+			Node* t = tail();
+			t->prev = nullptr;
+			setHead(t);
+			setSize(0);
+			resetPtrs();
 		}
 	}
 
@@ -307,7 +372,7 @@ public:
 			return;
 
 		Node** ptrs = new Node * [numKeys];
-		Node* ptr = Head();
+		Node* ptr = head();
 
 		for (size_t i = 0; i < numKeys; ++i)
 		{
@@ -315,37 +380,41 @@ public:
 			ptr = ptr->Next();
 		}
 
-		::Sort(RandomAccessIterator<Node*>(ptrs), RandomAccessIterator<Node*>(ptrs + numKeys), CompareNodes);
+		::Sort(RandomAccessIterator<Node*>(ptrs), RandomAccessIterator<Node*>(ptrs + numKeys), compareNodes);
 
-		SetHead(ptrs[0]);
+		setHead(ptrs[0]);
 		ptrs[0]->prev = nullptr;
 		for (size_t i = 1; i < numKeys; ++i)
 		{
 			ptrs[i - 1]->next = ptrs[i];
 			ptrs[i]->prev = ptrs[i - 1];
 		}
-		ptrs[numKeys - 1]->next = Tail();
-		Tail()->prev = ptrs[numKeys - 1];
+		ptrs[numKeys - 1]->next = tail();
+		tail()->prev = ptrs[numKeys - 1];
 
 		delete[] ptrs;
 	}
 
 	// Rehash to a specific bucket count, which must be a power of two. Return true on success.
+<<<<<<< HEAD
 	bool Rehash(size_t numBuckets)
+=======
+	bool Rehash(size_t numBucket)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
-		if (numBuckets == NumBuckets())
+		if (numBucket == numBuckets())
 			return true;
-		if (!numBuckets || numBuckets < Size() / MAX_LOAD_FACTOR)
+		if (!numBucket || numBucket < Size() / MAX_LOAD_FACTOR)
 			return false;
 
 		// Check for being power of two
-		size_t check = numBuckets;
+		size_t check = numBucket;
 		while (!(check & 1))
 			check >>= 1;
 		if (check != 1)
 			return false;
 
-		AllocateBuckets(Size(), numBuckets);
+		allocateBuckets(Size(), numBucket);
 		Rehash();
 		return true;
 	}
@@ -353,11 +422,11 @@ public:
 	// Return iterator to the pair with key, or end iterator if not found.
 	Iterator Find(const T& key)
 	{
-		if (!ptrs)
+		if (!m_ptrs)
 			return End();
 
-		unsigned hashKey = Hash(key);
-		Node* node = FindNode(key, hashKey);
+		unsigned hashKey = hash(key);
+		Node* node = findNode(key, hashKey);
 		if (node)
 			return Iterator(node);
 		else
@@ -367,11 +436,11 @@ public:
 	// Return const iterator to the pair with key, or end iterator if not found.
 	ConstIterator Find(const T& key) const
 	{
-		if (!ptrs)
+		if (!m_ptrs)
 			return End();
 
-		unsigned hashKey = Hash(key);
-		Node* node = FindNode(key, hashKey);
+		unsigned hashKey = hash(key);
+		Node* node = findNode(key, hashKey);
 		if (node)
 			return ConstIterator(node);
 		else
@@ -381,11 +450,11 @@ public:
 	// Return whether contains a pair with key.
 	bool Contains(const T& key) const
 	{
-		if (!ptrs)
+		if (!m_ptrs)
 			return false;
 
-		unsigned hashKey = Hash(key);
-		return FindNode(key, hashKey) != nullptr;
+		unsigned hashKey = hash(key);
+		return findNode(key, hashKey) != nullptr;
 	}
 
 	// Return all the keys.
@@ -409,6 +478,7 @@ public:
 	}
 
 	// Return iterator to the first element. Is not the lowest key unless the map has been sorted.
+<<<<<<< HEAD
 	Iterator Begin() { return Iterator(Head()); }
 	// Return const iterator to the beginning.
 	ConstIterator Begin() const { return ConstIterator(Head()); }
@@ -416,6 +486,15 @@ public:
 	Iterator End() { return Iterator(Tail()); }
 	// Return const iterator to the end.
 	ConstIterator End() const { return ConstIterator(Tail()); }
+=======
+	Iterator Begin() { return Iterator(head()); }
+	// Return const iterator to the beginning.
+	ConstIterator Begin() const { return ConstIterator(head()); }
+	// Return iterator to the end.
+	Iterator End() { return Iterator(tail()); }
+	// Return const iterator to the end.
+	ConstIterator End() const { return ConstIterator(tail()); }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	// Return first keyvalue. Is not the lowest key unless the map has been sorted.
 	const T& Front() const { return *Begin(); }
 	// Return last keyvalue.
@@ -423,6 +502,7 @@ public:
 
 private:
 	// Return head node with correct type.
+<<<<<<< HEAD
 	Node* Head() const { return static_cast<Node*>(HashBase::Head()); }
 	// Return tail node with correct type.
 	Node* Tail() const { return static_cast<Node*>(HashBase::Tail()); }
@@ -439,11 +519,29 @@ private:
 
 	// Find a node from the buckets.
 	Node* FindNode(const T& key, unsigned hashKey) const
+=======
+	Node* head() const { return static_cast<Node*>(HashBase::head()); }
+	// Return tail node with correct type.
+	Node* tail() const { return static_cast<Node*>(HashBase::tail()); }
+
+	// Reserve the tail node and initial buckets.
+	void initialize(size_t numBuckets, size_t numNodes)
 	{
-		if (!ptrs)
+		allocateBuckets(0, numBuckets);
+		m_allocator = AllocatorInitialize(sizeof(Node), numNodes);
+		HashNodeBase* tail = allocateNode();
+		setHead(tail);
+		setTail(tail);
+	}
+
+	// Find a node from the buckets.
+	Node* findNode(const T& key, unsigned hashKey) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
+	{
+		if (!m_ptrs)
 			return nullptr;
 
-		Node* node = static_cast<Node*>(Ptrs()[hashKey]);
+		Node* node = static_cast<Node*>(ptrs()[hashKey]);
 		while (node)
 		{
 			if (node->pair.first == key)
@@ -455,13 +553,17 @@ private:
 	}
 
 	// Find a node and the previous node from the buckets.
+<<<<<<< HEAD
 	Node* FindNode(const T& key, unsigned hashKey, Node*& previous) const
+=======
+	Node* findNode(const T& key, unsigned hashKey, Node*& previous) const
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		previous = nullptr;
-		if (!ptrs)
+		if (!m_ptrs)
 			return nullptr;
 
-		Node* node = static_cast<Node*>(Ptrs()[hashKey]);
+		Node* node = static_cast<Node*>(ptrs()[hashKey]);
 		while (node)
 		{
 			if (node->pair.first == key)
@@ -474,67 +576,79 @@ private:
 	}
 
 	// Insert a key and default value and return either the new or existing node.
+<<<<<<< HEAD
 	Node* InsertNode(const T& key)
+=======
+	Node* insertNode(const T& key)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
-		unsigned hashKey = Hash(key);
+		unsigned hashKey = hash(key);
 
 		// If exists, just return the node
-		Node* existing = FindNode(key, hashKey);
+		Node* existing = findNode(key, hashKey);
 		if (existing)
 			return existing;
 
-		Node* newNode = InsertNode(Tail(), key, U());
-		newNode->down = Ptrs()[hashKey];
-		Ptrs()[hashKey] = newNode;
+		Node* newNode = insertNode(tail(), key, U());
+		newNode->down = ptrs()[hashKey];
+		ptrs()[hashKey] = newNode;
 
 		// Rehash if the maximum load factor has been exceeded
-		if (Size() > NumBuckets() * MAX_LOAD_FACTOR)
+		if (Size() > numBuckets() * MAX_LOAD_FACTOR)
 		{
-			AllocateBuckets(Size(), NumBuckets() << 1);
-			Rehash();
+			allocateBuckets(Size(), numBuckets() << 1);
+			rehash();
 		}
 
 		return newNode;
 	}
 
 	// Insert a key and value and return either the new or existing node.
+<<<<<<< HEAD
 	Node* InsertNode(const T& key, const U& value)
+=======
+	Node* insertNode(const T& key, const U& value)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
-		unsigned hashKey = Hash(key);
+		unsigned hashKey = hash(key);
 
 		// If exists, just change the value
-		Node* existing = FindNode(key, hashKey);
+		Node* existing = findNode(key, hashKey);
 		if (existing)
 		{
 			existing->pair.second = value;
 			return existing;
 		}
 
-		Node* newNode = InsertNode(Tail(), key, value);
-		newNode->down = Ptrs()[hashKey];
-		Ptrs()[hashKey] = newNode;
+		Node* newNode = insertNode(tail(), key, value);
+		newNode->down = ptrs()[hashKey];
+		ptrs()[hashKey] = newNode;
 
 		// Rehash if the maximum load factor has been exceeded
-		if (Size() > NumBuckets() * MAX_LOAD_FACTOR)
+		if (Size() > numBuckets() * MAX_LOAD_FACTOR)
 		{
-			AllocateBuckets(Size(), NumBuckets() << 1);
-			Rehash();
+			allocateBuckets(Size(), numBuckets() << 1);
+			rehash();
 		}
 
 		return newNode;
 	}
 
 	// Allocate and insert a node into the list. Return the new node.
+<<<<<<< HEAD
 	Node* InsertNode(Node* dest, const T& key, const U& value)
+=======
+	Node* insertNode(Node* dest, const T& key, const U& value)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		// If no pointers yet, allocate with minimum bucket count
-		if (!ptrs)
+		if (!m_ptrs)
 		{
-			Initialize(MIN_BUCKETS, 2);
-			dest = Head();
+			initialize(MIN_BUCKETS, 2);
+			dest = head();
 		}
 
-		Node* newNode = AllocateNode(key, value);
+		Node* newNode = allocateNode(key, value);
 		Node* prev = dest->Prev();
 		newNode->next = dest;
 		newNode->prev = prev;
@@ -543,20 +657,24 @@ private:
 		dest->prev = newNode;
 
 		// Reassign the head node if necessary
-		if (dest == Head())
-			SetHead(newNode);
+		if (dest == head())
+			setHead(newNode);
 
-		SetSize(Size() + 1);
+		setSize(Size() + 1);
 
 		return newNode;
 	}
 
 	// Erase a node from the list. Return pointer to the next element, or to the end if could not erase.
+<<<<<<< HEAD
 	Node* EraseNode(Node* node)
+=======
+	Node* eraseNode(Node* node)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		// The tail node can not be removed
-		if (!node || node == Tail())
-			return Tail();
+		if (!node || node == tail())
+			return tail();
 
 		Node* prev = node->Prev();
 		Node* next = node->Next();
@@ -565,45 +683,64 @@ private:
 		next->prev = prev;
 
 		// Reassign the head node if necessary
-		if (node == Head())
-			SetHead(next);
+		if (node == head())
+			setHead(next);
 
-		FreeNode(node);
-		SetSize(Size() - 1);
+		freeNode(node);
+		setSize(Size() - 1);
 
 		return next;
 	}
 
 	// Allocate a node with optionally specified key and value.
+<<<<<<< HEAD
 	Node* AllocateNode(const T& key = T(), const U& value = U())
+=======
+	Node* allocateNode(const T& key = T(), const U& value = U())
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
-		Node* newNode = static_cast<Node*>(AllocatorGet(allocator));
+		Node* newNode = static_cast<Node*>(AllocatorGet(m_allocator));
 		new(newNode) Node(key, value);
 		return newNode;
 	}
 
 	// Free a node.
+<<<<<<< HEAD
 	void FreeNode(Node* node)
+=======
+	void freeNode(Node* node)
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		(node)->~Node();
-		AllocatorFree(allocator, node);
+		AllocatorFree(m_allocator, node);
 	}
 
 	// Rehash the buckets.
+<<<<<<< HEAD
 	void Rehash()
+=======
+	void rehash()
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 	{
 		for (Iterator it = Begin(); it != End(); ++it)
 		{
 			Node* node = static_cast<Node*>(it.ptr);
-			unsigned hashKey = Hash(it->first);
-			node->down = Ptrs()[hashKey];
-			Ptrs()[hashKey] = node;
+			unsigned hashKey = hash(it->first);
+			node->down = ptrs()[hashKey];
+			ptrs()[hashKey] = node;
 		}
 	}
 
 	// Compare two nodes.
+<<<<<<< HEAD
 	static bool CompareNodes(Node*& lhs, Node*& rhs) { return lhs->pair.first < rhs->pair.first; }
 
 	// Compute a hash based on the key and the bucket size
 	unsigned Hash(const T& key) const { return MakeHash(key) & (NumBuckets() - 1); }
+=======
+	static bool compareNodes(Node*& lhs, Node*& rhs) { return lhs->pair.first < rhs->pair.first; }
+
+	// Compute a hash based on the key and the bucket size
+	unsigned hash(const T& key) const { return MakeHash(key) & (numBuckets() - 1); }
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 };

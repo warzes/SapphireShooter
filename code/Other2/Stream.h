@@ -13,12 +13,18 @@ struct ResourceRefList;
 class Stream
 {
 public:
+<<<<<<< HEAD
 	// Default-construct with zero size.
 	Stream();
 	// Construct with defined byte size.
 	Stream(size_t numBytes);
 	// Destruct.
 	virtual ~Stream();
+=======
+	Stream() = default;
+	Stream(size_t numBytes);
+	virtual ~Stream() = default;
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 
 	// Read bytes from the stream. Return number of bytes actually read.
 	virtual size_t Read(void* dest, size_t numBytes) = 0;
@@ -64,6 +70,7 @@ public:
 	}
 
 	// Return the stream name.
+<<<<<<< HEAD
 	const String& Name() const { return name; }
 	// Return current position in bytes.
 	size_t Position() const { return position; }
@@ -79,6 +86,20 @@ protected:
 	size_t size;
 	// Stream name.
 	String name;
+=======
+	const String& Name() const { return m_name; }
+	// Return current position in bytes.
+	size_t Position() const { return m_position; }
+	// Return size in bytes.
+	size_t Size() const { return m_size; }
+	// Return whether the end of stream has been reached.
+	bool IsEof() const { return m_position >= m_size; }
+
+protected:
+	size_t m_position = 0;
+	size_t m_size = 0;
+	String m_name;
+>>>>>>> caaf2bd02a14c6a51dfcdbd73e34fff7259f3bc5
 };
 
 template<> bool Stream::Read();
