@@ -104,12 +104,12 @@ public:
 		AllocatorFree(m_allocator, object);
 	}
 
-	//// Free the allocator. All objects reserved from this allocator should be freed before this is called.
-	//void Reset()
-	//{
-	//	AllocatorUninitialize(m_allocator);
-	//	m_allocator = nullptr;
-	//}
+	// Free the allocator. All objects reserved from this allocator should be freed before this is called.
+	void Reset()
+	{
+		AllocatorUninitialize(m_allocator);
+		m_allocator = nullptr;
+	}
 
 private:
 	Allocator(const Allocator<T>&) = delete;

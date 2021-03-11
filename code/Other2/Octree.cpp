@@ -287,7 +287,7 @@ Octant* Octree::CreateChildOctant(Octant* octant, size_t index)
     else
         newMax.z = oldCenter.z;
 
-    Octant* child = allocator.Allocate();
+    Octant* child = allocator.Reserve();
     child->Initialize(octant, BoundingBox(newMin, newMax), octant->level - 1);
     octant->children[index] = child;
 
